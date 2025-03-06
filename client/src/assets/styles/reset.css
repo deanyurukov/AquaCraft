@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Webkit-based browsers (Chrome, Edge, Safari) */
+html::-webkit-scrollbar {
+    background: inherit;
+    width: 16px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #91BA8D; /* Green slider */
+    border-radius: 10px; /* Smooth rounded edges */
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+}
+
+html::-webkit-scrollbar-track {
+    background: #4e4e4e;
+}
+
+html::-webkit-scrollbar-button {
+    display: none; /* Hides scrollbar arrows */
+}
+
+body {
+    background: rgb(252, 252, 238);
+}
+
+img {
+    display: block;
+    object-fit: cover;
+}
+
+a, a:active {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}

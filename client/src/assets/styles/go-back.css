@@ -1,0 +1,25 @@
+#go-back {
+    position: absolute;
+    left: 30px;
+    top: 25px;
+    transition: all 0.1s linear;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    @media (width <=460px) {
+        font-size: 15px;
+    }
+
+    @media (width <=460px) {
+        font-size: 14px;
+        left: 18px;
+        top: 18px;
+    }
+
+    &:hover {
+        color: #5e5e5e;
+    }
+}

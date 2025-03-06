@@ -1,0 +1,143 @@
+#profile-data {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    gap: 1em;
+
+    @media (width <= 1020px) {
+        width: 100%;
+    }
+
+    @media (width <= 550px) {
+        gap: 0.7em;
+    }
+
+    h1 {
+        font-weight: 500;
+        font-size: 34px;
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 3em;
+
+        @media (width <= 806px) {
+            flex-direction: column;
+        }
+
+        @media (width <= 550px) {
+            gap: 2em;
+        }
+
+        .data,
+        .change-password {
+            display: flex;
+            flex-direction: column;
+            width: 40%;
+            gap: 0.8em;
+
+            @media (width <= 806px) {
+                width: 100%;
+            }
+
+            h2 {
+                font-weight: 400;
+                font-size: 24px;
+                color: #91BA8D;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6em;
+
+                span {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 6px;
+                    background: white;
+                    width: 100%;
+                    margin-top: 0.8em;
+
+                    input {
+                        width: 100%;
+                        border: 2px solid #333;
+                        outline: none;
+                        padding: 1em;
+                        background: transparent;
+                        font-size: 16px;
+                        color: #9F9F9F;
+                        transition: all 0.2s linear;
+
+                        &:focus {
+                            border: 2px solid #91BA8D;
+                            border-radius: 3px;
+                        }
+                    }
+
+                    i {
+                        position: absolute;
+                        right: 10px;
+                        color: black;
+                    }
+                }
+            }
+
+            button {
+                padding: 0.8em 1.5em;
+                background: #fff;
+                border: 1px solid #000;
+                border-radius: 4px;
+                color: #000;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 100%;
+                font-size: 18px;
+                margin-top: 1em;
+
+                @media (width <= 550px) {
+                    margin-top: 0.5em;
+                }
+
+                &:hover {
+                    background: #000;
+                    color: #fff;
+                    border: 1px solid #fff;
+                }
+            }
+        }
+
+        .data {
+            form {
+                div {
+                    label {
+                        font-weight: 500;
+                        font-size: 17px;
+                        margin-top: 1.5em;
+                    }
+
+                    input[type="text"],
+                    input[type="email"] {
+                        width: 100%;
+                        border: 2px solid #333;
+                        outline: none;
+                        font-size: 16px;
+                        color: #9F9F9F;
+                        padding: 1em;
+                        transition: all 0.2s linear;
+                        margin-top: 0.4em;
+
+                        &:focus {
+                            border: 2px solid #91BA8D;
+                            border-radius: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

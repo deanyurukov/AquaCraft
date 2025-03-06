@@ -1,0 +1,111 @@
+#profile-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 75%;
+
+    @media (width <= 1020px) {
+        width: 100%;
+    }
+
+    h5 {
+        font-size: 34px;
+        font-weight: 600;
+
+        @media (width <= 500px) {
+            font-size: 28px;
+        }
+
+        @media (width <= 400px) {
+            font-size: 24px;
+        }
+
+        span {
+            color: #91BA8D;
+        }
+    }
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0.8em;
+        width: 100%;
+
+        @media (width <= 400px) {
+            gap: 0.6em;
+        }
+
+        h6 {
+            font-size: 26px;
+            font-weight: 500;
+
+            @media (width <= 500px) {
+                font-size: 22px;
+            }
+
+            @media (width <= 400px) {
+                font-size: 20px;
+            }
+        }
+
+        & > div {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            gap: 0.6em;
+
+            i {
+                font-size: 20px;
+                color: #91BA8D;
+
+                @media (width <= 500px) {
+                    font-size: 18px;
+                }
+
+                @media (width <= 400px) {
+                    font-size: 16px;
+                }
+            }
+
+            p {
+                @media (width <= 500px) {
+                    font-size: 14px;
+                }
+
+                @media (width <= 400px) {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        & > a {
+            padding: 0.45em 1.2em;
+            background: #fff;
+            border: 1px solid #000;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            margin-top: 0.6em;
+
+            @media (width <= 500px) {
+                padding: 0.35em 0.9em;
+                font-size: 12px;
+                margin-top: 0;
+            }
+
+            @media (width <= 400px) {
+                padding: 0.3em 0.7em;
+            }
+            
+            &:hover {
+                background: #000;
+                color: #fff;
+                border: 1px solid #fff;
+            }
+        }
+    }
+}

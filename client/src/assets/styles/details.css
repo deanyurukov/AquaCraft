@@ -1,0 +1,223 @@
+#details {
+    background: rgb(252, 252, 238);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5em 0;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+
+    & > :nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+
+        @media (width <= 830px) {
+            width: 90%;
+        }
+
+        @media (width <= 650px) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width: 40%;
+            height: 400px;
+            border-radius: 1em;
+
+            @media (width <= 830px) {
+                height: 300px;
+            }
+
+            @media (width <= 650px) {
+                width: 90%;
+            }
+
+            @media (width <= 300px) {
+                height: 200px;
+            }
+        }
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 0.6em;
+            width: 55%;
+
+            @media (width <= 650px) {
+                margin-top: 2em;
+                width: 70%;
+            }
+
+            @media (width <= 450px) {
+                width: 85%;
+            }
+
+            & > div {
+                display: flex;
+                width: 80%;
+                justify-content: space-between;
+                align-items: center;
+
+                @media (width <= 830px) {
+                    width: 85%;
+                }
+
+                @media (width <= 650px) {
+                    width: 90%;
+                }
+
+                @media (width <= 450px) {
+                    width: 95%;
+                }
+
+                h3 {
+                    font-weight: 400;
+                    font-size: 30px;
+
+                    @media (width <= 830px) {
+                        font-size: 26px;
+                    }
+
+                    @media (width <= 650px) {
+                        font-size: 30px;
+                    }
+
+                    @media (width <= 450px) {
+                        font-size: 26px;
+                    }
+
+                    @media (width <= 300px) {
+                        font-size: 22px;
+                    }
+                }
+                
+                i {
+                    font-size: 24px;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+
+                    @media (width <= 830px) {
+                        font-size: 22px;
+                    }
+
+                    @media (width <= 650px) {
+                        font-size: 24px;
+                    }
+
+                    @media (width <= 450px) {
+                        font-size: 22px;
+                    }
+
+                    @media (width <= 300px) {
+                        font-size: 18px;
+                    }
+
+                    &.fill {
+                        color: #91BA8D;
+                    }
+                }
+    
+            }
+
+            h4 {
+                font-weight: 400;
+                font-size: 26px;
+                color: #9F9F9F;
+
+                @media (width <= 830px) {
+                    font-size: 20px;
+                }
+
+                @media (width <= 650px) {
+                    font-size: 26px;
+                }
+
+                @media (width <= 450px) {
+                    font-size: 20px;
+                }
+
+                @media (width <= 300px) {
+                    font-size: 18px;
+                }
+            }
+
+            hr {
+                width: 25%;
+                border: none;
+                height: 1.5px;
+                background: #D9D9D9;
+
+                @media (width <= 830px) {
+                    width: 40%;
+                }
+
+                @media (width <= 300px) {
+                    width: 50%;
+                }
+            }
+
+            p {
+                max-width: 80%;
+                font-size: 20px;
+
+                @media (width <= 830px) {
+                    max-width: 90%;
+                    font-size: 18px;
+                }
+
+                @media (width <= 650px) {
+                    font-size: 20px;
+                }
+
+                @media (width <= 450px) {
+                    font-size: 18px;
+                }
+
+                @media (width <= 300px) {
+                    font-size: 14px;
+                }
+            }
+
+            & > a {
+                font-family: "Poppins", sans-serif;
+                padding: 0.5em 1em;
+                background: #fff;
+                border: none;
+                border: 1px solid #000;
+                border-radius: 4px;
+                color: #000;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 18px;
+                margin-top: 0.5em;
+
+                @media (width <= 830px) {
+                    font-size: 16px;
+                }
+
+                @media (width <= 650px) {
+                    font-size: 18px;
+                }
+
+                @media (width <= 450px) {
+                    font-size: 16px;
+                }
+
+                @media (width <= 300px) {
+                    font-size: 14px;
+                    padding: 0.4em 0.8em;
+                }
+
+                &:hover {
+                    background: #000;
+                    color: #fff;
+                    border: 1px solid #fff;
+                }
+            }
+        }
+    }
+}

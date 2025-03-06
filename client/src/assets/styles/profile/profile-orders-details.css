@@ -1,0 +1,251 @@
+#profile-order {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    position: relative;
+
+    @media (width <= 1020px) {
+        width: 100%;
+    }
+
+    @media (width <= 600px) {
+        gap: 1.4em;
+    }
+
+    @media (width <= 420px) {
+        gap: 1em;
+    }
+
+    #go-back {
+        top: 0;
+        left: 0;
+
+        @media (width <= 600px) {
+            font-size: 15px;
+        }
+
+        @media (width <= 420px) {
+            font-size: 14px;
+        }
+
+        span {
+            overflow: hidden;
+        }
+    }
+
+    .order-summary {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2em;
+        margin-top: 2em;
+
+        @media (width <= 420px) {
+            gap: 1em;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4em;
+
+            @media (width <= 600px) {
+                gap: 0.3em;
+            }
+
+            @media (width <= 420px) {
+                gap: 0;
+            }
+
+            h2, h4 {
+                font-weight: 400;
+            }
+            
+            h2 {
+                font-size: 30px;
+
+                @media (width <= 600px) {
+                    font-size: 26px;
+                }
+
+                @media (width <= 420px) {
+                    font-size: 22px;
+                }
+
+                @media (width <= 360px) {
+                    font-size: 18px;
+                }
+            }
+            
+            h3 {
+                font-size: 26px;
+                color: #91BA8D;
+
+                @media (width <= 600px) {
+                    font-size: 22px;
+                }
+
+                @media (width <= 420px) {
+                    font-size: 18px;
+                }
+
+                @media (width <= 360px) {
+                    font-size: 16px;
+                }
+            }
+
+            h4 {
+                font-size: 22px;
+
+                @media (width <= 600px) {
+                    font-size: 18px;
+                }
+
+                @media (width <= 420px) {
+                    font-size: 15px;
+                }
+
+                @media (width <= 360px) {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .order-products, .order-data {
+        @media (width <= 600px) {
+            width: 100%;
+            position: relative;
+            overflow-x: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #91BA8D transparent;
+
+            thead th:first-child,
+            tbody td:first-child {
+                position: sticky;
+                left: 0;
+            }
+        }
+
+        table {
+            width: 100%;
+            background: #F4F5F7;
+            border-collapse: collapse;
+            border: 1px solid #E4E4E4;
+
+            @media (width <= 600px) {
+                width: 140%;
+            }
+
+            thead, tbody {
+                text-align: left;
+                
+                tr {
+                    td, th {
+                        border: 1px solid #E4E4E4;
+                        padding: 0.8em;
+
+                        @media (width <= 820px) {
+                            padding: 0.6em;
+                        }
+
+                        @media (width <= 600px) {
+                            padding: 0.4em 0.6em;
+                        }
+
+                        img {
+                            border-radius: 10px;
+                            width: 200px;
+                            aspect-ratio: 1 / 1;
+
+                            @media (width <= 820px) {
+                                width: 150px;
+                            }
+
+                            @media (width <= 420px) {
+                                width: 100px;
+                            }
+                        }
+                        
+                        span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden;
+
+                            i {
+                                font-size: 20px;
+                                color: #91BA8D;
+                                transition: all 0.2s ease;
+
+                                @media (width <= 820px) {
+                                    font-size: 18px;
+                                }
+
+                                @media (width <= 420px) {
+                                    font-size: 15px;
+                                }
+
+                                &:hover {
+                                    color: #91ba8dc9;
+                                }
+                            }
+                        }
+                    }
+
+                    th {
+                        background: #91BA8D;
+                        color: #fff;
+                        font-weight: 500;
+                        font-size: 18px;
+                        border-top: 0;
+
+                        @media (width <= 820px) {
+                            font-size: 15px;
+                        }
+
+                        @media (width <= 420px) {
+                            font-size: 14px;
+                        }
+
+                        @media (width <= 380px) {
+                            font-size: 13px;
+                        }
+                    }
+
+                    td {  
+                        background: #F4F5F7;
+
+                        @media (width <= 820px) {
+                            font-size: 13px;
+                        }
+
+                        @media (width <= 420px) {
+                            font-size: 12px;
+                        }
+
+                        @media (width <= 380px) {
+                            font-size: 11px;
+                        }
+                    }
+                }
+
+                tr:last-child td {
+                    border-bottom: 0;
+                }
+
+                tr td:first-child,
+                tr th:first-child {
+                    border-left: 0;
+                }
+
+                tr td:last-child,
+                tr th:last-child {
+                    border-right: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,184 @@
+#products {
+    background: rgb(252, 252, 238); 
+    min-height: 70vh;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 5em;
+    font-family: "Poppins", sans-serif;
+
+    h1 {
+        font-weight: 500;
+        margin-bottom: 24px;
+        font-size: 2.5em;
+        position: relative;
+
+        @media (width <= 370px) {
+            font-size: 22px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #91BA8D;
+        }
+    }
+
+    & > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3em;
+        width: 80%;
+        padding-bottom: 5em;
+
+        @media (width <= 950px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (width <= 600px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            background: #F4F5F7;
+            border: 1px solid #E4E4E4;
+            min-height: 430px;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 300px;
+
+                @media (width <= 370px) {
+                    height: 200px;
+                }
+            }
+
+            i {
+                font-size: 24px;
+                position: absolute;
+                top: 0.5em;
+                right: 0.5em;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                padding: 0.5em;
+
+                @media (width <= 370px) {
+                    font-size: 22px;
+                    top: 0.3em;
+                    right: 0.3em;
+                }
+
+                @media (width <= 250px) {
+                    font-size: 20px;
+                    top: 0.2em;
+                    right: 0.2em;
+                }
+
+                &.fill {
+                    color: #91BA8D;
+                }
+
+                &:hover {
+                    background: #eaeaea;
+                }
+            }
+
+
+
+            span {
+                padding: 1em;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 0.8em;
+                width: 100%;
+
+                & > :nth-child(1) {
+                    font-size: 1.5em;
+                    font-weight: 400;
+
+                    @media (width <= 370px) {
+                        font-size: 1.2em;
+                    }
+                }
+
+                & > :nth-child(2) {
+                    font-size: 1em;
+                    font-weight: 300;
+                    color: #A0A0A0;
+                    word-break: keep-all;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    line-clamp: 3;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+
+                    @media (width <= 370px) {
+                        font-size: 0.8em;
+                    }
+                }
+
+                & > :nth-child(3) {
+                    font-size: 1.2em;
+                    font-weight: 300;
+                    word-break: keep-all;
+
+                    @media (width <= 370px) {
+                        font-size: 1em;
+                    }
+                }
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    @media (width <= 250px) {
+                        flex-direction: column;
+                        gap: 0.7em;
+                    }
+
+                    & > a {
+                        font-family: "Poppins", sans-serif;
+                        padding: 0.5em 1em;
+                        background: #fff;
+                        border: 1px solid #000;
+                        border-radius: 4px;
+                        color: #000;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        font-size: 16px;
+
+                        @media (width <= 370px) {
+                            font-size: 14px;
+                            padding: 0.4em 0.8em;
+                        }
+
+                        @media (width <= 250px) {
+                            text-align: left;
+                            width: fit-content;
+                        }
+
+                        &:hover {
+                            background: #000;
+                            color: #fff;
+                            border: 1px solid #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

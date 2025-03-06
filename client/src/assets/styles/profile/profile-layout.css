@@ -1,0 +1,113 @@
+#profile {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    gap: 3em;
+    padding: 0 7%;
+    margin: 2em 0;
+    font-family: "Poppins", sans-serif;
+    background: rgb(252, 252, 238);
+    min-height: 60vh;
+
+    @media (width <= 1020px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6em;
+    }
+
+    aside, .dropdown {
+        nav {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                font-size: 16px;
+                border-radius: 4px;
+                padding: 0.3em 1em;
+                color: #000;
+                transition: all 0.1s ease;
+
+                &.active {
+                    background: #dddddd;
+                    font-weight: 700;
+                }
+
+                &:not(.active):hover {
+                    background: rgb(212 237 213);
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        display: none;
+        width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        background: #F4F5F7;
+        border: 1px solid #E4E4E4;
+        padding: 0.6em 1em;
+        position: relative;
+        height: fit-content;
+        z-index: 100;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        @media (width <= 1020px) {
+            display: flex;
+        }
+
+        &:hover {
+            background: #f1f1f1;
+        }
+
+        h3, i {
+            font-size: 22px;
+            color: #333;
+            font-weight: 700;
+
+            @media (width <= 320px) {
+                font-size: 18px;
+            }
+        }
+
+        i {
+            font-weight: 900;
+        }
+
+        & > nav {
+            position: absolute;
+            bottom: -320%;
+            width: 100%;
+            left: 0;
+            background: #F4F5F7;
+            border: 1px solid #E4E4E4;
+            padding: 0.6em;
+        }
+    }
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+        width: 20%;
+
+        @media (width <=1020px) {
+            display: none;
+        }
+
+        h4 {
+            font-size: 22px;
+            color: #333;
+            padding-left: 0.3em;
+            font-weight: 600;
+        }
+    }
+
+    #profile-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+}

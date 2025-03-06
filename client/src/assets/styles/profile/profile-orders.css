@@ -1,0 +1,24 @@
+#profile-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.8em;
+    width: 75%;
+
+    @media (width <= 1020px) {
+        width: 100%;
+    }
+
+    h6 {
+        font-size: 30px;
+        font-weight: 500;
+
+        @media (width <= 500px) {
+            font-size: 24px;
+        }
+
+        @media (width <= 320px) {
+            font-size: 20px;
+        }
+    }
+}

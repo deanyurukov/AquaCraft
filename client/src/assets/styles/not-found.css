@@ -1,0 +1,108 @@
+#not-found {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    background: rgb(252, 252, 238);
+    font-family: "Poppins", sans-serif;
+
+    i {
+        color: #facc15;
+        font-size: 100px;
+
+        @media (width <= 650px) {
+            font-size: 80px;
+        }
+
+        @media (width <= 500px) {
+            font-size: 60px;
+        }
+
+        @media (width <= 360px) {
+            font-size: 40px;
+        }
+    }
+
+    h1 {
+        font-size: 60px;
+        font-weight: 600;
+
+        @media (width <= 650px) {
+            font-size: 50px;
+        }
+
+        @media (width <= 500px) {
+            font-size: 40px;
+        }
+
+        @media (width <= 360px) {
+            font-size: 30px;
+        }
+
+        @media (width <= 280px) {
+            font-size: 25px;
+        }
+    }
+
+    p {
+        font-size: 22px;
+        font-weight: 500;
+
+        @media (width <= 650px) {
+            font-size: 20px;   
+        }
+
+        @media (width <= 500px) {
+            font-size: 18px;
+        }
+
+        @media (width <= 360px) {
+            font-size: 16px;
+        }
+
+        @media (width <= 280px) {
+            font-size: 14px;
+        }
+    }
+
+    a {
+        padding: 10px 28px;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 4px;
+        color: #000;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 16px;
+        font-size: 18px;
+
+        @media (width <= 650px) {
+            padding: 8px 22px;
+            font-size: 16px;   
+        }
+
+        @media (width <= 500px) {
+            font-size: 14px;
+        }
+
+        @media (width <= 360px) {
+            padding: 6px 18px;
+            font-size: 12px;
+        }
+
+        @media (width <= 280px) {
+            padding: 4px 14px;
+            font-size: 10px;
+        }
+
+        &:hover {
+            background: #000;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+    }
+}
