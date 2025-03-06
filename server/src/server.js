@@ -376,7 +376,7 @@ app.post("/addOrder", async (req, res) => {
         user.productsInCart = [];
         await user.save();
 
-        return res.status(201).send({ message: "Successfully ordered products!" });
+        return res.status(201).send({ message: "Успешна поръчка!" });
     }
     else {
         return res.status(401).send({ message });
