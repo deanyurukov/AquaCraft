@@ -84,7 +84,7 @@ function App() {
             setError(null);
         }, 3000);
     }
-    
+
     useEffect(() => {
         getFavs();
     }, []);

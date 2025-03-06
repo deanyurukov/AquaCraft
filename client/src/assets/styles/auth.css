@@ -73,10 +73,6 @@
                         @media (width <= 570px) {
                             font-size: 10px;
                         }
-        
-                        @media (width <= 410px) {
-                            font-size: 8px;
-                        }
                     }
                 }
             }

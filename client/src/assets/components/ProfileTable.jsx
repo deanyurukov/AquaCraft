@@ -2,7 +2,7 @@ import ProfileOrder from "./ProfileOrder";
 
 const ProfileTable = ({ orders }) => {
     return (
-        <span>
+        <span id="profile-table">
             {
                 orders.length === 0 ?
                     <h4>Нямате направени поръчки.</h4> :
