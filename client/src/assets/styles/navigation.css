@@ -131,8 +131,9 @@
         .favorites-overlay {
             background: #FFFFFF;
             overflow-x: hidden;
-            width: 28%;
-            height: 746px;
+            width: 32%;
+            min-height: 746px;
+            max-height: 70vh;
             padding: 24px;
             display: flex;
             justify-content: center;
@@ -140,6 +141,15 @@
             right: -100%;
             top: 0;
             transition: all 0.3s linear;
+
+            @media (width <= 1000px) {
+                width: 80%;
+                height: 100vh;       
+            }
+
+            @media (width <= 475px) {
+                padding: 20px 16px;              
+            }
         }
 
         .active-overlay-content {
@@ -159,16 +169,39 @@
                     flex-direction: column;
                     gap: 20px;
                     align-items: start;
+                    overflow: hidden;
 
                     .overlay-header {
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
+                        gap: 14.5px;
+
+                        @media (width <= 400px) {
+                            gap: 10px;
+                        }
 
                         h2 {
                             font-weight: 600;
                             font-size: 26px;
+                            color: #333333;
+
+                            @media (width <= 1200px) {
+                                font-size: 22px;
+                            }
+
+                            @media (width <= 1000px) {
+                                font-size: 30px;
+                            }
+
+                            @media (width <= 575px) {
+                                font-size: 26px;
+                            }
+
+                            @media (width <= 400px) {
+                                font-size: 22px;
+                            }
                         }
 
                         i {
@@ -177,6 +210,22 @@
                             font-size: 20px;
                             transition: all 0.3s ease;
                             color: #9F9F9F;
+
+                            @media (width <= 1200px) {
+                                font-size: 18px;
+                            }
+
+                            @media (width <= 1000px) {
+                                font-size: 24px;   
+                            }
+
+                            @media (width <= 575px) {
+                                font-size: 20px;   
+                            }
+
+                            @media (width <= 400px) {
+                                font-size: 18px;
+                            }
 
                             &:hover {
                                 background: rgb(237, 237, 237);
@@ -203,6 +252,10 @@
                         scrollbar-color: #91BA8D transparent;
                         /* Custom color for the slider, no track background */
 
+                        @media (width <= 440px) {
+                            height: 85%;
+                        }
+
                         /* Webkit-based browsers (Chrome, Edge, Safari) */
                         &::-webkit-scrollbar {
                             width: 7px;
@@ -228,25 +281,72 @@
 
                         &>p {
                             font-size: 20px;
+
+                            @media (width <= 1000px) {
+                                font-size: 24px;  
+                            }
+
+                            @media (width <= 575px) {
+                                font-size: 20px;
+                            }
+
+                            @media (width <= 400px) {
+                                font-size: 18px;
+                            }
                         }
 
                         div {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
-                            max-width: 90%;
+                            max-width: 95%;
                             gap: 0.2em;
+
+                            @media (width <= 1000px) {
+                                gap: 0.5em;
+                            }
+
+                            @media (width <= 400px) {
+                                gap: 0.3em;
+                            }
 
                             img {
                                 width: 35%;
                                 height: auto;
                                 aspect-ratio: 1 / 1;
                                 border-radius: 10px;
+
+                                @media (width <= 1000px) {
+                                    min-width: 180px;
+                                }
+
+                                @media (width <= 575px) {
+                                    min-width: 140px;
+                                }
+
+                                @media (width <= 440px) {
+                                    min-width: 100px;
+                                }
+
+                                @media (width <= 370px) {
+                                    min-width: 80px;
+                                }
                             }
 
                             p {
                                 width: 25%;
-                                text-align: center;
+
+                                @media (width <= 1000px) {
+                                    font-size: 18px;
+                                }
+
+                                @media (width <= 575px) {
+                                    font-size: 16px;
+                                }
+
+                                @media (width <= 400px) {
+                                    font-size: 14px;
+                                }
                             }
 
                             i {
@@ -256,13 +356,21 @@
                                 transition: all 0.3s ease;
                                 color: #9F9F9F;
 
+                                @media (width <= 1000px) {
+                                    font-size: 20px;
+                                }
+
+                                @media (width <= 400px) {
+                                    font-size: 18px;
+                                }
+                                
+                                &.fill {
+                                    color: #91BA8D;
+                                }
+
                                 &:hover {
                                     background: rgb(237, 237, 237);
                                 }
-                            }
-
-                            i.fill {
-                                color: #91BA8D;
                             }
                         }
                     }

@@ -25,6 +25,7 @@ const LoginPage = () => {
         if (loginData) {
             localStorage.setItem("accessToken", JSON.stringify(loginData.accessToken));
             navigate("/");
+            getErrorAndDisplay(loginData.message)
         }
         else {
             getErrorAndDisplay(error);

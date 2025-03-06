@@ -6,6 +6,7 @@
     padding: 5em 0;
     font-family: "Poppins", sans-serif;
     position: relative;
+    min-height: 70vh;
 
     & > :nth-child(2) {
         display: flex;

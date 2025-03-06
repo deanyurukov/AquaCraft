@@ -18,9 +18,9 @@ const LogoutPage = () => {
 
         const logout = async () => {
             if (confirm("Сигурни ли сте, че искате да се отпишете?")) {
-                const [_, error] = await authService.logout();
+                const [logoutData, error] = await authService.logout();
 
-                if (!_) {
+                if (!logoutData) {
                     getErrorAndDisplay(error);
                     return;
                 }

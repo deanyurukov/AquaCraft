@@ -61,6 +61,8 @@ const CheckoutPage = () => {
             return undefined;
         }
 
+        getErrorAndDisplay(data.message);
+
         return data;
     }
 

@@ -35,6 +35,7 @@ const RegisterPage = () => {
             }
 
             navigate("/");
+            getErrorAndDisplay(registerData.message)
         }
         else {
             getErrorAndDisplay(error);

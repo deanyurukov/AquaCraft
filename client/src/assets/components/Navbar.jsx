@@ -45,17 +45,17 @@ const Navbar = () => {
 
     const userNav = (
         <>
-            <NavLink to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
-            <i id="favorites-icon" onClick={showFavorites} className="fa-regular fa-heart"></i>
-            <NavLink to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
-            <NavLink to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
+            <i id="favorites-icon" onClick={() => { showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
+            <NavLink onClick={() => setIsClickedNav(false)} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
         </>
     );
 
     const guestNav = (
         <>
-            <NavLink to="/login" key={isLoggedIn}>Вход</NavLink>
-            <NavLink to="/register">Регистриране</NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to="/login" key={isLoggedIn}>Вход</NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to="/register">Регистриране</NavLink>
         </>
     );
 
@@ -65,8 +65,8 @@ const Navbar = () => {
                 <button onClick={() => setIsClickedNav(false)}><i className="fa-solid fa-xmark"></i></button>
 
                 <div>
-                    <NavLink to="/">Начало</NavLink>
-                    <NavLink to="/products">Продукти</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to="/">Начало</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to="/products">Продукти</NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
