@@ -2,12 +2,14 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "../../App";
 import OverlayProduct from "./OverlayProduct";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
     let [isLoggedIn, favorites, getFavs] = useContext(appContext);
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedNav, setIsClickedNav] = useState(false);
     const location = useLocation();
+    const { t, i18n } = useTranslation();
 
     async function showFavorites() {
         favorites = await getFavs();
@@ -103,12 +105,10 @@ const Navbar = () => {
                 <nav>
                     <NavLink to="/">Начало</NavLink>
                     <NavLink to="/products">Продукти</NavLink>
-                    <div className="elfsight-app-7b2f1a1b-4abc-446c-a0f1-763a074e773f" data-elfsight-app-lazy></div>
                     {isLoggedIn ? userNav : guestNav}
                 </nav>
                 
                 <div id="responsive-nav">
-                <div className="elfsight-app-7b2f1a1b-4abc-446c-a0f1-763a074e773f" data-elfsight-app-lazy></div>
                     <button onClick={() => setIsClickedNav(true)}><i className="fa-solid fa-bars"></i></button>
                 </div>
             </header>

@@ -144,7 +144,8 @@
 
             @media (width <= 1000px) {
                 width: 80%;
-                height: 100vh;       
+                height: 100vh;
+                max-height: none;       
             }
 
             @media (width <= 475px) {

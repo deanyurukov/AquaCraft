@@ -9,6 +9,7 @@ import '/src/assets/styles/app.css';
 import productsService from './assets/services/products-service.js';
 import useUrlChange from './assets/hooks/useUrlChange.jsx';
 import authService from './assets/services/auth-service.js';
+import "./assets/configs/i18n-config.js";
 
 // Import Layouts
 import MainLayout from './assets/layouts/MainLayout.jsx';
@@ -30,6 +31,7 @@ import PanelPage from './assets/pages/profile/PanelPage.jsx';
 import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
 import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
 import UserDataPage from './assets/pages/profile/UserDataPage.jsx';
+import { useTranslation } from 'react-i18next';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -64,6 +66,7 @@ function App() {
     const [favorites, setFavorites] = useState([]);
     const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);
+    const { _, i18n } = useTranslation();
 
     const refreshFavorites = () => setUpdate((prev) => prev + 1);
 
@@ -86,6 +89,8 @@ function App() {
     }
 
     useEffect(() => {
+        i18n.changeLanguage("en");
+        
         getFavs();
     }, []);
 
