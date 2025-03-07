@@ -6,7 +6,7 @@ import bg from "../locales/bg/translation.json";
 import en from "../locales/en/translation.json";
 
 i18next.use(initReactI18next).use(Backend).init({
-    debug: true,
+    debug: false,
     fallbackLng: "en",
     resources: {
         bg: {

@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { appContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const ProfileLayout = () => {
+    const { t } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
-    const [currentPage, setCurrentPage] = useState("Панел");
+    const [currentPage, setCurrentPage] = useState(t("profile.panel.title"));
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const profileNavigation = (
         <nav>
-            <NavLink onClick={() => setCurrentPage("Панел")} to="/profile/panel" end>Панел</NavLink>
-            <NavLink onClick={() => setCurrentPage("Моите данни")} to="/profile/user-data">Моите данни</NavLink>
-            <NavLink onClick={() => setCurrentPage("Поръчки")} to="/profile/orders">Поръчки</NavLink>
-            <NavLink to='/logout' state={{ from: location }}>Изход</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("profile.panel.orders"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
+            <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
         </nav>
     );
 
@@ -30,7 +32,7 @@ const ProfileLayout = () => {
             <>
                 <div id="profile" onClick={() => setIsDropdownClicked(false)}>
                     <aside>
-                        <h4>Моят профил</h4>
+                        <h4>{t("profile.title")}</h4>
 
                         {profileNavigation}
                     </aside>

@@ -1,36 +1,132 @@
 {
-  "navbar": {
-    "home": "Home",
-    "products": "Products",
-    "login": "Login",
-    "register": "Register"
-  },
-  "favorites": {
-    "title": "Favorite Products",
-    "empty": "You have no favorite products!"
-  },
-  "footer": {
-    "support": "Support",
-    "contact": "Contact Us",
-    "privacy": "Privacy Policy",
-    "terms": "Terms and Conditions",
-    "corporate": "Corporate",
-    "about": "About Aqua Craft",
-    "logo": "Aqua Craft Logo",
-    "careers": "Careers",
-    "rights": "All rights reserved."
-  },
-  "home": {
-    "title": "Build Your Irrigation System",
-    "products": "Products",
-    "services": "Services",
-    "contact": "Contact Us",
-    "cards": {
-      "products": "Products",
-      "services": "Services",
-      "projectRequest": "Request a Project",
-      "howTo": "How To...",
-      "learnMore": "Learn More"
+    "navbar": {
+        "home": "Home",
+        "products": "Products",
+        "login": "Login",
+        "register": "Register"
+    },
+    "favorites": {
+        "title": "Favorite Products",
+        "empty": "You have no favorite products!"
+    },
+    "footer": {
+        "support": "Support",
+        "contact": "Contact Us",
+        "privacy": "Privacy Policy",
+        "terms": "Terms and Conditions",
+        "corporate": "Corporate",
+        "about": "About Aqua Craft",
+        "logo": "Aqua Craft Logo",
+        "careers": "Careers",
+        "rights": "All rights reserved."
+    },
+    "home": {
+        "title": "Craft Your Irrigation System",
+        "products": "Products",
+        "services": "Services",
+        "contact": "Contact Us",
+        "cards": {
+            "products": "Products",
+            "services": "Services",
+            "projectRequest": "Request a Project",
+            "howTo": "How To...",
+            "learnMore": "Learn More"
+        }
+    },
+    "products": {
+        "title": "Products",
+        "buy": "Buy",
+        "details": "Details"
+    },
+    "cart": {
+        "title": "Cart",
+        "empty": "No added products!",
+        "image": "Image",
+        "product": "Product",
+        "quantity": "Quantity",
+        "price": "Price",
+        "total": "Total price",
+        "checkout": "To Checkout"
+    },
+    "checkout": {
+        "title": "Checkout",
+        "details": "Payment details",
+        "name": "Name",
+        "city": "City",
+        "phone": "Phone Number",
+        "email": "Email",
+        "courier": "Courier",
+        "product": "Product",
+        "price": "Price",
+        "total":"Total price",
+        "finish": "Place Order"
+    },
+    "profile": {
+        "title": "My profile",
+        "panel": {
+            "title": "Panel",
+            "message": "Hello",
+            "data": "My data",
+            "orders": "Last orders",
+            "empty": "No orders yet!",
+            "change": "Change data"
+        },
+        "data": {
+            "title": "My data",
+            "info": "Profile information",
+            "username": "Username",
+            "email": "Email",
+            "password": "Password",
+            "save": "Save changes",
+            "currentPass": "Current password",
+            "newPass": "New password"
+        },
+        "orders": {
+            "title": "Orders history",
+            "empty": "No orders yet!"
+        },
+        "orderDetails": {
+            "id": "Order ID",
+            "userDetails": {
+                "name": "Client name",
+                "email": "Email",
+                "phone": "Phone Number",
+                "city": "City",
+                "courier": "Courier"
+            },
+            "productDetails": {
+                "image": "Image",
+                "name": "Product Name",
+                "quantity": "Quantity",
+                "price": "Price"
+            }
+        },
+        "logout": "Logout"
+    },
+    "productsList": {
+        "679b478e55cafddf45f06048": {
+            "title": "Watering Can",
+            "description": "A watering can (or watering pot or watering jug) is a portable container, usually with a handle and a funnel, used to water plants by hand."
+        },
+        "679b483455cafddf45f0604a": {
+            "title": "Shovel",
+            "description": "A tool consisting of a wide, square metal or plastic blade, usually with slightly raised sides, attached to a handle, for moving loose material such as sand, coal, or snow."
+        },
+        "67c02f48b792132e1e0c9ac0": {
+            "title": "Garden Scissors",
+            "description": "Precision-crafted pruning scissors with stainless steel blades, ideal for trimming flowers, herbs, and small branches. Ergonomic grip for comfortable use."
+        },
+        "67c02f90b792132e1e0c9ac2": {
+            "title": "Hand Rake",
+            "description": "A compact and lightweight hand rake for loosening soil, removing weeds, and aerating flower beds. Durable steel tines and a wooden handle for a comfortable grip."
+        }
+    },
+    "goBack": "Go Back",
+    "profileTable": {
+        "id": "Order ID",
+        "date": "Date",
+        "quantity": "Quantity",
+        "name": "Client",
+        "price": "Price"
     }
-  }
 }

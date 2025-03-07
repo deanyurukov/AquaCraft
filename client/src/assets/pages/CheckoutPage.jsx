@@ -8,6 +8,7 @@ import Spinner from "../components/Spinner.jsx";
 import ordersService from "../services/orders-service.js";
 import authService from "../services/auth-service.js";
 import { calculateTotalPrice } from "../services/helpers.js";
+import { useTranslation } from "react-i18next";
 
 const CheckoutPage = () => {
     const [products, setProducts] = useState([]);
@@ -17,6 +18,7 @@ const CheckoutPage = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     async function fetchProducts() {
         setLoading(true);
@@ -68,24 +70,24 @@ const CheckoutPage = () => {
 
     return (
         <div id="checkout">
-            <h1>Плащане</h1>
+            <h1>{t("checkout.title")}</h1>
 
             <div className="content">
                 <div className="left">
                     <h2>Детайли на плащането</h2>
                     <form>
-                        <CheckoutInput label={"Име*"} name={"name"} />
-                        <CheckoutInput label={"Град*"} name={"town"} />
-                        <CheckoutInput label={"Телефонен номер*"} name={"phone"} type={"phone"} />
-                        <CheckoutInput label={"Имейл*"} name={"email"} type={"email"} value={userEmail} />
+                        <CheckoutInput label={`${t("checkout.name")}*`} name={"name"} />
+                        <CheckoutInput label={`${t("checkout.city")}*`} name={"town"} />
+                        <CheckoutInput label={`${t("checkout.phone")}*`} name={"phone"} type={"phone"} />
+                        <CheckoutInput label={`${t("checkout.email")}*`} name={"email"} type={"email"} value={userEmail} />
 
                         <div>
-                            <label>Куриер*</label>
+                            <label>{t("checkout.courier")}*</label>
                             <select name="deliveryWay">
                                 <option value="">-----------------</option>
-                                <option value="speedy">Speedy</option>
-                                <option value="econt">Econt</option>
-                                <option value="dhl">DHL</option>
+                                <option value="Speedy">Speedy</option>
+                                <option value="Econt">Econt</option>
+                                <option value="DHL">DHL</option>
                             </select>
                         </div>
                     </form>
@@ -93,8 +95,8 @@ const CheckoutPage = () => {
 
                 <div className="right">
                     <div className="titlebar">
-                        <h4>Продукт</h4>
-                        <h4>Цена</h4>
+                        <h4>{t("checkout.product")}</h4>
+                        <h4>{t("checkout.price")}</h4>
                     </div>
                     <div className="products">
                         {
@@ -105,8 +107,8 @@ const CheckoutPage = () => {
                         }
                     </div>
                     <div>
-                        <h5>Крайна цена</h5>
-                        <h5 key={totalPrice}>${totalPrice.toFixed(2)}</h5>
+                        <h5>{t("checkout.total")}</h5>
+                        <h5>${totalPrice.toFixed(2)}</h5>
                     </div>
 
                     <hr />
@@ -117,7 +119,7 @@ const CheckoutPage = () => {
                         if (data) {
                             navigate("/"); /* to be changed later.. */
                         }
-                    }}>Завърши поръчка</button>
+                    }}>{t("checkout.finish")}</button>
                 </div>
 
             </div>

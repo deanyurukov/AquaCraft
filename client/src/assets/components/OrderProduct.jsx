@@ -3,15 +3,17 @@ import { changeImage } from "../services/helpers";
 import productsService from "../services/products-service";
 import { useContext } from "react";
 import { appContext } from "../../App";
+import { useTranslation } from "react-i18next";
 
 const OrderProduct = ({ quantity, product, getOrder }) => {
     const navigate = useNavigate();
     const getErrorAndDisplay = useContext(appContext)[6];
+    const { t } = useTranslation();
 
     return (
         <tr>
             <td><img onError={changeImage} src={product.imageUrl} alt={product.title} /></td>
-            <td>{product.title}</td>
+            <td>{t(`productsList.${product._id}.title`)}</td>
             <td>{quantity}</td>
             <td>${(quantity * product.price).toFixed(2)}</td>
             <td>

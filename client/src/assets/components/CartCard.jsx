@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import { changeImage } from "../services/helpers.js";
 import productsService from "../services/products-service.js";
 import { appContext } from "../../App.jsx";
+import { useTranslation } from "react-i18next";
 
 const CartCard = ({ product, fetchProducts }) => {
     const [quantity, setQuantity] = useState(product.quantity);
     const getErrorAndDisplay = useContext(appContext)[6];
+    const { t } = useTranslation();
 
     const handleChange = (e) => {
         setQuantity(e.target.value);
@@ -20,7 +22,7 @@ const CartCard = ({ product, fetchProducts }) => {
         }
 
         if (quantity !== Number(product.quantity)) {
-            const [data, error] = productsService.updateOne(productId, quantity);
+            const [data, error] = await productsService.updateOne(productId, quantity);
 
             if (!data) {
                 getErrorAndDisplay(error);
@@ -45,7 +47,7 @@ const CartCard = ({ product, fetchProducts }) => {
     return (
         <div>
             <img onError={changeImage} src={product.product.imageUrl} alt={product.product.title} />
-            <p>{product.product.title}</p>
+            <p>{t(`productsList.${product.product._id}.title`)}</p>
             <span>
                 <input onBlur={(e) => handleQuantityChange(e, product.product._id)} onChange={handleChange} type="number" min="1" max="999" value={quantity} />
             </span>

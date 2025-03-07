@@ -5,6 +5,7 @@ import productsService from "../services/products-service";
 import CartCard from "../components/CartCard.jsx";
 import Spinner from "../components/Spinner.jsx";
 import { calculateTotalPrice } from "../services/helpers.js";
+import { useTranslation } from "react-i18next";
 
 const CartPage = () => {
     const [products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ const CartPage = () => {
     const [isLoggedIn] = useContext(appContext);
     const [totalPrice, setTotalPrice] = useState(0);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     async function fetchProducts() {
         setLoading(true);
@@ -45,17 +47,17 @@ const CartPage = () => {
 
     return (
         <div id="cart">
-            <h1>Количка</h1>
+            <h1>{t("cart.title")}</h1>
             {
                 products.length === 0 ?
-                    <p>Няма добавени продукти :)</p> :
+                    <p>{t("cart.empty")} :)</p> :
                     <div className="cart-wrapper">
                         <div className="left">
                             <div>
-                                <p>Снимка</p>
-                                <p>Продукт</p>
-                                <p>Брой</p>
-                                <p>Цена</p>
+                                <p>{t("cart.image")}</p>
+                                <p>{t("cart.product")}</p>
+                                <p>{t("cart.quantity")}</p>
+                                <p>{t("cart.price")}</p>
                             </div>
 
                             <div>
@@ -68,10 +70,10 @@ const CartPage = () => {
                         </div>
                         <div className="right">
                             <div>
-                                <h3>Крайна Цена:</h3>
-                                <p key={totalPrice}>${totalPrice.toFixed(2)}</p>
+                                <h3>{t("cart.total")}:</h3>
+                                <p>${totalPrice.toFixed(2)}</p>
                             </div>
-                            <Link to="/checkout">Към плащане</Link>
+                            <Link to="/checkout">{t("cart.checkout")}</Link>
                         </div>
                     </div>
             }

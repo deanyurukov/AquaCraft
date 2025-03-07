@@ -3,11 +3,13 @@ import { changeImage } from "../services/helpers.js";
 import productsService from "../services/products-service.js";
 import { appContext } from "../../App.jsx";
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product, getProducts }) => {
     const navigate = useNavigate();
     const getErrorAndDisplay = useContext(appContext)[6];
-
+    const { t } = useTranslation();
+    
     return (
         <div className="product">
             <img onError={changeImage} src={product.imageUrl} alt={product.title} />
@@ -36,11 +38,11 @@ const ProductCard = ({ product, getProducts }) => {
                     }} className="fa-regular fa-heart"></i>
             }
             <span>
-                <h2>{product.title}</h2>
-                <p>{product.description}</p>
+                <h2>{t(`productsList.${product._id}.title`)}</h2>
+                <p>{t(`productsList.${product._id}.description`)}</p>
                 <p>${Number(product.price).toFixed(2)}</p>
                 <div>
-                    <Link to={`/products/${product._id}/details`}>Детайли</Link>
+                    <Link to={`/products/${product._id}/details`}>{t("products.details")}</Link>
                     <Link onClick={async () => {
                         const [data, error] = await productsService.addToCart(product._id);
 
@@ -51,7 +53,7 @@ const ProductCard = ({ product, getProducts }) => {
                         else {
                             navigate("/cart");
                         }
-                    }}>Купи</Link>
+                    }}>{t("products.buy")}</Link>
                 </div>
             </span>
         </div>

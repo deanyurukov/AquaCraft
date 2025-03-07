@@ -87,10 +87,6 @@
             display: flex;
         }
 
-        @media (width <= 600px) {
-            gap: 0;
-        }
-
         button {
             font-size: 26px;
             padding: 8px;
@@ -101,6 +97,12 @@
     
             @media (width <= 480px) {
                 font-size: 22px;
+            }
+        }
+
+        img {
+            @media (width <= 480px) {
+                width: 24px;
             }
         }
     }
@@ -380,7 +382,7 @@
         }
     }
 
-    img {
+    & > a > img {
         width: 17vw;
 
         @media (width <= 750px) {
@@ -479,6 +481,16 @@
 
             &:hover::after {
                 width: 100%;
+            }
+        }
+        
+        img {
+            width: 30px;
+            margin-bottom: 0.3em;
+            cursor: pointer;
+
+            @media (width <=800px) {
+                width: 26px;
             }
         }
     }

@@ -5,6 +5,7 @@ import { changeImage } from "../services/helpers.js";
 import Spinner from "../components/Spinner.jsx";
 import { appContext } from "../../App.jsx";
 import GoBackArrow from "../components/GoBackArrow.jsx";
+import { useTranslation } from "react-i18next";
 
 const DetailsPage = () => {
     const { id } = useParams();
@@ -13,6 +14,7 @@ const DetailsPage = () => {
     const navigate = useNavigate();
     const update = useContext(appContext)[4];
     const getErrorAndDisplay = useContext(appContext)[6];
+    const { t } = useTranslation();
 
     async function fetchProductData() {
         setLoading(true);
@@ -42,7 +44,7 @@ const DetailsPage = () => {
 
                 <div className="content-wrapper">
                     <div>
-                        <h3>{productData.title}</h3>
+                        <h3>{t(`productsList.${productData._id}.title`)}</h3>
 
                         {
                             productData.isFav ?
@@ -70,7 +72,7 @@ const DetailsPage = () => {
                     </div>
                     <h4>${Number(productData.price).toFixed(2)}</h4>
                     <hr />
-                    <p>{productData.description}</p>
+                    <p>{t(`productsList.${productData._id}.description`)}</p>
                     <Link onClick={async () => {
                         const [data, error] = await productsService.addToCart(productData._id);
 
@@ -81,7 +83,7 @@ const DetailsPage = () => {
                         else {
                             navigate("/cart");
                         }
-                    }}>Купи</Link>
+                    }}>{t(`products.buy`)}</Link>
 
                 </div>
             </div>

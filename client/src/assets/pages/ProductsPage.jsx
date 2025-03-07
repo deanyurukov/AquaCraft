@@ -3,11 +3,13 @@ import productsService from "../services/products-service.js";
 import ProductCard from "../components/ProductCard.jsx";
 import Spinner from "../components/Spinner.jsx";
 import { appContext } from "../../App.jsx";
+import { useTranslation } from "react-i18next";
 
 const ProductsPage = () => {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const update = useContext(appContext)[4];
+    const { t } = useTranslation();
 
     async function getProducts() {
         setLoading(true);
@@ -28,7 +30,7 @@ const ProductsPage = () => {
 
     return (
         <div id="products">
-            <h1>Продукти</h1>
+            <h1>{t("products.title")}</h1>
 
             <div className="products-wrapper">
                 {

@@ -6,6 +6,7 @@ import { calculateTotalPrice } from "../../services/helpers";
 import OrderProduct from "../../components/OrderProduct";
 import { appContext } from "../../../App";
 import GoBackArrow from "../../components/GoBackArrow";
+import { useTranslation } from "react-i18next";
 
 const OrderDetailsPage = () => {
     const [order, setOrder] = useState({
@@ -16,6 +17,7 @@ const OrderDetailsPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const update = useContext(appContext)[4];
+    const { t } = useTranslation();
 
     async function getOrder() {
         setLoading(true);
@@ -46,14 +48,15 @@ const OrderDetailsPage = () => {
     return (
         <div id="profile-order">
             <GoBackArrow />
+
             <div className="order-summary">
                 <div>
-                    <h3>Номер на поръчка</h3>
+                    <h3>{t("profile.orderDetails.id")}</h3>
                     <h4>{order._id}</h4>
                 </div>
 
                 <div>
-                    <h2 key={price}>${price.toFixed(2)}</h2>
+                    <h2>${price.toFixed(2)}</h2>
                 </div>
             </div>
 
@@ -61,11 +64,11 @@ const OrderDetailsPage = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Име на купувач</th>
-                            <th>Имейл</th>
-                            <th>Тел. Номер</th>
-                            <th>Град</th>
-                            <th>Куриер</th>
+                            <th>{t("profile.orderDetails.userDetails.name")}</th>
+                            <th>{t("profile.orderDetails.userDetails.email")}</th>
+                            <th>{t("profile.orderDetails.userDetails.phone")}</th>
+                            <th>{t("profile.orderDetails.userDetails.city")}</th>
+                            <th>{t("profile.orderDetails.userDetails.courier")}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +77,7 @@ const OrderDetailsPage = () => {
                             <td>{order.email}</td>
                             <td>{order.phone}</td>
                             <td>{String(order.town)[0].toUpperCase() + String(order.town).slice(1)}</td>
-                            <td>{String(order.deliveryWay)[0].toUpperCase() + String(order.deliveryWay).slice(1)}</td>
+                            <td>{order.deliveryWay}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -84,10 +87,10 @@ const OrderDetailsPage = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Снимка</th>
-                            <th>Име на продукт</th>
-                            <th>Количество</th>
-                            <th>Цена</th>
+                            <th>{t("profile.orderDetails.productDetails.image")}</th>
+                            <th>{t("profile.orderDetails.productDetails.name")}</th>
+                            <th>{t("profile.orderDetails.productDetails.quantity")}</th>
+                            <th>{t("profile.orderDetails.productDetails.price")}</th>
                             <th></th>
                             <th></th>
                         </tr>

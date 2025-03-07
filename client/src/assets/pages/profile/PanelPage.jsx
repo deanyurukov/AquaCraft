@@ -4,11 +4,13 @@ import ordersService from "../../services/orders-service";
 import Spinner from "../../components/Spinner";
 import authService from "../../services/auth-service";
 import ProfileTable from "../../components/ProfileTable";
+import { useTranslation } from "react-i18next";
 
 const PanelPage = () => {
     const [userData, setUserData] = useState([]);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { t } = useTranslation();
 
     useEffect(() => {
         async function getUser() {
@@ -39,10 +41,10 @@ const PanelPage = () => {
 
     return (
         <div id="profile-panel">
-            <h5>Здравейте, <span>{userData.username}</span>!</h5>
+            <h5>{t("profile.panel.message")}, <span>{userData.username}</span>!</h5>
 
             <div>
-                <h6>Моите данни</h6>
+                <h6>{t("profile.panel.data")}</h6>
 
                 <div>
                     <i className="fa-solid fa-address-card"></i>
@@ -54,11 +56,11 @@ const PanelPage = () => {
                     <p>{userData.email}</p>
                 </div>
 
-                <Link to="/profile/user-data">Променете данните</Link>
+                <Link to="/profile/user-data">{t("profile.panel.change")}</Link>
             </div>
 
             <div>
-                <h6>Последни поръчки</h6>
+                <h6>{t("profile.panel.orders")}</h6>
 
                 <ProfileTable orders={orders} />
             </div>

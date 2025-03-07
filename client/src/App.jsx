@@ -89,7 +89,7 @@ function App() {
     }
 
     useEffect(() => {
-        i18n.changeLanguage("en");
+        i18n.changeLanguage("bg");
         
         getFavs();
     }, []);
