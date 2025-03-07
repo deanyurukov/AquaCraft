@@ -1,4 +1,36 @@
 {
-    
-    
+  "navbar": {
+    "home": "Начало",
+    "products": "Продукти",
+    "login": "Вход",
+    "register": "Регистриране"
+  },
+  "favorites": {
+    "title": "Любими продукти",
+    "empty": "Нямате харесани продукти!"
+  },
+  "footer": {
+    "support": "Поддръжка",
+    "contact": "Контакти",
+    "privacy": "Политика за поверителност",
+    "terms": "Условия за ползване",
+    "corporate": "Корпоративни",
+    "about": "За Aqua Craft",
+    "logo": "Лого на Aqua Craft",
+    "careers": "Кариери",
+    "rights": "Всички права запазени."
+  },
+  "home": {
+    "title": "Направи своята напоителна система",
+    "products": "Продукти",
+    "services": "Услуги",
+    "contact": "Контакти",
+    "cards": {
+      "products": "Продукти",
+      "services": "Услуги",
+      "projectRequest": "Поискай проект",
+      "howTo": "Как да...",
+      "learnMore": "Научи повече"
+    }
+  }
 }

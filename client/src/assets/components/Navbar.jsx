@@ -30,21 +30,6 @@ const Navbar = () => {
         }
     }
 
-    useEffect(() => {
-        const observer = new MutationObserver(() => {
-            const unwantedAs = Array.from(document.querySelectorAll('.fepRsP a'));
-
-            if (unwantedAs) {
-                unwantedAs.forEach(unwantedA => {
-                    unwantedA.style.display = 'none';
-                });
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-        return () => observer.disconnect();
-    }, []);
-
     const userNav = (
         <>
             <NavLink onClick={() => setIsClickedNav(false)} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
@@ -56,9 +41,15 @@ const Navbar = () => {
 
     const guestNav = (
         <>
-            <NavLink onClick={() => setIsClickedNav(false)} to="/login" key={isLoggedIn}>Вход</NavLink>
-            <NavLink onClick={() => setIsClickedNav(false)} to="/register">Регистриране</NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to="/login">{t("navbar.login")}</NavLink>
+            <NavLink onClick={() => setIsClickedNav(false)} to="/register">{t("navbar.register")}</NavLink>
         </>
+    );
+
+    const translationWidget = (
+        i18n.language === "en" ?
+            <img onClick={() => i18n.changeLanguage("bg")} src="../../../public/images/usa.svg" alt="usa" /> :
+            <img onClick={() => i18n.changeLanguage("en")} src="../../../public/images/bulgaria.svg" alt="bulgaria" />
     );
 
     return (
@@ -67,8 +58,8 @@ const Navbar = () => {
                 <button onClick={() => setIsClickedNav(false)}><i className="fa-solid fa-xmark"></i></button>
 
                 <div>
-                    <NavLink onClick={() => setIsClickedNav(false)} to="/">Начало</NavLink>
-                    <NavLink onClick={() => setIsClickedNav(false)} to="/products">Продукти</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to="/">{t("navbar.home")}</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to="/products">{t("navbar.products")}</NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
@@ -79,7 +70,7 @@ const Navbar = () => {
                         <div className="overlay-text-container">
                             <div className="overlay-top">
                                 <div className="overlay-header">
-                                    <h2>Любими продукти</h2>
+                                    <h2>{t("favorites.title")}</h2>
 
                                     <i onClick={hideFavorites} className="fa-solid fa-heart-circle-xmark"></i>
                                 </div>
@@ -89,7 +80,7 @@ const Navbar = () => {
                                 <div className="overlay-products">
                                     {
                                         favorites.length === 0 ?
-                                            <p>Нямате харесани продукти!</p> :
+                                            <p>{t("favorites.empty")}</p> :
                                             favorites.map(product => (
                                                 <OverlayProduct product={product} key={product._id} />
                                             ))
@@ -103,13 +94,15 @@ const Navbar = () => {
                 <NavLink to="/" ><img src="/public/images/logo.png" alt="logo" /></NavLink>
 
                 <nav>
-                    <NavLink to="/">Начало</NavLink>
-                    <NavLink to="/products">Продукти</NavLink>
+                    <NavLink to="/">{t("navbar.home")}</NavLink>
+                    <NavLink to="/products">{t("navbar.products")}</NavLink>
                     {isLoggedIn ? userNav : guestNav}
+                    { translationWidget }
                 </nav>
                 
                 <div id="responsive-nav">
                     <button onClick={() => setIsClickedNav(true)}><i className="fa-solid fa-bars"></i></button>
+                    { translationWidget }
                 </div>
             </header>
         </>
