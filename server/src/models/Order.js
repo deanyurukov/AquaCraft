@@ -36,7 +36,7 @@ const orderSchema = new Schema(
             type: String,
             required: [true, "Попълнете всички полета!"],
             enum: {
-                values: ["speedy", "econt", "dhl"],
+                values: ["Speedy", "Econt", "DHL"],
                 message: "Невалиден куриер!"
             },
         },

@@ -390,7 +390,7 @@ app.get('/orders/getByUser', async (req, res) => {
         const user = await User.findOne({ email: data.email });
 
         try {
-            const userOrders = await Order.find({ userId: user._id }).sort("createdAt").populate("orderData.product");
+            const userOrders = await Order.find({ userId: user._id }).sort("-createdAt").populate("orderData.product");
             return res.status(201).send({ message: "Found orders!", data: userOrders });
         }
         catch (err) {
