@@ -43,8 +43,8 @@ export default {
             console.error(err);
         }
     },
-    deleteOne: async (productId) => {
-        if (confirm("Сигурни ли сте, че искате да премахнете този продукт от кошницата?")) {
+    deleteOne: async (productId, message) => {
+        if (confirm(message)) {
             try {
                 const response = await fetch(endpoints.getOneProduct(productId), {
                     method: "DELETE",

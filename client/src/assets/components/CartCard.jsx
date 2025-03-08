@@ -34,7 +34,7 @@ const CartCard = ({ product, fetchProducts }) => {
     }
     
     async function deleteProduct(productId) {
-        const [data, error] = await productsService.deleteOne(productId);
+        const [data, error] = await productsService.deleteOne(productId, t("cart.deleteMessage"));
 
         if (!data) {
             getErrorAndDisplay(error);

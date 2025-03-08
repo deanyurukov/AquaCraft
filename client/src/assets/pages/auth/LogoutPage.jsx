@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { appContext } from "../../../App";
 import authService from "../../services/auth-service";
+import { useTranslation } from "react-i18next";
 
 const LogoutPage = () => {
     const [isLoggedIn] = useContext(appContext);
@@ -9,6 +10,7 @@ const LogoutPage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname;
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (!isLoggedIn) {
@@ -17,7 +19,7 @@ const LogoutPage = () => {
         }
 
         const logout = async () => {
-            if (confirm("Сигурни ли сте, че искате да се отпишете?")) {
+            if (confirm(t("logout.message"))) {
                 const [logoutData, error] = await authService.logout();
 
                 if (!logoutData) {
@@ -27,6 +29,7 @@ const LogoutPage = () => {
 
                 localStorage.removeItem("accessToken");
                 navigate("/");
+                getErrorAndDisplay(t(logoutData.message));
             }
             else {
                 navigate(from);

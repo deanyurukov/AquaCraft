@@ -10,6 +10,7 @@ import productsService from './assets/services/products-service.js';
 import useUrlChange from './assets/hooks/useUrlChange.jsx';
 import authService from './assets/services/auth-service.js';
 import "./assets/configs/i18n-config.js";
+import { useTranslation } from 'react-i18next';
 
 // Import Layouts
 import MainLayout from './assets/layouts/MainLayout.jsx';
@@ -25,13 +26,12 @@ import LoginPage from './assets/pages/auth/LoginPage.jsx';
 import LogoutPage from './assets/pages/auth/LogoutPage.jsx';
 import CartPage from './assets/pages/CartPage.jsx';
 import CheckoutPage from './assets/pages/CheckoutPage.jsx';
-import PrivacyPolicy from './assets/pages/PrivacyPolicy.jsx';
-import TermsAndConditions from './assets/pages/TermsAndConditions.jsx';
+import PrivacyPolicy from './assets/pages/PrivacyPolicyPage.jsx';
+import TermsAndConditions from './assets/pages/TermsAndConditionsPage.jsx';
 import PanelPage from './assets/pages/profile/PanelPage.jsx';
 import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
 import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
 import UserDataPage from './assets/pages/profile/UserDataPage.jsx';
-import { useTranslation } from 'react-i18next';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -66,7 +66,7 @@ function App() {
     const [favorites, setFavorites] = useState([]);
     const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);
-    const { _, i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const refreshFavorites = () => setUpdate((prev) => prev + 1);
 
@@ -81,7 +81,7 @@ function App() {
     }
 
     function getErrorAndDisplay(error) {
-        setError(error);
+        setError(t(`errorMessages.${error}`));
 
         setTimeout(() => {
             setError(null);

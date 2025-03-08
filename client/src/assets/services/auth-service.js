@@ -96,6 +96,7 @@ export default {
         }
         catch (err) {
             console.error(err);
+            localStorage.removeItem('accessToken');
         }
     },
     getUserData: async () => {

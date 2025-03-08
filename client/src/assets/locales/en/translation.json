@@ -33,6 +33,27 @@
             "learnMore": "Learn More"
         }
     },
+    "login": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password"
+    },
+    "register": {
+        "title": "Register",
+        "username": "Username",
+        "email": "Email",
+        "password": "Password",
+        "rePass": "Repeat password",
+        "agreement": {
+            "message": "By registering you are agreeing to our",
+            "terms": "Terms and Conditions",
+            "privacy": "Privacy Policy",
+            "and": "and"
+        }
+    },
+    "logout": {
+        "message": "Are you sure you want to logout?"
+    },
     "products": {
         "title": "Products",
         "buy": "Buy",
@@ -46,7 +67,8 @@
         "quantity": "Quantity",
         "price": "Price",
         "total": "Total price",
-        "checkout": "To Checkout"
+        "checkout": "To Checkout",
+        "deleteMessage": "Are you sure you want to delete this product from the cart?"
     },
     "checkout": {
         "title": "Checkout",
@@ -58,7 +80,7 @@
         "courier": "Courier",
         "product": "Product",
         "price": "Price",
-        "total":"Total price",
+        "total": "Total price",
         "finish": "Place Order"
     },
     "profile": {
@@ -103,6 +125,72 @@
         },
         "logout": "Logout"
     },
+    "terms": {
+        "title": "Terms and Conditions",
+        "text": "By accessing and using this website, you agree to be bound by the terms set forth on this page. Please read carefully before using our website. If you do not agree with any of them, please do not use this website. Our terms of use may change. It is your responsibility to regularly check this page for updates."
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last Updated: ",
+        "sections": {
+            "introduction": {
+                "title": "Introduction",
+                "content": {
+                    "fp": "This Privacy Policy describes how",
+                    "sp": "(\"we,\" \"us,\" or \"our company\") collects, uses, and shares information when you use our website",
+                    "tp": "(\"the Site\"). By accessing or using the Site, you agree to the practices described in this Privacy Policy."
+                }
+            },
+            "informationCollected": {
+                "title": "Information We Collect",
+                "personal": {
+                    "title": "Personal Information",
+                    "content": "We may collect personal information that you voluntarily provide, such as your name, email address, and other contact details when you fill out forms on the Site or contact us."
+                },
+                "nonPersonal": {
+                    "title": "Non-Personal Information",
+                    "content": "We may collect non-personal information regarding your interaction with the Site, such as your IP address, browser type, and usage data."
+                }
+            },
+            "usage": {
+                "title": "How We Use the Information",
+                "points": [
+                    "To provide and maintain the Site.",
+                    "To respond to your inquiries, comments, or questions.",
+                    "To send periodic emails, updates, or other communications.",
+                    "To improve our services and your experience on the Site."
+                ]
+            },
+            "informationSharing": {
+                "title": "Information Sharing",
+                "content": "We do not sell or rent your personal information to third parties. However, we may share information with service providers, business partners, or other third parties when necessary for the purposes described in this Privacy Policy."
+            },
+            "cookies": {
+                "title": "Cookies and Tracking Technologies",
+                "content": "The Site may use cookies and other tracking technologies to collect and store information. You can control the use of cookies through your browser settings."
+            },
+            "thirdPartyLinks": {
+                "title": "Third-Party Links",
+                "content": "The Site may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties. We recommend reviewing their privacy policies."
+            },
+            "dataSecurity": {
+                "title": "Data Security",
+                "content": "We implement reasonable measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security."
+            },
+            "policyChanges": {
+                "title": "Changes to This Privacy Policy",
+                "content": "We may update this Privacy Policy to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will post the updated Privacy Policy on the Site, and the revised policy will take effect upon publication."
+            },
+            "contactUs": {
+                "title": "Contact Us",
+                "content": "If you have any questions or concerns regarding this Privacy Policy, please contact us at: "
+            }
+        }
+    },
+    "notFound": {
+        "title": "404 Not Found",
+        "message": "This page does not exist!"
+    },
     "productsList": {
         "679b478e55cafddf45f06048": {
             "title": "Watering Can",
@@ -128,5 +216,43 @@
         "quantity": "Quantity",
         "name": "Client",
         "price": "Price"
+    },
+    "errorMessages": {
+        "authNeeded": "You need an account!",
+        "allFields": "You need to fill in all the required fields!",
+        "email": {
+            "short": "Email address must be 5 or more characters!",
+            "long": "Email address must be 99 or less characters!",
+            "invalid": "Invalid email address!",
+            "exists": "Email address already exists!",
+            "noProfile": "No profile with this email address!"
+        },
+        "username": {
+            "short": "Username must be 3 or more characters!",
+            "long": "Username must be 99 or less characters!",
+            "invalid": "Username must only contain latin letters and numbers!"
+        },
+        "password": {
+            "short": "Password must be 36 or more characters!",
+            "long": "Password must be 99 or less characters!",
+            "wrong": "Wrong password!"
+        },
+        "phone": {
+            "invalid": "Invalid phone number!"
+        },
+        "courier": {
+            "invalid": "Invalid Courier!"
+        },
+        "town": {
+            "invalid": "Invalid Town!"
+        },
+        "registerSuccess": "Registration successful!",
+        "loginSuccess": "Login successful!",
+        "logoutSuccess": "Logout successful!",
+        "changeData": "Please change username or email!",
+        "dataChangeSuccess": "Data changed successfully!",
+        "passwordChangeSuccess": "Password changed successfully!",
+        "emptyCart": "Your cart is empty!",
+        "orderSuccess": "Your order is placed successfully!"
     }
 }

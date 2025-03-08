@@ -4,12 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
 import emailConfig from "../../configs/email-config.js";
+import { useTranslation } from "react-i18next";
 
 const RegisterPage = () => {
     const [hasUserAgreed, setHasUserAgreed] = useState(false);
     const [isLoggedIn] = useContext(appContext);
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -48,24 +50,24 @@ const RegisterPage = () => {
 
     return (
         <div id="register">
-            <h1>Регистрация</h1>
+            <h1>{t("register.title")}</h1>
             <div className="form-wrapper">
                 <form onSubmit={onSubmit} id="register-form" className="form">
                     <span>
-                        <input type="text" name="username" placeholder="Потребителско име*" />
+                        <input type="text" name="username" placeholder={`${t("register.username")}*`} />
                     </span>
                     <span>
-                        <input type="email" name="email" placeholder="Имейл*" />
+                        <input type="email" name="email" placeholder={`${t("register.email")}*`} />
                     </span>
-                    <PasswordInput name={"password"} placeholder={"Парола*"} />
-                    <PasswordInput name={"re_password"} placeholder={"Повтори парола*"} />
+                    <PasswordInput name={"password"} placeholder={`${t("register.password")}*`} />
+                    <PasswordInput name={"re_password"} placeholder={`${t("register.rePass")}*`} />
 
                     <div>
                         <input onChange={changeUserAgreed} type="checkbox" name="agreement" id="agreement" />
-                        <label htmlFor="agreement">С регистрирането си Вие приемате нашите <Link to={"/terms-and-conditions"}>Условия за ползване</Link> и <Link to={"/privacy-policy"}>Политика за поверителност</Link>.</label>
+                        <label htmlFor="agreement">{t("register.agreement.message")} <Link to={"/terms-and-conditions"}>{t("register.agreement.terms")}</Link> {t("register.agreement.and")} <Link to={"/privacy-policy"}>{t("register.agreement.privacy")}</Link>.</label>
                     </div>
 
-                    <button disabled={!hasUserAgreed} type="submit">Регистрация</button>
+                    <button disabled={!hasUserAgreed} type="submit">{t("register.title")}</button>
                 </form>
             </div>
         </div >
