@@ -253,6 +253,7 @@
         "dataChangeSuccess": "Data changed successfully!",
         "passwordChangeSuccess": "Password changed successfully!",
         "emptyCart": "Your cart is empty!",
-        "orderSuccess": "Your order is placed successfully!"
+        "orderSuccess": "Your order is placed successfully!",
+        "productInCart": "The product is already in the cart!"
     }
 }

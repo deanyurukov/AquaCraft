@@ -9,6 +9,7 @@ import ordersService from "../services/orders-service.js";
 import authService from "../services/auth-service.js";
 import { calculateTotalPrice } from "../services/helpers.js";
 import { useTranslation } from "react-i18next";
+import emailConfig from "../configs/email-config.js";
 
 const CheckoutPage = () => {
     const [products, setProducts] = useState([]);
@@ -65,6 +66,13 @@ const CheckoutPage = () => {
 
         getErrorAndDisplay(data.message);
 
+        try {
+            // emailjs.send(emailConfig.emailService, emailConfig.orderTemplate, data.data);
+        }
+        catch (error) {
+            console.error(error);
+        }
+
         return data;
     }
 
@@ -74,7 +82,7 @@ const CheckoutPage = () => {
 
             <div className="content">
                 <div className="left">
-                    <h2>Детайли на плащането</h2>
+                    <h2>{t("checkout.details")}</h2>
                     <form>
                         <CheckoutInput label={`${t("checkout.name")}*`} name={"name"} />
                         <CheckoutInput label={`${t("checkout.city")}*`} name={"town"} />

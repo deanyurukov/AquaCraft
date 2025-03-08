@@ -128,11 +128,6 @@ export default {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     
         try {
-    
-            if (username === "" || email === "" || password === "") {
-                throw new Error("Попълнете всички полета!");
-            }
-    
             const response = await fetch(endpoints.changeUserData, {
                 method: "PUT",
                 headers: {

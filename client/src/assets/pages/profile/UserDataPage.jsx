@@ -34,6 +34,8 @@ const UserDataPage = () => {
         }
 
         localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
+        userData.email = email;
+        userData.username = username;
         getErrorAndDisplay(data.message);
     }
 

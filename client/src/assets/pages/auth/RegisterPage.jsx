@@ -29,15 +29,15 @@ const RegisterPage = () => {
         if (registerData) {
             localStorage.setItem("accessToken", JSON.stringify(registerData.accessToken));
 
+            navigate("/");
+            getErrorAndDisplay(registerData.message)
+
             try {
-                await emailjs.send(emailConfig.emailService, emailConfig.registerTemplate, { username, email });
+                // await emailjs.send(emailConfig.emailService, emailConfig.registerTemplate, { username, email });
             }
             catch (error) {
                 console.error(error);
             }
-
-            navigate("/");
-            getErrorAndDisplay(registerData.message)
         }
         else {
             getErrorAndDisplay(error);
