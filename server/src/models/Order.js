@@ -23,9 +23,9 @@ const orderSchema = new Schema(
         name: {
             type: String,
             required: [true, "allFields"],
-            minLength: [3, "username.short"],
-            maxLength: [99, "username.long"],
-            match: [/^[a-zA-Z0-9\s]+$/, "username.invalid"],
+            minLength: [3, "name.short"],
+            maxLength: [99, "name.long"],
+            match: [/^[a-zа-яА-ЯA-Z0-9\s]+$/, "name.invalid"],
         },
         phone: {
             type: String,
