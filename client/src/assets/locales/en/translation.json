@@ -187,6 +187,13 @@
             }
         }
     },
+    "contact": {
+        "title": "Contact Us",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Submit"
+    },
     "notFound": {
         "title": "404 Not Found",
         "message": "This page does not exist!"
@@ -232,10 +239,18 @@
             "long": "Username must be 99 or less characters!",
             "invalid": "Username must only contain latin letters and numbers!"
         },
+        "name": {
+            "short": "Name must be 3 or more characters!",
+            "long": "Name must be 99 or less characters!",
+            "invalid": "Name must only contain latin or cyrillic letters and numbers!"
+        },
         "password": {
-            "short": "Password must be 36 or more characters!",
+            "short": "Password must be 3 or more characters!",
             "long": "Password must be 99 or less characters!",
             "wrong": "Wrong password!"
+        },
+        "message": {
+            "short": "Message must be 10 or more characters!"
         },
         "phone": {
             "invalid": "Invalid phone number!"

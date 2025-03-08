@@ -32,6 +32,7 @@ import PanelPage from './assets/pages/profile/PanelPage.jsx';
 import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
 import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
 import UserDataPage from './assets/pages/profile/UserDataPage.jsx';
+import ContactPage from './assets/pages/ContactPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -46,6 +47,7 @@ const router = createBrowserRouter(
             <Route path='/checkout' element={<CheckoutPage />} />
             <Route path='/privacy-policy' element={<PrivacyPolicy />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
+            <Route path='/contact-us' element={<ContactPage />} />
 
             <Route path='/profile' element={<ProfileLayout />} >
                 <Route path='/profile/panel' element={<PanelPage />} />

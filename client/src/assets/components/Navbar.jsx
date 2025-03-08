@@ -60,6 +60,7 @@ const Navbar = () => {
                 <div>
                     <NavLink onClick={() => setIsClickedNav(false)} to="/">{t("navbar.home")}</NavLink>
                     <NavLink onClick={() => setIsClickedNav(false)} to="/products">{t("navbar.products")}</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
@@ -96,6 +97,8 @@ const Navbar = () => {
                 <nav>
                     <NavLink to="/">{t("navbar.home")}</NavLink>
                     <NavLink to="/products">{t("navbar.products")}</NavLink>
+                    <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
+
                     {isLoggedIn ? userNav : guestNav}
                     { translationWidget }
                 </nav>

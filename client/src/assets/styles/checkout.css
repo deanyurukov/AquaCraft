@@ -105,10 +105,6 @@
                     @media (width <= 570px) {
                         font-size: 13px;
                     }
-            
-                    @media (width <= 410px) {
-                        font-size: 13px;
-                    }
                 }
 
                 input, select {
