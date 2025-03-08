@@ -45,13 +45,13 @@ app.post('/users/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
-        return res.status(400).send({ message: 'Попълнете всички полета.' });
+        return res.status(400).send({ message: 'allFields' });
     }
 
     const userExists = await User.countDocuments({ email: email.trim() });
 
     if (userExists !== 0) {
-        return res.status(409).send({ message: 'Профил с този имейл вече съществува.' });
+        return res.status(409).send({ message: 'email.exists' });
     }
 
     const user = {
@@ -59,7 +59,7 @@ app.post('/users/register', async (req, res) => {
         email: email.trim(),
         password: password.trim(),
     };
-    
+
     try {
         await User.create(user);
     }
@@ -70,26 +70,26 @@ app.post('/users/register', async (req, res) => {
 
     const token = jwt.sign(user, secret);
 
-    return res.status(201).send({ message: 'Успешна регистрация!', accessToken: token });
+    return res.status(201).send({ message: 'registerSuccess', accessToken: token });
 });
 
 app.post('/users/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(409).send({ message: 'Попълнете всички полета.' });
+        return res.status(409).send({ message: 'allFields' });
     }
 
     const user = await User.findOne({ email: email.trim() });
 
     if (!user) {
-        return res.status(404).send({ message: 'Няма профил с този имейл.' });
+        return res.status(404).send({ message: 'email.noProfile' });
     }
 
     const passwordsAreSame = await bcrypt.compare(password.trim(), user.password);
 
     if (!passwordsAreSame) {
-        return res.status(401).send({ message: 'Грешна парола.' });
+        return res.status(401).send({ message: 'password.wrong' });
     }
 
     const userData = {
@@ -100,7 +100,7 @@ app.post('/users/login', async (req, res) => {
 
     const token = jwt.sign(userData, secret);
 
-    return res.status(200).send({ message: 'Успешен вход!', accessToken: token });
+    return res.status(200).send({ message: 'loginSuccess', accessToken: token });
 });
 
 app.get("/users/logout", async (req, res) => {
@@ -109,11 +109,7 @@ app.get("/users/logout", async (req, res) => {
     if (isValid) {
         const user = await User.findOne({ email: data.email });
 
-        if (!user) {
-            return res.status(401).send({ message: "Няма такъв профил." });
-        }
-
-        return res.status(200).send({ message: "Успешен изход!", data: user });
+        return res.status(200).send({ message: "logoutSuccess", data: user });
     }
     else {
         return res.status(401).send({ message });
@@ -136,25 +132,21 @@ app.put("/users/changeUserData", async (req, res) => {
 
     if (isValid) {
         const user = await User.findOne({ email: data.email });
-        
-        if (!user) {
-            return res.status(401).send({ message: "Няма такъв профил." });
-        }
 
         if (newEmail === user.email && newUsername === user.username) {
-            return res.status(400).send({ message: "Моля сменете името или имейла!" });
+            return res.status(400).send({ message: "changeData" });
         }
 
         const usersWithThisEmail = await User.countDocuments({ email: newEmail });
-        
+
         if (usersWithThisEmail > 0 && newEmail !== data.email) {
-            return res.status(409).send({ message: "Този имейл се ползва от друг профил!" });
+            return res.status(409).send({ message: "email.exists" });
         }
 
         const isPasswordSame = await bcrypt.compare(password, user.password);
-        
-        if (! isPasswordSame) {
-            return res.status(403).send({ message: "Грешна парола!" });
+
+        if (!isPasswordSame) {
+            return res.status(403).send({ message: "password.wrong" });
         }
 
         user.email = newEmail;
@@ -176,7 +168,7 @@ app.put("/users/changeUserData", async (req, res) => {
             return res.status(400).send({ message: getErrorMessage(err) });
         }
 
-        return res.status(200).send({ message: "Информацията е променена успешно!", accessToken: token });
+        return res.status(200).send({ message: "dataChangeSuccess", accessToken: token });
     }
     else {
         return res.status(401).send({ message });
@@ -189,15 +181,11 @@ app.put("/users/changeUserPassword", async (req, res) => {
 
     if (isValid) {
         const user = await User.findOne({ email: data.email });
-        
-        if (!user) {
-            return res.status(401).send({ message: "Няма такъв профил." });
-        }
 
         const isPasswordSame = await bcrypt.compare(password, user.password);
-        
-        if (! isPasswordSame) {
-            return res.status(403).send({ message: "Грешна парола!" });
+
+        if (!isPasswordSame) {
+            return res.status(403).send({ message: "password.wrong" });
         }
 
         user.password = new_password;
@@ -218,7 +206,7 @@ app.put("/users/changeUserPassword", async (req, res) => {
             return res.status(400).send({ message: getErrorMessage(err) });
         }
 
-        return res.status(200).send({ message: "Паролата е променена успешно!", accessToken: token });
+        return res.status(200).send({ message: "passwordChangeSuccess", accessToken: token });
     }
     else {
         return res.status(401).send({ message });
@@ -302,12 +290,12 @@ app.put("/products/:id", async (req, res) => {
 
     if (isValid) {
         const user = await User.findOne({ email: data.email });
-    
+
         const quantityToChange = user.productsInCart.find(({ quantity, product }) => product.toString() === id);
         quantityToChange.quantity = quantity;
-    
+
         await user.save();
-    
+
         res.status(200).send({ message: "Quantity updated successfully.", products: user.productsInCart });
     }
     else {
@@ -322,11 +310,11 @@ app.delete("/products/:id", async (req, res) => {
 
     if (isValid) {
         const user = await User.findOne({ email: data.email });
-    
+
         const indexToRemove = user.productsInCart.indexOf(user.productsInCart.find(({ quantity, product }) => product.toString() === id));
-    
+
         user.productsInCart.splice(indexToRemove, 1);
-    
+
         await user.save();
         return res.status(200).send({ message: "Product deleted successfully." });
     }
@@ -341,13 +329,13 @@ app.post("/addOrder", async (req, res) => {
 
     if (isValid) {
         if (name === "" || town === "" || phone === "" || email === "" || deliveryWay === "") {
-            return res.status(409).send({ message: 'Попълнете всички полета.' });
+            return res.status(409).send({ message: 'allFields' });
         }
 
         const user = await User.findOne({ email: data.email });
 
         if (user.productsInCart.length === 0) {
-            return res.status(403).send({ message: "Количката ви е празна"});
+            return res.status(403).send({ message: "emptyCart" });
         }
 
 
@@ -376,7 +364,7 @@ app.post("/addOrder", async (req, res) => {
         user.productsInCart = [];
         await user.save();
 
-        return res.status(201).send({ message: "Успешна поръчка!" });
+        return res.status(201).send({ message: "orderSuccess" });
     }
     else {
         return res.status(401).send({ message });
@@ -478,7 +466,7 @@ app.post("/products/favorites/remove/:id", async (req, res) => {
 
         const productsIds = user.favorites.map(product => product.toString());
 
-        if (! productsIds.includes(id)) {
+        if (!productsIds.includes(id)) {
             return res.status(409).send({ message: "Продуктът не е харесан!" });
         }
 

@@ -11,7 +11,7 @@ export async function isUserValid(accessToken) {
     }
     catch (err) {
         isValid = false;
-        message = "Нужна е регистрация.";
+        message = "authNeeded";
     }
 
     return [isValid, message, data];

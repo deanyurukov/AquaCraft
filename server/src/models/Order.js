@@ -4,7 +4,7 @@ const bulgarianCitiesAndTowns = [
     "sofia", "plovdiv", "varna", "burgas", "ruse", "stara zagora", "pleven", "sliven", "dobrich", "shumen",
     "pernik", "haskovo", "blagoevgrad", "yambol", "veliko tarnovo", "pazardzhik", "vratsa", "gabrovo", "asenovgrad",
     "vidin", "kazanlak", "kyustendil", "kardzhali", "montana", "dimitrovgrad", "lovech", "silistra", "targovishte",
-    "dupnitsa", 
+    "dupnitsa",
     "софия", "пловдив", "варна", "бургас", "русе", "стара загора", "плевен", "сливен", "добрич", "шумен",
     "перник", "хасково", "благоевград", "ямбол", "велико търново", "пазарджик", "враца", "габрово", "асеновград",
     "видин", "казанлък", "кюстендил", "кърджали", "монтана", "димитровград", "ловеч", "силистра", "търговище",
@@ -15,37 +15,37 @@ const orderSchema = new Schema(
     {
         email: {
             type: String,
-            required: [true, "Попълнете всички полета!"],
-            minLength: [5, "Имейлът трябва да е поне 5 символа!"],
-            maxLength: [99, "Имейлът не може да бъде над 99 символа!"],
-            match: [/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/, "Имейлът е невалиден!"],
+            required: [true, "allFields"],
+            minLength: [5, "email.short"],
+            maxLength: [99, "email.long"],
+            match: [/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/, "email.invalid"],
         },
         name: {
             type: String,
-            required: [true, "Попълнете всички полета!"],
-            minLength: [3, "Името трябва да е поне 3 символа!"],
-            maxLength: [99, "Името не може да бъде над 99 символа!"],
-            match: [/^[а-яА-Яa-zA-z\s]+$/, "Името трябва да включва само букви!"],
+            required: [true, "allFields"],
+            minLength: [3, "username.short"],
+            maxLength: [99, "username.long"],
+            match: [/^[a-zA-Z0-9\s]+$/, "username.invalid"],
         },
         phone: {
             type: String,
-            required: [true, "Попълнете всички полета!"],
-            match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, "Невалиден тел. номер!"]
+            required: [true, "allFields"],
+            match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, "phone.invalid"]
         },
         deliveryWay: {
             type: String,
-            required: [true, "Попълнете всички полета!"],
+            required: [true, "allFields"],
             enum: {
                 values: ["Speedy", "Econt", "DHL"],
-                message: "Невалиден куриер!"
+                message: "courier.invalid",
             },
         },
         town: {
             type: String,
-            required: [true, "Попълнете всички полета!"],
+            required: [true, "allFields"],
             enum: {
                 values: bulgarianCitiesAndTowns,
-                message: "Невалиден град!",
+                message: "town.invalid",
             },
         },
         userId: {
