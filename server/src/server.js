@@ -258,7 +258,7 @@ app.post("/products/addToCart/:id", async (req, res) => {
         const productsIds = user.productsInCart.map(product => product.product.toString());
 
         if (productsIds.includes(id)) {
-            return res.status(409).send({ message: "Продуктът вече е в кошницата" });
+            return res.status(409).send({ message: "productInCart" });
         }
 
         user.productsInCart.push({ product: id });
@@ -353,8 +353,10 @@ app.post("/addOrder", async (req, res) => {
             order.orderData.push(product);
         });
 
+        let orderData = {};
+
         try {
-            await Order.create(order);
+            orderData = await Order.create(order);
         }
         catch (err) {
             console.error(err);
@@ -364,7 +366,7 @@ app.post("/addOrder", async (req, res) => {
         user.productsInCart = [];
         await user.save();
 
-        return res.status(201).send({ message: "orderSuccess" });
+        return res.status(201).send({ message: "orderSuccess", data: orderData });
     }
     else {
         return res.status(401).send({ message });
