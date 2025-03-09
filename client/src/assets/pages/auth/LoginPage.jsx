@@ -21,7 +21,25 @@ const LoginPage = () => {
         e.preventDefault();
 
         const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
-    
+
+        try {
+            if (email.length < 5) {
+                throw new Error("email.short");
+            }
+
+            if (email.length > 99) {
+                throw new Error("email.long");
+            }
+
+            if (! /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) {
+                throw new Error("email.invalid");
+            }
+        }
+        catch (error) {
+            console.error(error);
+            getErrorAndDisplay(error.message);
+        }
+
         const [loginData, error] = await authService.login(email, password);
             
         if (loginData) {
