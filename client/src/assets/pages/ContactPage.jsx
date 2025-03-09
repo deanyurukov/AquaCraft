@@ -11,6 +11,7 @@ const ContactPage = () => {
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
     const { t } = useTranslation();
+    // const [map, setMap] = useState("");
 
     async function getUserEmail() {
         const email = (await authService.getUserData())[0].email;
@@ -86,6 +87,15 @@ const ContactPage = () => {
 
                     <button type="submit">{t("contact.submit")}</button>
                 </form>
+
+                <div id="map">
+                    <iframe 
+                        src="https://www.google.com/maps?q=42°04'00.9,24°42'41.9&hl=es;z=14&output=embed"
+                        allowFullScreen={false} 
+                        loading="lazy" 
+                        referrerPolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </div>
     )
