@@ -13,7 +13,7 @@ const ProductsPage = () => {
     const update = useContext(appContext)[4];
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [productsPerPage, setProductsPerPage] = useState(6);
+    const [productsPerPage, setProductsPerPage] = useState(2);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchParams] = useSearchParams();
 
@@ -36,12 +36,14 @@ const ProductsPage = () => {
         if (filter.page) {
             const maximumPages = Math.ceil(products.length / productsPerPage);
 
-            if (Number(filter.page) > maximumPages || Number(filter.page) <= 0) {
-                setCurrentPage(1);
-                navigate(`/products?page=${1}`);
-            }
-            else {
-                setCurrentPage(Number(filter.page));
+            if (products.length > 0) {
+                if (Number(filter.page) > maximumPages || Number(filter.page) <= 0) {
+                    setCurrentPage(1);
+                    navigate(`/products?page=${1}`);
+                }
+                else {
+                    setCurrentPage(Number(filter.page));
+                }
             }
         }
     }, [searchParams, products]);
