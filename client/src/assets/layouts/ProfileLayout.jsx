@@ -4,21 +4,25 @@ import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
 
 const ProfileLayout = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
     const [currentPage, setCurrentPage] = useState(t("profile.panel.title"));
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
     const location = useLocation();
 
-    const profileNavigation = (
-        <nav>
-            <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.panel.orders"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
-            <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
-        </nav>
-    );
+    const paths = {
+        "Панел": "panel",
+        "Panel": "panel",
+        "Моите данни": "data",
+        "My data": "data",
+        "История на поръчките": "orders",
+        "Orders history": "orders"
+    };
+
+    useEffect(() => {
+        setCurrentPage(prev => prev = t(`profile.${paths[prev]}.title`));
+    }, [i18n.language]);
 
     useEffect(() => {
         if (!isLoggedIn) {
@@ -26,6 +30,15 @@ const ProfileLayout = () => {
             return;
         }
     }, []);
+
+    const profileNavigation = (
+        <nav>
+            <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("profile.orders.title"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
+            <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
+        </nav>
+    );
 
     if (isLoggedIn) {
         return (
