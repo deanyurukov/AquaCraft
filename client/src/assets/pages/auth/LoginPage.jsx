@@ -15,7 +15,7 @@ const LoginPage = () => {
         if (isLoggedIn) {
             navigate("/");
         }
-    }, []);
+    }, [isLoggedIn]);
 
     async function onSubmit(e) {
         e.preventDefault();
