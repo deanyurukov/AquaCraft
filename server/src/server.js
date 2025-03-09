@@ -499,7 +499,7 @@ app.post("/products/addOne", async (req, res) => {
             return res.status(400).send({ message: getErrorMessage(err) });
         }
 
-        return res.status(201).send({ message: "Product created successfully." });
+        return res.status(201).send({ message: "productCreated" });
     }
     else {
         return res.status(401).send({ message });
