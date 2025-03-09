@@ -58,6 +58,7 @@ app.post('/users/register', async (req, res) => {
         username: username.trim(),
         email: email.trim(),
         password: password.trim(),
+        isAdmin: false,
     };
 
     try {
@@ -96,6 +97,7 @@ app.post('/users/login', async (req, res) => {
         email: user.email,
         username: user.username,
         password: user.password,
+        isAdmin: user.isAdmin,
     }
 
     const token = jwt.sign(userData, secret);
@@ -156,6 +158,7 @@ app.put("/users/changeUserData", async (req, res) => {
             username: newUsername.trim(),
             email: newEmail.trim(),
             password: password.trim(),
+            isAdmin: user.isAdmin,
         };
 
         const token = jwt.sign(userToken, secret);
@@ -194,6 +197,7 @@ app.put("/users/changeUserPassword", async (req, res) => {
             username: user.username,
             email: user.email,
             password: new_password.trim(),
+            isAdmin: user.isAdmin,
         };
 
         const token = jwt.sign(userToken, secret);
@@ -476,6 +480,26 @@ app.post("/products/favorites/remove/:id", async (req, res) => {
         await user.save();
 
         return res.status(201).send({ message: "Продуктът е премахнат успешно." });
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
+app.post("/products/addOne", async (req, res) => {
+    const { title, imageUrl, price, description } = req.body;
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid && data.isAdmin) {
+        try {
+            await Product.create({title, imageUrl, price, description });
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+
+        return res.status(201).send({ message: "Product created successfully." });
     }
     else {
         return res.status(401).send({ message });

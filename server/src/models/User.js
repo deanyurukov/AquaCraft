@@ -39,6 +39,10 @@ const userSchema = new Schema({
         ref: "Product",
         required: true,
     }],
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    }
 });
 
 userSchema.pre('save', async function () {
