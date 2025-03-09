@@ -9,7 +9,7 @@ const productSchema = new Schema({
     imageUrl: {
         type: String,
         required: [true, "allFields"],
-        match: [/(http[s]*:\/\/)([a-z\-_0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-_\/._~:?#\[\]@!$&'()*+,;=%]*)([a-z0-9]+\.)(jpg|jpeg|png)/i, "image.invalid"]
+        match: [/https?:\/\/[^\s]+/, "image.invalid"]
     },
     description: {
         type: String,
