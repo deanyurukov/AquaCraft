@@ -31,14 +31,14 @@
         }
     }
 
-    & > div {
+    & > .products-wrapper {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
         gap: 3em;
         width: 80%;
         padding-bottom: 5em;
 
-        @media (width <= 950px) {
+        @media (width <= 750px) {
             grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
         }
 

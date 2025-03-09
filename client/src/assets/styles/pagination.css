@@ -1,0 +1,33 @@
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 2.5em;
+
+    button {
+        background: #91BA8D;
+        color: white;
+        font-size: 16px;
+        padding: 0.6em 2em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &.active {
+            background: #6d9c68;
+
+            &:hover {
+                background: #5e9d58c9;
+            }
+        }
+        
+        &:hover {
+            background: #91ba8dc9;
+        }
+
+        a {
+            color: #FFFFFF;
+        }
+    }
+}
