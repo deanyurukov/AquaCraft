@@ -44,7 +44,7 @@ const DetailsPage = () => {
 
                 <div className="content-wrapper">
                     <div>
-                        <h3>{t(`productsList.${productData._id}.title`)}</h3>
+                        <h3>{productData.title}</h3>
 
                         {
                             productData.isFav ?
@@ -72,7 +72,7 @@ const DetailsPage = () => {
                     </div>
                     <h4>${Number(productData.price).toFixed(2)}</h4>
                     <hr />
-                    <p>{t(`productsList.${productData._id}.description`)}</p>
+                    <p>{productData.description}</p>
                     <Link onClick={async () => {
                         const [data, error] = await productsService.addToCart(productData._id);
 
