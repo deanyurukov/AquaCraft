@@ -18,4 +18,5 @@ export const endpoints = {
     addFav: (productId) => `${baseUrl}/products/favorites/add/${productId}`,
     removeFav: (productId) => `${baseUrl}/products/favorites/remove/${productId}`,
     getFav: `${baseUrl}/products/favorites/get`,
+    addProduct: `${baseUrl}/products/addOne`
 };

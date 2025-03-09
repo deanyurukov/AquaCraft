@@ -33,17 +33,13 @@
 
     & > div {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
         gap: 3em;
         width: 80%;
         padding-bottom: 5em;
 
         @media (width <= 950px) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media (width <= 600px) {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
         }
 
         .product {
@@ -89,11 +85,9 @@
                 }
 
                 &:hover {
-                    background: #eaeaea;
+                    background: #f1f1f1;
                 }
             }
-
-
 
             span {
                 padding: 1em;

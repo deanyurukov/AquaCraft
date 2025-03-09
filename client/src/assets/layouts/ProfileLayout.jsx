@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
+import authService from "../services/auth-service";
 
 const ProfileLayout = () => {
     const { t, i18n } = useTranslation();
@@ -10,6 +11,7 @@ const ProfileLayout = () => {
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [ isAdmin, setIsAdmin] = useState(false);
 
     const paths = {
         "Панел": "panel",
@@ -17,7 +19,9 @@ const ProfileLayout = () => {
         "Моите данни": "data",
         "My data": "data",
         "История на поръчките": "orders",
-        "Orders history": "orders"
+        "Orders history": "orders",
+        "История на поръчките": "orders",
+        "Създай продукт": "create"
     };
 
     useEffect(() => {
@@ -29,6 +33,13 @@ const ProfileLayout = () => {
             navigate("/");
             return;
         }
+
+        const getAdminInfo = async () => {
+            const isAdmin = (await authService.getUserData())[0].isAdmin;
+            setIsAdmin(isAdmin);
+        }
+
+        getAdminInfo();
     }, []);
 
     const profileNavigation = (
@@ -36,6 +47,10 @@ const ProfileLayout = () => {
             <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
             <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
             <NavLink onClick={() => setCurrentPage(t("profile.orders.title"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
+            {
+                isAdmin &&
+                <NavLink onClick={() => setCurrentPage(t("profile.create.title"))} to="/profile/create">{t("profile.create.title")}</NavLink>
+            }
             <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
         </nav>
     );

@@ -47,7 +47,7 @@ const CartCard = ({ product, fetchProducts }) => {
     return (
         <div>
             <img onError={changeImage} src={product.product.imageUrl} alt={product.product.title} />
-            <p>{t(`productsList.${product.product._id}.title`)}</p>
+            <p>{product.product.title}</p>
             <span>
                 <input onBlur={(e) => handleQuantityChange(e, product.product._id)} onChange={handleChange} type="number" min="1" max="999" value={quantity} />
             </span>

@@ -208,5 +208,34 @@ export default {
             console.error(err);
             return [undefined, err.message];
         }
+    },
+    addOne: async (title, imageUrl, price, description) => {
+        try {
+            const response = await fetch(endpoints.addProduct, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
+                },
+                body: JSON.stringify({
+                    title,
+                    imageUrl,
+                    price,
+                    description
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return [data, undefined];
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
     }
 };

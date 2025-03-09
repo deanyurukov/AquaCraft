@@ -16,8 +16,9 @@
 @import url(/src/assets/styles/profile/profile-panel.css);
 @import url(/src/assets/styles/profile/profile-orders.css);
 @import url(/src/assets/styles/profile/profile-orders-details.css);
-@import url(/src/assets/styles/profile/profile-table.css);
 @import url(/src/assets/styles/profile/profile-user-data.css);
+@import url(/src/assets/styles/profile/profile-create.css);
+@import url(/src/assets/styles/profile/profile-table.css);
 @import url(/src/assets/styles/spinner.css);
 @import url(/src/assets/styles/go-back.css);
 @import url(/src/assets/styles/error-message.css);

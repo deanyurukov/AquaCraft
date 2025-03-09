@@ -93,6 +93,14 @@
             "empty": "No orders yet!",
             "change": "Change data"
         },
+        "create": {
+            "title": "Create product",
+            "name": "Product Name",
+            "price": "Price",
+            "description": "Description",
+            "image": "Image URL",
+            "submit": "Create"
+        },
         "data": {
             "title": "My data",
             "info": "Profile information",
@@ -198,24 +206,6 @@
         "title": "404 Not Found",
         "message": "This page does not exist!"
     },
-    "productsList": {
-        "679b478e55cafddf45f06048": {
-            "title": "Watering Can",
-            "description": "A watering can (or watering pot or watering jug) is a portable container, usually with a handle and a funnel, used to water plants by hand."
-        },
-        "679b483455cafddf45f0604a": {
-            "title": "Shovel",
-            "description": "A tool consisting of a wide, square metal or plastic blade, usually with slightly raised sides, attached to a handle, for moving loose material such as sand, coal, or snow."
-        },
-        "67c02f48b792132e1e0c9ac0": {
-            "title": "Garden Scissors",
-            "description": "Precision-crafted pruning scissors with stainless steel blades, ideal for trimming flowers, herbs, and small branches. Ergonomic grip for comfortable use."
-        },
-        "67c02f90b792132e1e0c9ac2": {
-            "title": "Hand Rake",
-            "description": "A compact and lightweight hand rake for loosening soil, removing weeds, and aerating flower beds. Durable steel tines and a wooden handle for a comfortable grip."
-        }
-    },
     "goBack": "Go Back",
     "profileTable": {
         "id": "Order ID",
@@ -238,6 +228,15 @@
             "short": "Username must be 3 or more characters!",
             "long": "Username must be 99 or less characters!",
             "invalid": "Username must only contain latin letters and numbers!"
+        },
+        "image": {
+            "invalid": "Image address must be a valid URL!"
+        },
+        "description": {
+            "short": "Description must be 10 or more characters!"
+        },
+        "price": {
+            "low": "Price must be a positive number!"
         },
         "name": {
             "short": "Name must be 3 or more characters!",

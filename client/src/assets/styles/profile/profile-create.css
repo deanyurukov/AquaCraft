@@ -1,0 +1,129 @@
+#create {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    font-family: "Poppins", sans-serif;
+    min-height: 70vh;
+    gap: 2em;
+
+    @media (width <= 1020px) {
+        width: 100%;
+    }
+
+    h1 {
+        font-weight: 500;
+        font-size: 34px;
+
+        @media (width <= 400px) {
+            font-size: 28px;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        width: 100%;
+        gap: 2em;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5em;
+            width: 70%;
+
+            @media (width <= 1020px) {
+                width: 80%;
+            }
+
+            @media (width <= 800px) {
+                gap: 0.8em;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8em;
+                width: 100%;
+
+                @media (width <= 800px) {
+                    gap: 0.5em;
+                }
+
+                label {
+                    font-weight: 500;
+                    font-size: 17px;
+
+                    @media (width <=700px) {
+                        font-size: 15px;
+                    }
+
+                    @media (width <=570px) {
+                        font-size: 13px;
+                    }
+                }
+
+                input,
+                textarea {
+                    border: 2px solid #333;
+                    outline: none;
+                    width: 100%;
+                    font-size: 15px;
+                    color: #9F9F9F;
+                    padding: 1.5em 2em;
+                    transition: all 0.2s linear;
+                    resize: none;
+                    field-sizing: content;
+                    scrollbar-width: thin;
+                    scrollbar-color: #91BA8D transparent;
+
+                    @media (width <=800px) {
+                        width: 100%;
+                    }
+
+                    @media (width <=700px) {
+                        font-size: 13px;
+                    }
+
+                    @media (width <=570px) {
+                        font-size: 11px;
+                    }
+
+                    &:focus {
+                        border: 2px solid #91BA8D;
+                        border-radius: 3px;
+                    }
+                }
+
+                textarea {
+                    min-height: 35vh;
+                    max-height: 50vh;
+                    font-family: "Poppins", sans-serif;
+                }
+            }
+
+            button {
+                background: #91BA8D;
+                color: white;
+                font-size: 16px;
+                padding: 0.6em 2em;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                
+                &:hover {
+                    background: #91ba8dc9;
+                }
+            
+                @media (width <=700px) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

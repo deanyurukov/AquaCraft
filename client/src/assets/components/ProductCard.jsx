@@ -38,8 +38,8 @@ const ProductCard = ({ product, getProducts }) => {
                     }} className="fa-regular fa-heart"></i>
             }
             <span>
-                <h2>{t(`productsList.${product._id}.title`)}</h2>
-                <p>{t(`productsList.${product._id}.description`)}</p>
+                <h2>{product.title}</h2>
+                <p>{product.description}</p>
                 <p>${Number(product.price).toFixed(2)}</p>
                 <div>
                     <Link to={`/products/${product._id}/details`}>{t("products.details")}</Link>

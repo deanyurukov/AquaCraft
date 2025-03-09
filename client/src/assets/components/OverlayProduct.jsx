@@ -3,18 +3,16 @@ import { changeImage } from "../services/helpers.js";
 import { useContext } from "react";
 import { appContext } from "../../App.jsx";
 import productsService from "../services/products-service.js";
-import { useTranslation } from "react-i18next";
 
 const OverlayProduct = ({ product }) => {
     const navigate = useNavigate();
     const getFav = useContext(appContext)[2];
     const refreshFavorites = useContext(appContext)[3];
-    const { t } = useTranslation();
 
     return (
         <div>
             <img src={product.imageUrl} onError={changeImage} alt={product.title} />
-            <p>{t(`productsList.${product._id}.title`)}</p>
+            <p>{product.title}</p>
             <a onClick={async () => {
                 const data = await productsService.addToCart(product._id);
 
