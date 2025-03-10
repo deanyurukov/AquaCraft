@@ -32,6 +32,7 @@ const Navbar = () => {
 
     const userNav = (
         <>
+            <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
             <NavLink onClick={() => setIsClickedNav(false)} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
             <i id="favorites-icon" onClick={() => { showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
             <NavLink onClick={() => setIsClickedNav(false)} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
@@ -60,7 +61,6 @@ const Navbar = () => {
                 <div>
                     <NavLink onClick={() => setIsClickedNav(false)} to="/">{t("navbar.home")}</NavLink>
                     <NavLink onClick={() => setIsClickedNav(false)} to="/products">{t("navbar.products")}</NavLink>
-                    <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
@@ -97,7 +97,6 @@ const Navbar = () => {
                 <nav>
                     <NavLink to="/">{t("navbar.home")}</NavLink>
                     <NavLink to="/products">{t("navbar.products")}</NavLink>
-                    <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
 
                     {isLoggedIn ? userNav : guestNav}
                     { translationWidget }

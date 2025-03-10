@@ -8,10 +8,10 @@ import { appContext } from "../../App.jsx";
 
 const ContactPage = () => {
     const getErrorAndDisplay = useContext(appContext)[6];
+    const isLoggedIn = useContext(appContext)[0];
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
     const { t } = useTranslation();
-    // const [map, setMap] = useState("");
 
     async function getUserEmail() {
         const email = (await authService.getUserData())[0].email;
@@ -19,6 +19,10 @@ const ContactPage = () => {
     }
 
     useEffect(() => {
+        if (! isLoggedIn) {
+            navigate("/");
+        }
+
         getUserEmail();
     }, []);
 

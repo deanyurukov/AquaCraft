@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import HomeCards from "../components/HomeCards";
 import { useTranslation } from "react-i18next";
+import { appContext } from "../../App";
+import { useContext } from "react";
 
 const HomePage = () => {
     const { t } = useTranslation();
+    const isLoggedIn = useContext(appContext)[0];
 
     const cards = [
         {
@@ -37,7 +40,7 @@ const HomePage = () => {
                     <div className="button-wrapper">
                         <Link to={"/products"}>{t("home.products")}</Link>
                         <Link to={"/services"}>{t("home.services")}</Link>
-                        <Link to={"/contact-us"}>{t("home.contact")}</Link>
+                        {isLoggedIn && <Link to={"/contact-us"}>{t("home.contact")}</Link>}
                     </div>
                 </div>
             </div>
