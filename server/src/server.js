@@ -342,7 +342,6 @@ app.post("/addOrder", async (req, res) => {
             return res.status(403).send({ message: "emptyCart" });
         }
 
-
         const order = {
             name,
             town: town.toLowerCase(),
@@ -353,8 +352,12 @@ app.post("/addOrder", async (req, res) => {
             orderData: []
         };
 
-        user.productsInCart.forEach(product => {
-            order.orderData.push(product);
+        user.productsInCart.forEach(async (productData) => {
+            const product = await Product.findById(productData.product._id);
+            product.inStock -= productData.quantity;
+            await product.save();
+
+            order.orderData.push(productData);
         });
 
         let orderData = {};
@@ -487,12 +490,35 @@ app.post("/products/favorites/remove/:id", async (req, res) => {
 });
 
 app.post("/products/addOne", async (req, res) => {
-    const { title, imageUrl, price, description } = req.body;
+    const { title, imageUrl, price, description, inStock } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.create({title, imageUrl, price, description });
+            await Product.create({title, imageUrl, price, description, inStock });
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+
+        return res.status(201).send({ message: "productCreated" });
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
+app.post("/products/changeInStock/:id", async (req, res) => {
+    const { changedStock } = req.body;
+    const productId = req.params.id;
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid && data.isAdmin) {
+        try {
+            const product = await Product.findById(productId);
+            product.inStock += Number(changedStock);
+            await product.save();
         }
         catch (err) {
             console.error(err);

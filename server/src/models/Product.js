@@ -20,6 +20,10 @@ const productSchema = new Schema({
         type: Number,
         required: [true, "allFields"],
         min: [0, "price.low"],
+    },
+    inStock: {
+        type: Number,
+        required: [true, "allFields"],
     }
 });
 
