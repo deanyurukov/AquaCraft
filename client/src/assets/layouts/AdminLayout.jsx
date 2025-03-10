@@ -4,28 +4,23 @@ import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
 
-const ProfileLayout = () => {
+const AdminLayout = () => {
     const { t, i18n } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
-    const [currentPage, setCurrentPage] = useState(t("profile.panel.title"));
+    const [currentPage, setCurrentPage] = useState(t("admin.create.title"));
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
-    const location = useLocation();
     const [ isAdmin, setIsAdmin] = useState(false);
 
     const paths = {
-        "Панел": "panel",
-        "Panel": "panel",
-        "Моите данни": "data",
-        "My data": "data",
-        "История на поръчките": "orders",
-        "Orders history": "orders",
-        "Админ панел": "admin",
-        "Admin panel": "admin"
+        "Създай продукт": "create",
+        "Create product": "create",
+        "Продукти": "products",
+        "Products": "products",
     };
 
     useEffect(() => {
-        setCurrentPage(prev => prev = t(`profile.${paths[prev]}.title`));
+        setCurrentPage(prev => prev = t(`admin.${paths[prev]}.title`));
     }, [i18n.language]);
 
     useEffect(() => {
@@ -36,6 +31,12 @@ const ProfileLayout = () => {
 
         const getAdminInfo = async () => {
             const isAdmin = (await authService.getUserData())[0].isAdmin;
+
+            if (!isAdmin) {
+                navigate("/");
+                return;
+            }
+
             setIsAdmin(isAdmin);
         }
 
@@ -44,23 +45,17 @@ const ProfileLayout = () => {
 
     const profileNavigation = (
         <nav>
-            <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.orders.title"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
-            {
-                isAdmin &&
-                <NavLink onClick={() => setCurrentPage(t("profile.admin.title"))} to="/admin/create">{t("profile.admin.title")}</NavLink>
-            }
-            <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("admin.create.title"))} to="/admin/create" end>{t("admin.create.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("admin.products.title"))} to="/admin/products" end>{t("admin.products.title")}</NavLink>
         </nav>
     );
 
     if (isLoggedIn) {
         return (
             <>
-                <div id="profile" onClick={() => setIsDropdownClicked(false)}>
+                <div id="admin" onClick={() => setIsDropdownClicked(false)}>
                     <aside>
-                        <h4>{t("profile.title")}</h4>
+                        <h4>{t("admin.title")}</h4>
 
                         {profileNavigation}
                     </aside>
@@ -86,4 +81,4 @@ const ProfileLayout = () => {
     }
 }
 
-export default ProfileLayout;
+export default AdminLayout;

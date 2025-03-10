@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 // Import Layouts
 import MainLayout from './assets/layouts/MainLayout.jsx';
 import ProfileLayout from './assets/layouts/ProfileLayout.jsx';
+import AdminLayout from './assets/layouts/AdminLayout.jsx';
 
 // Import Pages
 import HomePage from './assets/pages/HomePage.jsx';
@@ -33,7 +34,8 @@ import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
 import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
 import UserDataPage from './assets/pages/profile/UserDataPage.jsx';
 import ContactPage from './assets/pages/ContactPage.jsx';
-import CreateProductPage from './assets/pages/profile/CreateProductPage.jsx';
+import CreateProductPage from './assets/pages/admin/CreateProductPage.jsx';
+import AdminProductsPage from './assets/pages/admin/AdminProductsPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -58,6 +60,11 @@ const router = createBrowserRouter(
                 <Route path='/profile/order/:id/details' element={<OrderDetailsPage />} />
             </Route>
 
+            <Route path='/admin' element={<AdminLayout />} >
+                <Route path='/admin/create' element={<CreateProductPage />} />
+                <Route path='/admin/products' element={<AdminProductsPage />} />
+            </Route>
+
             <Route path='/*' element={<NotFoundPage />} />
         </Route>
     )
@@ -66,7 +73,7 @@ const router = createBrowserRouter(
 export const appContext = React.createContext();
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); //! Needs to be false.
+    const [isLoggedIn, setIsLoggedIn] = useState(true); //! Needs to be false.
     const [favorites, setFavorites] = useState([]);
     const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);

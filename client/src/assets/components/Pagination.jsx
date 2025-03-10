@@ -22,6 +22,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) =
             >
                 <Link to="#">{currentPage}</Link>
             </button>
+
             {pageNumbers[currentPage] && (
                 <button onClick={() => paginate(currentPage + 1)} type="button">
                     <Link>{currentPage + 1}</Link>

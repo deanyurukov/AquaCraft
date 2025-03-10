@@ -13,7 +13,7 @@ const ProductsPage = () => {
     const update = useContext(appContext)[4];
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [productsPerPage, setProductsPerPage] = useState(2);
+    const [productsPerPage, setProductsPerPage] = useState(6);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchParams] = useSearchParams();
 

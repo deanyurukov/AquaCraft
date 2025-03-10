@@ -45,6 +45,7 @@
         .product {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             background: #F4F5F7;
             border: 1px solid #E4E4E4;
             min-height: 430px;

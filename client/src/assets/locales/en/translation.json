@@ -59,6 +59,24 @@
         "buy": "Buy",
         "details": "Details"
     },
+    "admin": {
+        "title": "Admin panel",
+
+        "create": {
+            "title": "Create product",
+            "name": "Product Name",
+            "price": "Price",
+            "inStock": "In stock",
+            "description": "Description",
+            "image": "Image URL",
+            "submit": "Create"
+        },
+        "products": {
+            "title": "Products",
+            "change": "Change stock",
+            "stock": "Stock"
+        }
+    },
     "cart": {
         "title": "Cart",
         "empty": "No added products!",
@@ -93,13 +111,8 @@
             "empty": "No orders yet!",
             "change": "Change data"
         },
-        "create": {
-            "title": "Create product",
-            "name": "Product Name",
-            "price": "Price",
-            "description": "Description",
-            "image": "Image URL",
-            "submit": "Create"
+        "admin": {
+            "title": "Admin panel"
         },
         "data": {
             "title": "My data",
@@ -237,6 +250,9 @@
         },
         "price": {
             "low": "Price must be a positive number!"
+        },
+        "inStock": {
+            "low": "In stock must be a positive number!"
         },
         "name": {
             "short": "Name must be 3 or more characters!",

@@ -209,7 +209,7 @@ export default {
             return [undefined, err.message];
         }
     },
-    addOne: async (title, imageUrl, price, description) => {
+    addOne: async (title, imageUrl, price, description, inStock) => {
         try {
             const response = await fetch(endpoints.addProduct, {
                 method: 'POST',
@@ -221,7 +221,34 @@ export default {
                     title,
                     imageUrl,
                     price,
-                    description
+                    description,
+                    inStock
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return [data, undefined];
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
+    },
+    changeInStock: async (id, changedStock) => {
+        try {
+            const response = await fetch(endpoints.changeInStock(id), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
+                },
+                body: JSON.stringify({
+                    changedStock
                 })
             });
 
