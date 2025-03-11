@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { appContext } from "../../App";
 
 const Footer = () => {
     const { t } = useTranslation();
+    const isLoggedIn = useContext(appContext)[0];
 
     return (
         <footer id="site-footer">
@@ -16,7 +19,10 @@ const Footer = () => {
             <div>
                 <ul>
                     <h3>{t("footer.support")}</h3>
-                    <li><Link to="/contact-us">{t("footer.contact")}</Link></li>
+                    {
+                        isLoggedIn &&
+                        <li><Link to="/contact-us">{t("footer.contact")}</Link></li>
+                    }
                     <li><Link to="/privacy-policy">{t("footer.privacy")}</Link></li>
                     <li><Link to="/terms-and-conditions">{t("footer.terms")}</Link></li>
                 </ul>
