@@ -118,6 +118,8 @@
                     line-clamp: 3;
                     -webkit-line-clamp: 3;
                     -webkit-box-orient: vertical;
+                    line-height: 24px;
+                    height: calc(3 * 24px);
 
                     @media (width <= 370px) {
                         font-size: 0.8em;
