@@ -353,11 +353,10 @@ app.post("/addOrder", async (req, res) => {
         };
 
         user.productsInCart.forEach(async (productData) => {
+            order.orderData.push(productData);
             const product = await Product.findById(productData.product._id);
             product.inStock -= productData.quantity;
             await product.save();
-
-            order.orderData.push(productData);
         });
 
         let orderData = {};
