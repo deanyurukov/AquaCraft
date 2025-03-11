@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import React from 'react';
+import React, { StrictMode } from 'react';
 import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
     <React.Suspense fallback="Loading...">
-        <App />
+        <StrictMode>
+            <App />
+        </StrictMode>
     </React.Suspense>
 );
