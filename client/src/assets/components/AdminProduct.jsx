@@ -14,11 +14,13 @@ const AdminProduct = ({ product, getProducts }) => {
             getErrorAndDisplay("allFields");
             return;
         }
-
-        const [data, error] = await productsService.changeInStock(product._id, changed_stock);
-
-        if (data) {
-            getProducts();
+        
+        if(confirm(t("admin.products.confirm"))) {
+            const [data, error] = await productsService.changeInStock(product._id, changed_stock);
+    
+            if (data) {
+                getProducts();
+            }
         }
     }
 

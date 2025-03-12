@@ -11,7 +11,7 @@ const Footer = () => {
         <footer id="site-footer">
             <ul className="social-links-container">
                 <li><Link to="https://www.facebook.com/profile.php?id=61573735392596" target="_blank"><i className="fa-brands fa-facebook-f"></i></Link></li>
-                <li><Link to="#" target="_blank"><i className="fa-brands fa-twitter"></i></Link></li>
+                <li><Link to="https://x.com/AquaCraftLtd" target="_blank"><i className="fa-brands fa-twitter"></i></Link></li>
                 <li><Link to="#" target="_blank"><i className="fa-brands fa-linkedin-in"></i></Link></li>
                 <li><Link to="#" target="_blank"><i className="fa-brands fa-instagram"></i></Link></li>
             </ul>

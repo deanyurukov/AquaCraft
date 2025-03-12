@@ -74,7 +74,8 @@
         "products": {
             "title": "Products",
             "change": "Change stock",
-            "stock": "Stock"
+            "stock": "Stock",
+            "confirm": "Are you sure you want to change that stock?"
         }
     },
     "cart": {
