@@ -12,6 +12,50 @@
         width: 100%;
     }
 
+    span {
+        position: relative;
+        display: flex;
+        align-items: center;
+        border-radius: 6px;
+        background: white;
+        width: 100%;
+
+        input {
+            width: 100%;
+            border: 2px solid #333;
+            outline: none;
+            padding: 1em;
+            background: transparent;
+            font-size: 16px;
+            color: #565656;
+            transition: all 0.2s linear;
+
+            @media (width <= 450px) {
+                font-size: 14px;
+            }
+
+            @media (width <= 370px) {
+                font-size: 12px;
+            }
+
+            &:focus {
+                border: 2px solid #91BA8D;
+                border-radius: 3px;
+            }
+        }
+
+        i {
+            position: absolute;
+            right: 1em;
+            color: black;
+            cursor: pointer;
+
+            @media (width <= 370px) {
+                font-size: 14px;
+            }
+        }
+    }
+
     div {
         display: flex;
         justify-content: space-between;
