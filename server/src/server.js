@@ -531,6 +531,26 @@ app.post("/products/changeInStock/:id", async (req, res) => {
     }
 });
 
+app.delete("/products/delete/:id", async (req, res) => {
+    const productId = req.params.id;
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid && data.isAdmin) {
+        try {
+            await Product.findByIdAndDelete(productId);
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+
+        return res.status(201).send({ message: "productDeleted" });
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
 app.all("*", function (req, res) {
     return res.status(404).send({ message: "Route not found." });
 });
