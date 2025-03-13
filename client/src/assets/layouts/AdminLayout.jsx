@@ -17,6 +17,8 @@ const AdminLayout = () => {
         "Create product": "create",
         "Продукти": "products",
         "Products": "products",
+        "Промени": "edit",
+        "Edit": "edit",
     };
 
     useEffect(() => {
@@ -47,6 +49,7 @@ const AdminLayout = () => {
         <nav>
             <NavLink onClick={() => setCurrentPage(t("admin.create.title"))} to="/admin/create" end>{t("admin.create.title")}</NavLink>
             <NavLink onClick={() => setCurrentPage(t("admin.products.title"))} to="/admin/products" end>{t("admin.products.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("admin.editAll.title"))} to="/admin/edit" end>{t("admin.editAll.title")}</NavLink>
         </nav>
     );
 

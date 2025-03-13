@@ -77,6 +77,12 @@
             "stock": "Stock",
             "confirm": "Are you sure you want to change that stock?",
             "search": "Search"
+        },
+        "editAll": {
+            "title": "Edit",
+            "search": "Search",
+            "delete": "Delete",
+            "deleteMsg": "Are you sure you want to delete this product?"
         }
     },
     "cart": {

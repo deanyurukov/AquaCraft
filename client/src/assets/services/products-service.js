@@ -264,5 +264,28 @@ export default {
             console.error(err);
             return [undefined, err.message];
         }
-    }
+    },
+    delete: async (id) => {
+        try {
+            const response = await fetch(endpoints.delete(id), {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
+                }
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return [data, undefined];
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
+    },
 };

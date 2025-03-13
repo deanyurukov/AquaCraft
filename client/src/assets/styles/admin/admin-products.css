@@ -88,6 +88,10 @@
                 font-size: 15px;
                 font-weight: 400;
             }
+
+            @media (width <= 350px) {
+                font-size: 14px;
+            }
         }
 
         p {
@@ -167,6 +171,44 @@
                     font-size: 12px;
                     padding: 0.3em 1.2em;
                     width: 60%;
+                }
+            }
+        }
+
+        button {
+            padding: 0.5em 1.5em;
+            font-size: 16px;
+            color: #ffffff;
+            cursor: pointer;
+            border: 1px solid #606060;
+            transition: all 0.2s ease;
+
+            @media (width <= 700px) {
+                font-size: 14px;
+            }
+
+            @media (width <= 550px) {
+                font-size: 12px;
+                padding: 0.3em 1.2em;
+            }
+
+            @media (width <= 350px) {
+                font-size: 10px;
+            }
+
+            &.edit {
+                background: orange;
+
+                &:hover {
+                    background: rgba(255, 166, 0, 0.832);
+                }
+            }
+            
+            &.delete {
+                background: red;
+
+                &:hover {
+                    background: rgba(255, 0, 0, 0.767);
                 }
             }
         }
