@@ -5,11 +5,11 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 
-import User from "../models/User.js";
-import Product from '../models/Product.js';
-import { isUserValid } from '../utils/auth-util.js';
-import { getErrorMessage } from '../utils/error-util.js';
-import Order from '../models/Order.js';
+import User from "./models/User.js";
+import Product from './models/Product.js';
+import { isUserValid } from './utils/auth-util.js';
+import { getErrorMessage } from './utils/error-util.js';
+import Order from './models/Order.js';
 
 const app = express();
 dotenv.config({ path: "../.env" });
@@ -42,7 +42,7 @@ app.options('*', (req, res) => {
     return res.status(204).send();
 });
 
-app.post('/api/users/register', async (req, res) => {
+app.post('/users/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     if (!username || !email || !password) {
@@ -75,7 +75,7 @@ app.post('/api/users/register', async (req, res) => {
     return res.status(201).send({ message: 'registerSuccess', accessToken: token });
 });
 
-app.post('/api/users/login', async (req, res) => {
+app.post('/users/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -106,7 +106,7 @@ app.post('/api/users/login', async (req, res) => {
     return res.status(200).send({ message: 'loginSuccess', accessToken: token });
 });
 
-app.get("/api/users/logout", async (req, res) => {
+app.get("/users/logout", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid) {
@@ -119,17 +119,17 @@ app.get("/api/users/logout", async (req, res) => {
     }
 });
 
-app.get('/api/users/getAuth', async (req, res) => {
+app.get('/users/getAuth', async (req, res) => {
     const [isValid, message] = await isUserValid(req.headers["x-authorization"]);
     return res.status(200).send({ isValid, message });
 });
 
-app.get('/api/users/userData', async (req, res) => {
+app.get('/users/userData', async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     return res.status(200).send({ data });
 });
 
-app.put("/api/users/changeUserData", async (req, res) => {
+app.put("/users/changeUserData", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const { email: newEmail, username: newUsername, password } = req.body;
 
@@ -179,7 +179,7 @@ app.put("/api/users/changeUserData", async (req, res) => {
     }
 });
 
-app.put("/api/users/changeUserPassword", async (req, res) => {
+app.put("/users/changeUserPassword", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const { password, new_password } = req.body;
 
@@ -218,7 +218,7 @@ app.put("/api/users/changeUserPassword", async (req, res) => {
     }
 });
 
-app.get("/api/products/getAll", async (req, res) => {
+app.get("/products/getAll", async (req, res) => {
     const products = await Product.find().lean();
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const user = await User.findOne({ email: data.email });
@@ -234,7 +234,7 @@ app.get("/api/products/getAll", async (req, res) => {
     return res.status(200).send({ data: products });
 });
 
-app.get("/api/products/:id", async (req, res) => {
+app.get("/products/:id", async (req, res) => {
     const { id } = req.params;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const user = await User.findOne({ email: data.email });
@@ -253,7 +253,7 @@ app.get("/api/products/:id", async (req, res) => {
     }
 });
 
-app.post("/api/products/addToCart/:id", async (req, res) => {
+app.post("/products/addToCart/:id", async (req, res) => {
     const { id } = req.params;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -276,7 +276,7 @@ app.post("/api/products/addToCart/:id", async (req, res) => {
     }
 });
 
-app.get("/api/products/get/id", async (req, res) => {
+app.get("/products/get/id", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid) {
@@ -288,7 +288,7 @@ app.get("/api/products/get/id", async (req, res) => {
     }
 });
 
-app.put("/api/products/:id", async (req, res) => {
+app.put("/products/:id", async (req, res) => {
     const { id } = req.params;
     const { quantity } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
@@ -309,7 +309,7 @@ app.put("/api/products/:id", async (req, res) => {
 
 });
 
-app.delete("/api/products/:id", async (req, res) => {
+app.delete("/products/:id", async (req, res) => {
     const { id } = req.params;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -328,7 +328,7 @@ app.delete("/api/products/:id", async (req, res) => {
     }
 });
 
-app.post("/api/addOrder", async (req, res) => {
+app.post("/addOrder", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const { name, town, phone, email, deliveryWay } = req.body;
 
@@ -380,7 +380,7 @@ app.post("/api/addOrder", async (req, res) => {
     }
 });
 
-app.get('/api/orders/getByUser', async (req, res) => {
+app.get('/orders/getByUser', async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid) {
@@ -400,7 +400,7 @@ app.get('/api/orders/getByUser', async (req, res) => {
     }
 });
 
-app.get("/api/orders/:id", async (req, res) => {
+app.get("/orders/:id", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid) {
@@ -430,7 +430,7 @@ app.get("/api/orders/:id", async (req, res) => {
     }
 });
 
-app.get("/api/products/favorites/get", async (req, res) => {
+app.get("/products/favorites/get", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid) {
@@ -443,7 +443,7 @@ app.get("/api/products/favorites/get", async (req, res) => {
     }
 });
 
-app.post("/api/products/favorites/add/:id", async (req, res) => {
+app.post("/products/favorites/add/:id", async (req, res) => {
     const { id } = req.params;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -466,7 +466,7 @@ app.post("/api/products/favorites/add/:id", async (req, res) => {
     }
 });
 
-app.post("/api/products/favorites/remove/:id", async (req, res) => {
+app.post("/products/favorites/remove/:id", async (req, res) => {
     const { id } = req.params;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -489,7 +489,7 @@ app.post("/api/products/favorites/remove/:id", async (req, res) => {
     }
 });
 
-app.post("/api/products/addOne", async (req, res) => {
+app.post("/products/addOne", async (req, res) => {
     const { title, imageUrl, price, description, inStock } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -509,7 +509,7 @@ app.post("/api/products/addOne", async (req, res) => {
     }
 });
 
-app.post("/api/products/changeInStock/:id", async (req, res) => {
+app.post("/products/changeInStock/:id", async (req, res) => {
     const { changedStock } = req.body;
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
@@ -532,7 +532,7 @@ app.post("/api/products/changeInStock/:id", async (req, res) => {
     }
 });
 
-app.delete("/api/products/delete/:id", async (req, res) => {
+app.delete("/products/delete/:id", async (req, res) => {
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -552,7 +552,7 @@ app.delete("/api/products/delete/:id", async (req, res) => {
     }
 });
 
-app.put("/api/products/change/:id", async (req, res) => {
+app.put("/products/change/:id", async (req, res) => {
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const newProduct = req.body;
@@ -578,7 +578,3 @@ app.all("*", function (req, res) {
 });
 
 app.listen(port, () => console.log('Server is running on http://localhost:5001...'));
-
-export default (req, res) => {
-    app(req, res);
-};
