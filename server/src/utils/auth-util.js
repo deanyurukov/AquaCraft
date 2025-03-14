@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { secret } from "../server.js";
+import { secret } from "../api/index.js";
 
 export async function isUserValid(accessToken) {
     let data = {};

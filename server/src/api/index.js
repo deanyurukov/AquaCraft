@@ -5,11 +5,11 @@ import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 
-import User from "./models/User.js";
-import Product from './models/Product.js';
-import { isUserValid } from './utils/auth-util.js';
-import { getErrorMessage } from './utils/error-util.js';
-import Order from './models/Order.js';
+import User from "../models/User.js";
+import Product from '../models/Product.js';
+import { isUserValid } from '../utils/auth-util.js';
+import { getErrorMessage } from '../utils/error-util.js';
+import Order from '../models/Order.js';
 
 const app = express();
 dotenv.config({ path: "../.env" });

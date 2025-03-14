@@ -5,7 +5,7 @@
   "main": "index.html",
   "type": "module",
   "scripts": {
-    "start": "cd src && nodemon server.js"
+    "start": "cd src/api && nodemon index.js"
   },
   "keywords": [],
   "author": "",
