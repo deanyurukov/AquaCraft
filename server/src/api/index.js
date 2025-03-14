@@ -578,4 +578,7 @@ app.all("*", function (req, res) {
 });
 
 app.listen(port, () => console.log('Server is running on http://localhost:5001...'));
-export default app;
+
+export default (req, res) => {
+    app(req, res);
+};
