@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:5001";
+// const baseUrl = "http://localhost:5001";
+const baseUrl = "https://aqua-craft-server.vercel.app";
 
 export const endpoints = {
     register: `${baseUrl}/users/register`,
