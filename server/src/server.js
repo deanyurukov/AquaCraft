@@ -16,6 +16,7 @@ dotenv.config({ path: "../.env" });
 
 const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
+const port = process.env.PORT || 5001;
 
 try {
     await mongoose.connect(uri);
@@ -576,4 +577,4 @@ app.all("*", function (req, res) {
     return res.status(404).send({ message: "Route not found." });
 });
 
-app.listen(5001, () => console.log('Server is running on http://localhost:5001...'));
+app.listen(port, () => console.log('Server is running on http://localhost:5001...'));
