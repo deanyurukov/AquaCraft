@@ -37,6 +37,7 @@ import ContactPage from './assets/pages/ContactPage.jsx';
 import CreateProductPage from './assets/pages/admin/CreateProductPage.jsx';
 import AdminProductsPage from './assets/pages/admin/AdminProductsPage.jsx';
 import AdminEditAll from './assets/pages/admin/AdminEditAll.jsx';
+import EditProductPage from './assets/pages/admin/EditProductPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -65,6 +66,7 @@ const router = createBrowserRouter(
                 <Route path='/admin/create' element={<CreateProductPage />} />
                 <Route path='/admin/products' element={<AdminProductsPage />} />
                 <Route path='/admin/edit' element={<AdminEditAll />} />
+                <Route path='/admin/:id/edit' element={<EditProductPage />} />
             </Route>
 
             <Route path='/*' element={<NotFoundPage />} />

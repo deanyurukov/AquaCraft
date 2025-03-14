@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import productsService from "../services/products-service";
 import { useContext } from "react";
 import { appContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const AdminEditProduct = ({ product, getProducts }) => {
     const { t } = useTranslation();
@@ -17,14 +18,13 @@ const AdminEditProduct = ({ product, getProducts }) => {
     
             getProducts();
         }
-
     }
 
     return (
         <div>
             <h4>{product.title}</h4>
 
-            <button className="edit">{t("admin.editAll.title")}</button>
+            <Link to={`/admin/${product._id}/edit`} className="edit">{t("admin.editAll.title")}</Link>
             <button onClick={onDelete} className="delete">{t("admin.editAll.delete")}</button>
         </div>
     );

@@ -9,22 +9,7 @@ import productsService from "../../services/products-service";
 const CreateProductPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const [ isAdmin, setIsAdmin] = useState(true);
     const getErrorAndDisplay = useContext(appContext)[6];
-
-    useEffect(() => {
-        if (!isAdmin) {
-            navigate("/");
-            return;
-        }
-
-        const getAdminInfo = async () => {
-            const isAdmin = (await authService.getUserData())[0].isAdmin;
-            setIsAdmin(isAdmin);
-        }
-
-        getAdminInfo();
-    }, [isAdmin]);
 
     async function onSubmit(e) {
         e.preventDefault();

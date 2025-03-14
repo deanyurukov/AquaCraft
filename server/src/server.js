@@ -551,6 +551,27 @@ app.delete("/products/delete/:id", async (req, res) => {
     }
 });
 
+app.put("/products/change/:id", async (req, res) => {
+    const productId = req.params.id;
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+    const newProduct = req.body;
+
+    if (isValid && data.isAdmin) {
+        try {
+            await Product.findByIdAndUpdate(productId, newProduct, { runValidators: true });
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+
+        return res.status(201).send({ message: "productUpdated" });
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
 app.all("*", function (req, res) {
     return res.status(404).send({ message: "Route not found." });
 });
