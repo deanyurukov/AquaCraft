@@ -577,5 +577,5 @@ app.all("*", function (req, res) {
     return res.status(404).send({ message: "Route not found." });
 });
 
-// app.listen(port, () => console.log('Server is running on http://localhost:5001...'));
+app.listen(port, () => console.log('Server is running on http://localhost:5001...'));
 export default app;
