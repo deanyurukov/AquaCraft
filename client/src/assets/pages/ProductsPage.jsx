@@ -67,7 +67,7 @@ const ProductsPage = () => {
             <div id="products-nav">
                 <div className="titlebar">
                     <div className="nav-item">
-                        <p>Company</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.0.label")}</p>
                         <div className="dropdown">
                             <p>Hunter</p>
                             <p>Rain Bird</p>
@@ -76,67 +76,67 @@ const ProductsPage = () => {
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Timers</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.1.label")}</p>
                         <div className="dropdown">
-                            <p>Modular timers</p>
-                            <p>WIFI Timers</p>
-                            <p>2-Wire Controllers</p>
-                            <p>Battery Operated</p>
-                            <p>Rain & Moisture Sensors</p>
-                            <p>Parts & Accessories</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.0")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.1")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.2")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.3")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.4")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.1.dropdown.5")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Sprinklers</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.2.label")}</p>
                         <div className="dropdown">
-                            <p>Spray heads</p>
-                            <p>Nozzles</p>
-                            <p>Rotary nozzles</p>
-                            <p>Rotors</p>
-                            <p>Impact sprinklers</p>
-                            <p>Hose and Sprinklers</p>
-                            <p>Parts & Accessories</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.0")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.1")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.2")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.3")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.4")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.5")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.2.dropdown.6")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Valves</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.3.label")}</p>
                         <div className="dropdown">
-                            <p>Sprinkler Valves</p>
-                            <p>Valve Boxes</p>
-                            <p>Parts & Accessories</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.3.dropdown.0")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.3.dropdown.1")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.3.dropdown.2")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Drip</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.4.label")}</p>
                         <div className="dropdown">
-                            <p>Root Watering Systems</p>
-                            <p>Zone Control</p>
-                            <p>Filters, Valves & Pressure Regulators</p>
-                            <p>Drippers, Emitters & Microsprays</p>
-                            <p>Transmission & Blank Tubing</p>
-                            <p>Fittings, Stakes & Connectors</p>
-                            <p>Tools, Parts & Accessories</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.0")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.1")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.2")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.3")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.4")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.5")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.4.dropdown.6")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Bundles & Kits</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.5.label")}</p>
                         <div className="dropdown">
-                            <p>Bundles by Application</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.5.dropdown.0")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Exclusive</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.6.label")}</p>
                         <div className="dropdown">
-                            <p>Valve Manifolds</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.6.dropdown.0")}</p>
                         </div>
                     </div>
                     <div className="nav-item">
-                        <p>Parts & Tools</p>
+                        <p>{t("products.products-nav.titlebar.nav-items.7.label")}</p>
                         <div className="dropdown">
-                            <p>Sprinkler Parts</p>
-                            <p>Timer Parts</p>
-                            <p>Valve Parts</p>
-                            <p>Drip Irrigation Accessories</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.7.dropdown.0")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.7.dropdown.1")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.7.dropdown.2")}</p>
+                            <p>{t("products.products-nav.titlebar.nav-items.7.dropdown.3")}</p>
                         </div>
                     </div>
                 </div>

@@ -57,11 +57,84 @@
     "products": {
         "title": "Products",
         "buy": "Buy",
-        "details": "Details"
+        "details": "Details",
+        "products-nav": {
+            "titlebar": {
+                "nav-items": [
+                    {
+                        "label": "Company",
+                        "dropdown": []
+                    },
+                    {
+                        "label": "Timers",
+                        "dropdown": [
+                            "Modular timers",
+                            "WIFI Timers",
+                            "2-Wire Controllers",
+                            "Battery Operated",
+                            "Rain & Moisture Sensors",
+                            "Parts & Accessories"
+                        ]
+                    },
+                    {
+                        "label": "Sprinklers",
+                        "dropdown": [
+                            "Spray heads",
+                            "Nozzles",
+                            "Rotary nozzles",
+                            "Rotors",
+                            "Impact sprinklers",
+                            "Hose and Sprinklers",
+                            "Parts & Accessories"
+                        ]
+                    },
+                    {
+                        "label": "Valves",
+                        "dropdown": [
+                            "Sprinkler Valves",
+                            "Valve Boxes",
+                            "Parts & Accessories"
+                        ]
+                    },
+                    {
+                        "label": "Drip",
+                        "dropdown": [
+                            "Root Watering Systems",
+                            "Zone Control",
+                            "Filters, Valves & Pressure Regulators",
+                            "Drippers, Emitters & Microsprays",
+                            "Transmission & Blank Tubing",
+                            "Fittings, Stakes & Connectors",
+                            "Tools, Parts & Accessories"
+                        ]
+                    },
+                    {
+                        "label": "Bundles & Kits",
+                        "dropdown": [
+                            "Bundles by Application"
+                        ]
+                    },
+                    {
+                        "label": "Exclusive",
+                        "dropdown": [
+                            "Valve Manifolds"
+                        ]
+                    },
+                    {
+                        "label": "Parts & Tools",
+                        "dropdown": [
+                            "Sprinkler Parts",
+                            "Timer Parts",
+                            "Valve Parts",
+                            "Drip Irrigation Accessories"
+                        ]
+                    }
+                ]
+            }
+        }
     },
     "admin": {
         "title": "Admin panel",
-
         "create": {
             "title": "Create product",
             "name": "Product Name",
