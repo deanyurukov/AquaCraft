@@ -14,8 +14,8 @@ import Order from './models/Order.js';
 const app = express();
 dotenv.config({ path: "../.env" });
 
-// const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
-const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
+const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
+// const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
 const port = process.env.PORT || 5001;
 
