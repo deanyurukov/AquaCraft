@@ -24,6 +24,33 @@ const productSchema = new Schema({
     inStock: {
         type: Number,
         required: [true, "allFields"],
+    },
+    company: {
+        type: String,
+        required: [true, "allFields"],
+        enum: [
+            "hunter",
+            "rainBird",
+            "rainSpa",
+            "irritec"
+        ]
+    },
+    type: {
+        type: String,
+        required: [true, "allFields"],
+        enum: [
+            "timers",
+            "sprinklers",
+            "valves",
+            "drip",
+            "bundles",
+            "exclusive",
+            "parts"
+        ]
+    },
+    typeDetails: {
+        type: String,
+        required: [true, "allFields"],
     }
 });
 

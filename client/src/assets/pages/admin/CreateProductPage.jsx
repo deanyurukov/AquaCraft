@@ -5,6 +5,7 @@ import authService from "../../services/auth-service";
 import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../../App";
 import productsService from "../../services/products-service";
+import CreateSelect from "../../components/createSelect";
 
 const CreateProductPage = () => {
     const { t } = useTranslation();
@@ -14,9 +15,9 @@ const CreateProductPage = () => {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const { title, imageUrl, price, description, inStock } = Object.fromEntries(new FormData(e.currentTarget));
+        const { title, imageUrl, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [data, error] = await productsService.addOne(title, imageUrl, price, description, inStock);
+        const [data, error] = await productsService.addOne(title, imageUrl, price, description, inStock, company, type, typeDetails);
 
         if (!data) {
             getErrorAndDisplay(error);
@@ -37,6 +38,8 @@ const CreateProductPage = () => {
                     <CheckoutInput label={`${t("admin.create.image")}*`} name={"imageUrl"} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} />
+
+                    <CreateSelect />
 
                     <div>
                         <label htmlFor="description">{t("admin.create.description")}*</label>

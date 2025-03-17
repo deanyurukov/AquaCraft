@@ -14,7 +14,8 @@ import Order from './models/Order.js';
 const app = express();
 dotenv.config({ path: "../.env" });
 
-const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
+// const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
+const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
 const port = process.env.PORT || 5001;
 
@@ -490,12 +491,12 @@ app.post("/products/favorites/remove/:id", async (req, res) => {
 });
 
 app.post("/products/addOne", async (req, res) => {
-    const { title, imageUrl, price, description, inStock } = req.body;
+    const { title, imageUrl, price, description, inStock, company, type, typeDetails } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.create({title, imageUrl, price, description, inStock });
+            await Product.create({ title, imageUrl, price, description, inStock, company, type, typeDetails });
         }
         catch (err) {
             console.error(err);

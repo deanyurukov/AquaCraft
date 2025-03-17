@@ -60,6 +60,7 @@
         "details": "Details",
         "products-nav": {
             "titlebar": {
+                "type": "Type",
                 "nav-items": [
                     {
                         "label": "Company",

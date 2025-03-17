@@ -209,7 +209,7 @@ export default {
             return [undefined, err.message];
         }
     },
-    addOne: async (title, imageUrl, price, description, inStock) => {
+    addOne: async (title, imageUrl, price, description, inStock, company, type, typeDetails) => {
         try {
             const response = await fetch(endpoints.addProduct, {
                 method: 'POST',
@@ -222,7 +222,10 @@ export default {
                     imageUrl,
                     price,
                     description,
-                    inStock
+                    inStock,
+                    company,
+                    type,
+                    typeDetails
                 })
             });
 
@@ -288,7 +291,7 @@ export default {
             return [undefined, err.message];
         }
     },
-    changeOne: async (id, title, imageUrl, price, description, inStock) => {
+    changeOne: async (id, title, imageUrl, price, description, inStock, company, type, typeDetails) => {
         try {
             const response = await fetch(endpoints.changeProduct(id), {
                 method: 'PUT', 
@@ -301,7 +304,10 @@ export default {
                     imageUrl,
                     price,
                     description,
-                    inStock
+                    inStock,
+                    company,
+                    type,
+                    typeDetails
                 })
             });
 

@@ -68,7 +68,8 @@
                 }
 
                 input,
-                textarea {
+                textarea,
+                select {
                     border: 2px solid #333;
                     outline: none;
                     font-size: 15px;
@@ -102,6 +103,14 @@
                     min-height: 35vh;
                     max-height: 50vh;
                     font-family: "Poppins", sans-serif;
+                }
+                
+                select {
+                    appearance: none;
+                    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
+                    background-repeat: no-repeat;
+                    background-position: right 15px center;
+                    background-size: 24px;
                 }
             }
 

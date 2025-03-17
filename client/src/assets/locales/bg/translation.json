@@ -60,6 +60,7 @@
         "details": "Детайли",
         "products-nav": {
             "titlebar": {
+                "type": "Тип",
                 "nav-items": [
                     {
                         "label": "Компания",

@@ -5,6 +5,7 @@ import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../../App";
 import productsService from "../../services/products-service";
 import Spinner from "../../components/Spinner";
+import CreateSelect from "../../components/createSelect";
 
 const EditProductPage = () => {
     const { id } = useParams();
@@ -17,9 +18,9 @@ const EditProductPage = () => {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const { title, imageUrl, price, description, inStock } = Object.fromEntries(new FormData(e.currentTarget));
+        const { title, imageUrl, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [data, error] = await productsService.changeOne(product._id, title, imageUrl, price, description, inStock);
+        const [data, error] = await productsService.changeOne(product._id, title, imageUrl, price, description, inStock, company, type, typeDetails);
 
         if (!data) {
             getErrorAndDisplay(error);
@@ -56,6 +57,8 @@ const EditProductPage = () => {
                     <CheckoutInput label={`${t("admin.create.image")}*`} name={"imageUrl"} value={product.imageUrl} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} value={product.price} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} value={product.inStock} />
+
+                    <CreateSelect defaultValues={product} />
 
                     <div>
                         <label htmlFor="description">{t("admin.create.description")}*</label>
