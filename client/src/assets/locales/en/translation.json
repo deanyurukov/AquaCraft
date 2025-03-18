@@ -58,6 +58,7 @@
         "title": "Products",
         "buy": "Buy",
         "details": "Details",
+        "empty": "No products match this filter yet!",
         "products-nav": {
             "titlebar": {
                 "type": "Type",

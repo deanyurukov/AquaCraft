@@ -60,9 +60,10 @@ const CreateSelect = ({ defaultValues = {} }) => {
                         <option value="spray">{t("products.products-nav.titlebar.nav-items.2.dropdown.0")}</option>
                         <option value="nozzles">{t("products.products-nav.titlebar.nav-items.2.dropdown.1")}</option>
                         <option value="rotary">{t("products.products-nav.titlebar.nav-items.2.dropdown.2")}</option>
-                        <option value="impact">{t("products.products-nav.titlebar.nav-items.2.dropdown.3")}</option>
-                        <option value="hose">{t("products.products-nav.titlebar.nav-items.2.dropdown.4")}</option>
-                        <option value="sprinklers_parts">{t("products.products-nav.titlebar.nav-items.2.dropdown.5")}</option>
+                        <option value="rotors">{t("products.products-nav.titlebar.nav-items.2.dropdown.3")}</option>
+                        <option value="impact">{t("products.products-nav.titlebar.nav-items.2.dropdown.4")}</option>
+                        <option value="hose">{t("products.products-nav.titlebar.nav-items.2.dropdown.5")}</option>
+                        <option value="sprinklers_parts">{t("products.products-nav.titlebar.nav-items.2.dropdown.6")}</option>
                     </select>
                 </div>
             }

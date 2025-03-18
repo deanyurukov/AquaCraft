@@ -111,6 +111,10 @@
                     background-repeat: no-repeat;
                     background-position: right 15px center;
                     background-size: 24px;
+                    padding-right: 40px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
 
