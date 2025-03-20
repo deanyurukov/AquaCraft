@@ -28,7 +28,7 @@ const CreateSelect = ({ defaultValues = {} }) => {
 
             <div>
                 <label htmlFor="type">{t("products.products-nav.titlebar.type")}*</label>
-                <select onChange={changeType} defaultValue={defaultValues.type} value={type} name="type">
+                <select onChange={changeType} value={type} name="type">
                     <option value="timers">{t("products.products-nav.titlebar.nav-items.1.label")}</option>
                     <option value="sprinklers">{t("products.products-nav.titlebar.nav-items.2.label")}</option>
                     <option value="valves">{t("products.products-nav.titlebar.nav-items.3.label")}</option>

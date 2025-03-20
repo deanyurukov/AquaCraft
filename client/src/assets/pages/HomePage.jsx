@@ -10,22 +10,22 @@ const HomePage = () => {
 
     const cards = [
         {
-            imageUrl: "https://www.rainbird.com/sites/default/files/media/images/2022-02/resources-support.jpg",
+            imageUrl: "../../../public/images/products.png",
             title: "products",
             href: "products"
         },
         {
-            imageUrl: "https://www.rainbird.com/sites/default/files/media/images/2022-02/resources-design.jpg",
+            imageUrl: "../../../public/images/services.png",
             title: "services",
             href: "services"
         },
         {
-            imageUrl: "https://www.rainbird.com/sites/default/files/media/images/2022-02/resources-success.jpg",
+            imageUrl: "../../../public/images/request-project.png",
             title: "projectRequest",
             href: "project-request"
         },
         {
-            imageUrl: "https://www.rainbird.com/sites/default/files/media/images/2022-04/rainbird_web_professionalspage_images_500x280_digitalcatalog_0.jpg",
+            imageUrl: "../../../public/images/how-to.png",
             title: "howTo",
             href: "how-to"
         }

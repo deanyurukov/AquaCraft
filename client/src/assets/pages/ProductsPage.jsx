@@ -170,7 +170,6 @@ const ProductsPage = () => {
     return (
         <div id="products">
             <div id="products-nav">
-                <div className="titlebar">
                     <div className="nav-item">
                         <p>{t("products.products-nav.titlebar.nav-items.0.label")}</p>
                         <div className="dropdown">
@@ -244,7 +243,6 @@ const ProductsPage = () => {
                             <p onClick={() => addFilter("drip_parts")}>{t("products.products-nav.titlebar.nav-items.7.dropdown.3")}</p>
                         </div>
                     </div>
-                </div>
             </div>
 
             <div className="products-filter">
