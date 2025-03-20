@@ -6,6 +6,7 @@
     text-align: center;
     z-index: 1000;
     font-family: "Poppins", sans-serif;
+    width: 80%;
 
     .notification {
         font-size: 1.5em;
@@ -13,14 +14,6 @@
 
         @media (width <= 850px) {
             font-size: 1.2em;
-        }
-
-        @media (width <= 500px) {
-            font-size: 1em;
-        }
-
-        @media (width <= 330px) {
-            font-size: 0.8em;
         }
         
         span {
