@@ -10,22 +10,22 @@ const HomePage = () => {
 
     const cards = [
         {
-            imageUrl: "../../../public/images/products.png",
+            imageUrl: "../../../images/products.png",
             title: "products",
             href: "products"
         },
         {
-            imageUrl: "../../../public/images/services.png",
+            imageUrl: "../../../images/services.png",
             title: "services",
             href: "services"
         },
         {
-            imageUrl: "../../../public/images/request-project.png",
+            imageUrl: "../../../images/request-project.png",
             title: "projectRequest",
             href: "project-request"
         },
         {
-            imageUrl: "../../../public/images/how-to.png",
+            imageUrl: "../../../images/how-to.png",
             title: "howTo",
             href: "how-to"
         }

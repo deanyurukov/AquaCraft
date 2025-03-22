@@ -27,8 +27,8 @@ import LoginPage from './assets/pages/auth/LoginPage.jsx';
 import LogoutPage from './assets/pages/auth/LogoutPage.jsx';
 import CartPage from './assets/pages/CartPage.jsx';
 import CheckoutPage from './assets/pages/CheckoutPage.jsx';
-import PrivacyPolicy from './assets/pages/PrivacyPolicyPage.jsx';
-import TermsAndConditions from './assets/pages/TermsAndConditionsPage.jsx';
+import PrivacyPolicyPage from './assets/pages/PrivacyPolicyPage.jsx';
+import TermsAndConditionsPage from './assets/pages/TermsAndConditionsPage.jsx';
 import PanelPage from './assets/pages/profile/PanelPage.jsx';
 import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
 import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
@@ -38,6 +38,7 @@ import CreateProductPage from './assets/pages/admin/CreateProductPage.jsx';
 import AdminProductsPage from './assets/pages/admin/AdminProductsPage.jsx';
 import AdminEditAll from './assets/pages/admin/AdminEditAll.jsx';
 import EditProductPage from './assets/pages/admin/EditProductPage.jsx';
+import ProjectRequestPage from './assets/pages/ProjectRequestPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -50,9 +51,10 @@ const router = createBrowserRouter(
             <Route path='/logout' element={<LogoutPage />} />
             <Route path='/cart' element={<CartPage />} />
             <Route path='/checkout' element={<CheckoutPage />} />
-            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-            <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
+            <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
+            <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
+            <Route path='/project-request' element={<ProjectRequestPage />} />
 
             <Route path='/profile' element={<ProfileLayout />} >
                 <Route path='/profile/panel' element={<PanelPage />} />

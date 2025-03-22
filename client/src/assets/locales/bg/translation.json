@@ -302,6 +302,13 @@
         "message": "Съобщение",
         "submit": "Изпрати"
     },
+    "project-request": {
+        "title": "Поискай проект",
+        "hunter-design-guide": "Hunter ръководство за проектиране",
+        "rainbird-request-form": "Rainbird формуляр за заявка",
+        "show": "Покажи",
+        "hide": "Скрий"
+    },
     "notFound": {
         "title": "404 Не е намерено",
         "message": "Тази страница не съществува!"

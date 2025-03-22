@@ -49,8 +49,8 @@ const Navbar = () => {
 
     const translationWidget = (
         i18n.language === "en" ?
-            <img onClick={() => i18n.changeLanguage("bg")} src="../../../public/images/usa.svg" alt="usa" /> :
-            <img onClick={() => i18n.changeLanguage("en")} src="../../../public/images/bulgaria.svg" alt="bulgaria" />
+            <img onClick={() => i18n.changeLanguage("bg")} src="../../../images/usa.svg" alt="usa" /> :
+            <img onClick={() => i18n.changeLanguage("en")} src="../../../images/bulgaria.svg" alt="bulgaria" />
     );
 
     return (
@@ -92,7 +92,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <NavLink to="/" ><img src="/public/images/logo.png" alt="logo" /></NavLink>
+                <NavLink to="/" ><img src="/images/logo.png" alt="logo" /></NavLink>
 
                 <nav>
                     <NavLink to="/">{t("navbar.home")}</NavLink>

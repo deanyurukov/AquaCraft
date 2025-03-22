@@ -302,6 +302,13 @@
         "message": "Message",
         "submit": "Submit"
     },
+    "project-request": {
+        "title": "Request a project",
+        "hunter-design-guide": "Hunter design guide",
+        "rainbird-request-form": "Rainbird request form",
+        "show": "Show",
+        "hide": "Hide"
+    },
     "notFound": {
         "title": "404 Not Found",
         "message": "This page does not exist!"

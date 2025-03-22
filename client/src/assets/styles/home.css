@@ -7,7 +7,7 @@
     background: rgb(252, 252, 238);
 
     #hero {
-        background: url(/public/images/hero.jpg);
+        background: url(/images/hero.jpg);
         background-repeat: repeat;
         background-size: cover;
         height: 80vh;
