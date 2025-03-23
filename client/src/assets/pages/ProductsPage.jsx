@@ -197,8 +197,8 @@ const ProductsPage = () => {
                             <p onClick={() => addFilter("nozzles")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.1")}</p>
                             <p onClick={() => addFilter("rotary")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.2")}</p>
                             <p onClick={() => addFilter("rotors")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.3")}</p>
-                            <p onClick={() => addFilter("impact")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.5")}</p>
-                            <p onClick={() => addFilter("hose")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.4")}</p>
+                            <p onClick={() => addFilter("hose")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.5")}</p>
+                            <p onClick={() => addFilter("impact")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.4")}</p>
                             <p onClick={() => addFilter("sprinklers_parts")}>{t("products.products-nav.titlebar.nav-items.2.dropdown.6")}</p>
                         </div>
                     </div>
