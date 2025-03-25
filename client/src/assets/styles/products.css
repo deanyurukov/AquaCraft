@@ -149,6 +149,36 @@
         }
     }
 
+    & > select {
+        border: 2px solid #333;
+        outline: none;
+        width: 45%;
+        font-size: 15px;
+        color: #9F9F9F;
+        padding: 1.5em 2em;
+        transition: all 0.2s linear;
+        margin: 1em 0 3em 0;
+
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-size: 24px;
+
+        @media (width <= 800px) {
+            width: 80%;
+        }
+
+        @media (width <= 400px) {
+            font-size: 13px;
+        }
+
+        &:focus {
+            border: 2px solid #91BA8D;
+            border-radius: 3px;
+        }
+    }
+
     &>.products-wrapper {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));

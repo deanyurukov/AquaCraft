@@ -19,6 +19,7 @@ const ProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchParams] = useSearchParams();
     const [filters, setFilters] = useState([]);
+    const [sortBy, setSortBy] = useState("");
 
     async function getProducts() {
         setLoading(true);
@@ -54,12 +55,16 @@ const ProductsPage = () => {
             const filtersFromURL = filter.filters.split('-');
             setFilters(filtersFromURL);
         }
+
+        if (filter.sortBy) {
+            setSortBy(filter.sortBy);
+        }
     }, [searchParams, products, productsPerPage]);
 
     const updateURL = () => {
         const params = new URLSearchParams();
 
-        params.set('filters', filters.join('-'));
+        if (filters.length > 0) params.set('filters', filters.join('-'));
 
         const maximumPages = Math.ceil(displayProducts.length / productsPerPage);
 
@@ -67,14 +72,11 @@ const ProductsPage = () => {
             setCurrentPage(1);
         }
 
-        params.set('page', currentPage);
+        if (sortBy !== "") params.set('sortBy', sortBy);
+        if (currentPage !== 1) params.set('page', currentPage);
 
         navigate(`/products?${params.toString()}`);
     };
-
-    const indexLastProduct = currentPage * productsPerPage;
-    const indexFirstProduct = indexLastProduct - productsPerPage;
-    const currentProducts = displayProducts.slice(indexFirstProduct, indexLastProduct);
 
     // Change page
     const paginate = (pageNumber) => {
@@ -102,6 +104,30 @@ const ProductsPage = () => {
             return [...prev];
         });
     }
+
+    function changeSorting(e) {
+        setSortBy(e.target.value);
+    }
+
+    useEffect(() => {
+        if (sortBy === "price_asc") {
+            setDisplayProducts(prev => prev.sort((a, b) => a.price - b.price));
+        }
+
+        if (sortBy === "price_desc") {
+            setDisplayProducts(prev => prev.sort((a, b) => b.price - a.price));
+        }
+
+        if (sortBy === "name_asc") {
+            setDisplayProducts(prev => prev.sort((a, b) => a.title.localeCompare(b.title)));
+        }
+
+        if (sortBy === "name_desc") {
+            setDisplayProducts(prev => prev.sort((a, b) => b.title.localeCompare(a.title)));
+        }
+
+        updateURL();
+    }, [sortBy, products, currentPage, displayProducts]);
 
     useEffect(() => {
         setDisplayProducts(() => {
@@ -166,6 +192,10 @@ const ProductsPage = () => {
     if (loading) {
         return <Spinner />;
     }
+
+    const indexLastProduct = currentPage * productsPerPage;
+    const indexFirstProduct = indexLastProduct - productsPerPage;
+    const currentProducts = displayProducts.slice(indexFirstProduct, indexLastProduct);
 
     return (
         <div id="products">
@@ -255,6 +285,14 @@ const ProductsPage = () => {
             </div>
 
             <h1>{t("products.title")}</h1>
+
+            <select id="sortBy" value={sortBy} onChange={changeSorting}>
+                <option value="">---------------</option>
+                <option value="price_asc">{t("products.sort-by.price-asc")}</option>
+                <option value="price_desc">{t("products.sort-by.price-desc")}</option>
+                <option value="name_asc">{t("products.sort-by.name-asc")}</option>
+                <option value="name_desc">{t("products.sort-by.name-desc")}</option>
+            </select>
 
             {
                 displayProducts.length === 0 ? <p>{t("products.empty")}</p> :
