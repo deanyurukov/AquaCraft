@@ -28,6 +28,7 @@
         "cards": {
             "products": "Products",
             "services": "Services",
+            "contactUs": "Contact Us",
             "projectRequest": "Request a Project",
             "howTo": "How To...",
             "learnMore": "Learn More"

@@ -16,9 +16,14 @@ const HomePage = () => {
         },
         {
             imageUrl: "../../../images/services.png",
-            title: "services",
-            href: "services"
+            title: "contactUs",
+            href: "contact-us"
         },
+        // {
+        //     imageUrl: "../../../images/services.png",
+        //     title: "services",
+        //     href: "services"
+        // },
         {
             imageUrl: "../../../images/request-project.png",
             title: "projectRequest",
@@ -39,7 +44,7 @@ const HomePage = () => {
 
                     <div className="button-wrapper">
                         <Link to={"/products"}>{t("home.products")}</Link>
-                        <Link to={"/services"}>{t("home.services")}</Link>
+                        {/* <Link to={"/services"}>{t("home.services")}</Link> */}
                         {isLoggedIn && <Link to={"/contact-us"}>{t("home.contact")}</Link>}
                     </div>
                 </div>
