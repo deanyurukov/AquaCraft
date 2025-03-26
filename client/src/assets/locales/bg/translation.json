@@ -179,10 +179,10 @@
             }
         },
         "sort-by": {
-            "price-asc": "По цена (ниска към висока)",
-            "price-desc": "По цена (висока към ниска)",
-            "name-asc": "По име (A до Z)",
-            "name-desc": "По име (Z до A)"
+            "price-asc": "Цена",
+            "price-desc": "Цена",
+            "name-asc": "A - Z",
+            "name-desc": "Z - A"
         }
     },
     "admin": {

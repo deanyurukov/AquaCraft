@@ -179,10 +179,10 @@
             }
         },
         "sort-by": {
-            "price-asc": "By Price (low to high)",
-            "price-desc": "By Price (high to low)",
-            "name-asc": "By Name (A to Z)",
-            "name-desc": "By Name (Z to A)"
+            "price-asc": "Price",
+            "price-desc": "Price",
+            "name-asc": "A - Z",
+            "name-desc": "Z - A"
         }
     },
     "admin": {
