@@ -5,7 +5,7 @@ import authService from "../../services/auth-service";
 import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../../App";
 import productsService from "../../services/products-service";
-import CreateSelect from "../../components/createSelect";
+import CreateSelect from "../../components/CreateSelect";
 
 const CreateProductPage = () => {
     const { t } = useTranslation();

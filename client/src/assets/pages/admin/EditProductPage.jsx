@@ -5,7 +5,7 @@ import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../../App";
 import productsService from "../../services/products-service";
 import Spinner from "../../components/Spinner";
-import CreateSelect from "../../components/createSelect";
+import CreateSelect from "../../components/CreateSelect";
 
 const EditProductPage = () => {
     const { id } = useParams();
