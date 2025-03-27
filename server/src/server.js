@@ -491,12 +491,14 @@ app.post("/products/favorites/remove/:id", async (req, res) => {
 });
 
 app.post("/products/addOne", async (req, res) => {
-    const { title, imageUrl, price, description, inStock, company, type, typeDetails } = req.body;
+    const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    const imagesArray = images.split(",");
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.create({ title, imageUrl, price, description, inStock, company, type, typeDetails });
+            await Product.create({ title, images: imagesArray, price, description, inStock, company, type, typeDetails });
         }
         catch (err) {
             console.error(err);
@@ -556,11 +558,12 @@ app.delete("/products/delete/:id", async (req, res) => {
 app.put("/products/change/:id", async (req, res) => {
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-    const newProduct = req.body;
+    const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
+    const imagesArray = images.split(",");
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.findByIdAndUpdate(productId, newProduct, { runValidators: true });
+            await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true });
         }
         catch (err) {
             console.error(err);

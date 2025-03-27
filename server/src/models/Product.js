@@ -6,10 +6,29 @@ const productSchema = new Schema({
         required: [true, "allFields"],
         match: [/^[a-zа-яА-ЯA-Z0-9\s]+$/, "name.invalid"]
     },
-    imageUrl: {
-        type: String,
+    // images: [{
+    //     type: String,
+    //     required: [true, "allFields"],
+    //     match: [/https?:\/\/[^\s]+/, "image.invalid"],
+    //     maxLength: [5, "image.exceeds"],
+    // }],
+    images: {
+        type: [String], // Define it as an array of strings
         required: [true, "allFields"],
-        match: [/https?:\/\/[^\s]+/, "image.invalid"]
+        validate: [
+            {
+                validator: function (arr) {
+                    return arr.length <= 4; // Enforce max 5 elements
+                },
+                message: "image.exceeds",
+            },
+            {
+                validator: function (arr) {
+                    return arr.every(url => /^https?:\/\/[^\s]+$/.test(url)); // Regex validation for each item
+                },
+                message: "image.invalid",
+            },
+        ],
     },
     description: {
         type: String,
