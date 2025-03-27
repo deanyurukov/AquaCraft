@@ -18,6 +18,7 @@ const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
 // const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
 const port = process.env.PORT || 5001;
+const allowedOrigins = ['https://www.aquacraft.ltd'];
 
 try {
     await mongoose.connect(uri);
@@ -32,9 +33,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins (or specify a domain)
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed HTTP methods
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Authorization'); // Allowed headers
+    const origin = req.headers.origin;
+
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin); // Dynamic Origin
+        res.setHeader('Access-Control-Allow-Credentials', 'true'); // If sending cookies or auth headers
+    }
+
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Authorization');
 
     next();
 });
