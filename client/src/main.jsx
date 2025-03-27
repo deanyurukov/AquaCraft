@@ -7,6 +7,7 @@ createRoot(document.getElementById('root')).render(
     <React.Suspense fallback="Loading...">
         <StrictMode>
             <App />
+            <Analytics />
         </StrictMode>
     </React.Suspense>
 );
