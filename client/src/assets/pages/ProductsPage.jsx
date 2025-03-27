@@ -19,7 +19,7 @@ const ProductsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchParams] = useSearchParams();
     const [filters, setFilters] = useState([]);
-    const [sortBy, setSortBy] = useState("name_asc");
+    const [sortBy, setSortBy] = useState("created_at");
     const [search, setSearch] = useState("");
 
     async function getProducts() {
@@ -222,6 +222,10 @@ const ProductsPage = () => {
             filteredProducts.sort((a, b) => b.title.localeCompare(a.title));
         }
 
+        if (sortBy === "created_at") {
+            filteredProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        }
+
         filteredProducts = filteredProducts.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
 
         const filter = () => {
@@ -387,6 +391,7 @@ const ProductsPage = () => {
             <div className="products-wrapper">
                 <div className="sort">
                     <select id="sortBy" value={sortBy} onChange={changeSorting}>
+                        <option value="created_at">{t("products.sort-by.latest")}</option>
                         <option value="name_asc">{t("products.sort-by.name-asc")}</option>
                         <option value="name_desc">{t("products.sort-by.name-desc")}</option>
                         <option value="price_asc">{t("products.sort-by.price-asc")} ⬆️</option>

@@ -182,7 +182,8 @@
             "price-asc": "Price",
             "price-desc": "Price",
             "name-asc": "A - Z",
-            "name-desc": "Z - A"
+            "name-desc": "Z - A",
+            "latest": "Newest"
         }
     },
     "admin": {

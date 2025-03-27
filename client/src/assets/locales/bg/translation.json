@@ -182,7 +182,8 @@
             "price-asc": "Цена",
             "price-desc": "Цена",
             "name-asc": "A - Z",
-            "name-desc": "Z - A"
+            "name-desc": "Z - A",
+            "latest": "Нови"
         }
     },
     "admin": {
