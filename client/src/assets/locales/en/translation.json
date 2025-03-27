@@ -193,7 +193,7 @@
             "price": "Price",
             "inStock": "In stock",
             "description": "Description",
-            "image": "Image URL",
+            "image": "Images (max 4; separated by ',')",
             "submit": "Create"
         },
         "products": {
@@ -390,7 +390,8 @@
             "invalid": "Username must only contain latin letters and numbers!"
         },
         "image": {
-            "invalid": "Image address must be a valid URL!"
+            "invalid": "Image address must be a valid URL!",
+            "exceeds": "There must not be more than 4 images!"
         },
         "description": {
             "short": "Description must be 10 or more characters!"

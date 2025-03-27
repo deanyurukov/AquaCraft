@@ -15,9 +15,9 @@ const CreateProductPage = () => {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const { title, imageUrl, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
+        const { title, images, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [data, error] = await productsService.addOne(title, imageUrl, price, description, inStock, company, type, typeDetails);
+        const [data, error] = await productsService.addOne(title, images, price, description, inStock, company, type, typeDetails);
 
         if (!data) {
             getErrorAndDisplay(error);
@@ -35,7 +35,7 @@ const CreateProductPage = () => {
             <div className="content">
                 <form onSubmit={onSubmit}>
                     <CheckoutInput label={`${t("admin.create.name")}*`} name={"title"} />
-                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"imageUrl"} />
+                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} />
 

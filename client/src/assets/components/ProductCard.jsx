@@ -12,7 +12,7 @@ const ProductCard = ({ product, getProducts }) => {
     
     return (
         <div className="product">
-            <img onError={changeImage} src={product.imageUrl} alt={product.title} />
+            <img onError={changeImage} src={product.images[0]} alt={product.title} />
 
             {
                 product.isFav ?

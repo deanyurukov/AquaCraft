@@ -18,9 +18,9 @@ const EditProductPage = () => {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const { title, imageUrl, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
+        const { title, images, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [data, error] = await productsService.changeOne(product._id, title, imageUrl, price, description, inStock, company, type, typeDetails);
+        const [data, error] = await productsService.changeOne(product._id, title, images, price, description, inStock, company, type, typeDetails);
 
         if (!data) {
             getErrorAndDisplay(error);
@@ -54,7 +54,7 @@ const EditProductPage = () => {
             <div className="content">
                 <form onSubmit={onSubmit}>
                     <CheckoutInput label={`${t("admin.create.name")}*`} name={"title"} value={product.title} />
-                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"imageUrl"} value={product.imageUrl} />
+                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} value={product.images?.join(",")} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} value={product.price} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} value={product.inStock} />
 

@@ -15,6 +15,7 @@ const DetailsPage = () => {
     const update = useContext(appContext)[4];
     const getErrorAndDisplay = useContext(appContext)[6];
     const { t } = useTranslation();
+    const [activeUrl, setActiveUrl] = useState(null);
 
     async function fetchProductData() {
         setLoading(true);
@@ -25,6 +26,7 @@ const DetailsPage = () => {
         }
 
         setProductData(product);
+        setActiveUrl(product.images[0]);
         setLoading(false);
     }
 
@@ -39,8 +41,20 @@ const DetailsPage = () => {
     return (
         <div id="details">
             <GoBackArrow />
+
             <div className="details-wrapper">
-                <img onError={changeImage} src={productData.imageUrl} alt={productData.title} />
+                <div className="images">    
+                    <img onError={changeImage} src={activeUrl ? activeUrl : null} alt={productData.title} />
+
+                    <div className="more-images">
+                        {
+                            productData.images?.length > 0 &&
+                            productData?.images.map(img => (
+                                <img key={img} onClick={() => setActiveUrl(img)} onError={changeImage} src={img} />
+                            ))
+                        }
+                    </div>
+                </div>
 
                 <div className="content-wrapper">
                     <div>

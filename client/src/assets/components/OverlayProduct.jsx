@@ -11,7 +11,7 @@ const OverlayProduct = ({ product }) => {
 
     return (
         <div>
-            <img src={product.imageUrl} onError={changeImage} alt={product.title} />
+            <img src={product.images[0]} onError={changeImage} alt={product.title} />
             <p>{product.title}</p>
             <a onClick={async () => {
                 const data = await productsService.addToCart(product._id);
