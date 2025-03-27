@@ -9,7 +9,6 @@ const ProjectRequestPage = () => {
             <h1>{t("project-request.title")}</h1>
 
             <div className="content">
-                <ProjectRequestItem name={"hunter-design-guide"} pathToDoc={"../../../documents/hunter-design-guide.pdf"} />
                 <ProjectRequestItem name={"rainbird-request-form"} pathToDoc={"../../../documents/rainbird-request-form.pdf"} />
             </div>
         </div>

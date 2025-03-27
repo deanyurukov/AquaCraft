@@ -359,6 +359,9 @@
         "show": "Show",
         "hide": "Hide"
     },
+    "how-to": {
+        "title": "How to..."
+    },
     "notFound": {
         "title": "404 Not Found",
         "message": "This page does not exist!"

@@ -170,6 +170,15 @@
             width: 100%;
             margin: 1em 0 3em 0;
 
+            @media (width <= 600px) {
+                gap: 1.5em;
+            }
+
+            @media (width <= 470px) {
+                grid-template-columns: 1.5fr 2fr;
+                margin: 1em 0 1.5em 0;
+            }
+
             select, input {
                 font-size: 15px;
                 color: #9F9F9F;
@@ -177,6 +186,14 @@
                 transition: all 0.2s linear;
                 border: 2px solid #333;
                 outline: none;
+
+                @media (width <= 600px) {
+                    padding: 0.8em 1.2em;
+                }
+
+                @media (width <= 470px) {
+                    font-size: 13px;
+                }
 
                 &:focus {
                     border: 2px solid #91BA8D;
@@ -190,6 +207,10 @@
                 background-repeat: no-repeat;
                 background-position: right 15px center;
                 background-size: 24px;
+
+                @media (width <= 600px) {
+                    background-position: right 10px center;
+                }
             }
 
             span {

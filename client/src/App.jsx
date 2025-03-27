@@ -39,6 +39,7 @@ import AdminProductsPage from './assets/pages/admin/AdminProductsPage.jsx';
 import AdminEditAll from './assets/pages/admin/AdminEditAll.jsx';
 import EditProductPage from './assets/pages/admin/EditProductPage.jsx';
 import ProjectRequestPage from './assets/pages/ProjectRequestPage.jsx';
+import HowToPage from './assets/pages/HowToPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -55,6 +56,7 @@ const router = createBrowserRouter(
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
             <Route path='/project-request' element={<ProjectRequestPage />} />
+            <Route path='/how-to' element={<HowToPage />} />
 
             <Route path='/profile' element={<ProfileLayout />} >
                 <Route path='/profile/panel' element={<PanelPage />} />
