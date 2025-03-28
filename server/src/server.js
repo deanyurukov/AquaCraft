@@ -524,8 +524,6 @@ app.post("/products/changeInStock/:id", async (req, res) => {
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
-    console.log(changedStock);
-
     if (isValid && data.isAdmin) {
         try {
             const product = await Product.findById(productId);
