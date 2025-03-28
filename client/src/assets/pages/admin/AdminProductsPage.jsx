@@ -11,6 +11,7 @@ const AdminProductsPage = () => {
     const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
     const [search, setSearch] = useState("");
+    const [filter, setFilter] = useState("all");
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
 
@@ -28,23 +29,55 @@ const AdminProductsPage = () => {
         setSearch(e.target.value);
     }
 
+    function onFilter(e) {
+        setFilter(e.target.value);
+        console.log(e.target.value);
+    }
+
     useEffect(() => {
         getProducts();
     }, []);
 
     useEffect(() => {
-        setDisplayProducts(prev => prev = [...products].filter(product => product.title.toLowerCase().includes(search.toLowerCase())));
-        navigate(`/admin/products?search=${search}`);
-    }, [search]);
+        let tempProducts = [...products];
+
+        tempProducts = tempProducts.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+
+        if (filter === "1_2") {
+            tempProducts = tempProducts.filter(product => product.inStock === 1 || product.inStock === 2);
+        }
+
+        if (filter === "0") {
+            tempProducts = tempProducts.filter(product => product.inStock === 0);
+        }
+        if (filter === "lt_0") {
+            tempProducts = tempProducts.filter(product => product.inStock < 0);
+        }
+
+        setDisplayProducts(tempProducts);
+        updateURL();
+    }, [search, filter, products]);
 
     useEffect(() => {
         const filter = Object.fromEntries(searchParams);
 
         if (filter.search) {
             setSearch(filter.search);
-            setDisplayProducts(prev => prev = [...products].filter(product => product.title.toLowerCase().includes(filter.search.toLowerCase())));
+        }
+
+        if (filter.filter) {
+            setFilter(filter.filter);
         }
     }, [searchParams, products]);
+
+    const updateURL = () => {
+        const params = new URLSearchParams();
+
+        if (search !== "") params.set('search', search);
+        if (filter !== "all") params.set('filter', filter);
+
+        navigate(`/admin/products?${params.toString()}`);
+    };
 
     if (loading) {
         return <div id="profile-spinner">
@@ -54,14 +87,25 @@ const AdminProductsPage = () => {
 
     return (
         <div id="admin-products">
-            <span>
-                <i className="fa-solid fa-magnifying-glass"></i>
-                <input onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.products.search")}...`} />
-            </span>
+            <div id="filter">
+               <span>
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                    <input onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.products.search")}...`} />
+                </span>
 
-            {displayProducts.map(product => (
-                <AdminProduct product={product} getProducts={getProducts} key={product._id} />
-            ))}
+                <select name="filter" id="filter" value={filter} onChange={onFilter}>
+                    <option value="all">{t("admin.products.all")}</option>
+                    <option value="1_2">1 / 2</option>
+                    <option value="0">0</option>
+                    <option value="lt_0">&lt; 0</option>
+                </select>
+            </div>
+
+            {
+                displayProducts.length === 0 ? <p>{t("products.empty")}</p> :
+                displayProducts.map(product => (
+                    <AdminProduct product={product} getProducts={getProducts} key={product._id} />
+                ))}
         </div>
     );
 }

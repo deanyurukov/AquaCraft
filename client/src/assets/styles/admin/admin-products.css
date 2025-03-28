@@ -8,11 +8,85 @@
     min-height: 70vh;
     gap: 2em;
 
-    @media (width <= 1020px) {
+    @media (width <=1020px) {
         width: 100%;
     }
 
-    span {
+    #filter {
+        span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            background: white;
+            width: 100%;
+
+            i {
+                position: absolute;
+                right: 1em;
+                color: black;
+                cursor: pointer;
+
+                @media (width <=370px) {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        input, select {
+            border: 2px solid #333;
+            outline: none;
+            padding: 1em;
+            font-size: 16px;
+            color: #565656;
+            transition: all 0.2s linear;
+            background: white;
+
+            @media (width <= 650px) {
+                font-size: 14px;
+            }
+
+            @media (width <=540px) {
+                font-size: 12px;
+            }
+
+            @media (width <=480px) {
+                padding: 0.4em 0.6em;
+            }
+
+            &:focus {
+                border: 2px solid #91BA8D;
+                border-radius: 3px;
+            }
+        }
+
+        input {
+            width: 100%;
+        }
+
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 24px;
+            width: 25%;
+
+            @media (width <= 650px) {
+                background-position: right 10px center;
+            }
+
+            @media (width <= 520px) {
+                background-position: right 3px center;
+            }
+
+            @media (width <= 440px) {
+                background-position: right -3px center;
+            }
+        }
+    }
+
+    & > span {
         position: relative;
         display: flex;
         align-items: center;
@@ -53,7 +127,7 @@
             @media (width <= 370px) {
                 font-size: 14px;
             }
-        }
+        }   
     }
 
     div {
@@ -63,11 +137,11 @@
         width: 100%;
         gap: 3em;
 
-        @media (width <= 600px) {
+        @media (width <=600px) {
             gap: 1.8em;
         }
 
-        @media (width <= 451px) {
+        @media (width <=451px) {
             gap: 1em;
         }
 
@@ -76,26 +150,26 @@
             font-weight: 500;
             font-size: 20px;
 
-            @media (width <= 700px) {
+            @media (width <=700px) {
                 font-size: 18px;
             }
 
-            @media (width <= 550px) {
+            @media (width <=550px) {
                 font-size: 15px;
                 font-weight: 400;
             }
 
-            @media (width <= 350px) {
+            @media (width <=350px) {
                 font-size: 14px;
             }
         }
 
         p {
-            @media (width <= 700px) {
+            @media (width <=700px) {
                 font-size: 14px;
             }
 
-            @media (width <= 550px) {
+            @media (width <=550px) {
                 font-size: 12px;
             }
         }
@@ -112,7 +186,7 @@
                 width: 40%;
             }
 
-            @media (width <= 450px) {
+            @media (width <=450px) {
                 gap: 0.6em;
             }
 
@@ -163,7 +237,7 @@
                     font-size: 14px;
                 }
 
-                @media (width <= 550px) {
+                @media (width <=550px) {
                     font-size: 12px;
                     padding: 0.3em 1.2em;
                     width: 60%;
@@ -171,8 +245,8 @@
             }
         }
 
-        & > button,
-        & > a {
+        &>button,
+        &>a {
             padding: 0.5em 1.5em;
             font-size: 16px;
             color: #ffffff;
@@ -184,16 +258,16 @@
             align-items: center;
             justify-content: center;
 
-            @media (width <= 700px) {
+            @media (width <=700px) {
                 font-size: 14px;
             }
 
-            @media (width <= 550px) {
+            @media (width <=550px) {
                 font-size: 12px;
                 padding: 0.3em 1.2em;
             }
 
-            @media (width <= 350px) {
+            @media (width <=350px) {
                 font-size: 10px;
             }
 
@@ -204,7 +278,7 @@
                     background: rgba(255, 166, 0, 0.832);
                 }
             }
-            
+
             &.delete {
                 background: red;
 
@@ -212,6 +286,19 @@
                     background: rgba(255, 0, 0, 0.767);
                 }
             }
+        }
+    }
+
+    &>p {
+        font-size: 28px;
+        font-weight: 500;
+        color: gray;
+        padding: 1em 3em;
+        text-align: center;
+        text-wrap: balance;
+
+        @media (width <= 470px) {
+            font-size: 22px;
         }
     }
 }
