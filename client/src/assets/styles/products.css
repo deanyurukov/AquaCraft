@@ -186,6 +186,7 @@
                 transition: all 0.2s linear;
                 border: 2px solid #333;
                 outline: none;
+                background: white;
 
                 @media (width <= 600px) {
                     padding: 0.8em 1.2em;

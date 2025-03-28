@@ -198,7 +198,7 @@
             "submit": "Create"
         },
         "products": {
-            "title": "Products",
+            "title": "Stock",
             "change": "Change stock",
             "stock": "Stock",
             "confirm": "Are you sure you want to change that stock?",

@@ -15,8 +15,8 @@ const AdminLayout = () => {
     const paths = {
         "Създай продукт": "create",
         "Create product": "create",
-        "Продукти": "products",
-        "Products": "products",
+        "Stock": "Stock",
+        "Стоки": "Stock",
         "Промени": "edit",
         "Edit": "edit",
     };

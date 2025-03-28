@@ -74,7 +74,8 @@
     & > div {
         display: flex;
         width: 40%;
-        justify-content: space-between;
+        /* justify-content: space-between; // will need this back after exam */
+        justify-content: center;
 
         @media (width <= 900px) {
             width: 60%;
