@@ -18,7 +18,7 @@ const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
 // const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
 const port = process.env.PORT || 5001;
-const allowedOrigins = ['https://www.aquacraft.ltd'];
+const allowedOrigins = ['https://www.aquacraft.ltd', "http://localhost:3000"];
 
 try {
     await mongoose.connect(uri);
@@ -523,6 +523,8 @@ app.post("/products/changeInStock/:id", async (req, res) => {
     const { changedStock } = req.body;
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    console.log(changedStock);
 
     if (isValid && data.isAdmin) {
         try {
