@@ -1,4 +1,5 @@
-# AquaCraft 🌿💦  
+# AquaCraft 🌿💦
+
 *A modern irrigation system platform with DIY guides and product ordering.*
 
 ## 🚀 About AquaCraft  
@@ -107,4 +108,6 @@ The project is live at: `https://www.aquacraft.ltd/`
 
 ---
 
-### ![License](https://img.shields.io/github/license/dean10042008/AquaCraft) License
+### 📜 License
+
+![License](https://img.shields.io/github/license/dean10042008/AquaCraft)
