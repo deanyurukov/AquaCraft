@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import cookieParser from 'cookie-parser';
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 
@@ -30,7 +29,6 @@ try {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cookieParser());
 
 app.use((req, res, next) => {
     const origin = req.headers.origin;

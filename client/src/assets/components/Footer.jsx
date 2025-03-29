@@ -34,7 +34,7 @@ const Footer = () => {
                 </ul> */}
             </div>
 
-            <p>&copy; {new Date().getFullYear()} Aqua Craft {t("footer.rights")}</p>
+            <p>&copy; {new Date().getFullYear()} AquaCraft {t("footer.rights")}</p>
         </footer>
     );
 }
