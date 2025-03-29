@@ -10,7 +10,9 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **React** (Framework)  
 - **React Router** (Client-side navigation)  
 - **i18next** (Multilingual support)  
-- **Vercel** (Deployment)  
+- **Vercel** (Deployment)
+- **Font Awesome** (Icons)
+- **EmailJS** (Email Service)
 
 ### Backend  
 - **Express** (Server)  
@@ -102,3 +104,7 @@ The frontend is now running on `http://localhost:3000/`.
 ### 🌎 Deployment
 
 The project is live at: `https://www.aquacraft.ltd/`
+
+---
+
+### ![License](https://img.shields.io/github/license/dean10042008/AquaCraft) License
