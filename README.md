@@ -14,6 +14,7 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **Vercel** (Deployment)
 - **Font Awesome** (Icons)
 - **EmailJS** (Email Service)
+-- **React Scan** (Detecting Performance Issues)
 
 ### Backend  
 - **Express** (Server)  
