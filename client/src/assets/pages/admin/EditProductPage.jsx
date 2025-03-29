@@ -54,7 +54,7 @@ const EditProductPage = () => {
             <div className="content">
                 <form onSubmit={onSubmit}>
                     <CheckoutInput label={`${t("admin.create.name")}*`} name={"title"} value={product.title} />
-                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} value={product.images?.join(",")} />
+                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} value={product.images?.join(", ")} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} value={product.price} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} value={product.inStock} />
 

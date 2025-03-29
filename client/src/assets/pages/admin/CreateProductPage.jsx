@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import authService from "../../services/auth-service";
 import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../../App";
 import productsService from "../../services/products-service";

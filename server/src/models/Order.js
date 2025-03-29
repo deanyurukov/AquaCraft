@@ -30,7 +30,7 @@ const orderSchema = new Schema(
         phone: {
             type: String,
             required: [true, "allFields"],
-            match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, "phone.invalid"]
+            match: [/^\+?359[\s]?8\d{2}[\s]?\d{3}[\s]?\d{3}$/, "phone.invalid"]
         },
         deliveryWay: {
             type: String,

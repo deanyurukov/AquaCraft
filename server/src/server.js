@@ -501,7 +501,7 @@ app.post("/products/addOne", async (req, res) => {
     const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
-    const imagesArray = images.split(",");
+    const imagesArray = images.split(",").map(image => image.trim());
 
     if (isValid && data.isAdmin) {
         try {
@@ -566,7 +566,7 @@ app.put("/products/change/:id", async (req, res) => {
     const productId = req.params.id;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
-    const imagesArray = images.split(",");
+    const imagesArray = images.split(",").map(image => image.trim());
 
     if (isValid && data.isAdmin) {
         try {

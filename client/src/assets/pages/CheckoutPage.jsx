@@ -86,7 +86,7 @@ const CheckoutPage = () => {
                     <form>
                         <CheckoutInput label={`${t("checkout.name")}*`} name={"name"} />
                         <CheckoutInput label={`${t("checkout.city")}*`} name={"town"} />
-                        <CheckoutInput label={`${t("checkout.phone")}*`} name={"phone"} type={"phone"} />
+                        <CheckoutInput label={`${t("checkout.phone")}*`} name={"phone"} type={"phone"} placeholder={"+359 123 456 789"} />
                         <CheckoutInput label={`${t("checkout.email")}*`} name={"email"} type={"email"} value={userEmail} />
 
                         <div>
