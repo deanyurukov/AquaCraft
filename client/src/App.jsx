@@ -108,7 +108,7 @@ function App() {
     }
 
     useEffect(() => {
-        i18n.changeLanguage("bg");
+        i18n.changeLanguage(localStorage.getItem("language") || "bg");
         
         getFavs();
     }, []);
