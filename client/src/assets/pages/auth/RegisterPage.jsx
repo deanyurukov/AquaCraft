@@ -33,7 +33,7 @@ const RegisterPage = () => {
             getErrorAndDisplay(registerData.message)
 
             try {
-                // await emailjs.send(emailConfig.supportService, emailConfig.registerTemplate, { username, email });
+                await emailjs.send(emailConfig.supportService, emailConfig.registerTemplate, { username, email });
             }
             catch (error) {
                 console.error(error);

@@ -67,7 +67,7 @@ const CheckoutPage = () => {
         getErrorAndDisplay(data.message);
 
         try {
-            // emailjs.send(emailConfig.supportService, emailConfig.orderTemplate, data.data);
+            emailjs.send(emailConfig.gmailService, emailConfig.orderTemplate, data.data);
         }
         catch (error) {
             console.error(error);

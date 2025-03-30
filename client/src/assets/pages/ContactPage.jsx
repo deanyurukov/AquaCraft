@@ -65,8 +65,12 @@ const ContactPage = () => {
                 throw new Error("message.short");
             }
 
-            //* TODO: Make it send email. 
-            // emailjs.send(emailConfig.emailService, emailConfig.orderTemplate, data.data);
+            try {
+                emailjs.send(emailConfig.gmailService, emailConfig.contactTemplate, { email, name, message });
+            }
+            catch (err) {
+                console.error(err);
+            }
 
             navigate("/");
         }

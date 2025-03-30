@@ -359,10 +359,17 @@ app.post("/addOrder", async (req, res) => {
             orderData: []
         };
 
+        let orderDays = 1;
+
         user.productsInCart.forEach(async (productData) => {
             order.orderData.push(productData);
             const product = await Product.findById(productData.product._id);
             product.inStock -= productData.quantity;
+
+            if (product.inStock < 0) {
+                orderDays += 2;
+            }
+
             await product.save();
         });
 
@@ -370,6 +377,8 @@ app.post("/addOrder", async (req, res) => {
 
         try {
             orderData = await Order.create(order);
+            orderData = orderData.toObject();
+            orderData.orderDays = orderDays;
         }
         catch (err) {
             console.error(err);
