@@ -58,7 +58,7 @@
 
             @media (width <= 800px) {
                 gap: 0.8em;
-                width: 80%;
+                width: 90%;
             }
 
             div {
@@ -77,10 +77,6 @@
 
                     @media (width <=700px) {
                         font-size: 15px;
-                    }
-
-                    @media (width <=570px) {
-                        font-size: 13px;
                     }
                 }
 
@@ -104,10 +100,6 @@
 
                     @media (width <=700px) {
                         font-size: 13px;
-                    }
-
-                    @media (width <=570px) {
-                        font-size: 11px;
                     }
 
                     &:focus {
@@ -147,7 +139,7 @@
             width: 45%;
 
             @media (width <= 800px) {
-                width: 80%;
+                width: 90%;
             }
 
             iframe {

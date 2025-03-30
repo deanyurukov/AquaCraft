@@ -32,18 +32,18 @@ const Navbar = () => {
 
     const userNav = (
         <>
-            <NavLink onClick={() => setIsClickedNav(false)} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
-            <NavLink onClick={() => setIsClickedNav(false)} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
-            <i id="favorites-icon" onClick={() => { showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
-            <NavLink onClick={() => setIsClickedNav(false)} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
-            <NavLink onClick={() => setIsClickedNav(false)} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
+            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
+            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
+            <i id="favorites-icon" onClick={(e) => { e.stopPropagation(); showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
+            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
+            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
         </>
     );
 
     const guestNav = (
         <>
             <NavLink onClick={() => setIsClickedNav(false)} to="/login">{t("navbar.login")}</NavLink>
-            <NavLink onClick={() => setIsClickedNav(false)} to="/register">{t("navbar.register")}</NavLink>
+            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/register">{t("navbar.register")}</NavLink>
         </>
     );
 
@@ -65,8 +65,8 @@ const Navbar = () => {
                 <button onClick={() => setIsClickedNav(false)}><i className="fa-solid fa-xmark"></i></button>
 
                 <div>
-                    <NavLink onClick={() => setIsClickedNav(false)} to="/">{t("navbar.home")}</NavLink>
-                    <NavLink onClick={() => setIsClickedNav(false)} to="/products">{t("navbar.products")}</NavLink>
+                    <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/">{t("navbar.home")}</NavLink>
+                    <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/products">{t("navbar.products")}</NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
