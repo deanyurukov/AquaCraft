@@ -14,7 +14,7 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **Vercel** (Deployment)
 - **Font Awesome** (Icons)
 - **EmailJS** (Email Service)
--- **React Scan** (Detecting Performance Issues)
+- **React Scan** (Detecting Performance Issues)
 
 ### Backend  
 - **Express** (Server)  
@@ -83,6 +83,8 @@ The frontend is now running on `http://localhost:3000/`.
 - Product Details
 - Privacy Policy
 - Terms of Service
+- How to
+- Project request
 
 #### 🚪 Guest-Only Pages
 - Login
