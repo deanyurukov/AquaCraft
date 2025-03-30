@@ -132,6 +132,10 @@
                         border: 2px solid #91BA8D;
                         border-radius: 3px;
                     }
+
+                    &::placeholder {
+                        color: #b5b5b5;
+                    }
                 }
 
                 select {
@@ -182,12 +186,13 @@
                 div {
                     display: flex;
                     justify-content: space-between;
+                    gap: 4em;
 
                     & > :nth-child(1) {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        gap: 0.4em;
+                        gap: 1em;
 
                         & > :nth-child(1) {
                             font-weight: 400;
@@ -210,6 +215,8 @@
                     }
 
                     & > :nth-child(2) {
+                        align-self: center;
+
                         @media (width <= 500px) {
                             font-size: 14px;
                         }

@@ -17,7 +17,7 @@
         position: relative;
 
         @media (width <= 370px) {
-            font-size: 22px;
+            font-size: 30px;
         }
 
         &::after {
@@ -34,13 +34,17 @@
     .form-wrapper {
         border-radius: 10px;
         padding: 24px;
-        width: clamp(150px, 70%, 400px);
+        width: clamp(300px, 70%, 400px);
         background: #F4F5F7;
         border: 1px solid #E4E4E4;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media (width <= 450px) {
+            padding: 24px 12px;
+        }
     
         .form {
             display: flex;

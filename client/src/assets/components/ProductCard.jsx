@@ -40,7 +40,7 @@ const ProductCard = ({ product, getProducts }) => {
             <span>
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
-                <p>${Number(product.price).toFixed(2)}</p>
+                <p>€{Number(product.price).toFixed(2)}</p>
                 <div>
                     <Link to={`/products/${product._id}/details`}>{t("products.details")}</Link>
                     <Link onClick={async () => {

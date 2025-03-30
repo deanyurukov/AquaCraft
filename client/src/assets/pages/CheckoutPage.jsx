@@ -116,7 +116,7 @@ const CheckoutPage = () => {
                     </div>
                     <div>
                         <h5>{t("checkout.total")}</h5>
-                        <h5>${totalPrice.toFixed(2)}</h5>
+                        <h5>€{totalPrice.toFixed(2)}</h5>
                     </div>
 
                     <hr />

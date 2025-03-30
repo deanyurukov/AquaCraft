@@ -283,13 +283,17 @@
                         top: 0.2em;
                         right: 0.2em;
                     }
+
+                    &:hover {
+                        color: #5e5e5e;
+                    }
     
                     &.fill {
                         color: #91BA8D;
-                    }
-    
-                    &:hover {
-                        background: #f1f1f1;
+
+                        &:hover {
+                            color: #9fcb9a;
+                        }
                     }
                 }
     

@@ -37,7 +37,7 @@
             width: 70%;
 
             @media (width <= 1020px) {
-                width: 80%;
+                width: 100%;
             }
 
             @media (width <= 800px) {
@@ -61,10 +61,6 @@
                     @media (width <=700px) {
                         font-size: 15px;
                     }
-
-                    @media (width <=570px) {
-                        font-size: 13px;
-                    }
                 }
 
                 input,
@@ -87,10 +83,6 @@
 
                     @media (width <=700px) {
                         font-size: 13px;
-                    }
-
-                    @media (width <=570px) {
-                        font-size: 11px;
                     }
 
                     &:focus {

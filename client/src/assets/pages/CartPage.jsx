@@ -71,7 +71,7 @@ const CartPage = () => {
                         <div className="right">
                             <div>
                                 <h3>{t("cart.total")}:</h3>
-                                <p>${totalPrice.toFixed(2)}</p>
+                                <p>€{totalPrice.toFixed(2)}</p>
                             </div>
                             <Link to="/checkout">{t("cart.checkout")}</Link>
                         </div>

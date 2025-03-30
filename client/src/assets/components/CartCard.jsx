@@ -51,7 +51,7 @@ const CartCard = ({ product, fetchProducts }) => {
             <span>
                 <input onBlur={(e) => handleQuantityChange(e, product.product._id)} onChange={handleChange} type="number" min="1" max="999" value={quantity} />
             </span>
-            <p>${(product.product.price * product.quantity).toFixed(2)}</p>
+            <p>€{(product.product.price * product.quantity).toFixed(2)}</p>
             <button onClick={() => deleteProduct(product.product._id)}><i className="fa-solid fa-trash"></i></button>
         </div>
     )

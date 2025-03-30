@@ -13,7 +13,7 @@ const OrderProduct = ({ quantity, product, getOrder }) => {
             <td><img onError={changeImage} src={product.images[0]} alt={product.title} /></td>
             <td>{product.title}</td>
             <td>{quantity}</td>
-            <td>${(quantity * product.price).toFixed(2)}</td>
+            <td>€{(quantity * product.price).toFixed(2)}</td>
             <td>
                 <span>
                     {

@@ -18,7 +18,7 @@ const ProfileOrder = ({ order }) => {
             <td>{createdAtString}</td>
             <td>{order.orderData.length}</td>
             <td>{order.name}</td>
-            <td>${price.toFixed(2)}</td>
+            <td>€{price.toFixed(2)}</td>
             <td><Link to={`/profile/order/${order._id}/details`}><i className="fa-solid fa-circle-info"></i></Link></td>
         </tr>
     );

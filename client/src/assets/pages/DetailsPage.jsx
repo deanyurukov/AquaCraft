@@ -84,7 +84,7 @@ const DetailsPage = () => {
                                 }} className="fa-regular fa-heart"></i>
                         }
                     </div>
-                    <h4>${Number(productData.price).toFixed(2)}</h4>
+                    <h4>€{Number(productData.price).toFixed(2)}</h4>
                     <hr />
                     <p>{productData.description}</p>
                     <Link onClick={async () => {

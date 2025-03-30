@@ -31,7 +31,7 @@
             @media (width <= 650px) {
                 flex-direction: row-reverse;
                 justify-content: space-between;
-                width: 70%;
+                width: 90%;
             }
 
             & > img {
@@ -45,6 +45,10 @@
 
                 @media (width <= 650px) {
                     width: 75%;
+                }
+
+                @media (width <= 400px) {
+                    height: 250px;
                 }
             }
 
