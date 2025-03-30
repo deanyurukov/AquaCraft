@@ -102,6 +102,7 @@ The frontend is now running on `http://localhost:3000/`.
 - Create Product
 - Change Stock
 - Edit Products (with options to delete/edit products)
+- All Orders (with option to mark order as completed)
 
 ---
 
