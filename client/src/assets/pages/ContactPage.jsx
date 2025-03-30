@@ -21,6 +21,7 @@ const ContactPage = () => {
     useEffect(() => {
         if (! isLoggedIn) {
             navigate("/");
+            getErrorAndDisplay("authNeeded");
         }
 
         getUserEmail();
