@@ -76,6 +76,7 @@
                     field-sizing: content;
                     scrollbar-width: thin;
                     scrollbar-color: #91BA8D transparent;
+                    background: white;
 
                     @media (width <=800px) {
                         width: 100%;
