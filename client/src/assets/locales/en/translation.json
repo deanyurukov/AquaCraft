@@ -214,6 +214,13 @@
         "edit": {
             "title": "Edit product",
             "submit": "Save changes"
+        },
+        "orders": {
+            "title": "Orders",
+            "empty": "No orders match this filter yet!",
+            "all": "All",
+            "completed": "Completed",
+            "notCompleted": "Not Completed"
         }
     },
     "cart": {

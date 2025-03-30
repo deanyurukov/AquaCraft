@@ -1,5 +1,5 @@
-// const baseUrl = "http://localhost:5001";
-const baseUrl = "https://aquacraft.onrender.com";
+const baseUrl = "http://localhost:5001";
+// const baseUrl = "https://aquacraft.onrender.com";
 
 export const endpoints = {
     register: `${baseUrl}/users/register`,
@@ -13,6 +13,8 @@ export const endpoints = {
     getAllByUserId: `${baseUrl}/products/get/id`,
     addOrder: `${baseUrl}/addOrder`,
     getOrders: `${baseUrl}/orders/getByUser`,
+    getAllOrders: `${baseUrl}/orders/all`,
+    completeOrder: (orderId) => `${baseUrl}/orders/complete/${orderId}`,
     getOneOrder: (orderId) => `${baseUrl}/orders/${orderId}`,
     getOneProduct: (productId) => `${baseUrl}/products/${productId}`,
     addToCart: (productId) => `${baseUrl}/products/addToCart/${productId}`,

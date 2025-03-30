@@ -44,6 +44,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    console.log(`Incoming request: ${req.method} ${req.url}`);
+    next();
+});
+
 app.options('*', (req, res) => {
     return res.status(204).send();
 });
@@ -415,6 +420,11 @@ app.get('/orders/getByUser', async (req, res) => {
     }
 });
 
+app.get("/orders/all", async (req, res) => {
+    const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
+    return res.status(200).send({ data: orders });
+});
+
 app.get("/orders/:id", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
@@ -434,6 +444,29 @@ app.get("/orders/:id", async (req, res) => {
             }
 
             return res.status(201).send({ message: "Found order data!", data: order });
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
+app.get("/orders/complete/:id", async (req, res) => {
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid && data.isAdmin) {
+        const id = req.params.id;
+
+        try {
+            const order = await Order.findById(id);
+            order.isCompleted = true;
+            await order.save();
+
+            return res.status(200).end();
         }
         catch (err) {
             console.error(err);

@@ -75,5 +75,44 @@ export default {
             console.error(err);
             return undefined;
         }
+    },
+    getAll: async () => {
+        try {
+            const response = await fetch(endpoints.getAllOrders);
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return data.data;
+        }
+        catch (err) {
+            console.error(err);
+        }
+    },
+    completeOrder: async (orderId) => {
+        try {
+            const response = await fetch(endpoints.completeOrder(orderId), {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Authorization": JSON.parse(localStorage.getItem("accessToken"))
+                }
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return [data.data, undefined];
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
     }
 };

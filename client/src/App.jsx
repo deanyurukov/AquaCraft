@@ -40,6 +40,7 @@ import AdminEditAll from './assets/pages/admin/AdminEditAll.jsx';
 import EditProductPage from './assets/pages/admin/EditProductPage.jsx';
 import ProjectRequestPage from './assets/pages/ProjectRequestPage.jsx';
 import HowToPage from './assets/pages/HowToPage.jsx';
+import AdminOrdersPage from './assets/pages/admin/OrdersAdminPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -71,6 +72,7 @@ const router = createBrowserRouter(
                 <Route path='/admin/products' element={<AdminProductsPage />} />
                 <Route path='/admin/edit' element={<AdminEditAll />} />
                 <Route path='/admin/:id/edit' element={<EditProductPage />} />
+                <Route path='/admin/orders' element={<AdminOrdersPage />} />
             </Route>
 
             <Route path='/*' element={<NotFoundPage />} />
@@ -81,7 +83,7 @@ const router = createBrowserRouter(
 export const appContext = React.createContext();
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); //! Needs to be false.
+    const [isLoggedIn, setIsLoggedIn] = useState(true); //! Needs to be false.
     const [favorites, setFavorites] = useState([]);
     const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);

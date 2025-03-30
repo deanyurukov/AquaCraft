@@ -5,19 +5,46 @@
     gap: 0.8em;
     width: 75%;
 
-    @media (width <= 1020px) {
+    @media (width <=1020px) {
         width: 100%;
+    }
+
+    select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 24px;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        border: 2px solid #333;
+        outline: none;
+        font-size: 15px;
+        color: #9F9F9F;
+        padding: 1em 40px 1em 1.4em;
+        transition: all 0.2s linear;
+
+        @media (width <=700px) {
+            font-size: 13px;
+        }
+
+        &:focus {
+            border: 2px solid #91BA8D;
+            border-radius: 3px;
+        }
     }
 
     h6 {
         font-size: 30px;
         font-weight: 500;
 
-        @media (width <= 500px) {
+        @media (width <=500px) {
             font-size: 24px;
         }
 
-        @media (width <= 320px) {
+        @media (width <=320px) {
             font-size: 20px;
         }
     }

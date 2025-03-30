@@ -1,14 +1,14 @@
 import { useTranslation } from "react-i18next";
 import ProfileOrder from "./ProfileOrder";
 
-const ProfileTable = ({ orders }) => {
+const ProfileTable = ({ orders, isAdmin = false, complete = null }) => {
     const { t } = useTranslation();
 
     return (
         <span id="profile-table">
             {
                 orders.length === 0 ?
-                    <h4>{t("profile.orders.empty")}</h4> :
+                    isAdmin ? <h4>{t("admin.orders.empty")}</h4> : <h4>{t("profile.orders.empty")}</h4> :
                     <table>
                         <thead>
                             <tr>
@@ -18,12 +18,13 @@ const ProfileTable = ({ orders }) => {
                                 <th>{t("profileTable.name")}</th>
                                 <th>{t("profileTable.price")}</th>
                                 <th></th>
+                                {isAdmin && <th></th>}
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 orders.map(order => (
-                                    <ProfileOrder key={order._id} order={order} />
+                                    <ProfileOrder key={order._id} order={order} isAdmin={isAdmin} complete={complete} />
                                 ))
                             }
                         </tbody>

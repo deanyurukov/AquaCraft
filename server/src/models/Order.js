@@ -64,7 +64,11 @@ const orderSchema = new Schema(
                 ref: "Product",
                 required: true,
             }
-        }]
+        }],
+        isCompleted: {
+            type: Boolean,
+            default: false,
+        }
     },
     {
         timestamps: true,

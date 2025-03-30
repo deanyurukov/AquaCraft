@@ -50,6 +50,14 @@ span#profile-table {
                             &:hover {
                                 color: #91ba8dc9;
                             }
+
+                            &.completed {
+                                color: gray;
+
+                                &:hover {
+                                    color: gray;
+                                }
+                            }
                         }
                     }
                 }
