@@ -4,15 +4,8 @@ const productSchema = new Schema(
     {
         title: {
             type: String,
-            required: [true, "allFields"],
-            match: [/^[a-zа-яА-ЯA-Z0-9\s]+$/, "name.invalid"]
+            required: [true, "allFields"]
         },
-        // images: [{
-        //     type: String,
-        //     required: [true, "allFields"],
-        //     match: [/https?:\/\/[^\s]+/, "image.invalid"],
-        //     maxLength: [5, "image.exceeds"],
-        // }],
         images: {
             type: [String], // Define it as an array of strings
             required: [true, "allFields"],
