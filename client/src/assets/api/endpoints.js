@@ -1,5 +1,5 @@
-const baseUrl = "http://localhost:5001";
-// const baseUrl = "https://aquacraft.onrender.com";
+// const baseUrl = "http://localhost:5001";
+const baseUrl = "https://aquacraft.onrender.com";
 
 export const endpoints = {
     register: `${baseUrl}/users/register`,
