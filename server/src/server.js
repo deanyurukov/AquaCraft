@@ -17,7 +17,7 @@ const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
 // const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
 export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
 const port = process.env.PORT || 5001;
-const allowedOrigins = ['https://www.aquacraft.ltd', "http://localhost:3000"];
+const allowedOrigins = ['https://www.aquacraft.ltd', "http://localhost:3000", "http://192.168.1.6:3000"];
 
 try {
     await mongoose.connect(uri);
