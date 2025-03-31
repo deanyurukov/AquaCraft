@@ -1,12 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ErrorMessage from "../components/ErrorMessage";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { appContext } from "../../App";
 
 const MainLayout = () => {
     const error = useContext(appContext)[5];
+    const location = useLocation();
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     return (
         <>
