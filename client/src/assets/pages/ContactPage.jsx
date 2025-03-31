@@ -72,6 +72,7 @@ const ContactPage = () => {
                 console.error(err);
             }
 
+            getErrorAndDisplay("contactSuccess");
             navigate("/");
         }
         catch (error) {

@@ -442,6 +442,7 @@
         "emptyCart": "Your cart is empty!",
         "orderSuccess": "Your order is placed successfully!",
         "productInCart": "The product is already in the cart!",
-        "productCreated": "Product created successfully!"
+        "productCreated": "Product created successfully!",
+        "contactSuccess": "Email sent successfully!"
     }
 }
