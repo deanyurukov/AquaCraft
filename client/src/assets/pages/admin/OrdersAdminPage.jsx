@@ -77,7 +77,11 @@ const AdminOrdersPage = () => {
             return;
         }
 
-        getOrders();
+        const indexOfOrder = orders.indexOf(order);
+        setOrders(prev => {
+            prev[indexOfOrder].isCompleted = true;
+            return [...prev];
+        });
     }
 
     if (loading) {
