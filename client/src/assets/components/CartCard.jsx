@@ -4,7 +4,7 @@ import productsService from "../services/products-service.js";
 import { appContext } from "../../App.jsx";
 import { useTranslation } from "react-i18next";
 
-const CartCard = ({ product, fetchProducts }) => {
+const CartCard = ({ product, setProducts }) => {
     const [quantity, setQuantity] = useState(product.quantity);
     const getErrorAndDisplay = useContext(appContext)[6];
     const { t } = useTranslation();
@@ -29,7 +29,11 @@ const CartCard = ({ product, fetchProducts }) => {
                 return;
             }
 
-            fetchProducts();
+            setProducts(prev => {
+                const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
+                prev[index].quantity = quantity;
+                return [...prev];
+            });
         }
     }
     
@@ -41,7 +45,11 @@ const CartCard = ({ product, fetchProducts }) => {
             return;
         }
 
-        fetchProducts();
+        setProducts(prev => {
+            const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
+            prev.splice(index, 1);
+            return [...prev];
+        });
     }
 
     return (

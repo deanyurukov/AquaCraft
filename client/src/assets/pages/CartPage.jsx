@@ -63,7 +63,7 @@ const CartPage = () => {
                             <div>
                                 {
                                     products.map(product => (
-                                        <CartCard product={product} fetchProducts={fetchProducts} key={product.product._id} />
+                                        <CartCard product={product} setProducts={setProducts} key={product.product._id} />
                                     ))
                                 }
                             </div>
