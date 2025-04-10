@@ -45,7 +45,7 @@ const HomePage = () => {
                     <div className="button-wrapper">
                         <Link to={"/products"}>{t("home.products")}</Link>
                         {/* <Link to={"/services"}>{t("home.services")}</Link> */}
-                        {isLoggedIn && <Link to={"/contact-us"}>{t("home.contact")}</Link>}
+                        <Link to={"/contact-us"}>{t("home.contact")}</Link>
                     </div>
                 </div>
             </div>

@@ -19,10 +19,7 @@ const Footer = () => {
             <div>
                 <ul>
                     <h3>{t("footer.support")}</h3>
-                    {
-                        isLoggedIn &&
-                        <li><Link to="/contact-us">{t("footer.contact")}</Link></li>
-                    }
+                    <li><Link to="/contact-us">{t("footer.contact")}</Link></li>
                     <li><Link to="/privacy-policy">{t("footer.privacy")}</Link></li>
                     <li><Link to="/terms-and-conditions">{t("footer.terms")}</Link></li>
                 </ul>

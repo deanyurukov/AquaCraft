@@ -32,7 +32,6 @@ const Navbar = () => {
 
     const userNav = (
         <>
-            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
             <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
             <i id="favorites-icon" onClick={(e) => { e.stopPropagation(); showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
             <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
@@ -67,6 +66,7 @@ const Navbar = () => {
                 <div>
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/">{t("navbar.home")}</NavLink>
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/products">{t("navbar.products")}</NavLink>
+                    <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
@@ -103,6 +103,7 @@ const Navbar = () => {
                 <nav>
                     <NavLink to="/">{t("navbar.home")}</NavLink>
                     <NavLink to="/products">{t("navbar.products")}</NavLink>
+                    <NavLink to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
 
                     {isLoggedIn ? userNav : guestNav}
                     { translationWidget }

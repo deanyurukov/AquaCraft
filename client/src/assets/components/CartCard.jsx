@@ -47,7 +47,11 @@ const CartCard = ({ product, setProducts }) => {
 
         setProducts(prev => {
             const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
-            prev.splice(index, 1);
+
+            if (index !== -1) {
+                prev.splice(index, 1);
+            }
+
             return [...prev];
         });
     }
