@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 10%;
+    padding: 1.1em 10%;
     font-family: "Poppins", sans-serif;
     color: rgb(244, 237, 237);
     background-color: #f28807;
@@ -35,7 +35,7 @@
         }
 
         &:hover {
-            color: #ffffffe9;
+            color: rgba(244, 237, 237, 0.883);
         }
     }
 }
