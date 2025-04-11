@@ -444,5 +444,8 @@
         "productInCart": "The product is already in the cart!",
         "productCreated": "Product created successfully!",
         "contactSuccess": "Email sent successfully!"
+    },
+    "underConstruction": {
+        "title": "Website is still under construction!"
     }
 }

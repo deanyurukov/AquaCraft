@@ -1,0 +1,41 @@
+#under-construction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 10%;
+    font-family: "Poppins", sans-serif;
+    color: rgb(244, 237, 237);
+    background-color: #f28807;
+    gap: 1.5em;
+
+    @media (width <= 630px) {
+        padding: 0.8em 5%;
+    }
+
+    & > p {
+        font-size: 18px;
+        line-height: 16px;
+
+        @media (width <= 630px) {
+            font-size: 16px;
+        }
+
+        @media (width <= 500px) {
+            font-size: 15px;
+        }
+    }
+
+    & > i {
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        @media (width <= 630px) {
+            font-size: 18px;
+        }
+
+        &:hover {
+            color: #ffffffe9;
+        }
+    }
+}

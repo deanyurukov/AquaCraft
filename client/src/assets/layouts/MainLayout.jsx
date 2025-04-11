@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import ErrorMessage from "../components/ErrorMessage";
 import { useContext, useEffect } from "react";
 import { appContext } from "../../App";
+import UnderConstruction from "../components/UnderConstruction";
 
 const MainLayout = () => {
     const error = useContext(appContext)[5];
@@ -16,6 +17,7 @@ const MainLayout = () => {
     return (
         <>
             { error && <ErrorMessage key={error} error={error} /> }
+            <UnderConstruction />
             <Navbar />
             <Outlet />
             <Footer />
