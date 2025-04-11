@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url(/src/styles/reset.css);
+@import url(/src/styles/home.css);
+@import url(/src/styles/navigation.css);
+@import url(/src/styles/footer.css);
+@import url(/src/styles/auth.css);
+@import url(/src/styles/products.css);
+@import url(/src/styles/details.css);
+@import url(/src/styles/cart.css);
+@import url(/src/styles/checkout.css);
+@import url(/src/styles/not-found.css);
+@import url(/src/styles/privacy-policy.css);
+@import url(/src/styles/terms-and-conditions.css);
+@import url(/src/styles/contact-us.css);
+@import url(/src/styles/project-request.css);
+@import url(/src/styles/profile/profile-layout.css);
+@import url(/src/styles/profile/profile-panel.css);
+@import url(/src/styles/profile/profile-orders.css);
+@import url(/src/styles/profile/profile-orders-details.css);
+@import url(/src/styles/profile/profile-user-data.css);
+@import url(/src/styles/profile/profile-table.css);
+@import url(/src/styles/admin/admin-create.css);
+@import url(/src/styles/admin/admin-products.css);
+@import url(/src/styles/spinner.css);
+@import url(/src/styles/go-back.css);
+@import url(/src/styles/error-message.css);
+@import url(/src/styles/pagination.css);
+
+/** Temporary */
+@import url(/src/styles/under-construction.css);

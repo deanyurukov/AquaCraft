@@ -3,44 +3,44 @@ import React, { useEffect, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 
 // Import CSS
-import '/src/assets/styles/app.css';
+import '/src/styles/app.css';
 
 // Import helpers
-import productsService from './assets/services/products-service.js';
-import useUrlChange from './assets/hooks/useUrlChange.jsx';
-import authService from './assets/services/auth-service.js';
-import "./assets/configs/i18n-config.js";
+import productsService from './services/products-service.js';
+import useUrlChange from './hooks/useUrlChange.jsx';
+import authService from './services/auth-service.js';
+import "./configs/i18n-config.js";
 import { useTranslation } from 'react-i18next';
 
 // Import Layouts
-import MainLayout from './assets/layouts/MainLayout.jsx';
-import ProfileLayout from './assets/layouts/ProfileLayout.jsx';
-import AdminLayout from './assets/layouts/AdminLayout.jsx';
+import MainLayout from './layouts/MainLayout.jsx';
+import ProfileLayout from './layouts/ProfileLayout.jsx';
+import AdminLayout from './layouts/AdminLayout.jsx';
 
 // Import Pages
-import HomePage from './assets/pages/HomePage.jsx';
-import ProductsPage from './assets/pages/ProductsPage.jsx';
-import DetailsPage from './assets/pages/DetailsPage.jsx';
-import NotFoundPage from './assets/pages/NotFoundPage.jsx';
-import RegisterPage from './assets/pages/auth/RegisterPage.jsx';
-import LoginPage from './assets/pages/auth/LoginPage.jsx';
-import LogoutPage from './assets/pages/auth/LogoutPage.jsx';
-import CartPage from './assets/pages/CartPage.jsx';
-import CheckoutPage from './assets/pages/CheckoutPage.jsx';
-import PrivacyPolicyPage from './assets/pages/PrivacyPolicyPage.jsx';
-import TermsAndConditionsPage from './assets/pages/TermsAndConditionsPage.jsx';
-import PanelPage from './assets/pages/profile/PanelPage.jsx';
-import OrderDetailsPage from './assets/pages/profile/OrderDetailsPage.jsx';
-import OrdersPage from './assets/pages/profile/OrdersPage.jsx';
-import UserDataPage from './assets/pages/profile/UserDataPage.jsx';
-import ContactPage from './assets/pages/ContactPage.jsx';
-import CreateProductPage from './assets/pages/admin/CreateProductPage.jsx';
-import AdminProductsPage from './assets/pages/admin/AdminProductsPage.jsx';
-import AdminEditAll from './assets/pages/admin/AdminEditAll.jsx';
-import EditProductPage from './assets/pages/admin/EditProductPage.jsx';
-import ProjectRequestPage from './assets/pages/ProjectRequestPage.jsx';
-import HowToPage from './assets/pages/HowToPage.jsx';
-import AdminOrdersPage from './assets/pages/admin/OrdersAdminPage.jsx';
+import HomePage from './pages/HomePage.jsx';
+import ProductsPage from './pages/ProductsPage.jsx';
+import DetailsPage from './pages/DetailsPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+import RegisterPage from './pages/auth/RegisterPage.jsx';
+import LoginPage from './pages/auth/LoginPage.jsx';
+import LogoutPage from './pages/auth/LogoutPage.jsx';
+import CartPage from './pages/CartPage.jsx';
+import CheckoutPage from './pages/CheckoutPage.jsx';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx';
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage.jsx';
+import PanelPage from './pages/profile/PanelPage.jsx';
+import OrderDetailsPage from './pages/profile/OrderDetailsPage.jsx';
+import OrdersPage from './pages/profile/OrdersPage.jsx';
+import UserDataPage from './pages/profile/UserDataPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
+import CreateProductPage from './pages/admin/CreateProductPage.jsx';
+import AdminProductsPage from './pages/admin/AdminProductsPage.jsx';
+import AdminEditAll from './pages/admin/AdminEditAll.jsx';
+import EditProductPage from './pages/admin/EditProductPage.jsx';
+import ProjectRequestPage from './pages/ProjectRequestPage.jsx';
+import HowToPage from './pages/HowToPage.jsx';
+import AdminOrdersPage from './pages/admin/OrdersAdminPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
