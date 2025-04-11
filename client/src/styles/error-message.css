@@ -20,7 +20,7 @@
             padding:  0.5em 2em;
             border-radius: 50px 10px;
             box-shadow: 4px 4px 7px 4px rgba(0, 0, 0, 0.5);
-            background: rgb(252, 252, 238);
+            background: #fff;
 
             @media (width <= 500px) {
                 border-radius: 35px 7px;

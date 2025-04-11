@@ -4,7 +4,7 @@
     align-items: center;
     width: 100%;
     font-family: 'Poppins', sans-serif;
-    background: rgb(252, 252, 238);
+    background: #fff;
 
     #hero {
         background: url(/images/hero.jpg);
