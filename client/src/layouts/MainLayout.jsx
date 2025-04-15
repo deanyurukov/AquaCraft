@@ -5,6 +5,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { useContext, useEffect } from "react";
 import { appContext } from "../App";
 import UnderConstruction from "../components/UnderConstruction";
+import Chatbot from "../components/Chatbot";
 
 const MainLayout = () => {
     const error = useContext(appContext)[5];
@@ -20,6 +21,7 @@ const MainLayout = () => {
             <UnderConstruction />
             <Navbar />
             <Outlet />
+            <Chatbot />
             <Footer />
         </>
     );
