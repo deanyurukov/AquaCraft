@@ -3,7 +3,7 @@ import productsService from "../services/products-service";
 import { useContext } from "react";
 import { appContext } from "../App";
 
-const AdminProduct = ({ product, getProducts }) => {
+const AdminProduct = ({ product, changeStock }) => {
     const { t } = useTranslation();
     const getErrorAndDisplay = useContext(appContext)[6];
 
@@ -19,7 +19,7 @@ const AdminProduct = ({ product, getProducts }) => {
             const [data, error] = await productsService.changeInStock(product._id, changed_stock);
     
             if (data) {
-                getProducts();
+                changeStock(product._id, changed_stock);
             }
         }
     }

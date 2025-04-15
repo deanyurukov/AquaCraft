@@ -78,6 +78,15 @@ const AdminProductsPage = () => {
         navigate(`/admin/products?${params.toString()}`);
     };
 
+    const changeStock = (productId, newStock) => {
+        const index = displayProducts.indexOf(displayProducts.find(product => product._id === productId));
+        
+        setDisplayProducts(prev => {
+            prev[index].inStock += Number(newStock);
+            return [...prev];
+        });
+    }
+
     if (loading) {
         return <div id="profile-spinner">
             <Spinner />
@@ -103,7 +112,7 @@ const AdminProductsPage = () => {
             {
                 displayProducts.length === 0 ? <p>{t("products.empty")}</p> :
                 displayProducts.map(product => (
-                    <AdminProduct product={product} getProducts={getProducts} key={product._id} />
+                    <AdminProduct product={product} changeStock={changeStock} key={product._id} />
                 ))}
         </div>
     );

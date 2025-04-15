@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { appContext } from "../App";
 import { Link } from "react-router-dom";
 
-const AdminEditProduct = ({ product, getProducts }) => {
+const AdminEditProduct = ({ product, deleteProduct }) => {
     const { t } = useTranslation();
     const getErrorAndDisplay = useContext(appContext)[6];
 
@@ -16,7 +16,7 @@ const AdminEditProduct = ({ product, getProducts }) => {
                 getErrorAndDisplay(error);
             }
     
-            getProducts();
+            deleteProduct(product);
         }
     }
 

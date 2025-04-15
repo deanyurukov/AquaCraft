@@ -46,6 +46,18 @@ const AdminEditAll = () => {
         }
     }, [searchParams, products]);
 
+    const deleteProduct = (product) => {
+        const index = displayProducts.indexOf(product);
+
+        setDisplayProducts(prev => {
+            if (index !== -1) {
+                prev.splice(index, 1);
+            }
+
+            return [...prev];
+        });
+    }
+
     if (loading) {
         return <div id="profile-spinner">
             <Spinner />
@@ -60,7 +72,7 @@ const AdminEditAll = () => {
             </span>
 
             {displayProducts.map(product => (
-                <AdminEditProduct product={product} getProducts={getProducts} key={product._id} />
+                <AdminEditProduct product={product} deleteProduct={deleteProduct} key={product._id} />
             ))}
         </div>
     );
