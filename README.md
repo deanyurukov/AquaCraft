@@ -67,14 +67,6 @@ The frontend is now running on `http://localhost:3000/`.
 
 ---
 
-### 🔑 Admin Credentials
-- Email: dean.yurukov@aquacraft.ltd
-- Password: admin123
-
-#### Access Admin Panel: Log in and navigate to the Profile page.
-
----
-
 ### 🔒 Page Access Control
 
 #### Public Pages
