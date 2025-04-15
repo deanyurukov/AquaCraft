@@ -188,6 +188,7 @@
 .chat-footer .chat-form {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     background: #fff;
     border-radius: 32px;
@@ -201,13 +202,19 @@
 }
 
 .chat-form .message-input {
-    width: 100%;
-    height: 47px;
+    width: 85%;
+    min-height: 47px;
+    max-height: 100px;
     border: none;
     outline: none;
     font-size: 0.95rem;
-    padding: 0 17px;
+    padding: 23px;
     background: none;
+    field-sizing: content;
+    resize: none;
+    font-family: "Inter", sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #80a77d transparent;
 }
 
 .chat-form #send-message {
