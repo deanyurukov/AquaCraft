@@ -3,6 +3,7 @@ import ChatbotIcon from "./ChatbotIcon";
 import ChatForm from "./ChatForm";
 import ChatMessage from "./ChatMessage";
 import { companyInfo } from "../configs/chatbot-config";
+import { useTranslation } from "react-i18next";
 
 const Chatbot = () => {
     const chatBodyRef = useRef();
@@ -14,18 +15,23 @@ const Chatbot = () => {
             text: companyInfo,
         },
     ]);
+    const { t } = useTranslation();
+
     const generateBotResponse = async (history) => {
         // Helper function to update chat history
         const updateHistory = (text, isError = false) => {
-            setChatHistory((prev) => [...prev.filter((msg) => msg.text != "Thinking..."), { role: "model", text, isError }]);
+            setChatHistory((prev) => [...prev.filter((msg) => !msg.isThinking), { role: "model", text, isError }]);
         };
+        
         // Format chat history for API request
         history = history.map(({ role, text }) => ({ role, parts: [{ text }] }));
+
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ contents: history }),
         };
+
         try {
             // Make the API call to get the bot's response
             const response = await fetch(import.meta.env.VITE_CHATBOT_URL, requestOptions);
@@ -39,10 +45,12 @@ const Chatbot = () => {
             updateHistory(error.message, true);
         }
     };
+
     useEffect(() => {
         // Auto-scroll whenever chat history updates
         chatBodyRef.current.scrollTo({ top: chatBodyRef.current.scrollHeight, behavior: "smooth" });
     }, [chatHistory]);
+
     return (
         <div className={`container ${showChatbot ? "show-chatbot" : ""}`}>
             <button onClick={() => setShowChatbot((prev) => !prev)} id="chatbot-toggler">
@@ -54,7 +62,7 @@ const Chatbot = () => {
                 <div className="chat-header">
                     <div className="header-info">
                         <ChatbotIcon />
-                        <h2 className="logo-text">Chatbot</h2>
+                        <h2 className="logo-text">{t("chatbot.title")}</h2>
                     </div>
                     <button onClick={() => setShowChatbot((prev) => !prev)} className="material-symbols-rounded">
                         <i className="fa-solid fa-angle-down"></i>
@@ -65,7 +73,7 @@ const Chatbot = () => {
                     <div className="message bot-message">
                         <ChatbotIcon />
                         <p className="message-text">
-                            Hey there 👋 <br /> How can I help you today?
+                            {t("chatbot.cheers.0")} 👋 <br /> {t("chatbot.cheers.1")}
                         </p>
                     </div>
                     {/* Render the chat history dynamically */}

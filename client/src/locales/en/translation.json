@@ -383,6 +383,15 @@
         "name": "Client",
         "price": "Price"
     },
+    "chatbot": {
+        "cheers": [
+            "Hey there",
+            "How can I help you today?"
+        ],
+        "message": "Message",
+        "thinking": "Thinking...",
+        "title": "Chatbot"
+    },
     "errorMessages": {
         "authNeeded": "You need an account!",
         "allFields": "You need to fill in all the required fields!",
