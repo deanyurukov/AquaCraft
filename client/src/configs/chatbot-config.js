@@ -37,4 +37,4 @@
 //     At Aroma Beans Coffee, we believe in creating moments worth savoring. Whether you're stopping by for your morning pick-me-up or indulging in an afternoon treat, we've got something special for everyone.
 // `;
 
-export const companyInfo = "nothing";
+export const companyInfo = "You have the right only to answer things about irrigation. ANYTHING ELSE SHOULD BE REJECTED!";
