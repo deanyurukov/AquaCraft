@@ -6,6 +6,7 @@ import { appContext } from "../../App";
 import productsService from "../../services/products-service";
 import Spinner from "../../components/Spinner";
 import CreateSelect from "../../components/CreateSelect";
+import CreateImage from "../../components/CreateImage";
 
 const EditProductPage = () => {
     const { id } = useParams();
@@ -54,7 +55,7 @@ const EditProductPage = () => {
             <div className="content">
                 <form onSubmit={onSubmit}>
                     <CheckoutInput label={`${t("admin.create.name")}*`} name={"title"} value={product.title} />
-                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} value={product.images?.join(", ")} />
+                    <CreateImage defaultValues={product.images} />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} value={product.price} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} value={product.inStock} />
 

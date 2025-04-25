@@ -5,6 +5,7 @@ import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../App";
 import productsService from "../../services/products-service";
 import CreateSelect from "../../components/CreateSelect";
+import CreateImage from "../../components/CreateImage";
 
 const CreateProductPage = () => {
     const { t } = useTranslation();
@@ -34,7 +35,7 @@ const CreateProductPage = () => {
             <div className="content">
                 <form onSubmit={onSubmit}>
                     <CheckoutInput label={`${t("admin.create.name")}*`} name={"title"} />
-                    <CheckoutInput label={`${t("admin.create.image")}*`} name={"images"} />
+                    <CreateImage />
                     <CheckoutInput label={`${t("admin.create.price")}*`} name={"price"} />
                     <CheckoutInput label={`${t("admin.create.inStock")}*`} name={"inStock"} type={"number"} min={0} />
 
