@@ -83,7 +83,7 @@ const router = createBrowserRouter(
 export const appContext = React.createContext();
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true); //! Needs to be false.
+    const [isLoggedIn, setIsLoggedIn] = useState(false); //! Needs to be false.
     const [favorites, setFavorites] = useState([]);
     const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);
