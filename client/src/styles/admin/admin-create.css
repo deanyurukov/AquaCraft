@@ -135,6 +135,7 @@
                             aspect-ratio: 1 / 1;
                             border-radius: 10px;
                             border: 1px solid black;
+                            object-fit: contain;
 
                             @media (width <= 550px) {
                                 width: 100px;
