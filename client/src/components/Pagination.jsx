@@ -9,25 +9,15 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) =
 
     return (
         <div className="pagination-wrapper">
-            {pageNumbers[currentPage - 2] && (
-                <button onClick={() => paginate(currentPage - 1)} type="button">
-                    <Link>{currentPage - 1}</Link>
+                <button onClick={() => paginate(currentPage - 1)} type="button" disabled={currentPage === 1}>
+                    <i class="fa-solid fa-arrow-left"></i> Prev
                 </button>
-            )}
 
-            <button
-                onClick={() => paginate(currentPage)}
-                type="button"
-                className="active"
-            >
-                <Link to="#">{currentPage}</Link>
-            </button>
+                <p>Page {currentPage} of {pageNumbers.length}</p>
 
-            {pageNumbers[currentPage] && (
-                <button onClick={() => paginate(currentPage + 1)} type="button">
-                    <Link>{currentPage + 1}</Link>
+                <button onClick={() => paginate(currentPage + 1)} type="button" disabled={currentPage === pageNumbers.length}>
+                    Next <i class="fa-solid fa-arrow-right"></i>
                 </button>
-            )}
         </div>
     );
 };
