@@ -54,7 +54,7 @@ const Chatbot = () => {
     return (
         <div className={`container ${showChatbot ? "show-chatbot" : ""}`}>
             <button onClick={() => setShowChatbot((prev) => !prev)} id="chatbot-toggler">
-                <span className="material-symbols-rounded"><i className="fa-solid fa-comment"></i></span>
+                <span title={t("chatbot.title")}><ChatbotIcon /></span>
                 <span className="material-symbols-rounded"><i className="fa-solid fa-xmark"></i></span>
             </button>
             <div className="chatbot-popup">

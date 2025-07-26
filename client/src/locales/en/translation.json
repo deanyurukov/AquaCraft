@@ -186,6 +186,10 @@
             "latest": "Newest"
         }
     },
+    "details": {
+        "inStock": "in stock",
+        "noStock": "out of stock"
+    },
     "admin": {
         "title": "Admin panel",
         "create": {

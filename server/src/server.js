@@ -13,10 +13,10 @@ import Order from './models/Order.js';
 const app = express();
 dotenv.config({ path: "../.env" });
 
-const uri = process.env.URI_KEY || "mongodb://0.0.0.0:27017/Aqua-Craft";
+const uri = process.env.URI_KEY;
 // const uri = "mongodb://0.0.0.0:27017/Aqua-Craft";
-export const secret = process.env.JWT_SECRET || "baughgu98iyuuyhtg";
-const port = process.env.PORT || 5001;
+export const secret = process.env.JWT_SECRET;
+const port = process.env.PORT;
 const allowedOrigins = ['https://www.aquacraft.ltd', "http://localhost:3000", "http://192.168.1.6:3000"];
 
 try {

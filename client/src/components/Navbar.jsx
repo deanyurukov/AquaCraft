@@ -32,10 +32,10 @@ const Navbar = () => {
 
     const userNav = (
         <>
-            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
-            <i id="favorites-icon" onClick={(e) => { e.stopPropagation(); showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
-            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
-            <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
+            <NavLink title={t("cart.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
+            <i title={t("favorites.title")} id="favorites-icon" onClick={(e) => { e.stopPropagation(); showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
+            <NavLink title={t("profile.logout")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
+            <NavLink title={t("profile.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
         </>
     );
 
@@ -66,7 +66,7 @@ const Navbar = () => {
                 <div>
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/">{t("navbar.home")}</NavLink>
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/products">{t("navbar.products")}</NavLink>
-                    <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
+                    <NavLink title={t("contact.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
                     {isLoggedIn ? userNav : guestNav}
                 </div>
             </div>
@@ -103,15 +103,15 @@ const Navbar = () => {
                 <nav>
                     <NavLink to="/">{t("navbar.home")}</NavLink>
                     <NavLink to="/products">{t("navbar.products")}</NavLink>
-                    <NavLink to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
+                    <NavLink title={t("contact.title")} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
 
                     {isLoggedIn ? userNav : guestNav}
-                    { translationWidget }
+                    {translationWidget}
                 </nav>
-                
+
                 <div id="responsive-nav">
                     <button onClick={() => setIsClickedNav(true)}><i className="fa-solid fa-bars"></i></button>
-                    { translationWidget }
+                    {translationWidget}
                 </div>
             </header>
         </>

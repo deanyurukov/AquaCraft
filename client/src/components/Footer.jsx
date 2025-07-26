@@ -23,12 +23,6 @@ const Footer = () => {
                     <li><Link to="/privacy-policy">{t("footer.privacy")}</Link></li>
                     <li><Link to="/terms-and-conditions">{t("footer.terms")}</Link></li>
                 </ul>
-                {/* <ul>
-                    <h3>{t("footer.corporate")}</h3>
-                    <li><Link to="#">{t("footer.about")}</Link></li>
-                    <li><Link to="#">{t("footer.logo")}</Link></li>
-                    <li><Link to="#">{t("footer.careers")}</Link></li>
-                </ul> */}
             </div>
 
             <p>&copy; {new Date().getFullYear()} AquaCraft {t("footer.rights")}</p>

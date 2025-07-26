@@ -5,6 +5,16 @@
     gap: 2em;
     margin-bottom: 2.5em;
 
+    @media (width <= 600px) {
+        justify-content: space-between;
+        width: 100%;
+        gap: 1em;
+
+        button, p {
+            font-size: 16px !important;
+        }
+    }
+
     button {
         background: #91BA8D;
         color: white;
@@ -15,6 +25,10 @@
         cursor: pointer;
         transition: all 0.2s ease;
         border: 1px solid #91BA8D;
+
+        @media (width <= 500px) {
+            padding: 0.5em 1em;
+        }
         
         &:hover {
             background: transparent;

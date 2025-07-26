@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 import HomeCards from "../components/HomeCards";
 import { useTranslation } from "react-i18next";
-import { appContext } from "../App";
-import { useContext } from "react";
 
 const HomePage = () => {
     const { t } = useTranslation();
-    const isLoggedIn = useContext(appContext)[0];
 
     const cards = [
         {
@@ -16,16 +13,6 @@ const HomePage = () => {
         },
         {
             imageUrl: "../../../images/services.png",
-            title: "contactUs",
-            href: "contact-us"
-        },
-        // {
-        //     imageUrl: "../../../images/services.png",
-        //     title: "services",
-        //     href: "services"
-        // },
-        {
-            imageUrl: "../../../images/request-project.png",
             title: "projectRequest",
             href: "project-request"
         },
@@ -33,6 +20,11 @@ const HomePage = () => {
             imageUrl: "../../../images/how-to.png",
             title: "howTo",
             href: "how-to"
+        },
+        {
+            imageUrl: "../../../images/request-project.png",
+            title: "contactUs",
+            href: "contact-us"
         }
     ];
 
@@ -44,7 +36,6 @@ const HomePage = () => {
 
                     <div className="button-wrapper">
                         <Link to={"/products"}>{t("home.products")}</Link>
-                        {/* <Link to={"/services"}>{t("home.services")}</Link> */}
                         <Link to={"/contact-us"}>{t("home.contact")}</Link>
                     </div>
                 </div>

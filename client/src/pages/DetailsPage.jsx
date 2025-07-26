@@ -16,6 +16,7 @@ const DetailsPage = () => {
     const getErrorAndDisplay = useContext(appContext)[6];
     const { t } = useTranslation();
     const [activeUrl, setActiveUrl] = useState(null);
+    const [isInStock, setIsInStock] = useState(true);
 
     async function fetchProductData() {
         setLoading(true);
@@ -27,6 +28,7 @@ const DetailsPage = () => {
 
         setProductData(product);
         setActiveUrl(product.images[0]);
+        setIsInStock(product.inStock > 0);
         setLoading(false);
     }
 
@@ -84,7 +86,10 @@ const DetailsPage = () => {
                                 }} className="fa-regular fa-heart"></i>
                         }
                     </div>
-                    <h4>€{Number(productData.price).toFixed(2)}</h4>
+                    <div>
+                        <h4>€{Number(productData.price).toFixed(2)}</h4>
+                        <p className={!isInStock ? "no-stock" : ""}>{isInStock ? t("details.inStock") : t("details.noStock")}</p>
+                    </div>
                     <hr />
                     <p>{productData.description}</p>
                     <Link onClick={async () => {

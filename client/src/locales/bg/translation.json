@@ -186,6 +186,10 @@
             "latest": "Нови"
         }
     },
+    "details": {
+        "inStock": "в наличност",
+        "noStock": "изчерпано"
+    },
     "admin": {
         "title": "Админ панел",
         "create": {

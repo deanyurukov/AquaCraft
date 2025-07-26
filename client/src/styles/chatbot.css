@@ -1,5 +1,5 @@
 .chatbot-popup {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
     opacity: 1;
     position: relative;
     z-index: 999;
@@ -31,9 +31,14 @@
     color: #fff;
     position: absolute;
 
-    & > i {
-        font-size: 28px;
+    &>i {
+        font-size: 32px;
         color: #fff;
+    }
+
+    &>svg {
+        width: 80%;
+        fill: #fff;
     }
 }
 
@@ -208,11 +213,11 @@
     border: none;
     outline: none;
     font-size: 0.95rem;
-    padding: 23px;
+    padding: 16px 23px;
     background: none;
     field-sizing: content;
+    font-family: "Poppins", sans-serif;
     resize: none;
-    font-family: "Inter", sans-serif;
     scrollbar-width: thin;
     scrollbar-color: #80a77d transparent;
 }
