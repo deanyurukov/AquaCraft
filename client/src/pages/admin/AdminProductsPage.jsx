@@ -87,6 +87,10 @@ const AdminProductsPage = () => {
         });
     }
 
+    const exportData = async () => {
+        await productsService.export();
+    }
+
     if (loading) {
         return <div id="profile-spinner">
             <Spinner />
@@ -108,6 +112,8 @@ const AdminProductsPage = () => {
                     <option value="lt_0">&lt; 0</option>
                 </select>
             </div>
+
+            <button onClick={exportData}>Export to excel</button>
 
             {
                 displayProducts.length === 0 ? <p>{t("products.empty")}</p> :

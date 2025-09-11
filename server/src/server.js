@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
+import ExcelJS from "exceljs";
 
 import User from "./models/User.js";
 import Product from './models/Product.js';
@@ -238,6 +239,68 @@ app.get("/products/getAll", async (req, res) => {
     }
 
     return res.status(200).send({ data: products });
+});
+
+app.get("/products/export", async (req, res) => {
+    const [isValid, message] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid) {
+        const workbook = new ExcelJS.Workbook();
+        const sheet = workbook.addWorksheet("Products");
+        const products = await Product.find();
+
+        sheet.addRow(["Product Name", "In Stock", "ID"]).eachCell((cell) => {
+            cell.fill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: { argb: '91BA8D' },
+            };
+            cell.font = { bold: false, color: { argb: 'ffffff' }, name: "Arial", size: 15 };
+            cell.border = {
+                top: { style: 'double', color: { argb: 'ffffff' } },
+                left: { style: 'double', color: { argb: 'ffffff' } },
+                bottom: { style: 'double', color: { argb: 'ffffff' } },
+                right: { style: 'double', color: { argb: 'ffffff' } }
+            };
+        });
+
+        products.forEach(product => {
+            sheet.addRow([product.title, product.inStock, product.id]).eachCell((cell) => {
+                cell.fill = {
+                    type: 'pattern',
+                    pattern: 'solid',
+                    fgColor: { argb: 'ffffff' },
+                };
+                cell.font = { bold: false, color: { argb: '91BA8D' }, name: "Arial", size: 14 };
+                cell.border = {
+                    top: { style: 'double', color: { argb: '91BA8D' } },
+                    left: { style: 'double', color: { argb: '91BA8D' } },
+                    bottom: { style: 'double', color: { argb: '91BA8D' } },
+                    right: { style: 'double', color: { argb: '91BA8D' } }
+                };
+            });
+        });
+
+        sheet.columns.forEach(column => {
+            let maxLength = 0;
+            column.eachCell({ includeEmpty: true }, cell => {
+                const cellLength = cell.value ? cell.value.toString().length : 0;
+                if (cellLength > maxLength) {
+                    maxLength = cellLength;
+                }
+            });
+            column.width = Math.ceil(maxLength * 1.24) + 2;
+        });
+
+        res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        res.setHeader("Content-Disposition", "attachment; filename=report.xlsx");
+
+        await workbook.xlsx.write(res);
+        return res.end();
+    }
+    else {
+        return res.status(401).send({ message });
+    }
 });
 
 app.get("/products/:id", async (req, res) => {

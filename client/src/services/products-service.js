@@ -291,37 +291,66 @@ export default {
             return [undefined, err.message];
         }
     },
-    changeOne: async(id, title, images, price, description, inStock, company, type, typeDetails) => {
-    try {
-        const response = await fetch(endpoints.changeProduct(id), {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
-            },
-            body: JSON.stringify({
-                title,
-                images,
-                price,
-                description,
-                inStock,
-                company,
-                type,
-                typeDetails
-            })
-        });
+    changeOne: async (id, title, images, price, description, inStock, company, type, typeDetails) => {
+        try {
+            const response = await fetch(endpoints.changeProduct(id), {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
+                },
+                body: JSON.stringify({
+                    title,
+                    images,
+                    price,
+                    description,
+                    inStock,
+                    company,
+                    type,
+                    typeDetails
+                })
+            });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.message);
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            return [data, undefined];
         }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
+    },
+    export: async () => {
+        try {
+            const response = await fetch(endpoints.export, {
+                method: 'GET',
+                headers: {
+                    "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
+                }
+            });
 
-        return [data, undefined];
-    }
-    catch (err) {
-        console.error(err);
-        return [undefined, err.message];
-    }
-},
+            const blob = await response.blob();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "report.xlsx";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
+        }
+    },
 };
