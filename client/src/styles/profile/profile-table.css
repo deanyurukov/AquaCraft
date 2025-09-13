@@ -1,25 +1,24 @@
 span#profile-table {
-    @media (width <= 800px) {
-        width: 100%;
-        position: relative;
-        overflow-x: scroll;
-        scrollbar-width: thin;
-        scrollbar-color: #91BA8D transparent;
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #91BA8D transparent;
 
-        thead th:first-child,
-        tbody td:first-child {
-            position: sticky;
-            left: 0;
-        }
+    thead th:first-child,
+    tbody td:first-child {
+        position: sticky;
+        left: 0;
     }
 
     table {
         width: 100%;
         background: #f4f5f7;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
         border: 1px solid #e4e4e4;
 
-        @media (width <= 800px) {
+        @media (width <=800px) {
             width: 140%;
         }
 
@@ -28,12 +27,13 @@ span#profile-table {
             text-align: left;
 
             tr {
+
                 td,
                 th {
-                    border: 1px solid #e4e4e4;
+                    border: 0.5px solid #e4e4e4;
                     padding: 0.8em;
 
-                    @media (width <= 500px) {
+                    @media (width <=500px) {
                         padding: 0.3em 0.6em;
                     }
 
@@ -53,10 +53,7 @@ span#profile-table {
 
                             &.completed {
                                 color: gray;
-
-                                &:hover {
-                                    color: gray;
-                                }
+                                cursor: not-allowed;
                             }
                         }
                     }
@@ -69,7 +66,7 @@ span#profile-table {
                     font-size: 18px;
                     border-top: 0;
 
-                    @media (width <= 500px) {
+                    @media (width <=500px) {
                         font-size: 16px;
                     }
                 }
@@ -77,24 +74,10 @@ span#profile-table {
                 td {
                     background: #F4F5F7;
 
-                    @media (width <= 500px) {
+                    @media (width <=500px) {
                         font-size: 14px;
                     }
                 }
-            }
-
-            tr:last-child td {
-                border-bottom: 0;
-            }
-
-            tr td:first-child,
-            tr th:first-child {
-                border-left: 0;
-            }
-
-            tr td:last-child,
-            tr th:last-child {
-                border-right: 0;
             }
         }
     }
