@@ -207,7 +207,8 @@
             "stock": "Stock",
             "confirm": "Are you sure you want to change that stock?",
             "search": "Search",
-            "all": "All"
+            "all": "All",
+            "export": "Export"
         },
         "editAll": {
             "title": "Edit",

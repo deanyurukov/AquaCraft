@@ -111,9 +111,9 @@ const AdminProductsPage = () => {
                     <option value="0">0</option>
                     <option value="lt_0">&lt; 0</option>
                 </select>
-            </div>
 
-            <button onClick={exportData}>Export to excel</button>
+            <button onClick={exportData}>{t("admin.products.export")}</button>
+            </div>
 
             {
                 displayProducts.length === 0 ? <p>{t("products.empty")}</p> :

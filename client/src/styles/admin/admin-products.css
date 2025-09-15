@@ -33,7 +33,8 @@
             }
         }
 
-        input, select {
+        input,
+        select {
             border: 2px solid #333;
             outline: none;
             padding: 1em;
@@ -42,7 +43,7 @@
             transition: all 0.2s linear;
             background: white;
 
-            @media (width <= 650px) {
+            @media (width <=650px) {
                 font-size: 14px;
             }
 
@@ -72,21 +73,50 @@
             background-size: 24px;
             width: 25%;
 
-            @media (width <= 650px) {
+            @media (width <=650px) {
                 background-position: right 10px center;
             }
 
-            @media (width <= 520px) {
+            @media (width <=520px) {
                 background-position: right 3px center;
             }
 
-            @media (width <= 440px) {
+            @media (width <=440px) {
                 background-position: right -3px center;
+            }
+        }
+
+        button {
+            border: 2px solid #333;
+            outline: none;
+            padding: 1em 1.8em;
+            font-size: 16px;
+            color: #565656;
+            transition: all 0.2s linear;
+            background: white;
+            cursor: pointer;
+
+            @media (width <=650px) {
+                font-size: 14px;
+            }
+
+            @media (width <=540px) {
+                font-size: 12px;
+            }
+
+            @media (width <=480px) {
+                padding: 0.4em 0.6em;
+            }
+
+            &:hover {
+                border: 2px solid #91BA8D;
+                border-radius: 3px;
+                color: #91BA8D;
             }
         }
     }
 
-    & > span {
+    &>span {
         position: relative;
         display: flex;
         align-items: center;
@@ -104,11 +134,11 @@
             color: #565656;
             transition: all 0.2s linear;
 
-            @media (width <= 450px) {
+            @media (width <=450px) {
                 font-size: 14px;
             }
 
-            @media (width <= 370px) {
+            @media (width <=370px) {
                 font-size: 12px;
             }
 
@@ -124,10 +154,10 @@
             color: black;
             cursor: pointer;
 
-            @media (width <= 370px) {
+            @media (width <=370px) {
                 font-size: 14px;
             }
-        }   
+        }
     }
 
     div {
@@ -297,7 +327,7 @@
         text-align: center;
         text-wrap: balance;
 
-        @media (width <= 470px) {
+        @media (width <=470px) {
             font-size: 22px;
         }
     }
