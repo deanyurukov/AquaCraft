@@ -16,7 +16,6 @@ const OrderDetailsPage = () => {
     const [price, setPrice] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
-    const update = useContext(appContext)[4];
     const { t } = useTranslation();
 
     async function getOrder() {
@@ -39,7 +38,7 @@ const OrderDetailsPage = () => {
 
     useEffect(() => {
         getOrder();
-    }, [update]);
+    }, []);
 
     if (loading) {
         return <Spinner />;

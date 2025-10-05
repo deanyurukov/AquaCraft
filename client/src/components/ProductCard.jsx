@@ -5,9 +5,12 @@ import { appContext } from "../App.jsx";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
-const ProductCard = ({ product, getProducts }) => {
+const ProductCard = ({ product }) => {
     const navigate = useNavigate();
     const getErrorAndDisplay = useContext(appContext)[6];
+    const favs = useContext(appContext)[7];
+    const likeProduct = useContext(appContext)[8];
+    const dislikeProduct = useContext(appContext)[9];
     const { t } = useTranslation();
     
     return (
@@ -15,7 +18,7 @@ const ProductCard = ({ product, getProducts }) => {
             <img onError={changeImage} src={product.images[0]} alt={product.title} />
 
             {
-                product.isFav ?
+                favs[product._id] ?
                     <i onClick={async () => {
                         const [data, error] = await productsService.removeFromFavorites(product._id);
 
@@ -24,7 +27,7 @@ const ProductCard = ({ product, getProducts }) => {
                             return;
                         }
 
-                        getProducts();
+                        dislikeProduct(product._id);
                     }} className="fa-solid fa-heart fill"></i> :
                     <i onClick={async () => {
                         const [data, error] = await productsService.addToFavorites(product._id);
@@ -34,7 +37,7 @@ const ProductCard = ({ product, getProducts }) => {
                             return;
                         }
                         
-                        getProducts();
+                        likeProduct(product._id);
                     }} className="fa-regular fa-heart"></i>
             }
             <span>

@@ -85,15 +85,31 @@ export const appContext = React.createContext();
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false); //! Needs to be false.
     const [favorites, setFavorites] = useState([]);
-    const [update, setUpdate] = useState(0);
     const [error, setError] = useState(null);
     const { t, i18n } = useTranslation();
 
-    const refreshFavorites = () => setUpdate((prev) => prev + 1);
+    const [newFavs, setNewFavs] = useState({});
 
     async function getAuthCtx() {
         const auth = await authService.getAuth();
         setIsLoggedIn(auth);
+    }
+
+    async function getNewFavs() {
+        const all = await productsService.getAll();
+        let onlyIds = {};
+        all.forEach(p => { 
+            onlyIds[p._id] = p.isFav || false;
+        });
+        setNewFavs(onlyIds);
+    }
+
+    function likeProduct(id) {
+        setNewFavs((prev) => ({ ...prev, [id]: true }));
+    }
+
+    function dislikeProduct(id) {
+        setNewFavs((prev) => ({ ...prev, [id]: false }));
     }
 
     async function getFavs() {
@@ -111,16 +127,20 @@ function App() {
 
     useEffect(() => {
         i18n.changeLanguage(localStorage.getItem("language") || "bg");
-        
+
         getFavs();
     }, []);
+
+    useEffect(() => {
+        getNewFavs();
+    }, [isLoggedIn]);
 
     useUrlChange(() => {
         getAuthCtx();
     });
 
     return <>
-        <appContext.Provider value={[isLoggedIn, favorites, getFavs, refreshFavorites, update, error, getErrorAndDisplay]}>
+        <appContext.Provider value={[isLoggedIn, favorites, getFavs, [], [], error, getErrorAndDisplay, newFavs, likeProduct, dislikeProduct]}>
             <RouterProvider router={router} />
         </appContext.Provider>
     </>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, use } from "react";
 import productsService from "../services/products-service.js";
 import ProductCard from "../components/ProductCard.jsx";
 import Spinner from "../components/Spinner.jsx";
@@ -12,7 +12,6 @@ const ProductsPage = () => {
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [displayProducts, setDisplayProducts] = useState([]);
-    const update = useContext(appContext)[4];
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [productsPerPage, setProductsPerPage] = useState(6);
@@ -34,7 +33,7 @@ const ProductsPage = () => {
 
     useEffect(() => {
         getProducts();
-    }, [update]);
+    }, []);
 
     useEffect(() => {
         const filter = Object.fromEntries(searchParams);
@@ -118,90 +117,6 @@ const ProductsPage = () => {
     function changeSearch(e) {
         setSearch(e.target.value);
     }
-    //     if (sortBy === "price_asc") {
-    //         setDisplayProducts(prev => prev.sort((a, b) => a.price - b.price));
-    //     }
-
-    //     if (sortBy === "price_desc") {
-    //         setDisplayProducts(prev => prev.sort((a, b) => b.price - a.price));
-    //     }
-
-    //     if (sortBy === "name_asc") {
-    //         setDisplayProducts(prev => prev.sort((a, b) => a.title.localeCompare(b.title)));
-    //     }
-
-    //     if (sortBy === "name_desc") {
-    //         setDisplayProducts(prev => prev.sort((a, b) => b.title.localeCompare(a.title)));
-    //     }
-
-    //     updateURL();
-    // }, [sortBy, products, currentPage, displayProducts]);
-
-    // useEffect(() => {
-    //     setDisplayProducts(prev => prev = [...prev].filter(product => product.title.toLowerCase().includes(search.toLowerCase())));
-
-    //     updateURL();
-    // }, [search, products, currentPage]);
-
-    // useEffect(() => {
-    //     setDisplayProducts(() => {
-    //         if (filters.length === 0) {
-    //             return [...products];
-    //         }
-
-    //         const selectedCompanies = filters.filter(filter =>
-    //             products.some(product => product.company === filter)
-    //         );
-
-    //         const selectedTypes = filters.filter(filter =>
-    //             products.some(product => product.type === filter)
-    //         );
-
-    //         const selectedTypeDetails = filters.filter(filter =>
-    //             products.some(product => product.typeDetails === filter)
-    //         );
-
-    //         const filteredProducts = products.filter(product => {
-    //             const matchesCompany = selectedCompanies.includes(product.company);
-    //             const matchesType = selectedTypes.includes(product.type);
-    //             const matchesTypeDetails = selectedTypeDetails.includes(product.typeDetails);
-
-    //             if (selectedCompanies.length > 0 && selectedTypes.length > 0 && selectedTypeDetails.length > 0) {
-    //                 return matchesCompany && matchesType && matchesTypeDetails;
-    //             }
-
-    //             if (selectedCompanies.length > 0 && selectedTypes.length > 0) {
-    //                 return matchesCompany && matchesType;
-    //             }
-
-    //             if (selectedCompanies.length > 0 && selectedTypeDetails.length > 0) {
-    //                 return matchesCompany && matchesTypeDetails;
-    //             }
-
-    //             if (selectedTypes.length > 0 && selectedTypeDetails.length > 0) {
-    //                 return matchesType && matchesTypeDetails;
-    //             }
-
-    //             if (selectedCompanies.length > 0) {
-    //                 return matchesCompany;
-    //             }
-
-    //             if (selectedTypes.length > 0) {
-    //                 return matchesType;
-    //             }
-
-    //             if (selectedTypeDetails.length > 0) {
-    //                 return matchesTypeDetails;
-    //             }
-
-    //             return false;
-    //         });
-
-    //         return filteredProducts.length > 0 ? filteredProducts : [];
-    //     });
-
-    //     updateURL();
-    // }, [filters, products, currentPage]);
 
     useEffect(() => {
         let filteredProducts = [...products];
@@ -410,7 +325,7 @@ const ProductsPage = () => {
                             <div className="products-content">
                                 {
                                     currentProducts.map(product => (
-                                        <ProductCard product={product} getProducts={getProducts} key={product._id} />
+                                        <ProductCard product={product} key={product._id} />
                                     ))
                                 }
                             </div>

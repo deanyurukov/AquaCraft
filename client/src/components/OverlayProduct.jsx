@@ -8,6 +8,7 @@ const OverlayProduct = ({ product }) => {
     const navigate = useNavigate();
     const getFav = useContext(appContext)[2];
     const refreshFavorites = useContext(appContext)[3];
+    const dislikeProduct = useContext(appContext)[9];
 
     return (
         <div>
@@ -21,8 +22,15 @@ const OverlayProduct = ({ product }) => {
                 }
             }}><i className="fa-solid fa-cart-plus"></i></a>
             <a><i onClick={async () => {
-                await productsService.removeFromFavorites(product._id);
+                const [data, error] = await productsService.removeFromFavorites(product._id);
+
+                if (!data) {
+                    getErrorAndDisplay(error);
+                    return;
+                }
+
                 await getFav();
+                dislikeProduct(product._id);
                 refreshFavorites();
             }} className="fa-solid fa-heart fill"></i></a>
         </div>

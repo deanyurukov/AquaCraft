@@ -4,9 +4,12 @@ import productsService from "../services/products-service";
 import { useContext } from "react";
 import { appContext } from "../App";
 
-const OrderProduct = ({ quantity, product, getOrder }) => {
+const OrderProduct = ({ quantity, product }) => {
     const navigate = useNavigate();
     const getErrorAndDisplay = useContext(appContext)[6];
+    const favs = useContext(appContext)[7];
+    const likeProduct = useContext(appContext)[8];
+    const dislikeProduct = useContext(appContext)[9];
 
     return (
         <tr>
@@ -17,7 +20,7 @@ const OrderProduct = ({ quantity, product, getOrder }) => {
             <td>
                 <span>
                     {
-                        product.isFav ?
+                        favs[product._id] ?
                             <i onClick={async () => {
                                 const [data, error] = await productsService.removeFromFavorites(product._id);
 
@@ -26,7 +29,7 @@ const OrderProduct = ({ quantity, product, getOrder }) => {
                                     return;
                                 }
 
-                                getOrder();
+                                dislikeProduct(product._id);
                             }} className="fa-solid fa-heart fill"></i> :
                             <i onClick={async () => {
                                 const [data, error] = await productsService.addToFavorites(product._id);
@@ -36,7 +39,7 @@ const OrderProduct = ({ quantity, product, getOrder }) => {
                                     return;
                                 }
 
-                                getOrder();
+                                likeProduct(product._id);
                             }} className="fa-regular fa-heart"></i>
                     }
                 </span>
