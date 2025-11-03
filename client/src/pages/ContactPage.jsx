@@ -60,7 +60,7 @@ const ContactPage = () => {
             }
 
             try {
-                emailjs.send(emailConfig.gmailService, emailConfig.contactTemplate, { email, name, message });
+                emailjs.send(emailConfig.supportService, emailConfig.contactTemplate, { email, name, message });
             }
             catch (err) {
                 console.error(err);
