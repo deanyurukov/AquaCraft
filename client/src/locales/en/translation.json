@@ -32,6 +32,48 @@
             "projectRequest": "Request a Project",
             "howTo": "How To...",
             "learnMore": "Learn More"
+        },
+        "benefits": {
+            "title": "Why DIY Irrigation?",
+            "content": [
+                "Save money",
+                "Act as pro",
+                "Full customization",
+                "Water efficiency",
+                "Easier repair",
+                "Save time"
+            ]
+        },
+        "watering": {
+            "title": "Master every watering method",
+            "content": [
+                {
+                    "title": "Drip Irrigation",
+                    "level": "Beginner",
+                    "description": "Delivers water directly to the root zone through emitters or drip lines. Extremely water-efficient with minimal evaporation. Ideal for vegetable gardens, flower beds, shrubs, and greenhouses. Best choice for DIY systems focused on efficiency and control."
+                },
+                {
+                    "title": "Micro Irrigation",
+                    "level": "Beginner",
+                    "description": "Uses low-flow emitters or small spray heads at low pressure. Balances coverage and efficiency. Suitable for mixed plantings and landscaped areas. Commonly combined with drip systems."
+                },
+                {
+                    "title": "Subsurface Irrigation",
+                    "level": "Beginner",
+                    "description": "Water is delivered below the soil surface directly to roots. Very high efficiency with minimal evaporation. More complex installation and maintenance. Ideal for long-term, permanent installations."
+                },
+                {
+                    "title": "Sprinkler Irrigation",
+                    "level": "Intermediate",
+                    "description": "Uses sprinklers or spray heads to distribute water over a larger area. Commonly used for lawns and open landscape areas. Easy to automate but less efficient due to wind drift and evaporation. Suitable for homeowners prioritizing uniform coverage."
+                }
+            ],
+            "advantages": "Advantages",
+            "learnMore": "Learn More"
+        },
+        "mission": {
+            "title": "Our Mission",
+            "description": "Our mission is to empower homeowners to confidently design, build, and maintain their own irrigation systems. We provide clear, practical education, proven methods, and reliable resources that make efficient irrigation accessible to everyone - regardless of prior technical experience. By promoting do-it-yourself solutions, smart water use, and long-term sustainability, we help people reduce costs, conserve water, and create healthier gardens and landscapes through systems they fully understand and control."
         }
     },
     "login": {

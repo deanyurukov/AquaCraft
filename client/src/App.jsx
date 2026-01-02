@@ -46,13 +46,13 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path='/products' element={<ProductsPage />} />
-            <Route path='/products/:id/details' element={<DetailsPage />} />
+            {/* <Route path='/products' element={<ProductsPage />} /> */}
+            {/* <Route path='/products/:id/details' element={<DetailsPage />} /> */}
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/logout' element={<LogoutPage />} />
-            <Route path='/cart' element={<CartPage />} />
-            <Route path='/checkout' element={<CheckoutPage />} />
+            {/* <Route path='/cart' element={<CartPage />} /> */}
+            {/* <Route path='/checkout' element={<CheckoutPage />} /> */}
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />

@@ -2,22 +2,46 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 80px;
     width: 100%;
     font-family: 'Poppins', sans-serif;
     background: #fff;
 
+    #benefits h2,
+    #watering h2,
+    #mission h2 {
+        font-weight: 700;
+        font-size: 2.75em;
+        position: relative;
+        text-align: center;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #91BA8D;
+        }
+
+        @media (width <=850px) {
+            font-size: 2rem;
+        }
+
+        @media (width <=450px) {
+            font-size: 1.7rem;
+        }
+    }
+
     #hero {
-        height: 80vh;
+        height: 70vh;
         color: #fff;
         font-size: 2rem;
         font-weight: 300;
         text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         position: relative;
         width: 100%;
-
-        @media (width <=850px) {
-            height: 70vh;
-        }
 
         @media (width <=570px) {
             height: 60vh;
@@ -131,6 +155,225 @@
         }
     }
 
+    #benefits {
+        display: flex;
+        align-items: start;
+        width: 90%;
+        flex-direction: column;
+        gap: 60px;
+        overflow: hidden;
+
+        @media (width <=450px) {
+            gap: 40px;
+        }
+
+        h2 {
+            align-self: center;
+        }
+
+        section {
+            display: flex;
+            gap: 54px;
+            animation: scroll 20s linear infinite;
+
+            @media (width <=750px) {
+                animation: none;
+                flex-direction: column;
+                width: 100%;
+
+                .doubled {
+                    display: none;
+                }
+
+                img {
+                    width: 80%;
+                }
+            }
+
+            @media (width <=450px) {
+                gap: 30px;
+
+                div {
+                    gap: 15px !important;
+
+                    p {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 35px;
+
+                p {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    #watering {
+        display: flex;
+        align-items: center;
+        width: 75%;
+        flex-direction: column;
+        gap: 60px;
+
+        @media (width <=1070px) {
+            width: 95%;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            width: 100%;
+
+            @media (width <=850px) {
+                grid-template-columns: repeat(1, 1fr);
+                width: 80%;
+            }
+
+            @media (width <=510px) {
+                width: 95%;
+
+                div {
+                    padding: 50px 20px !important;
+
+                    &.card p {
+                        font-size: 1.2rem !important;
+
+                        span {
+                            font-size: 2.5rem !important;
+                        }
+                    }
+
+                    &.overlay p {
+                        font-size: 1.1rem !important;
+                    }
+
+                    h4 {
+                        font-size: 2rem !important;
+                    }
+
+                    h5 {
+                        font-size: 1.7rem !important;
+                    }
+
+                    a {
+                        padding: 7px 18px !important;
+                        font-size: 0.9rem !important;
+                    }
+                }
+            }
+
+            article {
+                position: relative;
+
+                &:hover .overlay {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 24px;
+                    padding: 70px 20px;
+                    height: 100%;
+                    text-align: center;
+
+                    &.card {
+                        background: #91BA8D;
+                        color: #fff;
+                        gap: 250px;
+
+                        p {
+                            font-size: 1.5rem;
+                            font-weight: 700;
+
+                            span {
+                                font-size: 3rem;
+                            }
+                        }
+                    }
+
+                    &.overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        background: #F4F5F7;
+                        color: #91BA8D;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.2s ease;
+                        border: 1px solid #E4E4E4;
+
+                        p {
+                            font-size: 1.25rem;
+                            line-height: 1.5;
+                        }
+                    }
+
+                    h4 {
+                        font-size: 2.3rem;
+                    }
+
+                    h5 {
+                        font-size: 2rem;
+                    }
+
+                    a {
+                        color: #fff;
+                        padding: 10px 25px;
+                        background: #91BA8D;
+                        border-radius: 6px;
+                        transition: all 0.2s linear;
+
+                        &:hover {
+                            background: #91ba8dc9;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #mission {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-bottom: 80px;
+        width: 85%;
+
+        p {
+            font-size: 1.2rem;
+            text-align: center;
+            width: 100%;
+            background: #91BA8D;
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+
+            @media (width <=850px) {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            @media (width <=450px) {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+        }
+    }
+
     #cards {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -161,7 +404,7 @@
                 left: 0;
                 display: block;
                 height: 100%;
-                background: darkgreen;
+                background: #91BA8D;
                 transition: width 0.3s linear;
                 z-index: 1;
 
@@ -249,5 +492,15 @@
                 }
             }
         }
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 27px));
     }
 }
