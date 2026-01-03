@@ -9,7 +9,7 @@ const Footer = () => {
 
     return (
         <footer id="site-footer">
-            <ul className="social-links-container">
+            <ul>
                 <li><Link to="https://www.facebook.com/profile.php?id=61573735392596" target="_blank"><i className="fa-brands fa-facebook-f"></i></Link></li>
                 <li><Link to="https://x.com/AquaCraftLtd" target="_blank"><i className="fa-brands fa-twitter"></i></Link></li>
                 <li><Link to="https://www.linkedin.com/company/aqua-craft-irrigation/" target="_blank"><i className="fa-brands fa-linkedin-in"></i></Link></li>
