@@ -44,7 +44,7 @@
         width: 100%;
 
         @media (width <=570px) {
-            height: 60vh;
+            height: 55vh;
         }
 
         .slides {
@@ -83,35 +83,34 @@
                     gap: 1em;
                     text-align: center;
                     padding: 0 5%;
+                    font-size: 16px;
 
-                    @media (width <=850px) {
-                        gap: 0.6em;
+                    @media (width<=750px) {
+                        font-size: 13px;
+                    }                    
 
-                        h1 {
-                            font-size: 34px;
-                        }
+                    @media (width<=510px) {
+                        font-size: 11px;
                     }
 
-                    @media (width <=450px) {
-                        h1 {
-                            font-size: 28px;
-                        }
+                    @media (width<=430px) {
+                        font-size: 9px;
                     }
-
-                    @media (width <=370px) {
-                        h1 {
-                            font-size: 24px;
-                        }
-                    }
-
-                    @media (width <=320px) {
-                        h1 {
-                            font-size: 20px;
-                        }
-                    }
-
-                    &>h1 {
+                    
+                    h1, p {
                         text-shadow: 2px 2px 0 black;
+                    }
+
+                    h1 {
+                        line-height: 1.1;
+                        font-weight: 800;
+                        font-size: 4.5em;
+                    }
+
+                    p {
+                        font-size: 1.15em;
+                        color: rgb(243, 243, 243);
+                        font-weight: 600;
                     }
 
                     .buttons {

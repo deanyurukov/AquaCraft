@@ -32,6 +32,7 @@ const HomePage = () => {
         {
             imageUrl: "/images/hero.jpg",
             title: t("home.title"),
+            text: t("home.heroText")
             // buttons: [
             //     {
             //         text: t("home.products"),
@@ -120,6 +121,7 @@ const HomePage = () => {
                             <img src={slide.imageUrl} alt={`hero section image ${idx}`} />
                             <div className="content">
                                 <h1>{slide.title}</h1>
+                                <p>{slide.text}</p>
                                 {/* <div className="buttons">
                                     {slide.buttons.map((button, btnIdx) => (
                                         <Link to={button.href} key={btnIdx}>{button.text}</Link>
