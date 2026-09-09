@@ -1,33 +1,10 @@
-import { Link } from "react-router-dom";
-import HomeCards from "../components/HomeCards";
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 import WateringMethodCard from "../components/WateringMethodCard";
 
 const HomePage = () => {
     const { t } = useTranslation();
-    const cards = [
-        {
-            imageUrl: "/images/products.png",
-            title: "products",
-            href: "products"
-        },
-        {
-            imageUrl: "/images/services.png",
-            title: "projectRequest",
-            href: "project-request"
-        },
-        {
-            imageUrl: "/images/how-to.png",
-            title: "howTo",
-            href: "how-to"
-        },
-        {
-            imageUrl: "/images/request-project.png",
-            title: "contactUs",
-            href: "contact-us"
-        }
-    ];
+
     const heroSlides = [
         {
             imageUrl: "/images/hero.jpg",
@@ -71,37 +48,33 @@ const HomePage = () => {
             level: t("home.watering.content.0.level"),
             description: t("home.watering.content.0.description"),
             stars: "⭐",
+            link: "/methods/drip"
         },
         {
             title: t("home.watering.content.1.title"),
             level: t("home.watering.content.1.level"),
             description: t("home.watering.content.1.description"),
             stars: "⭐",
+            link: "/methods/micro"
         },
         {
             title: t("home.watering.content.2.title"),
             level: t("home.watering.content.2.level"),
             description: t("home.watering.content.2.description"),
             stars: "⭐",
+            link: "/methods/subsurface"
         },
         {
             title: t("home.watering.content.3.title"),
             level: t("home.watering.content.3.level"),
             description: t("home.watering.content.3.description"),
             stars: "⭐⭐",
+            link: "/methods/sprinkler"
         },
     ]
 
     const containerRef = useRef(null);
     const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % cards.length);
-        }, 4000);
-
-        return () => clearInterval(interval);
-    }, []);
 
     useEffect(() => {
         if (containerRef.current) {
@@ -160,14 +133,6 @@ const HomePage = () => {
                 <h2>{t("home.mission.title")}</h2>
                 <p>{t("home.mission.description")}</p>
             </div>
-
-            {/* <div id="cards">
-                {
-                    cards.map((card, index) => (
-                        <HomeCards card={card} key={index} />
-                    ))
-                }
-            </div> */}
         </div>
     )
 }

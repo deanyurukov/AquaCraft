@@ -13,7 +13,7 @@ const WateringMethodCard = ({ info }) => {
             <div className="overlay">
                 <h5>{t("home.watering.advantages")}</h5>
                 <p>{info.description}</p>
-                <Link to={"#"}>{t("home.watering.learnMore")}</Link>
+                <Link to={info.link}>{t("home.watering.learnMore")}</Link>
             </div>
         </article>
     );

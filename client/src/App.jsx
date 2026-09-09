@@ -41,6 +41,10 @@ import EditProductPage from './pages/admin/EditProductPage.jsx';
 import ProjectRequestPage from './pages/ProjectRequestPage.jsx';
 import HowToPage from './pages/HowToPage.jsx';
 import AdminOrdersPage from './pages/admin/OrdersAdminPage.jsx';
+import DripIrrigationPage from './pages/irrigation-methods/DripIrrigationPage.jsx';
+import MicroIrrigationPage from './pages/irrigation-methods/MicroIrrigationPage.jsx';
+import SubsurfaceIrrigationPage from './pages/irrigation-methods/SubsurfaceIrrigationPage.jsx';
+import SprinklerIrrigationPage from './pages/irrigation-methods/SprinklerIrrigationPage.jsx';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -58,6 +62,11 @@ const router = createBrowserRouter(
             <Route path='/contact-us' element={<ContactPage />} />
             <Route path='/project-request' element={<ProjectRequestPage />} />
             <Route path='/how-to' element={<HowToPage />} />
+
+            <Route path='/methods/drip' element={<DripIrrigationPage />} />
+            <Route path='/methods/micro' element={<MicroIrrigationPage />} />
+            <Route path='/methods/subsurface' element={<SubsurfaceIrrigationPage />} />
+            <Route path='/methods/sprinkler' element={<SprinklerIrrigationPage />} />
 
             <Route path='/profile' element={<ProfileLayout />} >
                 <Route path='/profile/panel' element={<PanelPage />} />
