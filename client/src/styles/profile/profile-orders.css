@@ -32,7 +32,7 @@
         }
 
         &:focus {
-            border: 2px solid #91BA8D;
+            border: 2px solid var(--color-primary);
             border-radius: 3px;
         }
     }

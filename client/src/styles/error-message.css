@@ -5,7 +5,7 @@
     transform: translateX(-50%);
     text-align: center;
     z-index: 1000;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
 
     .notification {
         font-size: 1.5em;
@@ -20,7 +20,7 @@
             padding:  0.5em 2em;
             border-radius: 50px 10px;
             box-shadow: 4px 4px 7px 4px rgba(0, 0, 0, 0.5);
-            background: #fff;
+            background: var(--color-white);
 
             @media (width <= 500px) {
                 border-radius: 35px 7px;

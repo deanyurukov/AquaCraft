@@ -6,7 +6,7 @@
     flex-direction: column;
     background: #3c3c37;
     padding: 2em 0;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
 
     & > ul {
         display: flex;
@@ -42,7 +42,7 @@
             }
             
             a {
-                color: #fff;
+                color: var(--color-white);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -81,7 +81,7 @@
         ul {
             display: flex;
             flex-direction: column;
-            color: #fff;
+            color: var(--color-white);
             align-items: center;
 
             @media (width <= 570px) {
@@ -98,7 +98,7 @@
                 text-align: center;
 
                 a {
-                    color: #fff;
+                    color: var(--color-white);
                     font-weight: 300;
                     font-size: 14px;
                     position: relative;
@@ -125,7 +125,7 @@
     }
 
     p {
-        color: #fff;
+        color: var(--color-white);
         font-size: 14px;
         font-weight: 300;
         max-width: 80%;

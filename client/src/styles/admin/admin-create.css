@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
     min-height: 70vh;
     gap: 2em;
 
@@ -75,7 +75,7 @@
                     resize: none;
                     field-sizing: content;
                     scrollbar-width: thin;
-                    scrollbar-color: #91BA8D transparent;
+                    scrollbar-color: var(--color-primary) transparent;
                     background: white;
 
                     @media (width <=800px) {
@@ -87,7 +87,7 @@
                     }
 
                     &:focus {
-                        border: 2px solid #91BA8D;
+                        border: 2px solid var(--color-primary);
                         border-radius: 3px;
                     }
                 }
@@ -95,7 +95,7 @@
                 textarea {
                     min-height: 35vh;
                     max-height: 50vh;
-                    font-family: "Poppins", sans-serif;
+                    font-family: var(--font-poppins);
                 }
                 
                 select {
@@ -162,7 +162,7 @@
                                 top: 7px;
                                 right: 7px;
                                 font-size: 18px;
-                                color: #fff;
+                                color: var(--color-white);
                                 transition: all 0.2s ease;
                                 cursor: pointer;
 
@@ -176,7 +176,7 @@
             }
 
             button {
-                background: #91BA8D;
+                background: var(--color-primary);
                 color: white;
                 font-size: 16px;
                 padding: 0.6em 2em;

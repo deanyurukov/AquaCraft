@@ -1,5 +1,5 @@
 .chatbot-popup {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
     opacity: 1;
     position: relative;
     z-index: 999;
@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #91BA8D;
+    background: var(--color-primary);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
     z-index: 999;
@@ -28,17 +28,17 @@
 }
 
 #chatbot-toggler span {
-    color: #fff;
+    color: var(--color-white);
     position: absolute;
 
     &>i {
         font-size: 32px;
-        color: #fff;
+        color: var(--color-white);
     }
 
     &>svg {
         width: 80%;
-        fill: #fff;
+        fill: var(--color-white);
     }
 }
 
@@ -60,7 +60,7 @@
     pointer-events: none;
     transform: scale(0.2);
     overflow: hidden;
-    background: #fff;
+    background: var(--color-white);
     border-radius: 15px;
     transform-origin: bottom right;
     box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
@@ -78,7 +78,7 @@
     display: flex;
     padding: 15px 22px;
     align-items: center;
-    background: #91BA8D;
+    background: var(--color-primary);
     border-bottom: 1px solid #689264;
     justify-content: space-between;
 }
@@ -94,13 +94,13 @@
     height: 35px;
     flex-shrink: 0;
     padding: 6px;
-    fill: #91BA8D;
-    background: #fff;
+    fill: var(--color-primary);
+    background: var(--color-white);
     border-radius: 50%;
 }
 
 .header-info .logo-text {
-    color: #fff;
+    color: var(--color-white);
     font-weight: 600;
     font-size: 1.31rem;
     letter-spacing: 0.02rem;
@@ -110,7 +110,7 @@
     border: none;
     height: 40px;
     width: 40px;
-    color: #fff;
+    color: var(--color-white);
     cursor: pointer;
     padding-top: 2px;
     margin-right: -10px;
@@ -147,10 +147,10 @@
     height: 35px;
     flex-shrink: 0;
     padding: 6px;
-    fill: #fff;
+    fill: var(--color-white);
     align-self: flex-end;
     margin-bottom: 2px;
-    background: #91BA8D;
+    background: var(--color-primary);
     border-radius: 50%;
 }
 
@@ -177,8 +177,8 @@
 }
 
 .chat-body .user-message .message-text {
-    color: #fff;
-    background: #91BA8D;
+    color: var(--color-white);
+    background: var(--color-primary);
     border-radius: 13px 13px 3px 13px;
 }
 
@@ -186,7 +186,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #fff;
+    background: var(--color-white);
     padding: 15px 22px 20px;
 }
 
@@ -195,7 +195,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    background: #fff;
+    background: var(--color-white);
     border-radius: 32px;
     outline: 1px solid #CCCCE5;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
@@ -203,7 +203,7 @@
 }
 
 .chat-form:focus-within {
-    outline: 2px solid #91BA8D;
+    outline: 2px solid var(--color-primary);
 }
 
 .chat-form .message-input {
@@ -216,7 +216,7 @@
     padding: 16px 23px;
     background: none;
     field-sizing: content;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
     resize: none;
     scrollbar-width: thin;
     scrollbar-color: #80a77d transparent;
@@ -227,11 +227,11 @@
     width: 35px;
     border: none;
     flex-shrink: 0;
-    color: #fff;
+    color: var(--color-white);
     cursor: pointer;
     display: none;
     margin-right: 6px;
-    background: #91BA8D;
+    background: var(--color-primary);
     border-radius: 50%;
     font-size: 1.15rem;
     transition: 0.2s ease;

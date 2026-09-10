@@ -6,8 +6,8 @@
     gap: 3em;
     padding: 0 7%;
     margin: 2em 0;
-    font-family: "Poppins", sans-serif;
-    background: #fff;
+    font-family: var(--font-poppins);
+    background: var(--color-white);
     min-height: 60vh;
 
     @media (width <= 1020px) {

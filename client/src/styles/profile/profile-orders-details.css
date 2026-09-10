@@ -81,7 +81,7 @@
             
             h3 {
                 font-size: 26px;
-                color: #91BA8D;
+                color: var(--color-primary);
 
                 @media (width <= 600px) {
                     font-size: 22px;
@@ -120,7 +120,7 @@
             position: relative;
             overflow-x: scroll;
             scrollbar-width: thin;
-            scrollbar-color: #91BA8D transparent;
+            scrollbar-color: var(--color-primary) transparent;
 
             thead th:first-child,
             tbody td:first-child {
@@ -178,7 +178,7 @@
 
                             i {
                                 font-size: 20px;
-                                color: #91BA8D;
+                                color: var(--color-primary);
                                 transition: all 0.2s ease;
 
                                 @media (width <= 820px) {
@@ -197,8 +197,8 @@
                     }
 
                     th {
-                        background: #91BA8D;
-                        color: #fff;
+                        background: var(--color-primary);
+                        color: var(--color-white);
                         font-weight: 500;
                         font-size: 18px;
                         border-top: 0;

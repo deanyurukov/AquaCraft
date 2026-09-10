@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.1em 10%;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-poppins);
     color: rgb(244, 237, 237);
     background-color: #f28807;
     gap: 1.5em;

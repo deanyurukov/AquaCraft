@@ -3,7 +3,7 @@ span#profile-table {
     position: relative;
     overflow-x: scroll;
     scrollbar-width: thin;
-    scrollbar-color: #91BA8D transparent;
+    scrollbar-color: var(--color-primary) transparent;
 
     thead th:first-child,
     tbody td:first-child {
@@ -44,7 +44,7 @@ span#profile-table {
 
                         i {
                             font-size: 20px;
-                            color: #91ba8d;
+                            color: var(--color-primary);
                             transition: all 0.2s ease;
 
                             &:hover {
@@ -60,8 +60,8 @@ span#profile-table {
                 }
 
                 th {
-                    background: #91ba8d;
-                    color: #fff;
+                    background: var(--color-primary);
+                    color: var(--color-white);
                     font-weight: 500;
                     font-size: 18px;
                     border-top: 0;

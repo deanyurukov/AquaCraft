@@ -16,7 +16,7 @@
     }
 
     button {
-        background: #91BA8D;
+        background: var(--color-primary);
         color: white;
         font-size: 18px;
         padding: 0.6em 1.5em;
@@ -24,7 +24,7 @@
         border-radius: 5px;
         cursor: pointer;
         transition: all 0.2s ease;
-        border: 1px solid #91BA8D;
+        border: 1px solid var(--color-primary);
 
         @media (width <= 500px) {
             padding: 0.5em 1em;
@@ -32,7 +32,7 @@
         
         &:hover {
             background: transparent;
-            color: #91BA8D;
+            color: var(--color-primary);
         }
 
         &:disabled {
@@ -43,12 +43,12 @@
         }
 
         a {
-            color: #FFFFFF;
+            color: var(--color-white);
         }
     }
 
     p {
         font-size: 18px;
-        color: #91BA8D;
+        color: var(--color-primary);
     }
 }

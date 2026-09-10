@@ -23,7 +23,7 @@
 }
 
 .spinner:after {
-    color: #91BA8D;
+    color: var(--color-primary);
     transform: rotateY(70deg);
     animation-delay: 0.4s;
 }

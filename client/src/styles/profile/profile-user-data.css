@@ -45,7 +45,7 @@
             h2 {
                 font-weight: 400;
                 font-size: 24px;
-                color: #91BA8D;
+                color: var(--color-primary);
             }
 
             form {
@@ -73,7 +73,7 @@
                         transition: all 0.2s linear;
 
                         &:focus {
-                            border: 2px solid #91BA8D;
+                            border: 2px solid var(--color-primary);
                             border-radius: 3px;
                         }
                     }
@@ -88,7 +88,7 @@
 
             button {
                 padding: 0.8em 1.5em;
-                background: #fff;
+                background: var(--color-white);
                 border: 1px solid #000;
                 border-radius: 4px;
                 color: #000;
@@ -105,8 +105,8 @@
 
                 &:hover {
                     background: #000;
-                    color: #fff;
-                    border: 1px solid #fff;
+                    color: var(--color-white);
+                    border: 1px solid var(--color-white);
                 }
             }
         }
@@ -132,7 +132,7 @@
                         margin-top: 0.4em;
 
                         &:focus {
-                            border: 2px solid #91BA8D;
+                            border: 2px solid var(--color-primary);
                             border-radius: 3px;
                         }
                     }
