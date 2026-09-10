@@ -87,28 +87,30 @@
 
                     @media (width<=750px) {
                         font-size: 13px;
-                    }                    
+                    }
 
                     @media (width<=510px) {
                         font-size: 11px;
+
+                        p {
+                            text-shadow: 0.5px 0.5px 0 black;
+                        }
                     }
 
                     @media (width<=430px) {
                         font-size: 9px;
-                    }
-                    
-                    h1, p {
-                        text-shadow: 2px 2px 0 black;
                     }
 
                     h1 {
                         line-height: 1.1;
                         font-weight: 800;
                         font-size: 4.5em;
+                        text-shadow: 2px 2px 0 black;
                     }
 
                     p {
-                        font-size: 1.15em;
+                        font-size: 1.2em;
+                        text-shadow: 1.25px 1.25px 0 black;
                         color: rgb(243, 243, 243);
                         font-weight: 600;
                     }
@@ -210,6 +212,7 @@
                 p {
                     font-size: 1.5rem;
                     font-weight: 600;
+                    text-align: center;
                 }
             }
         }
