@@ -1,27 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 import WateringMethodCard from "../components/WateringMethodCard";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     const { t } = useTranslation();
 
-    const heroSlides = [
-        {
-            imageUrl: "/images/hero.jpg",
-            title: t("home.title"),
-            text: t("home.heroText")
-            // buttons: [
-            //     {
-            //         text: t("home.products"),
-            //         href: "/products"
-            //     },
-            //     {
-            //         text: t("home.contact"),
-            //         href: "/contact-us"
-            //     }
-            // ]
-        }
-    ];
     const benefits = [
         {
             imageUrl: "/images/benefits/benefit-1.png"
@@ -73,36 +57,17 @@ const HomePage = () => {
         },
     ]
 
-    const containerRef = useRef(null);
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        if (containerRef.current) {
-            containerRef.current.scrollTo({
-                left: containerRef.current.clientWidth * index,
-                behavior: "smooth",
-            });
-        }
-    }, [index]);
-
     return (
         <div id="home">
-            <div id="hero">
-                <div ref={containerRef} className="slides">
-                    {heroSlides.map((slide, idx) => (
-                        <div key={idx} className="slide">
-                            <img src={slide.imageUrl} alt={`hero section image ${idx}`} />
-                            <div className="content">
-                                <h1>{slide.title}</h1>
-                                <p>{slide.text}</p>
-                                {/* <div className="buttons">
-                                    {slide.buttons.map((button, btnIdx) => (
-                                        <Link to={button.href} key={btnIdx}>{button.text}</Link>
-                                    ))}
-                                </div> */}
-                            </div>
-                        </div>
-                    ))}
+            <div className="hero">
+                <img src="/images/hero.jpg" alt="home hero image" />
+
+                <h1>{t("home.title")}</h1>
+                <p>{t("home.heroText")}</p>
+
+                <div>
+                    <Link className='primary link' to={"/products"}>{t("home.products")}</Link>
+                    <a className='secondary link' href={"#watering"}>{t("home.methods")}</a>
                 </div>
             </div>
 

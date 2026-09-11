@@ -24,16 +24,7 @@
         "title": "Craft Your Own Irrigation System",
         "heroText": "Discover the right method for your area and enjoy effortless automatic irrigation.",
         "products": "Products",
-        "services": "Services",
-        "contact": "Contact Us",
-        "cards": {
-            "products": "Products",
-            "services": "Services",
-            "contactUs": "Contact Us",
-            "projectRequest": "Request a Project",
-            "howTo": "How To...",
-            "learnMore": "Learn More"
-        },
+        "methods": "See Methods",
         "benefits": {
             "title": "Why DIY Irrigation?",
             "content": [

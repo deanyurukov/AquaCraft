@@ -16,7 +16,7 @@ const IrrigationPageConfig = ({ methodName }) => {
     return (
         <>
             <div id='irrigation-method'>
-                <section id='irrigation-hero'>
+                <section className='hero'>
                     <img src={data.heroImage} alt="irrigation hero image" />
 
                     <span>{t(`${translationPath}.category`)}</span>
@@ -24,8 +24,8 @@ const IrrigationPageConfig = ({ methodName }) => {
                     <p>{t(`${translationPath}.description`)}</p>
 
                     <div>
-                        <Link className='primary' to={"#calc"}>{t("common.planSystem")}</Link>
-                        <Link className='secondary' to={"#components"}>{t("common.viewComponents")}</Link>
+                        <a className='primary link' href={"#calc"}>{t("common.planSystem")}</a>
+                        <a className='secondary link' href={"#components"}>{t("common.viewComponents")}</a>
                     </div>
                 </section>
 
@@ -48,8 +48,8 @@ const IrrigationPageConfig = ({ methodName }) => {
                     <p>{t(`${translationPath}.ctaText`)}</p>
 
                     <div>
-                        <Link className='tertiary' to={"#calc"}>{t("common.planSystem")}</Link>
-                        <Link className='secondary' to={"/contact-us"}>{t("common.contactUs")}</Link>
+                        <a className='tertiary link' href={"#calc"}>{t("common.planSystem")}</a>
+                        <Link className='secondary link' to={"/contact-us"}>{t("common.contactUs")}</Link>
                     </div>
                 </section>
             </div>
