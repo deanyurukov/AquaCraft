@@ -1,7 +1,8 @@
 #irrigation-method {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    align-items: center;
+    gap: 3em;
     width: 100%;
     background: var(--color-white);
     font-size: 16px;
@@ -28,7 +29,7 @@
             color: var(--color-white);
 
             &:hover {
-                background: #7aa376;
+                background: var(--color-primary-dark);
             }
         }
 
@@ -49,6 +50,26 @@
             &:hover {
                 background: rgba(255, 255, 255, 0.9);
             }
+        }
+    }
+
+    hr {
+        width: 100%;
+        height: 1px;
+        background: var(--color-border);
+    }
+
+    .page-section {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+
+        @media (width<=700px) {
+            width: 90%;
+        }
+
+        @media (width<=450px) {
+            width: 95%;
         }
     }
 
@@ -122,8 +143,50 @@
         }
     }
 
+    #facts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+        gap: 1.5em;
+
+        @media (width<=650px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75em;
+            text-align: center;
+            background: var(--color-primary-pale);
+            border-radius: 0.65em;
+            padding: 1.25em;
+
+            i {
+                color: var(--color-primary);
+                font-size: 1.25em;
+            }
+
+            h3 {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 0.7em;
+                line-height: 1;
+                letter-spacing: 0.08em;
+                color: var(--color-muted);
+            }
+
+            p {
+                font-weight: 600;
+                font-size: 0.9em;
+                line-height: 1;
+                color: var(--color-body);
+            }
+        }
+    }
+
     #cta {
-        margin-top: 1em;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -132,6 +195,7 @@
         padding: 3em 20%;
         color: var(--color-white);
         text-align: center;
+        width: 100%;
 
         @media (width<=530px) {
             padding: 2em 10%;

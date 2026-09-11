@@ -29,6 +29,20 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </div>
                 </section>
 
+                <section id="facts" className="page-section">
+                    {
+                        data.factIcons.map((icon, i) => (
+                            <article key={i}>
+                                <i className={icon}></i>
+                                <h3>{t(`facts.label${i}`)}</h3>
+                                <p>{t(`${translationPath}.fact${i}`)}</p>
+                            </article>
+                        ))
+                    }
+                </section>
+
+                <hr />
+
                 <section id='cta'>
                     <h3>{t(`${translationPath}.ctaHeadline`)}</h3>
                     <p>{t(`${translationPath}.ctaText`)}</p>

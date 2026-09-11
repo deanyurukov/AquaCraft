@@ -43,3 +43,7 @@ a, a:active {
 ul {
     list-style: none;
 }
+
+hr {
+    border: none;
+}

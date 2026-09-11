@@ -64,7 +64,7 @@
 
                     input {
                         width: 100%;
-                        border: 2px solid #333;
+                        border: 2px solid var(--color-gray);
                         outline: none;
                         padding: 1em;
                         background: transparent;
@@ -123,7 +123,7 @@
                     input[type="text"],
                     input[type="email"] {
                         width: 100%;
-                        border: 2px solid #333;
+                        border: 2px solid var(--color-gray);
                         outline: none;
                         font-size: 16px;
                         color: #9F9F9F;

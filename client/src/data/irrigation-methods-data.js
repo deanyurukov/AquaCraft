@@ -149,7 +149,7 @@ export const methodData = {
         factIcons: [
             'fa-solid fa-wheat-awn',
             'fa-solid fa-droplet',
-            'fa-solid fa-shovel',
+            'fa-solid fa-person-digging',
             'fa-solid fa-seedling'
         ],
         suitableImages: [
