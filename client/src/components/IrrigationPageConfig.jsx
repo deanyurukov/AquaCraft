@@ -12,7 +12,6 @@ const IrrigationPageConfig = ({ methodName }) => {
     const { t } = useTranslation();
     const translationPath = `methods.${methodName}`;
     const data = methodData[methodName];
-    console.log(data);
 
     return (
         <>
