@@ -497,7 +497,8 @@
             "depthLabel": "Installation depth",
             "depthUnit": "cm",
             "resultLateral": "Approx. total lateral length",
-            "resultEmitters": "Number of emitters"
+            "resultEmitters": "Number of emitters",
+            "resultEmittersUnit": "pcs"
         }
     },
     "methods": {
@@ -703,7 +704,7 @@
         },
         "subsurface": {
             "name": "Subsurface Irrigation",
-            "category": "Advanced · most efficient",
+            "category": "Beginner",
             "headline": "Water delivered silently beneath the soil.",
             "description": "Buried lateral pipes deliver water directly into the root zone, eliminating evaporation, surface runoff and weed stimulation. The ultimate method for crops, orchards, vineyards and sports turf.",
             "factArea": "100 – 10 000 m²",

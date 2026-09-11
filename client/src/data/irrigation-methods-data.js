@@ -1,10 +1,10 @@
-export const METHODS = {
+export const methodData = {
     drip: {
         heroImage: 'https://images.unsplash.com/photo-1775568109786-18598bf7b294?w=1440&h=600&fit=crop&auto=format',
         factIcons: [
             'fa-solid fa-leaf',
             'fa-solid fa-droplet',
-            'fa-solid fa-wrench', 
+            'fa-solid fa-wrench',
             'fa-solid fa-carrot'
         ],
         suitableImages: [
@@ -38,7 +38,7 @@ export const METHODS = {
             const pipeLength = Math.ceil(values.rows * (values.area / values.rows) + values.distance * 1.1);
             const zones = Math.max(1, Math.ceil(values.area / 60));
             return [
-                { labelKey: 'planner.drip.resultPipe', value: `${pipeLength} m` },
+                { labelKey: 'planner.drip.resultPipe', value: `${pipeLength} planner.drip.distanceUnit` },
                 { labelKey: 'planner.drip.resultZones', value: zones, countKey: zones > 1 ? 'planner.drip.zonesUnit' : 'planner.drip.zoneUnit' },
             ];
         },
@@ -47,10 +47,13 @@ export const METHODS = {
     },
 
     micro: {
-        slug: 'micro',
-        path: '/methods/micro',
         heroImage: 'https://images.unsplash.com/photo-1745415271518-e3844abfec58?w=1440&h=600&fit=crop&auto=format',
-        factIcons: ['fa-solid fa-seedling', 'fa-solid fa-droplet', 'fa-solid fa-wrench', 'fa-solid fa-spa'],
+        factIcons: [
+            'fa-solid fa-seedling',
+            'fa-solid fa-droplet',
+            'fa-solid fa-wrench',
+            'fa-solid fa-spa'
+        ],
         suitableImages: [
             { src: 'https://images.unsplash.com/photo-1597029105747-38a3e1c8ab12?w=400&h=300&fit=crop&auto=format', key: 'suitable0' },
             { src: 'https://images.unsplash.com/photo-1766934978628-199c14ae0233?w=400&h=300&fit=crop&auto=format', key: 'suitable1' },
@@ -84,8 +87,8 @@ export const METHODS = {
             const emitters = values.pots;
             const zones = values.groups;
             return [
-                { labelKey: 'planner.micro.resultTube', value: `${tubeLength} m` },
-                { labelKey: 'planner.micro.resultEmitters', value: `${emitters} бр.` },
+                { labelKey: 'planner.micro.resultTube', value: `${tubeLength} planner.micro.spacingUnit` },
+                { labelKey: 'planner.micro.resultEmitters', value: `${emitters} planner.micro.potsUnit` },
                 { labelKey: 'planner.micro.resultZones', value: zones, countKey: zones > 1 ? 'planner.micro.zonesUnit' : 'planner.micro.zoneUnit' },
             ];
         },
@@ -94,10 +97,13 @@ export const METHODS = {
     },
 
     sprinkler: {
-        slug: 'sprinkler',
-        path: '/methods/sprinkler',
         heroImage: 'https://images.unsplash.com/photo-1781090347265-8b59f94375dd?w=1440&h=600&fit=crop&auto=format',
-        factIcons: ['fa-solid fa-hill-rockslide', 'fa-solid fa-droplet', 'fa-solid fa-wrench', 'fa-solid fa-house'],
+        factIcons: [
+            'fa-solid fa-hill-rockslide',
+            'fa-solid fa-droplet',
+            'fa-solid fa-wrench',
+            'fa-solid fa-house'
+        ],
         suitableImages: [
             { src: 'https://images.unsplash.com/photo-1533460004989-cef01064af7e?w=400&h=300&fit=crop&auto=format', key: 'suitable0' },
             { src: 'https://images.unsplash.com/photo-1588701047364-ebd987f3166d?w=400&h=300&fit=crop&auto=format', key: 'suitable1' },
@@ -130,10 +136,62 @@ export const METHODS = {
             const heads = Math.ceil(values.area / coverage);
             const zones = Math.max(1, Math.ceil(heads * 1.5 / values.flow));
             return [
-                { labelKey: 'planner.sprinkler.resultHeads', value: `${heads} бр.` },
+                { labelKey: 'planner.sprinkler.resultHeads', value: `${heads} planner.sprinkler.radiusUnit` },
                 { labelKey: 'planner.sprinkler.resultZones', value: zones, countKey: zones > 1 ? 'planner.sprinkler.zonesUnit' : 'planner.sprinkler.zoneUnit' },
             ];
         },
-        faqCount: 5
+        systemFeatureCounts: [4, 4, 4],
+        faqCount: 5,
+        hydraulicNote: true,
+    },
+    subsurface: {
+        heroImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1440&h=600&fit=crop&auto=format',
+        factIcons: [
+            'fa-solid fa-wheat-awn',
+            'fa-solid fa-droplet',
+            'fa-solid fa-shovel',
+            'fa-solid fa-seedling'
+        ],
+        suitableImages: [
+            { src: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=300&fit=crop&auto=format', key: 'suitable0' },
+            { src: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&h=300&fit=crop&auto=format', key: 'suitable1' },
+            { src: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop&auto=format', key: 'suitable2' },
+            { src: 'https://images.unsplash.com/photo-1474440692490-2e83ae13ba29?w=400&h=300&fit=crop&auto=format', key: 'suitable3' },
+        ],
+        flowIcons: [
+            'fa-solid fa-faucet',
+            'fa-solid fa-filter',
+            'fa-solid fa-gear',
+            'fa-solid fa-grip-lines',
+            'fa-solid fa-arrow-down',
+            'fa-solid fa-seedling',
+        ],
+        componentIcons: [
+            'fa-solid fa-filter',
+            'fa-solid fa-gear',
+            'fa-solid fa-grip-lines',
+            'fa-solid fa-droplet',
+            'fa-solid fa-wind',
+            'fa-solid fa-circle-stop',
+        ],
+        componentCount: 6,
+        plannerFields: [
+            { id: 'area', labelKey: 'planner.subsurface.areaLabel', unitKey: 'planner.subsurface.areaUnit', min: 20, max: 1000, step: 10, defaultValue: 200 },
+            { id: 'spacing', labelKey: 'planner.subsurface.spacingLabel', unitKey: 'planner.subsurface.spacingUnit', min: 30, max: 100, step: 5, defaultValue: 60 },
+            { id: 'depth', labelKey: 'planner.subsurface.depthLabel', unitKey: 'planner.subsurface.depthUnit', min: 15, max: 45, step: 5, defaultValue: 25 },
+        ],
+        computePlanner(values) {
+            const rowSpacingM = values.spacing / 100;
+            const fieldWidth = Math.sqrt(values.area);
+            const rows = Math.ceil(fieldWidth / rowSpacingM);
+            const lateralLength = Math.ceil(rows * fieldWidth * 1.05);
+            const emitters = Math.ceil(lateralLength / 0.35);
+            return [
+                { labelKey: 'planner.subsurface.resultLateral', value: `${lateralLength} planner.subsurface.spacingUnit` },
+                { labelKey: 'planner.subsurface.resultEmitters', value: `${emitters} planner.subsurface.resultEmittersUnit` },
+            ];
+        },
+        systemFeatureCounts: [4, 4, 4],
+        faqCount: 5,
     },
 };
