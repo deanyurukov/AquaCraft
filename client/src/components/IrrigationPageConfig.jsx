@@ -43,6 +43,28 @@ const IrrigationPageConfig = ({ methodName }) => {
 
                 <hr />
 
+                <section id='suitable' className='page-section'>
+                    <div className='titlebar'>
+                        <h5>{t("method.suitableFor")}</h5>
+                    </div>
+
+                    <article>
+                        {
+                            data.suitableImages.map(({ src, key }, i) => (
+                                <div key={i}>
+                                    <span>
+                                        <img src={src} alt="suitable image" />
+                                    </span>
+
+                                    <p>{t(`${translationPath}.${key}`)}</p>
+                                </div>
+                            ))
+                        }
+                    </article>
+                </section>
+
+                
+
                 <section id='cta'>
                     <h3>{t(`${translationPath}.ctaHeadline`)}</h3>
                     <p>{t(`${translationPath}.ctaText`)}</p>

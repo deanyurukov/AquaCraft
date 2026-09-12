@@ -26,6 +26,7 @@
         width: 80%;
         display: flex;
         justify-content: center;
+        gap: 1em;
 
         @media (width<=700px) {
             width: 90%;
@@ -33,6 +34,31 @@
 
         @media (width<=450px) {
             width: 95%;
+        }
+    }
+
+    .titlebar {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        @media (width <=570px) {
+            align-items: center;
+            text-align: center;
+            padding: 0 2em;
+        }
+
+        h5 {
+            font-size: 2.5em;
+            color: rgb(51, 51, 51);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        p {
+            color: #AAAAAA;
+            font-size: 0.9em;
+            margin-bottom: 1em;
         }
     }
 
@@ -75,6 +101,58 @@
                 font-size: 0.9em;
                 line-height: 1;
                 color: var(--color-body);
+            }
+        }
+    }
+
+    #suitable {
+        flex-direction: column;
+
+        article {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-content: space-between;
+            gap: 1.25em;
+
+            @media (width<=650px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            div {
+                overflow: hidden;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+                border-radius: 1em;
+                transition: all 0.2s linear;
+
+                &:hover {
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+                    img {
+                        scale: 1.05;
+                    }
+                }
+
+                span {
+                    display: block;
+                    height: 12em;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        transition: all 0.3s linear;
+                        object-fit: cover;
+                        height: 100%;
+                    }
+                }
+
+                p {
+                    text-align: center;
+                    padding: 1em 0;
+                    font-weight: 600;
+                    color: var(--color-body);
+                    font-size: 0.9em;
+                }
             }
         }
     }
