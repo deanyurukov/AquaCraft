@@ -63,7 +63,25 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
                 </section>
 
-                
+                <section id='how-it-works' className='page-section'>
+                    <div className='titlebar'>
+                        <h5>{t("method.howItWorks")}</h5>
+                    </div>
+
+                    <article style={{ ['--steps']: data.flowIcons?.length || 0 }}>
+                        {
+                            data.flowIcons.map((icon, i) => (
+                                <div key={i}>
+                                    <span>
+                                        <i className={icon}></i>
+                                    </span>
+
+                                    <p>{t(`${translationPath}.flow${i}`)}</p>
+                                </div>
+                            ))
+                        }
+                    </article>
+                </section>
 
                 <section id='cta'>
                     <h3>{t(`${translationPath}.ctaHeadline`)}</h3>
