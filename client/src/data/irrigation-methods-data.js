@@ -43,6 +43,7 @@ export const methodData = {
         },
         systemFeatureCounts: [4, 4, 4],
         faqCount: 5,
+        stepCount: 4,
     },
 
     micro: {
@@ -92,6 +93,7 @@ export const methodData = {
         },
         systemFeatureCounts: [3, 3, 3],
         faqCount: 4,
+        stepCount: 4,
     },
 
     sprinkler: {
@@ -139,6 +141,7 @@ export const methodData = {
         },
         systemFeatureCounts: [4, 4, 4],
         faqCount: 5,
+        stepCount: 4,
         hydraulicNote: true,
     },
     subsurface: {
@@ -189,5 +192,6 @@ export const methodData = {
         },
         systemFeatureCounts: [4, 4, 4],
         faqCount: 5,
+        stepCount: 4,
     },
 };

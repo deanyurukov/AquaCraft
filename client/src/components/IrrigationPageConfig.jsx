@@ -83,6 +83,8 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
                 </section>
 
+                {/* Add calc section here */}
+
                 <hr />
 
                 <section id="components" className="page-section">
@@ -107,6 +109,23 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
 
                     <Link className='primary link' to="/products">{t("common.viewProducts")}</Link>
+                </section>
+
+                <section id="steps" className="page-section">
+                    <div className='titlebar'>
+                        <h5>{t("method.installationTitle")}</h5>
+                    </div>
+
+                    <article>
+                        {
+                            Array(data.stepCount).fill(0).map((_, i) => (
+                                <div key={i}>
+                                    <h6>{i + 1}</h6>
+                                    <p>{t(`${translationPath}.step${i}`)}</p>
+                                </div>
+                            ))
+                        }
+                    </article>
                 </section>
 
                 <section id='cta'>
