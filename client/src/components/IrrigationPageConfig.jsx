@@ -83,6 +83,32 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
                 </section>
 
+                <hr />
+
+                <section id="components" className="page-section">
+                    <div className='titlebar'>
+                        <h5>{t("method.componentsSectionTitle")}</h5>
+                        <p>{t("method.componentsSectionSub")}</p>
+                    </div>
+
+                    <article>
+                        {
+                            data.componentIcons.map((icon, i) => (
+                                <div key={i}>
+                                    <span>
+                                        <i className={icon}></i>
+                                    </span>
+
+                                    <h6>{t(`${translationPath}.comp${i}Name`)}</h6>
+                                    <p>{t(`${translationPath}.comp${i}Desc`)}</p>
+                                </div>
+                            ))
+                        }
+                    </article>
+
+                    <Link className='primary link' to="/products">{t("common.viewProducts")}</Link>
+                </section>
+
                 <section id='cta'>
                     <h3>{t(`${translationPath}.ctaHeadline`)}</h3>
                     <p>{t(`${translationPath}.ctaText`)}</p>

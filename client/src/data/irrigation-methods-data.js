@@ -28,7 +28,6 @@ export const methodData = {
             'fa-solid fa-droplet',
             'fa-solid fa-circle-stop',
         ],
-        componentCount: 6,
         plannerFields: [
             { id: 'area', labelKey: 'planner.drip.areaLabel', unitKey: 'planner.drip.areaUnit', min: 10, max: 150, step: 5, defaultValue: 40 },
             { id: 'rows', labelKey: 'planner.drip.rowsLabel', unitKey: 'planner.drip.rowsUnit', min: 1, max: 20, step: 1, defaultValue: 5 },
@@ -76,7 +75,6 @@ export const methodData = {
             'fa-solid fa-sun',
             'fa-solid fa-thumbtack',
         ],
-        componentCount: 6,
         plannerFields: [
             { id: 'pots', labelKey: 'planner.micro.potsLabel', unitKey: 'planner.micro.potsUnit', min: 4, max: 60, step: 2, defaultValue: 12 },
             { id: 'spacing', labelKey: 'planner.micro.spacingLabel', unitKey: 'planner.micro.spacingUnit', min: 20, max: 200, step: 10, defaultValue: 60 },
@@ -125,7 +123,6 @@ export const methodData = {
             'fa-solid fa-shower',
             'fa-solid fa-box',
         ],
-        componentCount: 6,
         plannerFields: [
             { id: 'area', labelKey: 'planner.sprinkler.areaLabel', unitKey: 'planner.sprinkler.areaUnit', min: 50, max: 800, step: 25, defaultValue: 150 },
             { id: 'flow', labelKey: 'planner.sprinkler.flowLabel', unitKey: 'planner.sprinkler.flowUnit', min: 5, max: 40, step: 1, defaultValue: 15 },
@@ -174,7 +171,6 @@ export const methodData = {
             'fa-solid fa-wind',
             'fa-solid fa-circle-stop',
         ],
-        componentCount: 6,
         plannerFields: [
             { id: 'area', labelKey: 'planner.subsurface.areaLabel', unitKey: 'planner.subsurface.areaUnit', min: 20, max: 1000, step: 10, defaultValue: 200 },
             { id: 'spacing', labelKey: 'planner.subsurface.spacingLabel', unitKey: 'planner.subsurface.spacingUnit', min: 30, max: 100, step: 5, defaultValue: 60 },
