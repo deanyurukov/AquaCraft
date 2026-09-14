@@ -46,7 +46,7 @@ const CreateProductPage = () => {
                         <textarea name="description" id="description"></textarea>
                     </div>
 
-                    <button type="submit">{t("admin.create.submit")}</button>
+                    <button className="primary link" type="submit">{t("admin.create.submit")}</button>
                 </form>
             </div>
         </div>

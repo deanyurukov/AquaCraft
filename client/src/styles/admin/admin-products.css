@@ -248,31 +248,6 @@
                     border-radius: 3px;
                 }
             }
-
-            button {
-                background: var(--color-primary);
-                color: white;
-                font-size: 16px;
-                padding: 0.5em 1.5em;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background 0.3s ease;
-
-                &:hover {
-                    background: #91ba8dc9;
-                }
-
-                @media (width <=700px) {
-                    font-size: 14px;
-                }
-
-                @media (width <=550px) {
-                    font-size: 12px;
-                    padding: 0.3em 1.2em;
-                    width: 60%;
-                }
-            }
         }
 
         &>button,

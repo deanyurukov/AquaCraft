@@ -121,7 +121,7 @@ const CheckoutPage = () => {
 
                     <hr />
 
-                    <button onClick={async (e) => {
+                    <button className="primary link" onClick={async (e) => {
                         const data = await onSubmit(e);
                             
                         if (data) {

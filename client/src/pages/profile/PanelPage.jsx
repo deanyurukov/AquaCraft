@@ -56,7 +56,7 @@ const PanelPage = () => {
                     <p>{userData.email}</p>
                 </div>
 
-                <Link to="/profile/user-data">{t("profile.panel.change")}</Link>
+                <Link className="primary link" to="/profile/user-data">{t("profile.panel.change")}</Link>
             </div>
 
             <div>

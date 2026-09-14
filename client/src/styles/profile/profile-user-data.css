@@ -87,26 +87,11 @@
             }
 
             button {
-                padding: 0.8em 1.5em;
-                background: var(--color-white);
-                border: 1px solid #000;
-                border-radius: 4px;
-                color: #000;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                width: 100%;
-                font-size: 18px;
                 margin-top: 1em;
+                font-size: 1em;
 
                 @media (width <= 550px) {
                     margin-top: 0.5em;
-                }
-
-                &:hover {
-                    background: #000;
-                    color: var(--color-white);
-                    border: 1px solid var(--color-white);
                 }
             }
         }

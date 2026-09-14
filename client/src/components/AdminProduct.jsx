@@ -31,7 +31,7 @@ const AdminProduct = ({ product, changeStock }) => {
 
             <form action={onSubmit}>
                 <input type="number" name="changed_stock" id="addedStock" />
-                <button>{t("admin.products.change")}</button>
+                <button className="primary link">{t("admin.products.change")}</button>
             </form>
         </div>
     );

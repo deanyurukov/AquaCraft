@@ -220,40 +220,7 @@
             }
 
             &>a {
-                padding: 0.5em 1em;
-                background: var(--color-white);
-                border: none;
-                border: 1px solid #000;
-                border-radius: 4px;
-                color: #000;
-                font-weight: 600;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                font-size: 18px;
                 margin-top: 0.5em;
-
-                @media (width <=830px) {
-                    font-size: 16px;
-                }
-
-                @media (width <=650px) {
-                    font-size: 18px;
-                }
-
-                @media (width <=450px) {
-                    font-size: 16px;
-                }
-
-                @media (width <=300px) {
-                    font-size: 14px;
-                    padding: 0.4em 0.8em;
-                }
-
-                &:hover {
-                    background: #000;
-                    color: var(--color-white);
-                    border: 1px solid var(--color-white);
-                }
             }
         }
     }
