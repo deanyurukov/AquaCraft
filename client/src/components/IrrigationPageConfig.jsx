@@ -128,6 +128,39 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
                 </section>
 
+                <section id="system" className="page-section">
+                    <div className='titlebar'>
+                        <h5>{t("method.systemsTitle")}</h5>
+                        <p>{t("method.systemsSub")}</p>
+                    </div>
+
+                    <article>
+                        {
+                            data.systemFeatureCounts.map((_, i) => (
+                                <div key={i} className={i === 1 ? "popular" : ""}>
+                                    {i === 1 && <span>{t("common.mostPopular")}</span>}
+                                    <h5>{t(`${translationPath}.sys${i}Size`)}</h5>
+                                    <p className='area'>{t(`${translationPath}.sys${i}Area`)}</p>
+                                    <p className='desc'>{t(`${translationPath}.sys${i}Desc`)}</p>
+
+                                    <ul>
+                                        {
+                                            Array(data.systemFeatureCounts[i]).fill(0).map((_, j) => (
+                                                <li key={j}>
+                                                    <i className="fa-solid fa-check"></i>
+                                                    {t(`${translationPath}.sys${i}f${j}`)}
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+
+                                    <Link className='primary link' to="#">{t("common.requestQuote")}</Link>
+                                </div>
+                            ))
+                        }
+                    </article>
+                </section>
+
                 <section id='cta'>
                     <h3>{t(`${translationPath}.ctaHeadline`)}</h3>
                     <p>{t(`${translationPath}.ctaText`)}</p>
