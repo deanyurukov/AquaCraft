@@ -1,6 +1,29 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { methodData } from '../data/irrigation-methods-data.js';
+import { useState } from 'react';
+
+const FaqItem = ({ i, translationPath }) => {
+    const { t } = useTranslation();
+    const [isOpened, setIsOpened] = useState(false);
+
+    return (
+        <section onClick={() => setIsOpened(prev => prev = !prev)}>
+            <div className={isOpened && "opened"}>
+                <h6>{t(`${translationPath}.faq${i}q`)}</h6>
+                <i className="fa-solid fa-angle-up"></i>
+            </div>
+
+            {
+                isOpened &&
+                <>
+                    <hr />
+                    <p>{t(`${translationPath}.faq${i}a`)}</p>
+                </>
+            }
+        </section>
+    );
+};
 
 const IrrigationPageConfig = ({ methodName }) => {
     const navigate = useNavigate();
@@ -156,6 +179,20 @@ const IrrigationPageConfig = ({ methodName }) => {
 
                                     <Link className='primary link' to="#">{t("common.requestQuote")}</Link>
                                 </div>
+                            ))
+                        }
+                    </article>
+                </section>
+
+                <section id="faq" className="page-section">
+                    <div className='titlebar'>
+                        <h5>{t("method.faqTitle")}</h5>
+                    </div>
+
+                    <article>
+                        {
+                            Array(data.faqCount).fill(0).map((_, i) => (
+                                <FaqItem key={i} i={i} translationPath={translationPath} />
                             ))
                         }
                     </article>
