@@ -477,8 +477,7 @@
             "resultHeads": "Approx. number of sprinkler heads",
             "resultZones": "Number of irrigation zones",
             "zoneUnit": "zone",
-            "zonesUnit": "zones",
-            "hydraulicNote": "Note: final hydraulic calculations must be confirmed before installation."
+            "zonesUnit": "zones"
         },
         "subsurface": {
             "areaLabel": "Irrigated area",

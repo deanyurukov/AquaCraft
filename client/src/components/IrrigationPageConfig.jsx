@@ -1,7 +1,35 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { methodData } from '../data/irrigation-methods-data.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const RangeItem = ({ field, calcRanges, setCalcRanges }) => {
+    const { t } = useTranslation();
+
+    function onChange(e) {
+        const newVal = Number(e.target.value);
+        setCalcRanges(prev => {
+            prev[field.id] = newVal;
+            return { ...prev };
+        });
+    }
+
+    return (
+        <article>
+            <div className='labels'>
+                <h6>{t(field.labelKey)}</h6>
+                <p>{calcRanges[field.id]} {t(field.unitKey)}</p>
+            </div>
+
+            <input onChange={onChange} id={field.id} type="range" min={field.min} max={field.max} step={field.step} defaultValue={field.defaultValue} />
+
+            <div className='range-specs'>
+                <p>{field.min} {t(field.unitKey)}</p>
+                <p>{field.max} {t(field.unitKey)}</p>
+            </div>
+        </article>
+    );
+};
 
 const FaqItem = ({ i, translationPath }) => {
     const { t } = useTranslation();
@@ -9,7 +37,7 @@ const FaqItem = ({ i, translationPath }) => {
 
     return (
         <section onClick={() => setIsOpened(prev => prev = !prev)}>
-            <div className={isOpened && "opened"}>
+            <div className={isOpened ? "opened" : undefined}>
                 <h6>{t(`${translationPath}.faq${i}q`)}</h6>
                 <i className="fa-solid fa-angle-up"></i>
             </div>
@@ -35,6 +63,21 @@ const IrrigationPageConfig = ({ methodName }) => {
     const { t } = useTranslation();
     const translationPath = `methods.${methodName}`;
     const data = methodData[methodName];
+    const [calcRanges, setCalcRanges] = useState({});
+    const [calcResults, setCalcResults] = useState([]);
+
+    useEffect(() => {
+        data.plannerFields.forEach(item => {
+            setCalcRanges(prev => {
+                prev[item.id] = item.defaultValue;
+                return { ...prev };
+            });
+        });
+    }, []);
+
+    useEffect(() => {
+        setCalcResults(data.computePlanner(calcRanges));
+    }, [calcRanges]);
 
     return (
         <>
@@ -106,7 +149,37 @@ const IrrigationPageConfig = ({ methodName }) => {
                     </article>
                 </section>
 
-                {/* Add calc section here */}
+                <section id="calc" className="page-section">
+                    <div className='titlebar'>
+                        <h5>{t("method.planner")}</h5>
+                        <p>{t("common.approxNote")}</p>
+                    </div>
+
+                    <article>
+                        <section className='fields'>
+                            {
+                                data.plannerFields.map((field, i) => (
+                                    <RangeItem key={i} i={i} field={field} calcRanges={calcRanges} setCalcRanges={setCalcRanges} />
+                                ))
+                            }
+                        </section>
+
+                        <section className='results'>
+                            <h4>{t("common.approxResult")}</h4>
+
+                            {
+                                calcResults.map((result, i) => (
+                                    <article key={i}>
+                                        <h6>{t(result.labelKey)}</h6>
+                                        <p>{result.value.split(" ")[0]} {t(result.value.split(" ")[1])}</p>
+                                    </article>
+                                ))
+                            }
+
+                            <p>{t("common.expertNote")}</p>
+                        </section>
+                    </article>
+                </section>
 
                 <hr />
 

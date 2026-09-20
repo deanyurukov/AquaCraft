@@ -245,6 +245,130 @@
         }
     }
 
+    #calc {
+        flex-direction: column;
+
+        &>article {
+            background: var(--color-primary-pale);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5em;
+            padding: 2.5em;
+            border-radius: 0.65em;
+
+            @media (width<=750px) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .fields {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5em;
+
+                &>article {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5em;
+
+                    div {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 1em;
+
+                        h6 {
+                            font-size: 0.9em;
+                            font-weight: 600;
+                            color: var(--color-body);
+                        }
+
+                        &.labels p {
+                            font-size: 0.9em;
+                            font-weight: 700;
+                            color: var(--color-primary);
+                        }
+
+                        &.range-specs p {
+                            font-size: 0.7em;
+                            color: #BBBBBB;
+                        }
+                    }
+
+                    input {
+                        height: 0.5em;
+                        border-radius: 999px;
+                        background: #C7DFC5;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        cursor: pointer;
+                        accent-color: var(--color-primary);
+                        outline: none;
+
+                        &::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            width: 1.2em;
+                            aspect-ratio: 1 / 1;
+                            border-radius: 100%;
+                            background: var(--color-primary);
+                            border: 2px solid var(--color-white);
+                            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+                        }
+                    }
+                }
+            }
+
+            .results {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 1em;
+
+                @media (width<=570px) {
+                    align-items: center;
+                    text-align: center;
+                }
+
+                h4 {
+                    font-size: 0.75em;
+                    font-weight: 600;
+                    color: var(--color-primary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.08em;
+                }
+
+                &>article {
+                    background: var(--color-white);
+                    border-radius: 0.65em;
+                    padding: 1em 1.25em;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 1em;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+                    width: 100%;
+
+                    h6 {
+                        color: #666666;
+                        font-weight: 500;
+                        font-size: 0.9em;
+                    }
+
+                    p {
+                        font-size: 0.95em;
+                        font-weight: 700;
+                        color: var(--color-body);
+                    }
+                }
+
+                &>p {
+                    font-size: 0.7em;
+                    color: #BBBBBB;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+
     #components {
         flex-direction: column;
         align-items: start;

@@ -38,7 +38,7 @@ export const methodData = {
             const zones = Math.max(1, Math.ceil(values.area / 60));
             return [
                 { labelKey: 'planner.drip.resultPipe', value: `${pipeLength} planner.drip.distanceUnit` },
-                { labelKey: 'planner.drip.resultZones', value: zones, countKey: zones > 1 ? 'planner.drip.zonesUnit' : 'planner.drip.zoneUnit' },
+                { labelKey: 'planner.drip.resultZones', value: `${zones} ${zones > 1 ? 'planner.drip.zonesUnit' : 'planner.drip.zoneUnit'}` },
             ];
         },
         systemFeatureCounts: [4, 4, 4],
@@ -88,7 +88,7 @@ export const methodData = {
             return [
                 { labelKey: 'planner.micro.resultTube', value: `${tubeLength} planner.micro.spacingUnit` },
                 { labelKey: 'planner.micro.resultEmitters', value: `${emitters} planner.micro.potsUnit` },
-                { labelKey: 'planner.micro.resultZones', value: zones, countKey: zones > 1 ? 'planner.micro.zonesUnit' : 'planner.micro.zoneUnit' },
+                { labelKey: 'planner.micro.resultZones', value: `${zones} ${zones > 1 ? 'planner.micro.zonesUnit' : 'planner.micro.zoneUnit'}` },
             ];
         },
         systemFeatureCounts: [3, 3, 3],
@@ -136,13 +136,12 @@ export const methodData = {
             const zones = Math.max(1, Math.ceil(heads * 1.5 / values.flow));
             return [
                 { labelKey: 'planner.sprinkler.resultHeads', value: `${heads} planner.sprinkler.radiusUnit` },
-                { labelKey: 'planner.sprinkler.resultZones', value: zones, countKey: zones > 1 ? 'planner.sprinkler.zonesUnit' : 'planner.sprinkler.zoneUnit' },
+                { labelKey: 'planner.sprinkler.resultZones', value: `${zones} ${zones > 1 ? 'planner.sprinkler.zonesUnit' : 'planner.sprinkler.zoneUnit'}` },
             ];
         },
         systemFeatureCounts: [4, 4, 4],
         faqCount: 5,
-        stepCount: 4,
-        hydraulicNote: true,
+        stepCount: 4
     },
     subsurface: {
         heroImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1440&h=600&fit=crop&auto=format',
