@@ -325,7 +325,10 @@
 
                 @media (width<=570px) {
                     align-items: center;
-                    text-align: center;
+
+                    &>* {
+                        text-align: center;
+                    }
                 }
 
                 h4 {

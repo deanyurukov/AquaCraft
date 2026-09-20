@@ -47,7 +47,6 @@ button.link {
     color: var(--color-white);
 
     @media (width <=570px) {
-        height: 55vh;
         align-items: center;
     }
 
