@@ -82,7 +82,7 @@
 
                 input,
                 textarea {
-                    border: 2px solid #333;
+                    border: 2px solid var(--color-gray);
                     outline: none;
                     width: 100%;
                     font-size: 15px;
@@ -112,25 +112,6 @@
                     min-height: 35vh;
                     max-height: 50vh;
                     font-family: var(--font-poppins);
-                }
-            }
-
-            button {
-                background: var(--color-primary);
-                color: white;
-                font-size: 16px;
-                padding: 0.6em 2em;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background 0.3s ease;
-                
-                &:hover {
-                    background: #91ba8dc9;
-                }
-            
-                @media (width <=700px) {
-                    font-size: 14px;
                 }
             }
         }

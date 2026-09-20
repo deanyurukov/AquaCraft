@@ -95,7 +95,7 @@
     
                 input {
                     width: 100%;
-                    border: 2px solid #333;
+                    border: 2px solid var(--color-gray);
                     outline: none;
                     padding: 1em;
                     background: transparent;

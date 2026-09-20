@@ -89,7 +89,7 @@ const ContactPage = () => {
                         <textarea name="message" id="message"></textarea>
                     </div>
 
-                    <button type="submit">{t("contact.submit")}</button>
+                    <button type="submit" className="primary link">{t("contact.submit")}</button>
                 </form>
 
                 <div id="map">

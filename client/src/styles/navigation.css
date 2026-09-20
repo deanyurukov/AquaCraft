@@ -188,7 +188,7 @@
                         h2 {
                             font-weight: 600;
                             font-size: 26px;
-                            color: #333333;
+                            color: var(--color-gray);
 
                             @media (width <= 1200px) {
                                 font-size: 22px;
@@ -239,7 +239,6 @@
                     hr {
                         height: 2px;
                         background: var(--color-primary);
-                        border: none;
                         width: 80%;
                     }
 

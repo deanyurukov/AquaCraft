@@ -74,7 +74,7 @@ const UserDataPage = () => {
                         <CheckoutInput type="email" value={userData.email} label={`${t("profile.data.email")}*`} name={"email"} />
                         <PasswordInput placeholder={`${t("profile.data.password")}*`} name={"password"} />
 
-                        <button type="submit">{t("profile.data.save")}</button>
+                        <button className="primary link" type="submit">{t("profile.data.save")}</button>
                     </form>
                 </div>
 
@@ -85,7 +85,7 @@ const UserDataPage = () => {
                         <PasswordInput placeholder={`${t("profile.data.currentPass")}*`} name={"password"} />
                         <PasswordInput placeholder={`${t("profile.data.newPass")}*`} name={"new_password"} />
 
-                        <button type="submit">{t("profile.data.save")}</button>
+                        <button className="primary link" type="submit">{t("profile.data.save")}</button>
                     </form>
                 </div>
             </div>

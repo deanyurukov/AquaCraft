@@ -1,5 +1,12 @@
 :root {
     --color-primary: #91BA8D;
+    --color-primary-dark: #7AA376;
+    --color-primary-light: #E8F2E7;
+    --color-primary-pale: #F3F8F3;
+    --color-gray: #333333;
+    --color-border: #EEEEEE;
+    --color-muted: #777777;
+
     --color-white: #FFFFFF;
 
     --font-poppins: "Poppins", sans-serif;

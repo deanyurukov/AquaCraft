@@ -35,7 +35,7 @@
 
         input,
         select {
-            border: 2px solid #333;
+            border: 2px solid var(--color-gray);
             outline: none;
             padding: 1em;
             font-size: 16px;
@@ -87,7 +87,7 @@
         }
 
         button {
-            border: 2px solid #333;
+            border: 2px solid var(--color-gray);
             outline: none;
             padding: 1em 1.8em;
             font-size: 16px;
@@ -126,7 +126,7 @@
 
         input {
             width: 100%;
-            border: 2px solid #333;
+            border: 2px solid var(--color-gray);
             outline: none;
             padding: 1em;
             background: transparent;
@@ -221,7 +221,7 @@
             }
 
             input {
-                border: 2px solid #333;
+                border: 2px solid var(--color-gray);
                 outline: none;
                 font-size: 15px;
                 color: #9F9F9F;
@@ -246,31 +246,6 @@
                 &:focus {
                     border: 2px solid var(--color-primary);
                     border-radius: 3px;
-                }
-            }
-
-            button {
-                background: var(--color-primary);
-                color: white;
-                font-size: 16px;
-                padding: 0.5em 1.5em;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: background 0.3s ease;
-
-                &:hover {
-                    background: #91ba8dc9;
-                }
-
-                @media (width <=700px) {
-                    font-size: 14px;
-                }
-
-                @media (width <=550px) {
-                    font-size: 12px;
-                    padding: 0.3em 1.2em;
-                    width: 60%;
                 }
             }
         }

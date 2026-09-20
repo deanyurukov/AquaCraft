@@ -92,7 +92,7 @@ const DetailsPage = () => {
                     </div>
                     <hr />
                     <p>{productData.description}</p>
-                    <Link onClick={async () => {
+                    <Link className="primary link" onClick={async () => {
                         const [data, error] = await productsService.addToCart(productData._id);
 
                         if (!data) {

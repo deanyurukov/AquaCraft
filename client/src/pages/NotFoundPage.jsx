@@ -12,9 +12,9 @@ const NotFoundPage = () => {
     return (
         <section id="not-found">
             <i className="fa-solid fa-triangle-exclamation not-found-icon"></i>
-            <h1 className="not-found-heading">{t("notFound.title")}</h1>
-            <p className="not-found-text">{t("notFound.message")}</p>
-            <Link onClick={goBack} className="not-found-button">{t("goBack")}</Link>
+            <h1>{t("notFound.title")}</h1>
+            <p>{t("notFound.message")}</p>
+            <Link className="primary link" onClick={goBack}>{t("goBack")}</Link>
         </section>
     )
 }

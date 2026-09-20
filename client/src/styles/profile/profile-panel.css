@@ -80,32 +80,8 @@
         }
 
         & > a {
-            padding: 0.45em 1.2em;
-            background: var(--color-white);
-            border: 1px solid #000;
-            border-radius: 4px;
-            color: #000;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
             margin-top: 0.6em;
-
-            @media (width <= 500px) {
-                padding: 0.35em 0.9em;
-                font-size: 12px;
-                margin-top: 0;
-            }
-
-            @media (width <= 400px) {
-                padding: 0.3em 0.7em;
-            }
-            
-            &:hover {
-                background: #000;
-                color: var(--color-white);
-                border: 1px solid var(--color-white);
-            }
+            padding: 0.15em 0.5em;
         }
     }
 }

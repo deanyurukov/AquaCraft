@@ -66,7 +66,7 @@ const EditProductPage = () => {
                         <textarea name="description" id="description" defaultValue={product.description}></textarea>
                     </div>
 
-                    <button type="submit">{t("admin.edit.submit")}</button>
+                    <button className="primary link" type="submit">{t("admin.edit.submit")}</button>
                 </form>
             </div>
         </div>
