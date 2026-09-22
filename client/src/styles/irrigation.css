@@ -8,6 +8,14 @@
     font-family: var(--font-poppins);
     overflow-x: clip;
 
+    @media (width>=2000px) {
+        font-size: 20px;
+    }
+
+    @media (width>=1600px) {
+        font-size: 18px;
+    }
+
     @media (width<=530px) {
         font-size: 14px;
     }
