@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
-import { secret } from "../server.js";
+import { secret } from "../config.js";
 
 export async function isUserValid(accessToken) {
     let data = {};
     let isValid = true;
-    let message = "Усшешна ауторизация.";
+    let message = "Successful authentication.";
 
     try {
         data = jwt.verify(accessToken, secret);

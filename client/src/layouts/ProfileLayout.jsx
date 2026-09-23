@@ -11,7 +11,7 @@ const ProfileLayout = () => {
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const [ isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const paths = {
         "Панел": "panel",

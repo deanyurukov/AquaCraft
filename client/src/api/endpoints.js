@@ -1,5 +1,4 @@
-// const baseUrl = "http://localhost:5001";
-const baseUrl = "https://aquacraft.onrender.com";
+const baseUrl = import.meta.env.VITE_LOCAL_SERVER_PATH || import.meta.env.VITE_DEPLOYED_SERVER_PATH;
 
 export const endpoints = {
     register: `${baseUrl}/users/register`,
@@ -9,21 +8,24 @@ export const endpoints = {
     getUserData: `${baseUrl}/users/userData`,
     changeUserData: `${baseUrl}/users/changeUserData`,
     changeUserPassword: `${baseUrl}/users/changeUserPassword`,
-    getAllProducts: `${baseUrl}/products/getAll`,
-    getAllByUserId: `${baseUrl}/products/get/id`,
-    addOrder: `${baseUrl}/addOrder`,
+
+    getAllByUserId: `${baseUrl}/products/cart/get`,
+    addToCart: (productId) => `${baseUrl}/products/cart/add/${productId}`,
+    getOneProduct: (productId) => `${baseUrl}/products/${productId}`,
+    addFav: (productId) => `${baseUrl}/products/favorites/add/${productId}`,
+    removeFav: (productId) => `${baseUrl}/products/favorites/remove/${productId}`,
+    getFav: `${baseUrl}/products/favorites/get`,
+    getAllProducts: `${baseUrl}/products/get/all`,
+    
+    addOrder: `${baseUrl}/orders/add`,
     getOrders: `${baseUrl}/orders/getByUser`,
     getAllOrders: `${baseUrl}/orders/all`,
     completeOrder: (orderId) => `${baseUrl}/orders/complete/${orderId}`,
     getOneOrder: (orderId) => `${baseUrl}/orders/${orderId}`,
-    getOneProduct: (productId) => `${baseUrl}/products/${productId}`,
-    addToCart: (productId) => `${baseUrl}/products/addToCart/${productId}`,
-    addFav: (productId) => `${baseUrl}/products/favorites/add/${productId}`,
-    removeFav: (productId) => `${baseUrl}/products/favorites/remove/${productId}`,
-    getFav: `${baseUrl}/products/favorites/get`,
-    addProduct: `${baseUrl}/products/addOne`,
-    changeProduct: (productId) => `${baseUrl}/products/change/${productId}`,
-    changeInStock: (productId) => `${baseUrl}/products/changeInStock/${productId}`,
-    delete: (productId) => `${baseUrl}/products/delete/${productId}`,
-    export: `${baseUrl}/products/export`
+    
+    addProduct: `${baseUrl}/admin/create`,
+    export: `${baseUrl}/admin/export`,
+    changeProduct: (productId) => `${baseUrl}/admin/change/${productId}`,
+    changeInStock: (productId) => `${baseUrl}/admin/changeInStock/${productId}`,
+    delete: (productId) => `${baseUrl}/admin/delete/${productId}`,
 };

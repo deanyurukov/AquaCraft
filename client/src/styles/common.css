@@ -5,6 +5,7 @@ button.link {
     border-radius: 0.4em;
     transition: all 0.2s linear;
     font-weight: 600;
+    cursor: pointer;
 
     &.primary {
         background: var(--color-primary);

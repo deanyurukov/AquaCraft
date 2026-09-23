@@ -50,8 +50,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            {/* <Route path='/products' element={<ProductsPage />} /> */}
-            {/* <Route path='/products/:id/details' element={<DetailsPage />} /> */}
+            {/* <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/logout' element={<LogoutPage />} />

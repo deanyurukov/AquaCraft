@@ -10,7 +10,7 @@ const AdminLayout = () => {
     const [currentPage, setCurrentPage] = useState(t("admin.create.title"));
     const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
-    const [ isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const paths = {
         "Създай продукт": "create",
