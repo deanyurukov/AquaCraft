@@ -42,6 +42,8 @@ const UserDataPage = () => {
     async function onPasswordChange(formData) {
         const { password, new_password } = Object.fromEntries(formData);
 
+        if (password === new_password) return;
+
         const [data, error] = await authService.changeUserPassword(password, new_password);
         
         if (!data) {
