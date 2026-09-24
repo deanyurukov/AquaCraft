@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { appContext } from "../../App";
 import authService from "../../services/auth-service.js";
@@ -6,16 +6,9 @@ import PasswordInput from "../../components/PasswordInput.jsx";
 import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
-    const [isLoggedIn] = useContext(appContext);
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
     const { t } = useTranslation();
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            navigate("/");
-        }
-    }, [isLoggedIn]);
 
     async function onSubmit(e) {
         e.preventDefault();

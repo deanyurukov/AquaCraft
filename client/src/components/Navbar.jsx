@@ -1,11 +1,11 @@
-import { NavLink, useLocation } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { NavLink, useLocation, useOutletContext } from "react-router-dom";
+import { useContext, useState } from "react";
 import { appContext } from "../App";
 import OverlayProduct from "./OverlayProduct";
 import { useTranslation } from "react-i18next";
 
-const Navbar = () => {
-    let [isLoggedIn, favorites, getFavs] = useContext(appContext);
+const Navbar = ({ user }) => {
+    let [_, favorites, getFavs] = useContext(appContext);
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedNav, setIsClickedNav] = useState(false);
     const location = useLocation();
@@ -67,7 +67,7 @@ const Navbar = () => {
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/">{t("navbar.home")}</NavLink>
                     <NavLink onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/products">{t("navbar.products")}</NavLink>
                     <NavLink title={t("contact.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); }} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
-                    {isLoggedIn ? userNav : guestNav}
+                    {user ? userNav : guestNav}
                 </div>
             </div>
 
@@ -105,7 +105,7 @@ const Navbar = () => {
                     <NavLink to="/products">{t("navbar.products")}</NavLink>
                     <NavLink title={t("contact.title")} to={"contact-us"}><i className="fa-regular fa-comment"></i></NavLink>
 
-                    {isLoggedIn ? userNav : guestNav}
+                    {user ? userNav : guestNav}
                     {translationWidget}
                 </nav>
 

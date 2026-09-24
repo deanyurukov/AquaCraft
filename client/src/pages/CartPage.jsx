@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { appContext } from "../App";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import productsService from "../services/products-service";
 import CartCard from "../components/CartCard.jsx";
@@ -10,7 +9,6 @@ import { useTranslation } from "react-i18next";
 const CartPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [isLoggedIn] = useContext(appContext);
     const [totalPrice, setTotalPrice] = useState(0);
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -28,10 +26,6 @@ const CartPage = () => {
     }
     
     useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/");
-        }
-
         fetchProducts();
     }, []);
     

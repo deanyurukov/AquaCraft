@@ -14,7 +14,6 @@ import emailConfig from "../configs/email-config.js";
 const CheckoutPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [isLoggedIn] = useContext(appContext);
     const getErrorAndDisplay = useContext(appContext)[6];
     const [totalPrice, setTotalPrice] = useState(0);
     const [userEmail, setUserEmail] = useState("");
@@ -34,11 +33,6 @@ const CheckoutPage = () => {
     }
     
     useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/");
-            return;
-        }
-
         getUserEmail();
         fetchProducts();
     }, []);

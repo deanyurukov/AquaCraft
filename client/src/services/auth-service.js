@@ -92,7 +92,7 @@ export default {
                 throw new Error(data.message);
             }
 
-            return data.isValid;
+            return data;
         }
         catch (err) {
             console.error(err);

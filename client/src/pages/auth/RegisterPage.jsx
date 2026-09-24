@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { appContext } from "../../App";
 import { Link, useNavigate } from "react-router-dom";
 import authService from "../../services/auth-service.js";
@@ -8,19 +8,14 @@ import { useTranslation } from "react-i18next";
 
 const RegisterPage = () => {
     const [hasUserAgreed, setHasUserAgreed] = useState(false);
-    const [isLoggedIn] = useContext(appContext);
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            navigate("/");
-        }
-    }, [isLoggedIn]);
-
     async function onSubmit(e) {
         e.preventDefault();
+
+        if (!hasUserAgreed) return;
 
         const { username, email, password, re_password } = Object.fromEntries(new FormData(e.currentTarget));
 

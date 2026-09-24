@@ -17,6 +17,10 @@ import MainLayout from './layouts/MainLayout.jsx';
 import ProfileLayout from './layouts/ProfileLayout.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 
+// Import Guard Routes
+import GuestRoutes from './guards/GuestRoutes.jsx';
+import UserRoutes from './guards/UserRoutes.jsx';
+
 // Import Pages
 import HomePage from './pages/HomePage.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
@@ -50,13 +54,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            {/* <Route path='/products' element={<ProductsPage />} />
-            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/logout' element={<LogoutPage />} />
-            {/* <Route path='/cart' element={<CartPage />} />
-            <Route path='/checkout' element={<CheckoutPage />} /> */}
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} />
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
@@ -68,23 +67,35 @@ const router = createBrowserRouter(
             <Route path='/methods/subsurface' element={<SubsurfaceIrrigationPage />} />
             <Route path='/methods/sprinkler' element={<SprinklerIrrigationPage />} />
 
-            <Route path='/profile' element={<ProfileLayout />} >
-                <Route path='/profile/panel' element={<PanelPage />} />
-                <Route path='/profile/orders' element={<OrdersPage />} />
-                <Route path='/profile/user-data' element={<UserDataPage />} />
-                <Route path='/profile/create' element={<CreateProductPage />} />
-                <Route path='/profile/order/:id/details' element={<OrderDetailsPage />} />
-            </Route>
-
-            <Route path='/admin' element={<AdminLayout />} >
-                <Route path='/admin/create' element={<CreateProductPage />} />
-                <Route path='/admin/products' element={<AdminProductsPage />} />
-                <Route path='/admin/edit' element={<AdminEditAll />} />
-                <Route path='/admin/:id/edit' element={<EditProductPage />} />
-                <Route path='/admin/orders' element={<AdminOrdersPage />} />
-            </Route>
-
             <Route path='/*' element={<NotFoundPage />} />
+
+            <Route element={<GuestRoutes />} >
+                <Route path='/register' element={<RegisterPage />} />
+                <Route path='/login' element={<LoginPage />} />
+            </Route>
+
+            <Route element={<UserRoutes />} >
+                {/* <Route path='/cart' element={<CartPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} /> */}
+
+                <Route path='/logout' element={<LogoutPage />} />
+
+                <Route path='/profile' element={<ProfileLayout />} >
+                    <Route path='/profile/panel' element={<PanelPage />} />
+                    <Route path='/profile/orders' element={<OrdersPage />} />
+                    <Route path='/profile/user-data' element={<UserDataPage />} />
+                    <Route path='/profile/create' element={<CreateProductPage />} />
+                    <Route path='/profile/order/:id/details' element={<OrderDetailsPage />} />
+                </Route>
+
+                <Route path='/admin' element={<AdminLayout />} >
+                    <Route path='/admin/create' element={<CreateProductPage />} />
+                    <Route path='/admin/products' element={<AdminProductsPage />} />
+                    <Route path='/admin/edit' element={<AdminEditAll />} />
+                    <Route path='/admin/:id/edit' element={<EditProductPage />} />
+                    <Route path='/admin/orders' element={<AdminOrdersPage />} />
+                </Route>
+            </Route>
         </Route>
     )
 );
@@ -92,22 +103,16 @@ const router = createBrowserRouter(
 export const appContext = React.createContext();
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); //! Needs to be false.
     const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState(null);
     const { t, i18n } = useTranslation();
 
     const [newFavs, setNewFavs] = useState({});
 
-    async function getAuthCtx() {
-        const auth = await authService.getAuth();
-        setIsLoggedIn(auth);
-    }
-
     async function getNewFavs() {
         const all = await productsService.getAll();
         let onlyIds = {};
-        all.forEach(p => { 
+        all.forEach(p => {
             onlyIds[p._id] = p.isFav || false;
         });
         setNewFavs(onlyIds);
@@ -140,16 +145,12 @@ function App() {
         getFavs();
     }, []);
 
-    useEffect(() => {
-        getNewFavs();
-    }, [isLoggedIn]);
-
-    useUrlChange(() => {
-        getAuthCtx();
-    });
+    // useEffect(() => {
+    //     getNewFavs();
+    // }, [isLoggedIn]);
 
     return <>
-        <appContext.Provider value={[isLoggedIn, favorites, getFavs, [], [], error, getErrorAndDisplay, newFavs, likeProduct, dislikeProduct]}>
+        <appContext.Provider value={[[], favorites, getFavs, [], [], error, getErrorAndDisplay, newFavs, likeProduct, dislikeProduct]}>
             <RouterProvider router={router} />
         </appContext.Provider>
     </>

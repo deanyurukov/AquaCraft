@@ -86,8 +86,8 @@ router.get("/logout", async (req, res) => {
 });
 
 router.get('/getAuth', async (req, res) => {
-    const [isValid, message] = await isUserValid(req.headers["x-authorization"]);
-    return res.status(200).send({ isValid, message });
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+    return res.status(200).send({ isValid, message, data });
 });
 
 router.get('/userData', async (req, res) => {

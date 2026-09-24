@@ -5,7 +5,6 @@ import authService from "../../services/auth-service";
 import { useTranslation } from "react-i18next";
 
 const LogoutPage = () => {
-    const [isLoggedIn] = useContext(appContext);
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
     const location = useLocation();
@@ -13,11 +12,6 @@ const LogoutPage = () => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/");
-            return;
-        }
-
         const logout = async () => {
             if (confirm(t("logout.message"))) {
                 const [logoutData, error] = await authService.logout();
@@ -37,7 +31,7 @@ const LogoutPage = () => {
         };
 
         logout();
-    }, [isLoggedIn, navigate]);
+    }, [navigate]);
 
     return null;
 };

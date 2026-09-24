@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { appContext } from "../App";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
 
@@ -8,7 +7,6 @@ const AdminLayout = () => {
     const { t, i18n } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
     const [currentPage, setCurrentPage] = useState(t("admin.create.title"));
-    const [isLoggedIn] = useContext(appContext);
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);
 
@@ -28,11 +26,6 @@ const AdminLayout = () => {
     }, [i18n.language]);
 
     useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/");
-            return;
-        }
-
         const getAdminInfo = async () => {
             const isAdmin = (await authService.getUserData())[0].isAdmin;
 
@@ -56,35 +49,33 @@ const AdminLayout = () => {
         </nav>
     );
 
-    if (isLoggedIn) {
-        return (
-            <>
-                <div id="admin" onClick={() => setIsDropdownClicked(false)}>
-                    <aside>
-                        <h4>{t("admin.title")}</h4>
+    return (
+        <>
+            <div id="admin" onClick={() => setIsDropdownClicked(false)}>
+                <aside>
+                    <h4>{t("admin.title")}</h4>
 
-                        {profileNavigation}
-                    </aside>
+                    {profileNavigation}
+                </aside>
 
-                    <div onClick={(e) => {
-                            e.stopPropagation()
-                            setIsDropdownClicked(prev => prev = !prev)
-                            }} className="dropdown">
-                        <h3>{currentPage}</h3>
+                <div onClick={(e) => {
+                    e.stopPropagation()
+                    setIsDropdownClicked(prev => prev = !prev)
+                }} className="dropdown">
+                    <h3>{currentPage}</h3>
 
-                        {isDropdownClicked ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>}
+                    {isDropdownClicked ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>}
 
-                        {
-                            isDropdownClicked &&
-                            profileNavigation
-                        }
-                    </div>
-
-                    <Outlet />
+                    {
+                        isDropdownClicked &&
+                        profileNavigation
+                    }
                 </div>
-            </>
-        )
-    }
+
+                <Outlet />
+            </div>
+        </>
+    )
 }
 
 export default AdminLayout;
