@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
 
@@ -9,6 +9,7 @@ const ProfileLayout = () => {
     const [currentPage, setCurrentPage] = useState(t("profile.panel.title"));
     const location = useLocation();
     const [isAdmin, setIsAdmin] = useState(false);
+    const ctx = useOutletContext();
 
     const paths = {
         "Панел": "panel",
@@ -27,7 +28,7 @@ const ProfileLayout = () => {
 
     useEffect(() => {
         const getAdminInfo = async () => {
-            const isAdmin = (await authService.getUserData())[0].isAdmin;
+            const isAdmin = (await authService.getUserData())[0].data.isAdmin;
             setIsAdmin(isAdmin);
         }
 
@@ -70,7 +71,7 @@ const ProfileLayout = () => {
                     }
                 </div>
 
-                <Outlet />
+                <Outlet context={ctx} />
             </div>
         </>
     )

@@ -4,7 +4,7 @@ export default {
     register: async (username, email, password, re_password) => {
         try {
             if (password !== re_password) {
-                throw new Error("Паролите не съвпадат.");
+                throw new Error("password.different");
             }
             
             const response = await fetch(endpoints.register, {
@@ -74,31 +74,6 @@ export default {
             return [undefined, error.message];
         }
     },
-    getAuth: async () => {
-        const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-
-        try {
-            const response = await fetch(endpoints.getAuth, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": 'application/json',
-                    "X-Authorization": accessToken,
-                }
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message);
-            }
-
-            return data;
-        }
-        catch (err) {
-            console.error(err);
-            localStorage.removeItem('accessToken');
-        }
-    },
     getUserData: async () => {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
 
@@ -117,7 +92,7 @@ export default {
                 throw new Error(data.message);
             }
 
-            return [data.data, undefined];
+            return [data, undefined];
         }
         catch (err) {
             console.error(err);
@@ -158,9 +133,8 @@ export default {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     
         try {
-    
-            if (password === "", new_password === "") {
-                throw new Error("Попълнете всички полета!");
+            if (password === "" || new_password === "") {
+                throw new Error("errorMessages.allFields");
             }
     
             const response = await fetch(endpoints.changeUserPassword, {

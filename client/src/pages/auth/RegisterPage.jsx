@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { appContext } from "../../App";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
 import emailConfig from "../../configs/email-config.js";
@@ -11,6 +11,7 @@ const RegisterPage = () => {
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const { setUser } = useOutletContext();
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -23,6 +24,7 @@ const RegisterPage = () => {
 
         if (registerData) {
             localStorage.setItem("accessToken", JSON.stringify(registerData.accessToken));
+            setUser(registerData.data);
 
             navigate("/");
             getErrorAndDisplay(registerData.message)

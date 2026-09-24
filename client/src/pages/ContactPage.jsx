@@ -13,7 +13,7 @@ const ContactPage = () => {
     const { t } = useTranslation();
 
     async function getUserEmail() {
-        const email = (await authService.getUserData())[0].email;
+        const email = (await authService.getUserData())[0].data.email;
         setUserEmail(email);
     }
 

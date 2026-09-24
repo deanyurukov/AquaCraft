@@ -15,7 +15,7 @@ const UserDataPage = () => {
     useEffect(() => {
         async function getUser() {
             setLoading(true);
-            const user = (await authService.getUserData())[0];
+            const user = (await authService.getUserData())[0].data;
             setUserData(user);
             setLoading(false);
         }

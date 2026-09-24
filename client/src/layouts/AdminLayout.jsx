@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
 
@@ -9,6 +9,7 @@ const AdminLayout = () => {
     const [currentPage, setCurrentPage] = useState(t("admin.create.title"));
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);
+    const ctx = useOutletContext();
 
     const paths = {
         "Създай продукт": "create",
@@ -27,7 +28,7 @@ const AdminLayout = () => {
 
     useEffect(() => {
         const getAdminInfo = async () => {
-            const isAdmin = (await authService.getUserData())[0].isAdmin;
+            const isAdmin = (await authService.getUserData())[0].data.isAdmin;
 
             if (!isAdmin) {
                 navigate("/");
@@ -72,7 +73,7 @@ const AdminLayout = () => {
                     }
                 </div>
 
-                <Outlet />
+                <Outlet context={ctx} />
             </div>
         </>
     )

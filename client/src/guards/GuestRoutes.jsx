@@ -1,10 +1,10 @@
 import { Navigate, Outlet, useOutletContext } from "react-router";
 
 const GuestRoutes = () => {
-    const { user } = useOutletContext();
+    const ctx = useOutletContext();
 
     return (
-        user ? <Navigate to='/' /> : <Outlet />
+        ctx.user ? <Navigate to='/' /> : <Outlet context={ctx} />
     );
 }
 

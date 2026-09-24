@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { appContext } from "../../App";
 import authService from "../../services/auth-service";
@@ -10,6 +10,7 @@ const LogoutPage = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname;
     const { t } = useTranslation();
+    const { setUser } = useOutletContext();
 
     useEffect(() => {
         const logout = async () => {
@@ -22,6 +23,7 @@ const LogoutPage = () => {
                 }
 
                 localStorage.removeItem("accessToken");
+                setUser(null);
                 navigate("/");
                 getErrorAndDisplay(t(logoutData.message));
             }

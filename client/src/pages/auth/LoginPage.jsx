@@ -1,14 +1,15 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { appContext } from "../../App";
 import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
-import { useTranslation } from "react-i18next";
 
 const LoginPage = () => {
     const getErrorAndDisplay = useContext(appContext)[6];
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const { setUser } = useOutletContext();
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -34,11 +35,12 @@ const LoginPage = () => {
         }
 
         const [loginData, error] = await authService.login(email, password);
-            
+
         if (loginData) {
             localStorage.setItem("accessToken", JSON.stringify(loginData.accessToken));
+            setUser(loginData.data);
             navigate("/");
-            getErrorAndDisplay(loginData.message)
+            getErrorAndDisplay(loginData.message);
         }
         else {
             getErrorAndDisplay(error);

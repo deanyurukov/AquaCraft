@@ -14,9 +14,16 @@ const MainLayout = () => {
     const [user, setUser] = useState(null);
 
     async function getUser() {
-        const data = await authService.getAuth();
-        console.log(data);
-        setUser(data.user);
+        try {
+            const data = (await authService.getUserData())[0];
+    
+            if (data.isValid) {
+                setUser(data.data);
+            }
+        }
+        catch(e) {
+            console.error(e);
+        }
     }
 
     useEffect(() => {
@@ -26,6 +33,11 @@ const MainLayout = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location]);
+
+    //! Testing purposes
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     return (
         <>

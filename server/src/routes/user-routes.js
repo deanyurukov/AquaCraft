@@ -37,8 +37,9 @@ router.post('/register', async (req, res) => {
     }
 
     const token = jwt.sign(user, secret);
+    delete user.password;
 
-    return res.status(201).send({ message: 'registerSuccess', accessToken: token });
+    return res.status(201).send({ message: 'registerSuccess', accessToken: token, data: user });
 });
 
 router.post('/login', async (req, res) => {
@@ -69,7 +70,9 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign(userData, secret);
 
-    return res.status(200).send({ message: 'loginSuccess', accessToken: token });
+    delete userData.password;
+
+    return res.status(200).send({ message: 'loginSuccess', accessToken: token, data: userData });
 });
 
 router.get("/logout", async (req, res) => {
@@ -85,15 +88,10 @@ router.get("/logout", async (req, res) => {
     }
 });
 
-router.get('/getAuth', async (req, res) => {
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-    return res.status(200).send({ isValid, message, data });
-});
-
 router.get('/userData', async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     delete data.password;
-    return res.status(200).send({ data });
+    return res.status(200).send({ isValid, message, data });
 });
 
 router.put("/changeUserData", async (req, res) => {

@@ -815,7 +815,8 @@
         "password": {
             "short": "Password must be 6 or more characters!",
             "long": "Password must be 99 or less characters!",
-            "wrong": "Wrong password!"
+            "wrong": "Wrong password!",
+            "different": "Passwords do not match!"
         },
         "message": {
             "short": "Message must be 10 or more characters!"

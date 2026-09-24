@@ -4,7 +4,6 @@ export const endpoints = {
     register: `${baseUrl}/users/register`,
     login: `${baseUrl}/users/login`,
     logout: `${baseUrl}/users/logout`,
-    getAuth: `${baseUrl}/users/getAuth`,
     getUserData: `${baseUrl}/users/userData`,
     changeUserData: `${baseUrl}/users/changeUserData`,
     changeUserPassword: `${baseUrl}/users/changeUserPassword`,

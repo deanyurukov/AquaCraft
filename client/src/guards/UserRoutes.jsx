@@ -1,10 +1,10 @@
 import { Navigate, Outlet, useOutletContext } from "react-router";
 
 const UserRoutes = () => {
-    const { user } = useOutletContext();
+    const ctx = useOutletContext();
 
     return (
-        !user ? <Navigate to='/login' /> : <Outlet />
+        !ctx.user ? <Navigate to='/login' /> : <Outlet context={ctx} />
     );
 }
 
