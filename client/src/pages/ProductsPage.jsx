@@ -1,16 +1,14 @@
-import { useState, useEffect, useContext, use } from "react";
+import { useState, useEffect } from "react";
 import productsService from "../services/products-service.js";
 import ProductCard from "../components/ProductCard.jsx";
 import Spinner from "../components/Spinner.jsx";
-import { appContext } from "../App.jsx";
 import { useTranslation } from "react-i18next";
 import Pagination from "../components/Pagination.jsx";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 import ProductsFilter from "../components/ProductsFilter.jsx";
 
 const ProductsPage = () => {
     const [loading, setLoading] = useState(false);
-    const [products, setProducts] = useState([]);
     const [displayProducts, setDisplayProducts] = useState([]);
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -20,19 +18,10 @@ const ProductsPage = () => {
     const [filters, setFilters] = useState([]);
     const [sortBy, setSortBy] = useState("created_at");
     const [search, setSearch] = useState("");
-
-    async function getProducts() {
-        setLoading(true);
-
-        const products = await productsService.getAll();
-        setProducts(products);
-        setDisplayProducts(products);
-
-        setLoading(false);
-    }
-
+    const { products } = useOutletContext();
+    
     useEffect(() => {
-        getProducts();
+        setDisplayProducts(products);
     }, []);
 
     useEffect(() => {
@@ -76,7 +65,7 @@ const ProductsPage = () => {
             setCurrentPage(1);
         }
 
-        if (sortBy !== "") params.set('sortBy', sortBy);
+        if (sortBy !== "created_at") params.set('sortBy', sortBy);
         if (search !== "") params.set('search', search);
         if (currentPage !== 1) params.set('page', currentPage);
 

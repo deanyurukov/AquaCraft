@@ -7,27 +7,73 @@ import { appContext } from "../App";
 import UnderConstruction from "../components/UnderConstruction";
 import Chatbot from "../components/Chatbot";
 import authService from "../services/auth-service";
+import productsService from "../services/products-service";
 
 const MainLayout = () => {
-    const error = useContext(appContext)[5];
+    const { error, getErrorAndDisplay } = useContext(appContext);
     const location = useLocation();
     const [user, setUser] = useState(null);
+    const [products, setProducts] = useState(null);
 
     async function getUser() {
         try {
             const data = (await authService.getUserData())[0];
-    
+
             if (data.isValid) {
                 setUser(data.data);
             }
         }
-        catch(e) {
+        catch (e) {
             console.error(e);
         }
     }
 
+    async function getProducts() {
+        try {
+            const data = await productsService.getAll();
+            setProducts(data);
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function unlikeProduct(id) {
+        if (!user) return;
+
+        const [data, error] = await productsService.removeFromFavorites(id);
+
+        if (error) {
+            getErrorAndDisplay(error);
+            return;
+        }
+
+        const index = user.favorites.indexOf(id);
+
+        if (index === -1) return;
+
+        setUser(prev => prev.favorites.splice(index, 1));
+    }
+    
+    async function likeProduct(id) {
+        if (!user) return;
+
+        const [data, error] = await productsService.addToFavorites(id);
+
+        if (error) {
+            getErrorAndDisplay(error);
+            return;
+        }
+
+        const index = user.favorites.indexOf(id);
+        if (index !== -1) return;
+
+        setUser(prev => prev.favorites.push(id));
+    }
+
     useEffect(() => {
         getUser();
+        getProducts();
     }, []);
 
     useEffect(() => {
@@ -37,14 +83,17 @@ const MainLayout = () => {
     //! Testing purposes
     useEffect(() => {
         console.log(user);
-    }, [user]);
+        console.log(products);
+    }, [user, products]);
+
+    if (!user || !products) return;
 
     return (
         <>
             {error && <ErrorMessage key={error} error={error} />}
             <UnderConstruction />
-            <Navbar user={user} />
-            <Outlet context={{ user, setUser }} />
+            <Navbar user={user} products={products} unlikeProduct={unlikeProduct} />
+            <Outlet context={{ user, setUser, products, unlikeProduct, likeProduct }} />
             <Chatbot />
             <Footer />
         </>

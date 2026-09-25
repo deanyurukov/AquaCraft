@@ -1,18 +1,15 @@
-import { NavLink, useLocation, useOutletContext } from "react-router-dom";
-import { useContext, useState } from "react";
-import { appContext } from "../App";
+import { NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 import OverlayProduct from "./OverlayProduct";
 import { useTranslation } from "react-i18next";
 
-const Navbar = ({ user }) => {
-    let [_, favorites, getFavs] = useContext(appContext);
+const Navbar = ({ user, products, unlikeProduct }) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedNav, setIsClickedNav] = useState(false);
     const location = useLocation();
     const { t, i18n } = useTranslation();
 
     async function showFavorites() {
-        favorites = await getFavs();
         setIsClicked(true);
     }
 
@@ -86,10 +83,10 @@ const Navbar = ({ user }) => {
 
                                 <div className="overlay-products">
                                     {
-                                        favorites.length === 0 ?
+                                        user?.favorites.length === 0 ?
                                             <p>{t("favorites.empty")}</p> :
-                                            favorites.map(product => (
-                                                <OverlayProduct product={product} key={product._id} />
+                                            user?.favorites.map(productId => (
+                                                <OverlayProduct product={products.find(p => p._id === productId)} unlikeProduct={unlikeProduct} key={productId} />
                                             ))
                                     }
                                 </div>

@@ -75,8 +75,8 @@ const router = createBrowserRouter(
             </Route>
 
             <Route element={<UserRoutes />} >
-                {/* <Route path='/cart' element={<CartPage />} />
-                <Route path='/checkout' element={<CheckoutPage />} /> */}
+                <Route path='/cart' element={<CartPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} />
 
                 <Route path='/logout' element={<LogoutPage />} />
 
@@ -103,33 +103,8 @@ const router = createBrowserRouter(
 export const appContext = React.createContext();
 
 function App() {
-    const [favorites, setFavorites] = useState([]);
     const [error, setError] = useState(null);
     const { t, i18n } = useTranslation();
-
-    const [newFavs, setNewFavs] = useState({});
-
-    async function getNewFavs() {
-        const all = await productsService.getAll();
-        let onlyIds = {};
-        all.forEach(p => {
-            onlyIds[p._id] = p.isFav || false;
-        });
-        setNewFavs(onlyIds);
-    }
-
-    function likeProduct(id) {
-        setNewFavs((prev) => ({ ...prev, [id]: true }));
-    }
-
-    function dislikeProduct(id) {
-        setNewFavs((prev) => ({ ...prev, [id]: false }));
-    }
-
-    async function getFavs() {
-        const favorites = await productsService.getFavorites();
-        setFavorites([...favorites]);
-    }
 
     function getErrorAndDisplay(error) {
         setError(t(`errorMessages.${error}`));
@@ -141,16 +116,10 @@ function App() {
 
     useEffect(() => {
         i18n.changeLanguage(localStorage.getItem("language") || "bg");
-
-        getFavs();
     }, []);
 
-    // useEffect(() => {
-    //     getNewFavs();
-    // }, [isLoggedIn]);
-
     return <>
-        <appContext.Provider value={[[], favorites, getFavs, [], [], error, getErrorAndDisplay, newFavs, likeProduct, dislikeProduct]}>
+        <appContext.Provider value={{ error, getErrorAndDisplay }}>
             <RouterProvider router={router} />
         </appContext.Provider>
     </>

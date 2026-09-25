@@ -1,43 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { changeImage } from "../services/helpers.js";
 import productsService from "../services/products-service.js";
-import { appContext } from "../App.jsx";
-import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
-    const getErrorAndDisplay = useContext(appContext)[6];
-    const favs = useContext(appContext)[7];
-    const likeProduct = useContext(appContext)[8];
-    const dislikeProduct = useContext(appContext)[9];
     const { t } = useTranslation();
-    
+    const { user, likeProduct, unlikeProduct } = useOutletContext();
+
     return (
         <div className="product">
             <img onError={changeImage} src={product.images[0]} alt={product.title} />
 
             {
-                favs[product._id] ?
-                    <i onClick={async () => {
-                        const [data, error] = await productsService.removeFromFavorites(product._id);
-
-                        if (!data) {
-                            getErrorAndDisplay(error);
-                            return;
-                        }
-
-                        dislikeProduct(product._id);
+                user.favorites.includes(product.id) ?
+                    <i onClick={() => {
+                        unlikeProduct(product._id)
                     }} className="fa-solid fa-heart fill"></i> :
-                    <i onClick={async () => {
-                        const [data, error] = await productsService.addToFavorites(product._id);
-
-                        if (!data) {
-                            getErrorAndDisplay(error);
-                            return;
-                        }
-                        
-                        likeProduct(product._id);
+                    <i onClick={() => {
+                        likeProduct(product._id)
                     }} className="fa-regular fa-heart"></i>
             }
             <span>
