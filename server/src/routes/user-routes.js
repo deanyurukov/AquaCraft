@@ -28,8 +28,10 @@ router.post('/register', async (req, res) => {
         isAdmin: false,
     };
 
+    let savedUser;
+
     try {
-        await User.create(user);
+        savedUser = {...await User.create(user)}._doc;
     }
     catch (err) {
         console.error(err);
@@ -37,9 +39,9 @@ router.post('/register', async (req, res) => {
     }
 
     const token = jwt.sign(user, secret);
-    delete user.password;
+    delete savedUser.password;
 
-    return res.status(201).send({ message: 'registerSuccess', accessToken: token, data: user });
+    return res.status(201).send({ message: 'registerSuccess', accessToken: token, data: savedUser });
 });
 
 router.post('/login', async (req, res) => {
@@ -49,7 +51,7 @@ router.post('/login', async (req, res) => {
         return res.status(409).send({ message: 'allFields' });
     }
 
-    const user = await User.findOne({ email: email.trim() });
+    const user = await User.findOne({ email: email.trim() }).lean();
 
     if (!user) {
         return res.status(404).send({ message: 'email.noProfile' });
@@ -69,10 +71,9 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign(userData, secret);
+    delete user.password;
 
-    delete userData.password;
-
-    return res.status(200).send({ message: 'loginSuccess', accessToken: token, data: userData });
+    return res.status(200).send({ message: 'loginSuccess', accessToken: token, data: user });
 });
 
 router.get("/logout", async (req, res) => {
@@ -90,8 +91,8 @@ router.get("/logout", async (req, res) => {
 
 router.get('/userData', async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-    delete data.password;
-    return res.status(200).send({ isValid, message, data });
+    const user = (await User.findOne({ email: data.email }).select("-password"));
+    return res.status(200).send({ isValid, message, data: user });
 });
 
 router.put("/changeUserData", async (req, res) => {
