@@ -1,49 +1,50 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import productsService from "../services/products-service";
+import { Link, useOutletContext } from "react-router-dom";
 import CartCard from "../components/CartCard.jsx";
-import Spinner from "../components/Spinner.jsx";
 import { calculateTotalPrice } from "../services/helpers.js";
 import { useTranslation } from "react-i18next";
 
 const CartPage = () => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
-    const navigate = useNavigate();
     const { t } = useTranslation();
+    const { products, user } = useOutletContext();
+    const [inCart, setInCart] = useState([]);
 
-    async function fetchProducts() {
-        setLoading(true);
-        const products = await productsService.getAllByUserId();
-        setProducts(products);
-        setLoading(false);
+    function loadInCart() {
+        setInCart(prev => {
+            products.forEach(p => {
+                const productInCart = user.productsInCart.find(c => p._id === c.product);
+
+                if (productInCart) {
+                    prev.push({ quantity: productInCart.quantity, product: p });
+                }
+            });
+
+            return [...prev];
+        });
     }
 
     function getTotalPrice() {
-        const combined = calculateTotalPrice(products);
+        const combined = calculateTotalPrice(inCart);
         setTotalPrice(combined);
     }
-    
+
     useEffect(() => {
-        fetchProducts();
-    }, []);
-    
+        setInCart([]);
+        loadInCart();
+    }, [user]);
+
     useEffect(() => {
-        if (products.length > 0) {
+        if (inCart.length > 0) {
             getTotalPrice();
         }
-    }, [products]);
-
-    if (loading) {
-        return <Spinner />;
-    }
+    }, [inCart]);
 
     return (
         <div id="cart">
             <h1>{t("cart.title")}</h1>
             {
-                products.length === 0 ?
+                inCart.length === 0 ?
                     <p>{t("cart.empty")} :)</p> :
                     <div className="cart-wrapper">
                         <div className="left">
@@ -56,8 +57,8 @@ const CartPage = () => {
 
                             <div>
                                 {
-                                    products.map(product => (
-                                        <CartCard product={product} setProducts={setProducts} key={product.product._id} />
+                                    inCart.map(product => (
+                                        <CartCard key={product.product._id} product={product} setInCart={setInCart} />
                                     ))
                                 }
                             </div>

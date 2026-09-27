@@ -87,14 +87,13 @@ const MainLayout = () => {
             getErrorAndDisplay(error);
             return;
         }
-        else {
-            setUser(prev => {
-                prev.productsInCart.push({ quantity: 1, product: id });
-                return { ...prev };
-            });
-            
-            navigate("/cart");
-        }
+        
+        setUser(prev => {
+            prev.productsInCart.push({ quantity: 1, product: id });
+            return { ...prev };
+        });
+
+        navigate("/cart");
     }
 
     useEffect(() => {

@@ -3,11 +3,13 @@ import { changeImage } from "../services/helpers.js";
 import productsService from "../services/products-service.js";
 import { appContext } from "../App.jsx";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 
-const CartCard = ({ product, setProducts }) => {
+const CartCard = ({ product, setInCart }) => {
     const [quantity, setQuantity] = useState(product.quantity);
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const { t } = useTranslation();
+    const { setUser } = useOutletContext();
 
     const handleChange = (e) => {
         setQuantity(e.target.value);
@@ -29,14 +31,18 @@ const CartCard = ({ product, setProducts }) => {
                 return;
             }
 
-            setProducts(prev => {
-                const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
+            setInCart(prev => {
+                const index = prev.findIndex(currProduct => currProduct.product._id === product.product._id);
                 prev[index].quantity = quantity;
                 return [...prev];
             });
+
+            // setUser(prev => {
+            //     const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
+            // });
         }
     }
-    
+
     async function deleteProduct(productId) {
         const [data, error] = await productsService.deleteOne(productId, t("cart.deleteMessage"));
 
@@ -45,8 +51,8 @@ const CartCard = ({ product, setProducts }) => {
             return;
         }
 
-        setProducts(prev => {
-            const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
+        setInCart(prev => {
+            const index = prev.findIndex(currProduct => currProduct.product._id === product.product._id);
 
             if (index !== -1) {
                 prev.splice(index, 1);

@@ -180,6 +180,7 @@
                     button {
                         border: none;
                         background: none;
+                        cursor: pointer;
 
                         &:hover i {
                             color: #91ba8dc6;
