@@ -1,26 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import productsService from "../services/products-service.js";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { changeImage } from "../services/helpers.js";
-import Spinner from "../components/Spinner.jsx";
-import { appContext } from "../App.jsx";
+
 import GoBackArrow from "../components/GoBackArrow.jsx";
 import { useTranslation } from "react-i18next";
 
 const DetailsPage = () => {
     const { id } = useParams();
     const [productData, setProductData] = useState({});
-    const [loading, setLoading] = useState(false);
+    const { products, user, likeProduct, unlikeProduct, addToCart } = useOutletContext();
     const navigate = useNavigate();
-    const update = useContext(appContext)[4];
-    const getErrorAndDisplay = useContext(appContext)[6];
     const { t } = useTranslation();
     const [activeUrl, setActiveUrl] = useState(null);
     const [isInStock, setIsInStock] = useState(true);
 
-    async function fetchProductData() {
-        setLoading(true);
-        const product = await productsService.getOne(id);
+    async function loadProduct() {
+        const product = products.find(p => p._id === id);
 
         if (!product) {
             navigate(-1);
@@ -29,23 +24,18 @@ const DetailsPage = () => {
         setProductData(product);
         setActiveUrl(product.images[0]);
         setIsInStock(product.inStock > 0);
-        setLoading(false);
     }
 
     useEffect(() => {
-        fetchProductData();
-    }, [update]);
-
-    if (loading) {
-        return <Spinner />;
-    }
+        loadProduct();
+    }, []);
 
     return (
         <div id="details">
             <GoBackArrow />
 
             <div className="details-wrapper">
-                <div className="images">    
+                <div className="images">
                     <img onError={changeImage} src={activeUrl ? activeUrl : null} alt={productData.title} />
 
                     <div className="more-images">
@@ -63,26 +53,12 @@ const DetailsPage = () => {
                         <h3>{productData.title}</h3>
 
                         {
-                            productData.isFav ?
-                                <i onClick={async () => {
-                                    const [data, error] = await productsService.removeFromFavorites(productData._id);
-
-                                    if (!data) {
-                                        getErrorAndDisplay(error);
-                                        return;
-                                    }
-
-                                    fetchProductData();
+                            user.favorites.includes(productData._id) ?
+                                <i onClick={() => {
+                                    unlikeProduct(productData._id)
                                 }} className="fa-solid fa-heart fill"></i> :
-                                <i onClick={async () => {
-                                    const [data, error] = await productsService.addToFavorites(productData._id);
-
-                                    if (!data) {
-                                        getErrorAndDisplay(error);
-                                        return;
-                                    }
-
-                                    fetchProductData();
+                                <i onClick={() => {
+                                    likeProduct(productData._id)
                                 }} className="fa-regular fa-heart"></i>
                         }
                     </div>
@@ -92,18 +68,10 @@ const DetailsPage = () => {
                     </div>
                     <hr />
                     <p>{productData.description}</p>
-                    <Link className="primary link" onClick={async () => {
-                        const [data, error] = await productsService.addToCart(productData._id);
-
-                        if (!data) {
-                            getErrorAndDisplay(error);
-                            return;
-                        }
-                        else {
-                            navigate("/cart");
-                        }
+                    <Link className="primary link" onClick={(e) => {
+                        e.preventDefault();
+                        addToCart(productData._id);
                     }}>{t(`products.buy`)}</Link>
-
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ErrorMessage from "../components/ErrorMessage";
@@ -12,6 +12,7 @@ import productsService from "../services/products-service";
 const MainLayout = () => {
     const { error, getErrorAndDisplay } = useContext(appContext);
     const location = useLocation();
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [products, setProducts] = useState(null);
 
@@ -52,9 +53,12 @@ const MainLayout = () => {
 
         if (index === -1) return;
 
-        setUser(prev => prev.favorites.splice(index, 1));
+        setUser(prev => {
+            prev.favorites.splice(index, 1);
+            return { ...prev };
+        });
     }
-    
+
     async function likeProduct(id) {
         if (!user) return;
 
@@ -68,7 +72,29 @@ const MainLayout = () => {
         const index = user.favorites.indexOf(id);
         if (index !== -1) return;
 
-        setUser(prev => prev.favorites.push(id));
+        setUser(prev => {
+            prev.favorites.push(id);
+            return { ...prev };
+        });
+    }
+
+    async function addToCart(id) {
+        if (!user) return;
+
+        const [data, error] = await productsService.addToCart(id);
+
+        if (error) {
+            getErrorAndDisplay(error);
+            return;
+        }
+        else {
+            setUser(prev => {
+                prev.productsInCart.push({ quantity: 1, product: id });
+                return { ...prev };
+            });
+            
+            navigate("/cart");
+        }
     }
 
     useEffect(() => {
@@ -92,8 +118,8 @@ const MainLayout = () => {
         <>
             {error && <ErrorMessage key={error} error={error} />}
             <UnderConstruction />
-            <Navbar user={user} products={products} unlikeProduct={unlikeProduct} />
-            <Outlet context={{ user, setUser, products, unlikeProduct, likeProduct }} />
+            <Navbar user={user} products={products} unlikeProduct={unlikeProduct} addToCart={addToCart} />
+            <Outlet context={{ user, setUser, products, unlikeProduct, likeProduct, addToCart }} />
             <Chatbot />
             <Footer />
         </>

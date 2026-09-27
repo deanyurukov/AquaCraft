@@ -3,7 +3,7 @@ import { useState } from "react";
 import OverlayProduct from "./OverlayProduct";
 import { useTranslation } from "react-i18next";
 
-const Navbar = ({ user, products, unlikeProduct }) => {
+const Navbar = ({ user, products, unlikeProduct, addToCart }) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedNav, setIsClickedNav] = useState(false);
     const location = useLocation();
@@ -86,7 +86,7 @@ const Navbar = ({ user, products, unlikeProduct }) => {
                                         user?.favorites.length === 0 ?
                                             <p>{t("favorites.empty")}</p> :
                                             user?.favorites.map(productId => (
-                                                <OverlayProduct product={products.find(p => p._id === productId)} unlikeProduct={unlikeProduct} key={productId} />
+                                                <OverlayProduct product={products.find(p => p._id === productId)} unlikeProduct={unlikeProduct} addToCart={addToCart} key={productId} />
                                             ))
                                     }
                                 </div>

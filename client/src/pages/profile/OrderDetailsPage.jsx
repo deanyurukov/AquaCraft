@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ordersService from "../../services/orders-service";
 import Spinner from "../../components/Spinner";
 import { calculateTotalPrice } from "../../services/helpers";
 import OrderProduct from "../../components/OrderProduct";
-import { appContext } from "../../App";
 import GoBackArrow from "../../components/GoBackArrow";
 import { useTranslation } from "react-i18next";
 
