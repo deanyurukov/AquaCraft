@@ -14,7 +14,7 @@ const AdminOrdersPage = () => {
     const [filter, setFilter] = useState("all");
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
 
     async function getOrders() {
         setLoading(true);

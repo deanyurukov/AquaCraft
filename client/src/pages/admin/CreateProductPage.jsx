@@ -10,7 +10,7 @@ import CreateImage from "../../components/CreateImage";
 const CreateProductPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
 
     async function onSubmit(e) {
         e.preventDefault();

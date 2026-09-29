@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
             <img onError={changeImage} src={product.images[0]} alt={product.title} />
 
             {
-                user.favorites.includes(product._id) ?
+                user?.favorites.includes(product._id) ?
                     <i onClick={() => {
                         unlikeProduct(product._id)
                     }} className="fa-solid fa-heart fill"></i> :

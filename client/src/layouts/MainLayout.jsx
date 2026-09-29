@@ -60,8 +60,6 @@ const MainLayout = () => {
     }
 
     async function likeProduct(id) {
-        if (!user) return;
-
         const [data, error] = await productsService.addToFavorites(id);
 
         if (error) {
@@ -79,8 +77,6 @@ const MainLayout = () => {
     }
 
     async function addToCart(id) {
-        if (!user) return;
-
         const [data, error] = await productsService.addToCart(id);
 
         if (error) {
@@ -111,7 +107,7 @@ const MainLayout = () => {
         console.log(products);
     }, [user, products]);
 
-    if (!user || !products) return;
+    if (!products) return;
 
     return (
         <>

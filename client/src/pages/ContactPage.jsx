@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import CheckoutInput from "../components/CheckoutInput.jsx";
 import authService from "../services/auth-service.js";
 import { useTranslation } from "react-i18next";
@@ -7,14 +7,16 @@ import emailConfig from "../configs/email-config.js";
 import { appContext } from "../App.jsx";
 
 const ContactPage = () => {
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const {getErrorAndDisplay} = useContext(appContext);
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const { user } = useOutletContext();
 
     async function getUserEmail() {
-        const email = (await authService.getUserData())[0].data.email;
-        setUserEmail(email);
+        if (user) {
+            setUserEmail(user.email);
+        }
     }
 
     useEffect(() => {

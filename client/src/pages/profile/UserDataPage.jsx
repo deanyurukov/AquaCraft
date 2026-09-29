@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 const UserDataPage = () => {
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const UserDataPage = () => {
         const { username, email, password } = Object.fromEntries(formData);
 
         const [data, error] = await authService.changeUserData(username, email, password);
-        
+
         if (!data) {
             getErrorAndDisplay(error);
             return;
@@ -45,7 +45,7 @@ const UserDataPage = () => {
         if (password === new_password) return;
 
         const [data, error] = await authService.changeUserPassword(password, new_password);
-        
+
         if (!data) {
             getErrorAndDisplay(error);
             return;
@@ -66,7 +66,7 @@ const UserDataPage = () => {
     return (
         <div id="profile-data">
             <h1>{t("profile.data.title")}</h1>
-            
+
             <div className="content">
                 <div className="data">
                     <h2>{t("profile.data.info")}</h2>

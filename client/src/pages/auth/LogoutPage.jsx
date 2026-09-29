@@ -5,7 +5,7 @@ import authService from "../../services/auth-service";
 import { useTranslation } from "react-i18next";
 
 const LogoutPage = () => {
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname;

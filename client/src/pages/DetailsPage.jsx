@@ -53,7 +53,7 @@ const DetailsPage = () => {
                         <h3>{productData.title}</h3>
 
                         {
-                            user.favorites.includes(productData._id) ?
+                            user?.favorites.includes(productData._id) ?
                                 <i onClick={() => {
                                     unlikeProduct(productData._id)
                                 }} className="fa-solid fa-heart fill"></i> :

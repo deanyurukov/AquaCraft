@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 const RegisterPage = () => {
     const [hasUserAgreed, setHasUserAgreed] = useState(false);
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { setUser } = useOutletContext();

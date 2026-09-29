@@ -6,7 +6,7 @@ import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
 
 const LoginPage = () => {
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const {getErrorAndDisplay} = useContext(appContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { setUser } = useOutletContext();

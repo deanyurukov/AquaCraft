@@ -6,16 +6,16 @@ import { Link } from "react-router-dom";
 
 const AdminEditProduct = ({ product, deleteProduct }) => {
     const { t } = useTranslation();
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
 
     const onDelete = async () => {
         if (confirm(t("admin.editAll.deleteMsg"))) {
             const [data, error] = await productsService.delete(product._id);
-    
-            if (! data) {
+
+            if (!data) {
                 getErrorAndDisplay(error);
             }
-    
+
             deleteProduct(product);
         }
     }

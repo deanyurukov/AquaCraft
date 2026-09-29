@@ -6,9 +6,6 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import '/src/styles/app.css';
 
 // Import helpers
-import productsService from './services/products-service.js';
-import useUrlChange from './hooks/useUrlChange.jsx';
-import authService from './services/auth-service.js';
 import "./configs/i18n-config.js";
 import { useTranslation } from 'react-i18next';
 
@@ -54,8 +51,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path='/products' element={<ProductsPage />} />
-            <Route path='/products/:id/details' element={<DetailsPage />} />
+            {/* <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
@@ -75,8 +72,8 @@ const router = createBrowserRouter(
             </Route>
 
             <Route element={<UserRoutes />} >
-                <Route path='/cart' element={<CartPage />} />
-                <Route path='/checkout' element={<CheckoutPage />} />
+                {/* <Route path='/cart' element={<CartPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} /> */}
 
                 <Route path='/logout' element={<LogoutPage />} />
 

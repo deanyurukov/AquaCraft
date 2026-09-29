@@ -5,7 +5,7 @@ import { appContext } from "../App";
 
 const AdminProduct = ({ product, changeStock }) => {
     const { t } = useTranslation();
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
 
     const onSubmit = async (formData) => {
         const { changed_stock } = Object.fromEntries(formData);
@@ -14,10 +14,10 @@ const AdminProduct = ({ product, changeStock }) => {
             getErrorAndDisplay("allFields");
             return;
         }
-        
-        if(confirm(t("admin.products.confirm"))) {
+
+        if (confirm(t("admin.products.confirm"))) {
             const [data, error] = await productsService.changeInStock(product._id, changed_stock);
-    
+
             if (data) {
                 changeStock(product._id, changed_stock);
             }

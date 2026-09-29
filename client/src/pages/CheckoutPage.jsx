@@ -14,7 +14,7 @@ import emailConfig from "../configs/email-config.js";
 const CheckoutPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const [totalPrice, setTotalPrice] = useState(0);
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const CheckoutPage = () => {
         const email = (await authService.getUserData())[0].data.email;
         setUserEmail(email);
     }
-    
+
     useEffect(() => {
         getUserEmail();
         fetchProducts();
@@ -48,7 +48,7 @@ const CheckoutPage = () => {
 
     async function onSubmit(e) {
         e.preventDefault();
-        
+
         const { name, town, phone, email, deliveryWay } = Object.fromEntries(new FormData(e.target.closest(".content").querySelector("form")));
 
         const [data, errorMessage] = await ordersService.addOrder(name, town, phone, email, deliveryWay);
@@ -117,7 +117,7 @@ const CheckoutPage = () => {
 
                     <button className="primary link" onClick={async (e) => {
                         const data = await onSubmit(e);
-                            
+
                         if (data) {
                             navigate("/"); /* to be changed later.. */
                         }

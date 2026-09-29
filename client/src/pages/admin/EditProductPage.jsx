@@ -12,7 +12,7 @@ const EditProductPage = () => {
     const { id } = useParams();
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const getErrorAndDisplay = useContext(appContext)[6];
+    const { getErrorAndDisplay } = useContext(appContext);
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -27,7 +27,7 @@ const EditProductPage = () => {
             getErrorAndDisplay(error);
             return;
         }
-        
+
         navigate("/admin/edit");
     }
 
