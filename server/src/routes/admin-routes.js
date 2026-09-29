@@ -76,14 +76,13 @@ router.post("/create", async (req, res) => {
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.create({ title, images: imagesArray, price, description, inStock, company, type, typeDetails });
+            const created = await Product.create({ title, images: imagesArray, price, description, inStock, company, type, typeDetails });
+            return res.status(201).send({ message: "productCreated", data: created });
         }
         catch (err) {
             console.error(err);
             return res.status(400).send({ message: getErrorMessage(err) });
         }
-
-        return res.status(201).send({ message: "productCreated" });
     }
     else {
         return res.status(401).send({ message });

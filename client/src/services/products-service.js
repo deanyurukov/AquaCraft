@@ -209,7 +209,7 @@ export default {
             return [undefined, err.message];
         }
     },
-    addOne: async (title, images, price, description, inStock, company, type, typeDetails) => {
+    addOne: async (product) => {
         try {
             const response = await fetch(endpoints.addProduct, {
                 method: 'POST',
@@ -217,16 +217,7 @@ export default {
                     'Content-Type': 'application/json',
                     "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
                 },
-                body: JSON.stringify({
-                    title,
-                    images,
-                    price,
-                    description,
-                    inStock,
-                    company,
-                    type,
-                    typeDetails
-                })
+                body: JSON.stringify(product)
             });
 
             const data = await response.json();

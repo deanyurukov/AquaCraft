@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../App";
@@ -11,18 +11,24 @@ const CreateProductPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { getErrorAndDisplay } = useContext(appContext);
+    const { setProducts } = useOutletContext();
 
     async function onSubmit(e) {
         e.preventDefault();
 
-        const { title, images, price, description, inStock, company, type, typeDetails } = Object.fromEntries(new FormData(e.currentTarget));
+        const productToAdd = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [data, error] = await productsService.addOne(title, images, price, description, inStock, company, type, typeDetails);
+        const [data, error] = await productsService.addOne(productToAdd);
 
         if (!data) {
             getErrorAndDisplay(error);
             return;
         }
+
+        setProducts(prev => {
+            prev.push(data.data);
+            return [...prev];
+        });
 
         getErrorAndDisplay(data.message);
         navigate("/products");
