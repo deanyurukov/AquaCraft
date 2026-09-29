@@ -32,14 +32,22 @@ const CartCard = ({ product, setInCart }) => {
             }
 
             setInCart(prev => {
-                const index = prev.findIndex(currProduct => currProduct.product._id === product.product._id);
-                prev[index].quantity = quantity;
+                const index = prev.findIndex(currProduct => currProduct.product._id === productId);
+
+                if (index === -1) return prev;
+
+                prev[index].quantity = Number(quantity);
                 return [...prev];
             });
 
-            // setUser(prev => {
-            //     const index = prev.indexOf(prev.find(currProduct => currProduct.product._id === product.product._id));
-            // });
+            setUser(prev => {
+                const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
+
+                if (index === -1) return prev;
+
+                prev.productsInCart[index].quantity = Number(quantity);
+                return { ...prev };
+            });
         }
     }
 
@@ -52,13 +60,21 @@ const CartCard = ({ product, setInCart }) => {
         }
 
         setInCart(prev => {
-            const index = prev.findIndex(currProduct => currProduct.product._id === product.product._id);
+            const index = prev.findIndex(currProduct => currProduct.product._id === productId);
 
-            if (index !== -1) {
-                prev.splice(index, 1);
-            }
+            if (index === -1) return prev;
 
+            prev.splice(index, 1);
             return [...prev];
+        });
+
+        setUser(prev => {
+            const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
+
+            if (index === -1) return prev;
+
+            prev.productsInCart.splice(index, 1);
+            return { ...prev };
         });
     }
 
