@@ -183,6 +183,7 @@
                     text-transform: uppercase;
                     color: var(--color-primary);
                     font-weight: 600;
+                    font-size: 1.5em;
 
                     &.no-stock {
                         color: #dc3545;

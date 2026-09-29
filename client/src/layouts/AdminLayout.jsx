@@ -44,7 +44,7 @@ const AdminLayout = () => {
     const profileNavigation = (
         <nav>
             <NavLink onClick={() => setCurrentPage(t("admin.create.title"))} to="/admin/create" end>{t("admin.create.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("admin.products.title"))} to="/admin/products" end>{t("admin.products.title")}</NavLink>
+            <NavLink onClick={() => setCurrentPage(t("admin.products.title"))} to="/admin/stock" end>{t("admin.products.title")}</NavLink>
             <NavLink onClick={() => setCurrentPage(t("admin.editAll.title"))} to="/admin/edit" end>{t("admin.editAll.title")}</NavLink>
             <NavLink onClick={() => setCurrentPage(t("admin.orders.title"))} to="/admin/orders" end>{t("admin.orders.title")}</NavLink>
         </nav>

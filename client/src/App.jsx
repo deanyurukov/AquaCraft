@@ -36,7 +36,7 @@ import OrdersPage from './pages/profile/OrdersPage.jsx';
 import UserDataPage from './pages/profile/UserDataPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import CreateProductPage from './pages/admin/CreateProductPage.jsx';
-import AdminProductsPage from './pages/admin/AdminProductsPage.jsx';
+import AdminStockPage from './pages/admin/AdminStockPage.jsx';
 import AdminEditAll from './pages/admin/AdminEditAll.jsx';
 import EditProductPage from './pages/admin/EditProductPage.jsx';
 import ProjectRequestPage from './pages/ProjectRequestPage.jsx';
@@ -87,7 +87,7 @@ const router = createBrowserRouter(
 
                 <Route path='/admin' element={<AdminLayout />} >
                     <Route path='/admin/create' element={<CreateProductPage />} />
-                    <Route path='/admin/products' element={<AdminProductsPage />} />
+                    <Route path='/admin/stock' element={<AdminStockPage />} />
                     <Route path='/admin/edit' element={<AdminEditAll />} />
                     <Route path='/admin/:id/edit' element={<EditProductPage />} />
                     <Route path='/admin/orders' element={<AdminOrdersPage />} />

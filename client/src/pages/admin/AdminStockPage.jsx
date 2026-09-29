@@ -1,29 +1,17 @@
 import { useEffect, useState } from "react";
-import Spinner from "../../components/Spinner";
 import productsService from "../../services/products-service";
 import AdminProduct from "../../components/AdminProduct";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 
-const AdminProductsPage = () => {
-    const [products, setProducts] = useState([]);
+const AdminStockPage = () => {
     const [displayProducts, setDisplayProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("all");
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-
-    async function getProducts() {
-        setLoading(true);
-
-        const products = await productsService.getAll();
-        setProducts(products);
-        setDisplayProducts(products);
-
-        setLoading(false);
-    }
+    const { products, setProducts } = useOutletContext();
 
     function onSearch(e) {
         setSearch(e.target.value);
@@ -34,7 +22,7 @@ const AdminProductsPage = () => {
     }
 
     useEffect(() => {
-        getProducts();
+        setDisplayProducts(products);
     }, []);
 
     useEffect(() => {
@@ -45,7 +33,6 @@ const AdminProductsPage = () => {
         if (filter === "1_2") {
             tempProducts = tempProducts.filter(product => product.inStock === 1 || product.inStock === 2);
         }
-
         if (filter === "0") {
             tempProducts = tempProducts.filter(product => product.inStock === 0);
         }
@@ -75,13 +62,13 @@ const AdminProductsPage = () => {
         if (search !== "") params.set('search', search);
         if (filter !== "all") params.set('filter', filter);
 
-        navigate(`/admin/products?${params.toString()}`);
+        navigate(`/admin/stock?${params.toString()}`);
     };
 
     const changeStock = (productId, newStock) => {
-        const index = displayProducts.indexOf(displayProducts.find(product => product._id === productId));
+        const index = products.findIndex(product => product._id === productId);
         
-        setDisplayProducts(prev => {
+        setProducts(prev => {
             prev[index].inStock += Number(newStock);
             return [...prev];
         });
@@ -89,12 +76,6 @@ const AdminProductsPage = () => {
 
     const exportData = async () => {
         await productsService.export();
-    }
-
-    if (loading) {
-        return <div id="profile-spinner">
-            <Spinner />
-        </div>;
     }
 
     return (
@@ -112,7 +93,7 @@ const AdminProductsPage = () => {
                     <option value="lt_0">&lt; 0</option>
                 </select>
 
-            <button onClick={exportData}>{t("admin.products.export")}</button>
+                <button onClick={exportData}>{t("admin.products.export")}</button>
             </div>
 
             {
@@ -124,4 +105,4 @@ const AdminProductsPage = () => {
     );
 }
 
-export default AdminProductsPage;
+export default AdminStockPage;

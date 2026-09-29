@@ -95,6 +95,7 @@
             transition: all 0.2s linear;
             background: white;
             cursor: pointer;
+            border-radius: unset;
 
             @media (width <=650px) {
                 font-size: 14px;
