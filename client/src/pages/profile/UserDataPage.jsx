@@ -5,12 +5,14 @@ import CheckoutInput from "../../components/CheckoutInput";
 import PasswordInput from "../../components/PasswordInput";
 import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const UserDataPage = () => {
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(false);
     const { getErrorAndDisplay } = useContext(appContext);
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getUser() {
@@ -37,6 +39,7 @@ const UserDataPage = () => {
         userData.email = email;
         userData.username = username;
         getErrorAndDisplay(data.message);
+        navigate("/profile/panel");
     }
 
     async function onPasswordChange(formData) {
