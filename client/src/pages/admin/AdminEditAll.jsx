@@ -2,34 +2,23 @@ import { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 import productsService from "../../services/products-service";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 import AdminEditProduct from "../../components/AdminEditProduct";
 
 const AdminEditAll = () => {
-    const [products, setProducts] = useState([]);
+    const { products, setProducts } = useOutletContext();
     const [displayProducts, setDisplayProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
     const { t } = useTranslation();
     const [search, setSearch] = useState("");
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
-
-    async function getProducts() {
-        setLoading(true);
-
-        const products = await productsService.getAll();
-        setProducts(products);
-        setDisplayProducts(products);
-
-        setLoading(false);
-    }
 
     function onSearch(e) {
         setSearch(e.target.value);
     }
 
     useEffect(() => {
-        getProducts();
+        setDisplayProducts(products);
     }, []);
 
     useEffect(() => {
@@ -39,29 +28,34 @@ const AdminEditAll = () => {
 
     useEffect(() => {
         const filter = Object.fromEntries(searchParams);
+        let temp = [...products];
 
         if (filter.search) {
             setSearch(filter.search);
-            setDisplayProducts(prev => prev = [...products].filter(product => product.title.toLowerCase().includes(filter.search.toLowerCase())));
+            temp.filter(product => product.title.toLowerCase().includes(filter.search.toLowerCase()));
         }
+
+        setDisplayProducts(temp);
     }, [searchParams, products]);
 
-    const deleteProduct = (product) => {
-        const index = displayProducts.indexOf(product);
+    const deleteProduct = async (productId) => {
+        if (confirm(t("admin.editAll.deleteMsg"))) {
+            const [data, error] = await productsService.delete(productId);
 
-        setDisplayProducts(prev => {
-            if (index !== -1) {
-                prev.splice(index, 1);
+            if (error) {
+                getErrorAndDisplay(error);
             }
 
-            return [...prev];
-        });
-    }
+            const index = products.findIndex(p => p._id === productId);
 
-    if (loading) {
-        return <div id="profile-spinner">
-            <Spinner />
-        </div>;
+            setProducts(prev => {
+                if (index !== -1) {
+                    prev.splice(index, 1);
+                }
+
+                return [...prev];
+            });
+        }
     }
 
     return (
@@ -72,7 +66,7 @@ const AdminEditAll = () => {
             </span>
 
             {displayProducts.map(product => (
-                <AdminEditProduct product={product} deleteProduct={deleteProduct} key={product._id} />
+                <AdminEditProduct key={product._id} product={product} deleteProduct={deleteProduct} />
             ))}
         </div>
     );

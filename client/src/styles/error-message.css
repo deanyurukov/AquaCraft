@@ -1,4 +1,4 @@
-#notifications {
+#notifications-container {
     position: fixed;
     top: 10px;
     left: 50%;
@@ -7,7 +7,7 @@
     z-index: 1000;
     font-family: var(--font-poppins);
 
-    .notification {
+    div {
         font-size: 1.5em;
         color: #000000;
 

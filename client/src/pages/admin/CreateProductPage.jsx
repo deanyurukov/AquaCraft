@@ -35,7 +35,7 @@ const CreateProductPage = () => {
     }
 
     return (
-        <div id="create">
+        <div className="admin-forms">
             <h1>{t("admin.create.title")}</h1>
 
             <div className="content">

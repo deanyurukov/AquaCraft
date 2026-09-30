@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import CheckoutInput from "../../components/CheckoutInput";
 import { appContext } from "../../App";
 import productsService from "../../services/products-service";
-import Spinner from "../../components/Spinner";
 import CreateSelect from "../../components/CreateSelect";
 import CreateImage from "../../components/CreateImage";
 
@@ -14,7 +13,7 @@ const EditProductPage = () => {
     const navigate = useNavigate();
     const { getErrorAndDisplay } = useContext(appContext);
     const [product, setProduct] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const { products, setProducts } = useOutletContext();
 
     async function onSubmit(e) {
         e.preventDefault();
@@ -32,24 +31,11 @@ const EditProductPage = () => {
     }
 
     useEffect(() => {
-        const getData = async () => {
-            setLoading(true);
-            const product = await productsService.getOne(id);
-            setProduct(product);
-            setLoading(false);
-        };
-
-        getData();
+        setProduct(products.find(p => p._id === id));
     }, []);
 
-    if (loading) {
-        return <div id="profile-spinner">
-            <Spinner />
-        </div>;
-    }
-
     return (
-        <div id="edit">
+        <div className="admin-forms">
             <h1>{t("admin.edit.title")}</h1>
 
             <div className="content">

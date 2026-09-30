@@ -1,6 +1,6 @@
 const ErrorMessage = ({ error }) => {
     return (
-        <section id="notifications">
+        <section id="notifications-container">
             <div className="notification">
                 <span className="msg">{error}</span>
             </div>
