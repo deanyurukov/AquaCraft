@@ -26,7 +26,7 @@ const CartCard = ({ product, setInCart }) => {
         if (quantity !== Number(product.quantity)) {
             const [data, error] = await productsService.updateOne(productId, quantity);
 
-            if (!data) {
+            if (error) {
                 getErrorAndDisplay(error);
                 return;
             }
@@ -54,7 +54,7 @@ const CartCard = ({ product, setInCart }) => {
     async function deleteProduct(productId) {
         const [data, error] = await productsService.deleteOne(productId, t("cart.deleteMessage"));
 
-        if (!data) {
+        if (error) {
             getErrorAndDisplay(error);
             return;
         }

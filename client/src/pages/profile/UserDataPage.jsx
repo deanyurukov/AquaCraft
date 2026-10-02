@@ -17,7 +17,7 @@ const UserDataPage = () => {
 
         const [data, error] = await authService.changeUserData(username, email, password);
 
-        if (!data) {
+        if (error) {
             getErrorAndDisplay(error);
             return;
         }
@@ -41,7 +41,7 @@ const UserDataPage = () => {
 
         const [data, error] = await authService.changeUserPassword(password, new_password);
 
-        if (!data) {
+        if (error) {
             getErrorAndDisplay(error);
             return;
         }

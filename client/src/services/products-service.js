@@ -282,7 +282,7 @@ export default {
             return [undefined, err.message];
         }
     },
-    changeOne: async (id, title, images, price, description, inStock, company, type, typeDetails) => {
+    changeOne: async (product, id) => {
         try {
             const response = await fetch(endpoints.changeProduct(id), {
                 method: 'PUT',
@@ -290,16 +290,7 @@ export default {
                     'Content-Type': 'application/json',
                     "X-Authorization": JSON.parse(localStorage.getItem('accessToken')),
                 },
-                body: JSON.stringify({
-                    title,
-                    images,
-                    price,
-                    description,
-                    inStock,
-                    company,
-                    type,
-                    typeDetails
-                })
+                body: JSON.stringify(product)
             });
 
             const data = await response.json();

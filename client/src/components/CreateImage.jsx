@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { changeImage } from '../services/helpers';
 
 const CreateImage = ({ defaultValues = [] }) => {
     const { t } = useTranslation();
-    const [images, setImages] = useState(defaultValues);
+    const [images, setImages] = useState([]);
     
     function onImageChange(e) {
         let images = e.target.value.split(",").map(img => img.trim());
-
+        console.log("changed");
         setImages(images);
     }
 
@@ -24,11 +24,15 @@ const CreateImage = ({ defaultValues = [] }) => {
         });
     }
 
+    useEffect(() => {
+        setImages(defaultValues);
+    }, [defaultValues]);
+
     return (
         <section>
             <div>
-                <label>{`${t("admin.create.image")}*`}</label>
-                <input type="text" required name="images" value={images?.join(", ")} onChange={onImageChange} />
+                <label htmlFor="images">{`${t("admin.create.image")}*`}</label>
+                <input type="text" required name="images" value={images?.join(", ")} onChange={onImageChange} id='images' />
             </div>
 
             {images.length > 0 &&

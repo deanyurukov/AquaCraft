@@ -140,14 +140,13 @@ router.put("/change/:id", async (req, res) => {
 
     if (isValid && data.isAdmin) {
         try {
-            await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true });
+            const productEdited = await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true, new: true });
+            return res.status(201).send({ message: "productUpdated", data: productEdited });
         }
         catch (err) {
             console.error(err);
             return res.status(400).send({ message: getErrorMessage(err) });
         }
-
-        return res.status(201).send({ message: "productUpdated" });
     }
     else {
         return res.status(401).send({ message });

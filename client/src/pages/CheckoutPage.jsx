@@ -53,7 +53,7 @@ const CheckoutPage = () => {
 
         const [data, errorMessage] = await ordersService.addOrder(name, town, phone, email, deliveryWay);
 
-        if (!data) {
+        if (errorMessage) {
             getErrorAndDisplay(errorMessage);
             return undefined;
         }
@@ -61,7 +61,7 @@ const CheckoutPage = () => {
         getErrorAndDisplay(data.message);
 
         try {
-            emailjs.send(emailConfig.supportService, emailConfig.orderTemplate, data.data);
+            // emailjs.send(emailConfig.supportService, emailConfig.orderTemplate, data.data);
         }
         catch (error) {
             console.error(error);
