@@ -5,7 +5,7 @@ const PasswordInput = ({ name, placeholder }) => {
 
     return (
         <span className="form-password">
-            <input id={name} type={isPassVisible ? "text" : "password"} name={name} placeholder={placeholder} />
+            <input className="item" id={name} type={isPassVisible ? "text" : "password"} name={name} placeholder={placeholder} />
 
             {
                 isPassVisible ?

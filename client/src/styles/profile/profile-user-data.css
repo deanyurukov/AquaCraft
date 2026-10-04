@@ -71,11 +71,6 @@
                         font-weight: 500;
                         font-size: 17px;
                     }
-
-                    input[type="text"],
-                    input[type="email"] {
-                        padding: 1em;
-                    }
                 }
             }
         }

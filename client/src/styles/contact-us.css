@@ -56,16 +56,21 @@
             gap: 1.5em;
             width: 40%;
 
-            @media (width <= 800px) {
+            @media (width <=800px) {
                 gap: 0.8em;
                 width: 90%;
+            }
+
+            textarea {
+                min-height: 35vh;
+                max-height: 50vh;
             }
         }
 
         #map {
             width: 45%;
 
-            @media (width <= 800px) {
+            @media (width <=800px) {
                 width: 90%;
             }
 

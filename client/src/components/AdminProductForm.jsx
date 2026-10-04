@@ -21,7 +21,7 @@ const AdminProductForm = ({ method, onSubmit, product = {} }) => {
 
                     <div className="form-item">
                         <label htmlFor="description">{t("admin.create.description")}*</label>
-                        <textarea name="description" id="description" defaultValue={product.description}></textarea>
+                        <textarea className="item" name="description" id="description" defaultValue={product.description}></textarea>
                     </div>
 
                     <button className="primary link" type="submit">{t(`admin.${method}.submit`)}</button>

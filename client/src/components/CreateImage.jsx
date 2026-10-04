@@ -32,7 +32,7 @@ const CreateImage = ({ defaultValues }) => {
         <section>
             <div className='form-item'>
                 <label htmlFor="images">{`${t("admin.create.image")}*`}</label>
-                <input type="text" required name="images" value={images?.join(", ")} onChange={onImageChange} id='images' />
+                <input className='item' type="text" required name="images" value={images?.join(", ")} onChange={onImageChange} id='images' />
             </div>
 
             {images.length > 0 &&

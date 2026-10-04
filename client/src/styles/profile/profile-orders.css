@@ -10,31 +10,7 @@
     }
 
     select {
-        appearance: none;
-        background: white;
-        background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
-        background-repeat: no-repeat;
-        background-position: right 10px center;
-        background-size: 24px;
-
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        border: 2px solid var(--color-gray);
-        outline: none;
-        font-size: 15px;
-        color: #9F9F9F;
-        padding: 1em 40px 1em 1.4em;
-        transition: all 0.2s linear;
-
-        @media (width <=700px) {
-            font-size: 13px;
-        }
-
-        &:focus {
-            border: 2px solid var(--color-primary);
-            border-radius: 3px;
-        }
+        width: fit-content;
     }
 
     h6 {

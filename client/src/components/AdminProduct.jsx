@@ -30,7 +30,7 @@ const AdminProduct = ({ product, changeStock }) => {
             <p>{t("admin.products.stock")}: {product.inStock}</p>
 
             <form action={onSubmit}>
-                <input type="number" name="changed_stock" id="addedStock" />
+                <input className="item" type="number" name="changed_stock" id="addedStock" />
                 <button className="primary link">{t("admin.products.change")}</button>
             </form>
         </div>

@@ -54,7 +54,7 @@ const LoginPage = () => {
             <div className="form-wrapper">
                 <form onSubmit={onSubmit} id="login-form" className="form">
                     <span>
-                        <input type="email" name="email" placeholder={`${t("login.email")}*`} />
+                        <input className="item" type="email" name="email" placeholder={`${t("login.email")}*`} />
                     </span>
                     <PasswordInput name={"password"} placeholder={`${t("login.password")}*`} />
 

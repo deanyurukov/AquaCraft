@@ -51,10 +51,10 @@ const RegisterPage = () => {
             <div className="form-wrapper">
                 <form onSubmit={onSubmit} id="register-form" className="form">
                     <span>
-                        <input type="text" name="username" placeholder={`${t("register.username")}*`} />
+                        <input className="item" type="text" name="username" placeholder={`${t("register.username")}*`} />
                     </span>
                     <span>
-                        <input type="email" name="email" placeholder={`${t("register.email")}*`} />
+                        <input className="item" type="email" name="email" placeholder={`${t("register.email")}*`} />
                     </span>
                     <PasswordInput name={"password"} placeholder={`${t("register.password")}*`} />
                     <PasswordInput name={"re_password"} placeholder={`${t("register.rePass")}*`} />

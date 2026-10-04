@@ -2,7 +2,7 @@ const SelectInput = ({ name, options, value = undefined, defaultValue = undefine
     console.log(value, defaultValue);
     return (
         <select
-            className="form-select"
+            className="form-select item"
             name={name}
             onChange={onChange}
             value={value}

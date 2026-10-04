@@ -3,6 +3,7 @@ import productsService from "../../services/products-service";
 import AdminProduct from "../../components/AdminProduct";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
+import SelectInput from "../../components/SelectInput";
 
 const AdminStockPage = () => {
     const [displayProducts, setDisplayProducts] = useState([]);
@@ -67,7 +68,7 @@ const AdminStockPage = () => {
 
     const changeStock = (productId, newStock) => {
         const index = products.findIndex(product => product._id === productId);
-        
+
         setProducts(prev => {
             prev[index].inStock += Number(newStock);
             return [...prev];
@@ -81,26 +82,33 @@ const AdminStockPage = () => {
     return (
         <div id="admin-products">
             <div id="filter">
-               <span>
+                <span>
                     <i className="fa-solid fa-magnifying-glass"></i>
-                    <input onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.products.search")}...`} />
+                    <input className="item" onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.products.search")}...`} />
                 </span>
 
-                <select name="filter" id="filter" value={filter} onChange={onFilter}>
-                    <option value="all">{t("admin.products.all")}</option>
-                    <option value="1_2">1 / 2</option>
-                    <option value="0">0</option>
-                    <option value="lt_0">&lt; 0</option>
-                </select>
+                <SelectInput
+                    name="filter"
+                    value={filter}
+                    onChange={onFilter}
+                    options={[
+                        { val: "all", text: t("admin.products.all") },
+                        { val: "1_2", text: "1 / 2" },
+                        { val: "0", text: "0" },
+                        { val: "lt_0", text: "< 0" }
+                    ]}
+                />
 
                 <button onClick={exportData}>{t("admin.products.export")}</button>
             </div>
 
             {
-                displayProducts.length === 0 ? <p>{t("products.empty")}</p> :
-                displayProducts.map(product => (
-                    <AdminProduct product={product} changeStock={changeStock} key={product._id} />
-                ))}
+                displayProducts.length === 0 ? 
+                    <p>{t("products.empty")}</p> :
+                    displayProducts.map(product => (
+                        <AdminProduct product={product} changeStock={changeStock} key={product._id} />
+                    ))
+            }
         </div>
     );
 }

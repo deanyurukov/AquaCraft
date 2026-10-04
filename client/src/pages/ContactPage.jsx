@@ -88,7 +88,7 @@ const ContactPage = () => {
 
                     <div className="form-item">
                         <label htmlFor="message">{t("contact.message")}*</label>
-                        <textarea name="message" id="message"></textarea>
+                        <textarea className="item" name="message" id="message"></textarea>
                     </div>
 
                     <button type="submit" className="primary link">{t("contact.submit")}</button>

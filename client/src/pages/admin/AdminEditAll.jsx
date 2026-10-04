@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Spinner from "../../components/Spinner";
 import productsService from "../../services/products-service";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
@@ -62,7 +61,7 @@ const AdminEditAll = () => {
         <div id="admin-products">
             <span>
                 <i className="fa-solid fa-magnifying-glass"></i>
-                <input onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.editAll.search")}...`} />
+                <input className="item" onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.editAll.search")}...`} />
             </span>
 
             {displayProducts.map(product => (

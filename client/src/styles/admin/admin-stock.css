@@ -33,65 +33,16 @@
             }
         }
 
-        input,
         select {
-            border: 2px solid var(--color-gray);
-            outline: none;
-            padding: 1em;
-            font-size: 16px;
-            color: #565656;
-            transition: all 0.2s linear;
-            background: white;
-
-            @media (width <=650px) {
-                font-size: 14px;
-            }
-
-            @media (width <=540px) {
-                font-size: 12px;
-            }
-
-            @media (width <=480px) {
-                padding: 0.4em 0.6em;
-            }
-
-            &:focus {
-                border: 2px solid var(--color-primary);
-                border-radius: 3px;
-            }
-        }
-
-        input {
-            width: 100%;
-        }
-
-        select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 24px;
             width: 25%;
-
-            @media (width <=650px) {
-                background-position: right 10px center;
-            }
-
-            @media (width <=520px) {
-                background-position: right 3px center;
-            }
-
-            @media (width <=440px) {
-                background-position: right -3px center;
-            }
         }
 
         button {
             border: 2px solid var(--color-gray);
             outline: none;
-            padding: 1em 1.8em;
             font-size: 16px;
-            color: #565656;
+            padding: 1rem 2rem;
+            color: #000000;
             transition: all 0.2s linear;
             background: white;
             cursor: pointer;
@@ -124,30 +75,6 @@
         border-radius: 6px;
         background: white;
         width: 100%;
-
-        input {
-            width: 100%;
-            border: 2px solid var(--color-gray);
-            outline: none;
-            padding: 1em;
-            background: transparent;
-            font-size: 16px;
-            color: #565656;
-            transition: all 0.2s linear;
-
-            @media (width <=450px) {
-                font-size: 14px;
-            }
-
-            @media (width <=370px) {
-                font-size: 12px;
-            }
-
-            &:focus {
-                border: 2px solid var(--color-primary);
-                border-radius: 3px;
-            }
-        }
 
         i {
             position: absolute;
@@ -219,35 +146,6 @@
 
             @media (width <=450px) {
                 gap: 0.6em;
-            }
-
-            input {
-                border: 2px solid var(--color-gray);
-                outline: none;
-                font-size: 15px;
-                color: #9F9F9F;
-                padding: 0.7em 1em;
-                transition: all 0.2s linear;
-                scrollbar-width: thin;
-                scrollbar-color: var(--color-primary) transparent;
-
-                @media (width <=800px) {
-                    width: 100%;
-                }
-
-                @media (width <=700px) {
-                    font-size: 13px;
-                }
-
-                @media (width <=570px) {
-                    font-size: 11px;
-                    width: 30%;
-                }
-
-                &:focus {
-                    border: 2px solid var(--color-primary);
-                    border-radius: 3px;
-                }
             }
         }
 

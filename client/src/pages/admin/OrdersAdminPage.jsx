@@ -5,6 +5,7 @@ import ordersService from "../../services/orders-service";
 import ProfileTable from "../../components/ProfileTable";
 import { appContext } from "../../App";
 import Spinner from "../../components/Spinner";
+import SelectInput from "../../components/SelectInput";
 
 const AdminOrdersPage = () => {
     const [orders, setOrders] = useState([]);
@@ -94,11 +95,17 @@ const AdminOrdersPage = () => {
         <div id="profile-orders">
             <h6>{t("admin.orders.title")}</h6>
 
-            <select value={filter} onChange={onFilter} >
-                <option value="all">{t("admin.orders.all")}</option>
-                <option value="completed">{t("admin.orders.completed")}</option>
-                <option value="not_completed">{t("admin.orders.notCompleted")}</option>
-            </select>
+            <SelectInput
+                key={filter || "all-orders"}
+                name="filter"
+                value={filter}
+                onChange={onFilter}
+                options={[
+                    { val: "all", text: t("admin.orders.all") },
+                    { val: "completed", text: t("admin.orders.completed") },
+                    { val: "not_completed", text: t("admin.orders.notCompleted") }
+                ]}
+            />
 
             <ProfileTable orders={displayOrders} isAdmin={true} complete={completeOrder} />
         </div>
