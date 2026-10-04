@@ -1,5 +1,5 @@
 import authService from "../../services/auth-service";
-import CheckoutInput from "../../components/CheckoutInput";
+import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
@@ -59,8 +59,8 @@ const UserDataPage = () => {
                     <h2>{t("profile.data.info")}</h2>
 
                     <form action={onDataChange}>
-                        <CheckoutInput type="text" value={user.username} label={`${t("profile.data.username")}*`} name={"username"} />
-                        <CheckoutInput type="email" value={user.email} label={`${t("profile.data.email")}*`} name={"email"} />
+                        <Input type="text" value={user.username} label={`${t("profile.data.username")}*`} name={"username"} />
+                        <Input type="email" value={user.email} label={`${t("profile.data.email")}*`} name={"email"} />
                         <PasswordInput placeholder={`${t("profile.data.password")}*`} name={"password"} />
 
                         <button className="primary link" type="submit">{t("profile.data.save")}</button>

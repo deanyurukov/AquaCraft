@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { appContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import productsService from "../services/products-service.js";
-import CheckoutInput from "../components/CheckoutInput";
+import Input from "../components/Input";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Spinner from "../components/Spinner.jsx";
 import ordersService from "../services/orders-service.js";
@@ -10,6 +10,7 @@ import authService from "../services/auth-service.js";
 import { calculateTotalPrice } from "../services/helpers.js";
 import { useTranslation } from "react-i18next";
 import emailConfig from "../configs/email-config.js";
+import SelectInput from "../components/SelectInput.jsx";
 
 const CheckoutPage = () => {
     const [products, setProducts] = useState([]);
@@ -59,6 +60,7 @@ const CheckoutPage = () => {
         }
 
         getErrorAndDisplay(data.message);
+        navigate(`/profile/order/${data.data._id}/details`);
 
         try {
             // emailjs.send(emailConfig.supportService, emailConfig.orderTemplate, data.data);
@@ -66,8 +68,6 @@ const CheckoutPage = () => {
         catch (error) {
             console.error(error);
         }
-
-        return data;
     }
 
     return (
@@ -78,19 +78,14 @@ const CheckoutPage = () => {
                 <div className="left">
                     <h2>{t("checkout.details")}</h2>
                     <form>
-                        <CheckoutInput label={`${t("checkout.name")}*`} name={"name"} />
-                        <CheckoutInput label={`${t("checkout.city")}*`} name={"town"} />
-                        <CheckoutInput label={`${t("checkout.phone")}*`} name={"phone"} type={"phone"} placeholder={"+359 123 456 789"} />
-                        <CheckoutInput label={`${t("checkout.email")}*`} name={"email"} type={"email"} value={userEmail} />
+                        <Input label={`${t("checkout.name")}*`} name={"name"} />
+                        <Input label={`${t("checkout.city")}*`} name={"town"} />
+                        <Input label={`${t("checkout.phone")}*`} name={"phone"} type={"phone"} placeholder={"+359 123 456 789"} />
+                        <Input label={`${t("checkout.email")}*`} name={"email"} type={"email"} value={userEmail} />
 
                         <div>
                             <label>{t("checkout.courier")}*</label>
-                            <select name="deliveryWay">
-                                <option value="">-----------------</option>
-                                <option value="Speedy">Speedy</option>
-                                <option value="Econt">Econt</option>
-                                <option value="DHL">DHL</option>
-                            </select>
+                            <SelectInput name={"deliveryWay"} options={[{ text: "-----------------", val: "" }, { text: "Speedy", val: "Speedy" }, { text: "Econt", val: "Econt" }, { text: "DHL", val: "DHL" }]} />
                         </div>
                     </form>
                 </div>
@@ -115,13 +110,7 @@ const CheckoutPage = () => {
 
                     <hr />
 
-                    <button className="primary link" onClick={async (e) => {
-                        const data = await onSubmit(e);
-
-                        if (data) {
-                            navigate("/"); /* to be changed later.. */
-                        }
-                    }}>{t("checkout.finish")}</button>
+                    <button className="primary link" onClick={onSubmit}>{t("checkout.finish")}</button>
                 </div>
 
             </div>

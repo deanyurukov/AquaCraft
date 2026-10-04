@@ -104,3 +104,146 @@ button.link {
         }
     }
 }
+
+a.form-submit,
+button.form-submit {
+    padding: 0.8em 1.5em;
+    background: var(--color-white);
+    border: 1px solid #000;
+    border-radius: 4px;
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+
+    &:hover {
+        background: #000;
+        color: var(--color-white);
+    }
+
+    &:disabled {
+        color: gray;
+        background: var(--color-white);
+        border-color: gray;
+        cursor: not-allowed;
+
+        &:hover {
+            color: gray;
+        }
+    }
+}
+
+div.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    width: 100%;
+    resize: none;
+
+    @media (width <=800px) {
+        gap: 0.5em;
+    }
+
+    label {
+        font-weight: 500;
+        font-size: 17px;
+
+        @media (width <=700px) {
+            font-size: 15px;
+        }
+    }
+
+    input,
+    textarea {
+        border: 2px solid var(--color-gray);
+        outline: none;
+        width: 100%;
+        font-size: 15px;
+        color: #000000;
+        padding: 1.5em 2em;
+        transition: all 0.2s linear;
+        resize: none;
+        field-sizing: content;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-primary) transparent;
+
+        @media (width <=800px) {
+            width: 100%;
+        }
+
+        @media (width <=700px) {
+            font-size: 13px;
+        }
+
+        &:focus {
+            border: 2px solid var(--color-primary);
+            border-radius: 3px;
+        }
+    }
+
+    textarea {
+        min-height: 35vh;
+        max-height: 50vh;
+        font-family: var(--font-poppins);
+    }
+}
+
+select.form-select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="%239F9F9F" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5rem;
+    border: 2px solid var(--color-gray);
+    outline: none;
+    font-size: 1rem;
+    color: #000000;
+    padding: 1.5rem 2rem;
+    transition: all 0.2s linear;
+
+    @media (width <=800px) {
+        width: 100%;
+    }
+
+    &:focus {
+        border-color: var(--color-primary);
+        border-radius: 3px;
+    }
+
+    &::placeholder {
+        color: #b5b5b5;
+    }
+}
+
+span.form-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    background: white;
+    width: 100%;
+    margin-top: 0.8em;
+
+    input {
+        width: 100%;
+        border: 2px solid var(--color-gray);
+        outline: none;
+        padding: 1em;
+        background: transparent;
+        font-size: 16px;
+        color: #9F9F9F;
+        transition: all 0.2s linear;
+
+        &:focus {
+            border: 2px solid var(--color-primary);
+            border-radius: 3px;
+        }
+    }
+
+    i {
+        position: absolute;
+        right: 10px;
+        color: black;
+    }
+}

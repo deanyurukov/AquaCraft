@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { appContext } from "../../App";
 import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
+import Input from "../../components/Input.jsx";
 
 const LoginPage = () => {
     const {getErrorAndDisplay} = useContext(appContext);
@@ -57,7 +58,7 @@ const LoginPage = () => {
                     </span>
                     <PasswordInput name={"password"} placeholder={`${t("login.password")}*`} />
 
-                    <button type="submit">{t("login.title")}</button>
+                    <button className="form-submit" type="submit">{t("login.title")}</button>
                 </form>
             </div>
         </div>

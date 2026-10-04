@@ -24,8 +24,8 @@ const ProductCard = ({ product }) => {
                 <p>{product.description}</p>
                 <p>€{Number(product.price).toFixed(2)}</p>
                 <div>
-                    <Link to={`/products/${product._id}/details`}>{t("products.details")}</Link>
-                    <Link onClick={() => addToCart(product._id)}>{t("products.buy")}</Link>
+                    <Link className="form-submit" to={`/products/${product._id}/details`}>{t("products.details")}</Link>
+                    <Link className="form-submit" onClick={() => addToCart(product._id)}>{t("products.buy")}</Link>
                 </div>
             </span>
         </div>

@@ -291,7 +291,6 @@ const ProductsPage = () => {
 
             <h1>{t("products.title")}</h1>
 
-
             <div className="products-wrapper">
                 <div className="sort">
                     <select id="sortBy" value={sortBy} onChange={changeSorting}>

@@ -4,8 +4,8 @@ const PasswordInput = ({ name, placeholder }) => {
     const [isPassVisible, setIsPassVisible] = useState(false);
 
     return (
-        <span>
-            <input className="password" id={name} type={isPassVisible ? "text" : "password"} name={name} placeholder={placeholder} />
+        <span className="form-password">
+            <input id={name} type={isPassVisible ? "text" : "password"} name={name} placeholder={placeholder} />
 
             {
                 isPassVisible ?

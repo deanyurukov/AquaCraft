@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { changeImage } from '../services/helpers';
 
-const CreateImage = ({ defaultValues = [] }) => {
+const CreateImage = ({ defaultValues }) => {
     const { t } = useTranslation();
     const [images, setImages] = useState([]);
-    
+
     function onImageChange(e) {
         let images = e.target.value.split(",").map(img => img.trim());
         console.log("changed");
@@ -30,7 +30,7 @@ const CreateImage = ({ defaultValues = [] }) => {
 
     return (
         <section>
-            <div>
+            <div className='form-item'>
                 <label htmlFor="images">{`${t("admin.create.image")}*`}</label>
                 <input type="text" required name="images" value={images?.join(", ")} onChange={onImageChange} id='images' />
             </div>
@@ -40,13 +40,13 @@ const CreateImage = ({ defaultValues = [] }) => {
                     {
                         images.map(imageUrl => (
                             imageUrl !== "" &&
-                                <span key={imageUrl} >
-                                    <img onError={changeImage} src={imageUrl} alt='Product image' />
+                            <span key={imageUrl} >
+                                <img onError={changeImage} src={imageUrl} alt='Product image' />
 
-                                    <span className='overlay'>
-                                        <i onClick={() => removeImage(imageUrl)} className="fa-solid fa-xmark"></i>
-                                    </span>
+                                <span className='overlay'>
+                                    <i onClick={() => removeImage(imageUrl)} className="fa-solid fa-xmark"></i>
                                 </span>
+                            </span>
                         ))
                     }
                 </article>

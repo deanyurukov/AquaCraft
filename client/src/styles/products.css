@@ -12,7 +12,6 @@
     #products-nav {
         width: 100%;
         padding: 0 2em;
-        /* background: #2C3E50; */
         background: #E4E4E4;
         overflow-x: auto;
         -ms-overflow-style: none;
@@ -353,35 +352,6 @@
                         @media (width <=250px) {
                             flex-direction: column;
                             gap: 0.7em;
-                        }
-    
-                        &>a {
-                            font-family: var(--font-poppins);
-                            padding: 0.5em 1em;
-                            background: var(--color-white);
-                            border: 1px solid #000;
-                            border-radius: 4px;
-                            color: #000;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                            font-size: 16px;
-    
-                            @media (width <=370px) {
-                                font-size: 14px;
-                                padding: 0.4em 0.8em;
-                            }
-    
-                            @media (width <=250px) {
-                                text-align: left;
-                                width: fit-content;
-                            }
-    
-                            &:hover {
-                                background: #000;
-                                color: var(--color-white);
-                                border: 1px solid var(--color-white);
-                            }
                         }
                     }
                 }

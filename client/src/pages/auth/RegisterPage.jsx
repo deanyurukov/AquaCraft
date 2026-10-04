@@ -64,7 +64,7 @@ const RegisterPage = () => {
                         <label htmlFor="agreement">{t("register.agreement.message")} <Link to={"/terms-and-conditions"}>{t("register.agreement.terms")}</Link> {t("register.agreement.and")} <Link to={"/privacy-policy"}>{t("register.agreement.privacy")}</Link>.</label>
                     </div>
 
-                    <button disabled={!hasUserAgreed} type="submit">{t("register.title")}</button>
+                    <button className="form-submit" disabled={!hasUserAgreed} type="submit">{t("register.title")}</button>
                 </form>
             </div>
         </div >

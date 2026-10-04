@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import CheckoutInput from "../components/CheckoutInput.jsx";
+import Input from "../components/Input.jsx";
 import authService from "../services/auth-service.js";
 import { useTranslation } from "react-i18next";
 import emailConfig from "../configs/email-config.js";
@@ -83,10 +83,10 @@ const ContactPage = () => {
 
             <div className="content">
                 <form onSubmit={onSubmit}>
-                    <CheckoutInput label={`${t("contact.name")}*`} name={"name"} />
-                    <CheckoutInput label={`${t("contact.email")}*`} name={"email"} type={"email"} value={userEmail} />
+                    <Input label={`${t("contact.name")}*`} name={"name"} />
+                    <Input label={`${t("contact.email")}*`} name={"email"} type={"email"} value={userEmail} />
 
-                    <div>
+                    <div className="form-item">
                         <label htmlFor="message">{t("contact.message")}*</label>
                         <textarea name="message" id="message"></textarea>
                     </div>
