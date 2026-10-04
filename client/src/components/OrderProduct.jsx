@@ -1,12 +1,6 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { changeImage } from "../services/helpers";
-import productsService from "../services/products-service";
-import { useContext } from "react";
-import { appContext } from "../App";
-
 const OrderProduct = ({ quantity, product }) => {
-    const navigate = useNavigate();
-    const { getErrorAndDisplay } = useContext(appContext);
     const { user, likeProduct, unlikeProduct, addToCart } = useOutletContext();
 
     return (
