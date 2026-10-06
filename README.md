@@ -37,7 +37,7 @@ Before running the project, ensure you have the following installed:
 
 ### 2️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/dean10042008/AquaCraft
+git clone https://github.com/deanyurukov/AquaCraft
 ```
 
 #### Navigate to the project folder
@@ -74,16 +74,17 @@ The frontend is now running on `http://localhost:3000/`.
 - Products
 - Product Details
 - Privacy Policy
-- Terms of Service
-- How to
-- Project request
+- Terms and Conditions
+- How To
+- Project Request
+- Contact Us
+- Drip / Micro / Subsurface / Sprinkler Irrigation Method Guides
 
 #### 🚪 Guest-Only Pages
 - Login
 - Register
 
 #### 👤 Logged-In Users & Admin
-- Contact Us
 - Cart
 - Checkout
 - Logout
