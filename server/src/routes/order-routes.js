@@ -134,7 +134,7 @@ router.get("/complete/:id", async (req, res) => {
             order.isCompleted = true;
             await order.save();
 
-            return res.status(200).send({ message: "Order Completed" });
+            return res.status(200).send({ message: "Order Completed." });
         }
         catch (err) {
             console.error(err);

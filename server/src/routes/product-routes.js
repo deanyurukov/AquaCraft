@@ -37,7 +37,7 @@ router.post("/cart/add/:id", async (req, res) => {
         user.productsInCart.push({ product: id });
         await user.save();
 
-        return res.status(201).send({ message: "Продуктът е добавен успешно" });
+        return res.status(201).send({ message: "Product added successfully." });
     }
     else {
         return res.status(401).send({ message });
@@ -49,7 +49,7 @@ router.get("/cart/get", async (req, res) => {
 
     if (isValid) {
         const productsInCart = (await User.findOne({ email: data.email }).populate("productsInCart.product")).productsInCart;
-        return res.status(200).send({ message: "Има продукти в кошницата", data: productsInCart });
+        return res.status(200).send({ message: "There are products in cart.", data: productsInCart });
     }
     else {
         return res.status(401).send({ message });
@@ -68,7 +68,7 @@ router.get("/:id", async (req, res) => {
             product.isFav = true;
         }
 
-        return res.status(200).send({ message: "Product found", data: product });
+        return res.status(200).send({ message: "Product found.", data: product });
     }
     catch (err) {
         return res.status(404).end("Error retrieving product.");
@@ -121,7 +121,7 @@ router.get("/favorites/get", async (req, res) => {
     if (isValid) {
         const user = await User.findOne({ email: data.email }).populate("favorites");
 
-        return res.status(201).send({ message: "Има харесани продукти.", data: user.favorites });
+        return res.status(201).send({ message: "Liked products found.", data: user.favorites });
     }
     else {
         return res.status(401).send({ message, data: [] });
@@ -138,13 +138,13 @@ router.post("/favorites/add/:id", async (req, res) => {
         const productsIds = user.favorites.map(product => product.toString());
 
         if (productsIds.includes(id)) {
-            return res.status(409).send({ message: "Продуктът вече е харесан!" });
+            return res.status(409).send({ message: "Product already liked!" });
         }
 
         user.favorites.push(id);
         await user.save();
 
-        return res.status(201).send({ message: "Продуктът е харесан успешно." });
+        return res.status(201).send({ message: "Product liked successfully." });
     }
     else {
         return res.status(401).send({ message });
@@ -161,13 +161,13 @@ router.post("/favorites/remove/:id", async (req, res) => {
         const productsIds = user.favorites.map(product => product.toString());
 
         if (!productsIds.includes(id)) {
-            return res.status(409).send({ message: "Продуктът не е харесан!" });
+            return res.status(409).send({ message: "Product is not liked!" });
         }
 
         user.favorites.splice(user.favorites.indexOf(id), 1);
         await user.save();
 
-        return res.status(201).send({ message: "Продуктът е премахнат успешно." });
+        return res.status(201).send({ message: "Product removed from liked successfully." });
     }
     else {
         return res.status(401).send({ message });
