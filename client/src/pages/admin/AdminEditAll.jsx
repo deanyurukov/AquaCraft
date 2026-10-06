@@ -11,6 +11,7 @@ const AdminEditAll = () => {
     const [search, setSearch] = useState("");
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     function onSearch(e) {
         setSearch(e.target.value);
@@ -39,10 +40,15 @@ const AdminEditAll = () => {
 
     const deleteProduct = async (productId) => {
         if (confirm(t("admin.editAll.deleteMsg"))) {
+            if (loading) return;
+            setLoading(true);
+
             const [data, error] = await productsService.delete(productId);
 
             if (error) {
                 getErrorAndDisplay(error);
+                setLoading(false);
+                return;
             }
 
             const index = products.findIndex(p => p._id === productId);
@@ -54,6 +60,8 @@ const AdminEditAll = () => {
 
                 return [...prev];
             });
+
+            setLoading(false);
         }
     }
 

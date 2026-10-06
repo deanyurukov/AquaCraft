@@ -4,21 +4,27 @@ import PasswordInput from "../../components/PasswordInput";
 import { appContext } from "../../App";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const UserDataPage = () => {
     const { getErrorAndDisplay } = useContext(appContext);
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { user, setUser } = useOutletContext();
+    const [dataLoading, setDataLoading] = useState(false);
+    const [passLoading, setPassLoading] = useState(false);
 
     async function onDataChange(formData) {
+        if (dataLoading) return;
+        setDataLoading(true);
+
         const { username, email, password } = Object.fromEntries(formData);
 
         const [data, error] = await authService.changeUserData(username, email, password);
 
         if (error) {
             getErrorAndDisplay(error);
+            setDataLoading(false);
             return;
         }
 
@@ -31,10 +37,14 @@ const UserDataPage = () => {
         });
 
         getErrorAndDisplay(data.message);
+        setDataLoading(false);
         navigate("/profile/panel");
     }
 
     async function onPasswordChange(formData) {
+        if (passLoading) return;
+        setPassLoading(true);
+
         const { password, new_password } = Object.fromEntries(formData);
 
         if (password === new_password) return;
@@ -48,6 +58,8 @@ const UserDataPage = () => {
 
         localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
         getErrorAndDisplay(data.message);
+
+        setPassLoading(false);
     }
 
     return (
@@ -63,7 +75,7 @@ const UserDataPage = () => {
                         <Input type="email" value={user.email} label={`${t("profile.data.email")}*`} name={"email"} />
                         <PasswordInput placeholder={`${t("profile.data.password")}*`} name={"password"} />
 
-                        <button className="primary link" type="submit">{t("profile.data.save")}</button>
+                        <button disabled={dataLoading} className="link primary" type="submit">{dataLoading ? t("common.loading") : t("profile.data.save")}</button>
                     </form>
                 </div>
 
@@ -74,7 +86,7 @@ const UserDataPage = () => {
                         <PasswordInput placeholder={`${t("profile.data.currentPass")}*`} name={"password"} />
                         <PasswordInput placeholder={`${t("profile.data.newPass")}*`} name={"new_password"} />
 
-                        <button className="primary link" type="submit">{t("profile.data.save")}</button>
+                        <button disabled={passLoading} className="link primary" type="submit">{passLoading ? t("common.loading") : t("profile.data.save")}</button>
                     </form>
                 </div>
             </div>

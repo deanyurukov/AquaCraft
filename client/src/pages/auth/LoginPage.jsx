@@ -1,19 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { appContext } from "../../App";
 import authService from "../../services/auth-service.js";
 import PasswordInput from "../../components/PasswordInput.jsx";
-import Input from "../../components/Input.jsx";
 
 const LoginPage = () => {
-    const {getErrorAndDisplay} = useContext(appContext);
+    const { getErrorAndDisplay } = useContext(appContext);
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { setUser } = useOutletContext();
+    const [loading, setLoading] = useState(false);
 
     async function onSubmit(e) {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true);
 
         const { email, password } = Object.fromEntries(new FormData(e.currentTarget));
 
@@ -29,22 +31,25 @@ const LoginPage = () => {
             if (! /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email)) {
                 throw new Error("email.invalid");
             }
-        }
-        catch (error) {
-            console.error(error);
-            getErrorAndDisplay(error.message);
-        }
 
-        const [loginData, error] = await authService.login(email, password);
+            const [loginData, error] = await authService.login(email, password);
 
-        if (loginData) {
+            if (error) {
+                getErrorAndDisplay(error);
+                return;
+            }
+
             localStorage.setItem("accessToken", JSON.stringify(loginData.accessToken));
             setUser(loginData.data);
             navigate("/");
             getErrorAndDisplay(loginData.message);
         }
-        else {
-            getErrorAndDisplay(error);
+        catch (error) {
+            console.error(error);
+            getErrorAndDisplay(error.message);
+        }
+        finally {
+            setLoading(false);
         }
     }
 
@@ -58,7 +63,7 @@ const LoginPage = () => {
                     </span>
                     <PasswordInput name={"password"} placeholder={`${t("login.password")}*`} />
 
-                    <button className="form-submit" type="submit">{t("login.title")}</button>
+                    <button disabled={loading} className="form-submit" type="submit">{loading ? t("common.loading") : t("login.title")}</button>
                 </form>
             </div>
         </div>

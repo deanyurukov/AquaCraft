@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { appContext } from "../../App";
 import productsService from "../../services/products-service";
@@ -8,9 +8,12 @@ const CreateProductPage = () => {
     const navigate = useNavigate();
     const { getErrorAndDisplay } = useContext(appContext);
     const { setProducts } = useOutletContext();
+    const [loading, setLoading] = useState(false);
 
     async function onSubmit(e) {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true);
 
         const productToAdd = Object.fromEntries(new FormData(e.currentTarget));
 
@@ -18,6 +21,7 @@ const CreateProductPage = () => {
 
         if (error) {
             getErrorAndDisplay(error);
+            setLoading(false);
             return;
         }
 
@@ -28,10 +32,11 @@ const CreateProductPage = () => {
 
         getErrorAndDisplay(data.message);
         navigate("/products");
+        setLoading(false);
     }
 
     return (
-        <AdminProductForm method={"create"} onSubmit={onSubmit} />
+        <AdminProductForm method={"create"} onSubmit={onSubmit} loading={loading} />
     );
 }
 

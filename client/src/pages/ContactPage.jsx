@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import Input from "../components/Input.jsx";
-import authService from "../services/auth-service.js";
 import { useTranslation } from "react-i18next";
 import emailConfig from "../configs/email-config.js";
 import { appContext } from "../App.jsx";
 
 const ContactPage = () => {
-    const {getErrorAndDisplay} = useContext(appContext);
+    const { getErrorAndDisplay } = useContext(appContext);
     const [userEmail, setUserEmail] = useState("");
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { user } = useOutletContext();
+    const [loading, setLoading] = useState(false);
 
     async function getUserEmail() {
         if (user) {
@@ -25,6 +25,8 @@ const ContactPage = () => {
 
     async function onSubmit(e) {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true)
 
         const { email, name, message } = Object.fromEntries(new FormData(e.currentTarget));
 
@@ -60,13 +62,8 @@ const ContactPage = () => {
             if (message.length < 10) {
                 throw new Error("message.short");
             }
-
-            try {
-                emailjs.send(emailConfig.supportService, emailConfig.contactTemplate, { email, name, message });
-            }
-            catch (err) {
-                console.error(err);
-            }
+            
+            // emailjs.send(emailConfig.supportService, emailConfig.contactTemplate, { email, name, message });
 
             getErrorAndDisplay("contactSuccess");
             navigate("/");
@@ -74,6 +71,9 @@ const ContactPage = () => {
         catch (error) {
             console.error(error);
             getErrorAndDisplay(error.message);
+        }
+        finally {
+            setLoading(false);
         }
     }
 
@@ -91,14 +91,14 @@ const ContactPage = () => {
                         <textarea className="item" name="message" id="message"></textarea>
                     </div>
 
-                    <button type="submit" className="primary link">{t("contact.submit")}</button>
+                    <button disabled={loading} className="link primary" type="submit">{loading ? t("common.loading") : t("contact.submit")}</button>
                 </form>
 
                 <div id="map">
-                    <iframe 
+                    <iframe
                         src="https://www.google.com/maps?q=42°04'00.9,24°42'41.9&hl=es;z=14&output=embed"
-                        allowFullScreen={false} 
-                        loading="lazy" 
+                        allowFullScreen={false}
+                        loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>

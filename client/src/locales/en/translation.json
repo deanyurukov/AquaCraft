@@ -422,7 +422,8 @@
         "expertNote": "* Final parameters must be confirmed by a specialist before installation.",
         "mostPopular": "Most popular",
         "viewProducts": "Browse products",
-        "approxResult": "Approximate result"
+        "approxResult": "Approximate result",
+        "loading": "Loading..."
     },
     "method": {
         "suitableFor": "Suitable for",

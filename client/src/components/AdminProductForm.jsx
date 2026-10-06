@@ -3,7 +3,7 @@ import Input from "./Input";
 import CreateImage from "./CreateImage";
 import CreateSelect from "./CreateSelect";
 
-const AdminProductForm = ({ method, onSubmit, product = {} }) => {
+const AdminProductForm = ({ method, onSubmit, loading, product = {} }) => {
     const { t } = useTranslation();
 
     return (
@@ -24,7 +24,7 @@ const AdminProductForm = ({ method, onSubmit, product = {} }) => {
                         <textarea className="item" name="description" id="description" defaultValue={product.description}></textarea>
                     </div>
 
-                    <button className="primary link" type="submit">{t(`admin.${method}.submit`)}</button>
+                    <button disabled={loading} className="link primary" type="submit">{loading ? t("common.loading") : t(`admin.${method}.submit`)}</button>
                 </form>
             </div>
         </div>

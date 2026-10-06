@@ -12,32 +12,36 @@ const RegisterPage = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { setUser } = useOutletContext();
+    const [loading, setLoading] = useState(false);
 
     async function onSubmit(e) {
         e.preventDefault();
 
-        if (!hasUserAgreed) return;
+        if (!hasUserAgreed || loading) return;
+        setLoading(true);
 
         const { username, email, password, re_password } = Object.fromEntries(new FormData(e.currentTarget));
 
-        const [registerData, error] = await authService.register(username, email, password, re_password);
+        try {
+            const [registerData, error] = await authService.register(username, email, password, re_password);
 
-        if (registerData) {
+            if (error) {
+                getErrorAndDisplay(error);
+                return;
+            }
+
             localStorage.setItem("accessToken", JSON.stringify(registerData.accessToken));
             setUser(registerData.data);
 
             navigate("/");
             getErrorAndDisplay(registerData.message)
-
-            try {
-                await emailjs.send(emailConfig.supportService, emailConfig.registerTemplate, { username, email });
-            }
-            catch (error) {
-                console.error(error);
-            }
+            // await emailjs.send(emailConfig.supportService, emailConfig.registerTemplate, { username, email });
         }
-        else {
-            getErrorAndDisplay(error);
+        catch (error) {
+            console.error(error);
+        }
+        finally {
+            setLoading(false);
         }
     }
 
@@ -64,7 +68,7 @@ const RegisterPage = () => {
                         <label htmlFor="agreement">{t("register.agreement.message")} <Link to={"/terms-and-conditions"}>{t("register.agreement.terms")}</Link> {t("register.agreement.and")} <Link to={"/privacy-policy"}>{t("register.agreement.privacy")}</Link>.</label>
                     </div>
 
-                    <button className="form-submit" disabled={!hasUserAgreed} type="submit">{t("register.title")}</button>
+                    <button disabled={!hasUserAgreed || loading} className="form-submit" type="submit">{loading ? t("common.loading") : t("register.title")}</button>
                 </form>
             </div>
         </div >

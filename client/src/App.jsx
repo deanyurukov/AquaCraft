@@ -103,8 +103,9 @@ function App() {
     const [error, setError] = useState(null);
     const { t, i18n } = useTranslation();
 
-    function getErrorAndDisplay(error) {
-        setError(t(`errorMessages.${error}`));
+    function getErrorAndDisplay(errorToDisplay) {
+        if (error) return;
+        setError(t(`errorMessages.${errorToDisplay}`));
 
         setTimeout(() => {
             setError(null);
