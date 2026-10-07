@@ -38,13 +38,12 @@ router.use((req, res, next) => {
 });
 
 const apiLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    limit: 100,
+    windowMs: 60 * 1000,
+    limit: 15,
     standardHeaders: "draft-8",
     legacyHeaders: false,
-    skip: (req) => req.method === "OPTIONS",
     message: {
-        message: "Too many Request"
+        message: "Too Many Request"
     }
 });
 
