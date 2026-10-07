@@ -1,10 +1,11 @@
 import express from "express";
 import { allowedOrigins } from "../config.js";
+import rateLimit from "express-rate-limit";
 
 const router = express.Router();
 
-router.use(express.urlencoded({ extended: false }));
-router.use(express.json());
+router.use(express.urlencoded({ extended: false, limit: "20kb" }));
+router.use(express.json({ limit: "20kb" }));
 
 router.use((req, res, next) => {
     const origin = req.headers.origin;
@@ -35,5 +36,18 @@ router.use((req, res, next) => {
 
     next();
 });
+
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 100,
+    standardHeaders: "draft-8",
+    legacyHeaders: false,
+    skip: (req) => req.method === "OPTIONS",
+    message: {
+        message: "Too many Request"
+    }
+});
+
+router.use(apiLimiter);
 
 export default router;

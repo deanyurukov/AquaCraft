@@ -10,6 +10,7 @@ import productRoutes from "./routes/product-routes.js";
 import orderRoutes from "./routes/order-routes.js";
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(configRoutes);
 app.use("/admin", adminRoutes);
