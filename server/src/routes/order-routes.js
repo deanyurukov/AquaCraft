@@ -88,11 +88,6 @@ router.get('/getByUser', async (req, res) => {
     }
 });
 
-router.get("/all", async (req, res) => {
-    const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
-    return res.status(200).send({ data: orders });
-});
-
 router.get("/:id", async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 

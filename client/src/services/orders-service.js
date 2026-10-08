@@ -78,7 +78,13 @@ export default {
     },
     getAll: async () => {
         try {
-            const response = await fetch(endpoints.getAllOrders);
+            const response = await fetch(endpoints.getAllOrders, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Authorization": JSON.parse(localStorage.getItem("accessToken"))
+                }
+            });
 
             const data = await response.json();
 

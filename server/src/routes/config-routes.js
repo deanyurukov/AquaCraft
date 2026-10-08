@@ -39,7 +39,7 @@ router.use((req, res, next) => {
 
 const apiLimiter = rateLimit({
     windowMs: 60 * 1000,
-    limit: 15,
+    limit: 30,
     standardHeaders: "draft-8",
     legacyHeaders: false,
     message: {

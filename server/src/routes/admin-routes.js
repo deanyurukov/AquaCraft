@@ -3,6 +3,7 @@ import ExcelJS from "exceljs";
 import { isUserValid } from "../utils/auth-util.js";
 import Product from "../models/Product.js";
 import { getErrorMessage } from "../utils/error-util.js";
+import Order from "../models/Order.js";
 
 const router = express.Router();
 
@@ -142,6 +143,24 @@ router.put("/change/:id", async (req, res) => {
         try {
             const productEdited = await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true, new: true });
             return res.status(201).send({ message: "productUpdated", data: productEdited });
+        }
+        catch (err) {
+            console.error(err);
+            return res.status(400).send({ message: getErrorMessage(err) });
+        }
+    }
+    else {
+        return res.status(401).send({ message });
+    }
+});
+
+router.get("/orders/all", async (req, res) => {
+    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+
+    if (isValid && data.isAdmin) {
+        try {
+            const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
+            return res.status(200).send({ data: orders });
         }
         catch (err) {
             console.error(err);
