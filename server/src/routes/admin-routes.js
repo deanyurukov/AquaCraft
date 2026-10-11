@@ -1,174 +1,136 @@
 import express from "express";
 import ExcelJS from "exceljs";
-import { isUserValid } from "../utils/auth-util.js";
 import Product from "../models/Product.js";
 import { getErrorMessage } from "../utils/error-util.js";
 import Order from "../models/Order.js";
+import { requireAdmin } from "../middlewares/admin-middleware.js";
 
 const router = express.Router();
+router.use(requireAdmin);
 
 router.get("/export", async (req, res) => {
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet("Products");
+    const products = await Product.find();
 
-    if (isValid && data.isAdmin) {
-        const workbook = new ExcelJS.Workbook();
-        const sheet = workbook.addWorksheet("Products");
-        const products = await Product.find();
+    sheet.addRow(["Product Name", "In Stock", "ID"]).eachCell((cell) => {
+        cell.fill = {
+            type: 'pattern',
+            pattern: 'solid',
+            fgColor: { argb: '91BA8D' },
+        };
+        cell.font = { bold: false, color: { argb: 'ffffff' }, name: "Arial", size: 15 };
+        cell.border = {
+            top: { style: 'double', color: { argb: 'ffffff' } },
+            left: { style: 'double', color: { argb: 'ffffff' } },
+            bottom: { style: 'double', color: { argb: 'ffffff' } },
+            right: { style: 'double', color: { argb: 'ffffff' } }
+        };
+    });
 
-        sheet.addRow(["Product Name", "In Stock", "ID"]).eachCell((cell) => {
+    products.forEach(product => {
+        sheet.addRow([product.title, product.inStock, product.id]).eachCell((cell) => {
             cell.fill = {
                 type: 'pattern',
                 pattern: 'solid',
-                fgColor: { argb: '91BA8D' },
+                fgColor: { argb: 'ffffff' },
             };
-            cell.font = { bold: false, color: { argb: 'ffffff' }, name: "Arial", size: 15 };
+            cell.font = { bold: false, color: { argb: '91BA8D' }, name: "Arial", size: 14 };
             cell.border = {
-                top: { style: 'double', color: { argb: 'ffffff' } },
-                left: { style: 'double', color: { argb: 'ffffff' } },
-                bottom: { style: 'double', color: { argb: 'ffffff' } },
-                right: { style: 'double', color: { argb: 'ffffff' } }
+                top: { style: 'double', color: { argb: '91BA8D' } },
+                left: { style: 'double', color: { argb: '91BA8D' } },
+                bottom: { style: 'double', color: { argb: '91BA8D' } },
+                right: { style: 'double', color: { argb: '91BA8D' } }
             };
         });
+    });
 
-        products.forEach(product => {
-            sheet.addRow([product.title, product.inStock, product.id]).eachCell((cell) => {
-                cell.fill = {
-                    type: 'pattern',
-                    pattern: 'solid',
-                    fgColor: { argb: 'ffffff' },
-                };
-                cell.font = { bold: false, color: { argb: '91BA8D' }, name: "Arial", size: 14 };
-                cell.border = {
-                    top: { style: 'double', color: { argb: '91BA8D' } },
-                    left: { style: 'double', color: { argb: '91BA8D' } },
-                    bottom: { style: 'double', color: { argb: '91BA8D' } },
-                    right: { style: 'double', color: { argb: '91BA8D' } }
-                };
-            });
+    sheet.columns.forEach(column => {
+        let maxLength = 0;
+        column.eachCell({ includeEmpty: true }, cell => {
+            const cellLength = cell.value ? cell.value.toString().length : 0;
+            if (cellLength > maxLength) {
+                maxLength = cellLength;
+            }
         });
+        column.width = Math.ceil(maxLength * 1.24) + 2;
+    });
 
-        sheet.columns.forEach(column => {
-            let maxLength = 0;
-            column.eachCell({ includeEmpty: true }, cell => {
-                const cellLength = cell.value ? cell.value.toString().length : 0;
-                if (cellLength > maxLength) {
-                    maxLength = cellLength;
-                }
-            });
-            column.width = Math.ceil(maxLength * 1.24) + 2;
-        });
+    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+    res.setHeader("Content-Disposition", "attachment; filename=report.xlsx");
 
-        res.setHeader("Content-Type", "routerlication/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-        res.setHeader("Content-Disposition", "attachment; filename=report.xlsx");
-
-        await workbook.xlsx.write(res);
-        return res.end();
-    }
-    else {
-        return res.status(401).send({ message });
-    }
+    await workbook.xlsx.write(res);
+    return res.end();
 });
 
 router.post("/create", async (req, res) => {
     const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-
     const imagesArray = images.split(",").map(image => image.trim());
 
-    if (isValid && data.isAdmin) {
-        try {
-            const created = await Product.create({ title, images: imagesArray, price, description, inStock, company, type, typeDetails });
-            return res.status(201).send({ message: "productCreated", data: created });
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
+    try {
+        const created = await Product.create({ title, images: imagesArray, price, description, inStock, company, type, typeDetails });
+        return res.status(201).send({ message: "productCreated", data: created });
     }
-    else {
-        return res.status(401).send({ message });
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
     }
 });
 
 router.post("/changeInStock/:id", async (req, res) => {
     const { changedStock } = req.body;
     const productId = req.params.id;
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
-    if (isValid && data.isAdmin) {
-        try {
-            const product = await Product.findById(productId);
-            product.inStock += Number(changedStock);
-            await product.save();
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
+    try {
+        const product = await Product.findById(productId);
+        product.inStock += Number(changedStock);
+        await product.save();
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
+    }
 
-        return res.status(201).send({ message: "productCreated" });
-    }
-    else {
-        return res.status(401).send({ message });
-    }
+    return res.status(201).send({ message: "productCreated" });
 });
 
 router.delete("/delete/:id", async (req, res) => {
     const productId = req.params.id;
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
-    if (isValid && data.isAdmin) {
-        try {
-            await Product.findByIdAndDelete(productId);
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
+    try {
+        await Product.findByIdAndDelete(productId);
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
+    }
 
-        return res.status(201).send({ message: "productDeleted" });
-    }
-    else {
-        return res.status(401).send({ message });
-    }
+    return res.status(201).send({ message: "productDeleted" });
 });
 
 router.put("/change/:id", async (req, res) => {
     const productId = req.params.id;
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
     const { title, images, price, description, inStock, company, type, typeDetails } = req.body;
     const imagesArray = images.split(",").map(image => image.trim());
 
-    if (isValid && data.isAdmin) {
-        try {
-            const productEdited = await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true, new: true });
-            return res.status(201).send({ message: "productUpdated", data: productEdited });
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
+    try {
+        const productEdited = await Product.findByIdAndUpdate(productId, { title, images: imagesArray, price, description, inStock, company, type, typeDetails }, { runValidators: true, new: true });
+        return res.status(201).send({ message: "productUpdated", data: productEdited });
     }
-    else {
-        return res.status(401).send({ message });
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
     }
 });
 
 router.get("/orders/all", async (req, res) => {
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-
-    if (isValid && data.isAdmin) {
-        try {
-            const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
-            return res.status(200).send({ data: orders });
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
+    try {
+        const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
+        return res.status(200).send({ data: orders });
     }
-    else {
-        return res.status(401).send({ message });
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
     }
 });
 
