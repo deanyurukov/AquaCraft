@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SelectInput from "./SelectInput";
-import Spinner from "./Spinner";
 
 const CreateSelect = ({ defaultValues = {} }) => {
     const { t } = useTranslation();
@@ -83,11 +82,7 @@ const CreateSelect = ({ defaultValues = {} }) => {
 
     useEffect(() => {
         defaultValues.type && setType(defaultValues.type);
-    }, []);
-
-    if (!defaultValues) {
-        return <Spinner />;
-    }
+    }, [defaultValues]);
 
     return (
         <>
