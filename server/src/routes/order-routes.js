@@ -34,7 +34,7 @@ router.post("/add", async (req, res) => {
 
         let orderDays = 1;
 
-        user.productsInCart.forEach(async (productData) => {
+        for (const productData of user.productsInCart) {
             order.orderData.push(productData);
             const product = await Product.findById(productData.product._id);
             product.inStock -= productData.quantity;
@@ -44,7 +44,7 @@ router.post("/add", async (req, res) => {
             }
 
             await product.save();
-        });
+        }
 
         let orderData = {};
 
