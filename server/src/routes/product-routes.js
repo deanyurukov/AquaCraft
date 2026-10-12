@@ -105,10 +105,14 @@ router.delete("/:id", async (req, res) => {
 
         const indexToRemove = user.productsInCart.indexOf(user.productsInCart.find(({ quantity, product }) => product.toString() === id));
 
+        if (indexToRemove === -1) {
+            return res.status(409).send({ message: "Product is not in cart!" });
+        }
+
         user.productsInCart.splice(indexToRemove, 1);
 
         await user.save();
-        return res.status(200).send({ message: "Product deleted successfully." });
+        return res.status(200).send({ message: "Product removed from card successfully." });
     }
     else {
         return res.status(401).send({ message });
@@ -159,12 +163,13 @@ router.post("/favorites/remove/:id", async (req, res) => {
         const user = await User.findOne({ email: data.email });
 
         const productsIds = user.favorites.map(product => product.toString());
+        const productId = user.favorites.indexOf(id);
 
-        if (!productsIds.includes(id)) {
+        if (!productsIds.includes(id) || productId === -1) {
             return res.status(409).send({ message: "Product is not liked!" });
         }
 
-        user.favorites.splice(user.favorites.indexOf(id), 1);
+        user.favorites.splice(productId, 1);
         await user.save();
 
         return res.status(201).send({ message: "Product removed from liked successfully." });

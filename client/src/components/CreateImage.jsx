@@ -8,7 +8,6 @@ const CreateImage = ({ defaultValues }) => {
 
     function onImageChange(e) {
         let images = e.target.value.split(",").map(img => img.trim());
-        console.log("changed");
         setImages(images);
     }
 

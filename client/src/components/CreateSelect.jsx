@@ -89,7 +89,6 @@ const CreateSelect = ({ defaultValues = {} }) => {
         return <Spinner />;
     }
 
-
     return (
         <>
             <div className="form-item">

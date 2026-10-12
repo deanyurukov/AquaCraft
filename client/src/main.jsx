@@ -6,10 +6,10 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 
 createRoot(document.getElementById('root')).render(
     <React.Suspense fallback="Loading...">
-        <StrictMode>
+        {/* <StrictMode> */}
             <App />
             <Analytics />
             <SpeedInsights />
-        </StrictMode>
+        {/* </StrictMode> */}
     </React.Suspense>
 );

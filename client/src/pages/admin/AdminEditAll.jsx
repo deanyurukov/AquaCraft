@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import productsService from "../../services/products-service";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom";
 import AdminEditProduct from "../../components/AdminEditProduct";
+import { appContext } from "../../App";
 
 const AdminEditAll = () => {
     const { products, setProducts } = useOutletContext();
@@ -12,6 +13,7 @@ const AdminEditAll = () => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const { getErrorAndDisplay } = useContext(appContext);
 
     function onSearch(e) {
         setSearch(e.target.value);
