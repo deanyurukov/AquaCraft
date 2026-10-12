@@ -162,30 +162,6 @@ export default {
             return [undefined, err.message];
         }
     },
-    getFavorites: async () => {
-        let data = {};
-        try {
-            const response = await fetch(endpoints.getFav, {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-Authorization": JSON.parse(localStorage.getItem("accessToken")),
-                }
-            });
-
-            data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message);
-            }
-        }
-        catch (err) {
-            console.error(err);
-        }
-        finally {
-            return data?.data;
-        }
-    },
     addToCart: async (id) => {
         try {
             const response = await fetch(endpoints.addToCart(id), {

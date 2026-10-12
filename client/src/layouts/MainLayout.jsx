@@ -26,6 +26,7 @@ const MainLayout = () => {
         }
         catch (e) {
             console.error(e);
+            getErrorAndDisplay("Loading failed. Please try again later!")
         }
     }
 
@@ -36,6 +37,7 @@ const MainLayout = () => {
         }
         catch (e) {
             console.error(e);
+            getErrorAndDisplay("Loading failed. Please try again later!")
         }
     }
 

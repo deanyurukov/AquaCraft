@@ -62,12 +62,7 @@ router.get("/:id", async (req, res) => {
     const user = await User.findOne({ email: data.email });
 
     try {
-        const product = await Product.findById(id).lean();
-
-        if (user && user.favorites.includes(product._id.toString())) {
-            product.isFav = true;
-        }
-
+        const product = await Product.findById(id);
         return res.status(200).send({ message: "Product found.", data: product });
     }
     catch (err) {
@@ -116,19 +111,6 @@ router.delete("/:id", async (req, res) => {
     }
     else {
         return res.status(401).send({ message });
-    }
-});
-
-router.get("/favorites/get", async (req, res) => {
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-
-    if (isValid) {
-        const user = await User.findOne({ email: data.email }).populate("favorites");
-
-        return res.status(201).send({ message: "Liked products found.", data: user.favorites });
-    }
-    else {
-        return res.status(401).send({ message, data: [] });
     }
 });
 

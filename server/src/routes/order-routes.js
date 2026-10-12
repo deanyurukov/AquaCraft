@@ -98,12 +98,12 @@ router.get("/:id", async (req, res) => {
             const user = await User.findOne({ email: data.email });
             const order = await Order.findOne({ _id: id }).populate("orderData.product").lean();
 
-            if (order.orderData) {
-                order.orderData.map(({ quantity, product }) => {
-                    if (user.favorites.includes(product._id.toString())) {
-                        product.isFav = true;
-                    }
-                });
+            if (!user || !order) {
+                return res.status(404).json({ message: "User or order not found." });
+            }
+
+            if (!user._id.equals(order.userId)) {
+                return res.status(403).json({ message: "User is trying to access other people's orders." })
             }
 
             return res.status(201).send({ message: "Found order data!", data: order });
