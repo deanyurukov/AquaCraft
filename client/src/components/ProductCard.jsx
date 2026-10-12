@@ -1,4 +1,4 @@
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { changeImage } from "../services/helpers.js";
 import { useTranslation } from "react-i18next";
 

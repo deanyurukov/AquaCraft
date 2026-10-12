@@ -1,10 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { changeImage } from "../services/helpers.js";
-import productsService from "../services/products-service.js";
 
 const OverlayProduct = ({ product, unlikeProduct, addToCart }) => {
-    const navigate = useNavigate();
-
     return (
         <div>
             <img src={product.images[0]} onError={changeImage} alt={product.title} />

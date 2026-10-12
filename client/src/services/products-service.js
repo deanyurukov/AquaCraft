@@ -183,7 +183,7 @@ export default {
             console.error(err);
         }
         finally {
-            return data.data;
+            return data?.data;
         }
     },
     addToCart: async (id) => {
@@ -318,7 +318,7 @@ export default {
             const blob = await response.blob();
 
             if (!response.ok) {
-                throw new Error(data.message);
+                throw new Error("Export failed.");
             }
 
             const url = window.URL.createObjectURL(blob);
