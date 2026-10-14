@@ -11,10 +11,10 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **React** (Framework)  
 - **React Router** (Client-side navigation)  
 - **i18next** (Multilingual support)  
-- **Vercel** (Deployment)
 - **Font Awesome** (Icons)
 - **EmailJS** (Email Service)
 - **React Scan** (Detecting Performance Issues)
+- **Vercel** (Deployment)
 
 ### Backend  
 - **Express** (Server)  
@@ -22,7 +22,8 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **bcrypt** (Password hashing)  
 - **dotenv** (.env file support)  
 - **jsonwebtoken** (User authentication)  
-- **render.com** (Deployment)
+- **Express rate limiter** (Rate limiting to prevent DDOS)
+- **Render.com** (Deployment)
 
 ---
 
@@ -50,7 +51,7 @@ cd AquaCraft
 Open a terminal and run the following commands to start the backend:
 
 ```bash
-cd server && npm install && npm start
+cd server && npm install && npm run dev
 ```
 
 The backend is now running on `http://localhost:5001/` (Ensure MongoDB is running).
