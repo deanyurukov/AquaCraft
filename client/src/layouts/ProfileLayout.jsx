@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
+import useLogout from "../hooks/useLogout";
 
 const ProfileLayout = () => {
     const { t, i18n } = useTranslation();
@@ -10,6 +11,8 @@ const ProfileLayout = () => {
     const location = useLocation();
     const [isAdmin, setIsAdmin] = useState(false);
     const ctx = useOutletContext();
+    const { setUser } = useOutletContext();
+    const logout = useLogout(setUser);
 
     const paths = {
         "Панел": "panel",
@@ -44,7 +47,7 @@ const ProfileLayout = () => {
                 isAdmin &&
                 <NavLink onClick={() => setCurrentPage(t("profile.admin.title"))} to="/admin/create">{t("profile.admin.title")}</NavLink>
             }
-            <NavLink to='/logout' state={{ from: location }}>{t("profile.logout")}</NavLink>
+            <button onClick={logout}>{t("profile.logout")}</button>
         </nav>
     );
 

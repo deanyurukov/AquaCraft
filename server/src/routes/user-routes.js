@@ -74,7 +74,6 @@ router.get("/logout", async (req, res) => {
 
     if (isValid) {
         const user = await User.findOne({ email: data.email });
-
         return res.status(200).send({ message: "logoutSuccess", data: user });
     }
     else {

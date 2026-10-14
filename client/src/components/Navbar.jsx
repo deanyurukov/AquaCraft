@@ -1,13 +1,14 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import OverlayProduct from "./OverlayProduct";
 import { useTranslation } from "react-i18next";
+import useLogout from "../hooks/useLogout";
 
-const Navbar = ({ user, products, unlikeProduct, addToCart }) => {
+const Navbar = ({ user, setUser, products, unlikeProduct, addToCart }) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isClickedNav, setIsClickedNav] = useState(false);
-    const location = useLocation();
     const { t, i18n } = useTranslation();
+    const logout = useLogout(setUser);
 
     async function showFavorites() {
         setIsClicked(true);
@@ -31,7 +32,7 @@ const Navbar = ({ user, products, unlikeProduct, addToCart }) => {
         <>
             <NavLink title={t("cart.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to="/cart"><i className="fa-solid fa-cart-shopping"></i></NavLink>
             <i title={t("favorites.title")} id="favorites-icon" onClick={(e) => { e.stopPropagation(); showFavorites(); setIsClickedNav(false) }} className="fa-regular fa-heart"></i>
-            <NavLink title={t("profile.logout")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/logout' state={{ from: location }}><i className="fa-solid fa-right-from-bracket"></i></NavLink>
+            <NavLink title={t("profile.logout")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false); logout() }} to='#'><i className="fa-solid fa-right-from-bracket"></i></NavLink>
             <NavLink title={t("profile.title")} onClick={(e) => { e.stopPropagation(); setIsClickedNav(false) }} to='/profile/panel'><i className="fa-solid fa-user"></i></NavLink>
         </>
     );

@@ -25,7 +25,7 @@ import DetailsPage from './pages/DetailsPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import RegisterPage from './pages/auth/RegisterPage.jsx';
 import LoginPage from './pages/auth/LoginPage.jsx';
-import LogoutPage from './pages/auth/LogoutPage.jsx';
+import useLogout from './hooks/useLogout.jsx';
 import CartPage from './pages/CartPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx';
@@ -74,8 +74,6 @@ const router = createBrowserRouter(
             <Route element={<UserRoutes />} >
                 {/* <Route path='/cart' element={<CartPage />} />
                 <Route path='/checkout' element={<CheckoutPage />} /> */}
-
-                <Route path='/logout' element={<LogoutPage />} />
 
                 <Route path='/profile' element={<ProfileLayout />} >
                     <Route index element={<Navigate to="/profile/panel" replace />} />

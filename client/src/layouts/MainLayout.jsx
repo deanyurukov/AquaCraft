@@ -117,7 +117,7 @@ const MainLayout = () => {
         <>
             {error && <ErrorMessage key={error} error={error} />}
             <UnderConstruction />
-            <Navbar user={user} products={products} unlikeProduct={unlikeProduct} addToCart={addToCart} />
+            <Navbar user={user} products={products} unlikeProduct={unlikeProduct} addToCart={addToCart} setUser={setUser} />
             <Outlet context={{ user, setUser, products, setProducts, unlikeProduct, likeProduct, addToCart }} />
             <Chatbot />
             <Footer />
