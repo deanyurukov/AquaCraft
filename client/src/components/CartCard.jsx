@@ -12,15 +12,30 @@ const CartCard = ({ product, setInCart }) => {
     const { setUser } = useOutletContext();
 
     const handleChange = (e) => {
-        setQuantity(e.target.value);
+        setQuantity(Number(e.target.value));
     };
+
+    function changeUserQuantity(productId, quantity) {
+        setUser(prev => {
+            const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
+
+            if (index === -1) return prev;
+
+            prev.productsInCart[index].quantity = Number(quantity);
+            return { ...prev };
+        });
+    }
 
     async function handleQuantityChange(e, productId) {
         if (quantity <= 0) {
-            e.target.value = 1;
+            setQuantity(1);
+            changeUserQuantity(productId, 1);
+            return;
         }
         else if (quantity > 999) {
-            e.target.value = 999;
+            setQuantity(999);
+            changeUserQuantity(productId, 999);
+            return;
         }
 
         if (quantity !== Number(product.quantity)) {
@@ -36,18 +51,11 @@ const CartCard = ({ product, setInCart }) => {
 
                 if (index === -1) return prev;
 
-                prev[index].quantity = Number(quantity);
+                prev[index].quantity = quantity;
                 return [...prev];
             });
 
-            setUser(prev => {
-                const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
-
-                if (index === -1) return prev;
-
-                prev.productsInCart[index].quantity = Number(quantity);
-                return { ...prev };
-            });
+            changeUserQuantity(productId, quantity);
         }
     }
 

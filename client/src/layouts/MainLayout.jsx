@@ -39,7 +39,7 @@ const MainLayout = () => {
         }
         catch (e) {
             console.error(e);
-            getErrorAndDisplay("Loading failed. Please try again later!")
+            console.error("Loading failed. Please try again later!");
         }
     }
 

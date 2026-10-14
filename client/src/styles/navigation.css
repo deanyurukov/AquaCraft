@@ -113,7 +113,7 @@
         left: 0;
         background: #00000054;
         width: 100vw;
-        z-index: 10000;
+        z-index: 900;
         height: 100%;
         display: flex;
         visibility: hidden;
