@@ -47,18 +47,21 @@ const UserDataPage = () => {
 
         const { password, new_password } = Object.fromEntries(formData);
 
-        if (password === new_password) return;
+        if (password === new_password) {
+            setPassLoading(false);
+            return;
+        };
 
         const [data, error] = await authService.changeUserPassword(password, new_password);
 
         if (error) {
             getErrorAndDisplay(error);
+            setPassLoading(false);
             return;
         }
 
         localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
         getErrorAndDisplay(data.message);
-
         setPassLoading(false);
     }
 

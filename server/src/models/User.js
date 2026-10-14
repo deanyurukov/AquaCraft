@@ -15,6 +15,7 @@ const userSchema = new Schema({
         minLength: [5, "email.short"],
         maxLength: [99, "email.long"],
         match: [/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/, "email.invalid"],
+        unique: [true, "email.exists"]
     },
     password: {
         type: String,

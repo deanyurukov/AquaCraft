@@ -75,6 +75,12 @@ router.put("/:id", async (req, res) => {
     const { quantity } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
+    if (!Number.isInteger(quantity) || quantity < 1 || quantity > 999) {
+        return res.status(400).send({
+            message: "Invalid quantity."
+        });
+    }
+
     if (isValid) {
         const user = await User.findOne({ email: data.email });
 

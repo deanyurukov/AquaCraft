@@ -18,7 +18,9 @@ const MainLayout = () => {
 
     async function getUser() {
         try {
-            const data = (await authService.getUserData())[0];
+            const [data, error] = (await authService.getUserData());
+
+            if (error) return;
 
             if (data.isValid) {
                 setUser(data.data);

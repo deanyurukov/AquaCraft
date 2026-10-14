@@ -31,14 +31,14 @@ router.post('/register', async (req, res) => {
     let savedUser;
 
     try {
-        savedUser = {...await User.create(user)}._doc;
+        savedUser = { ...await User.create(user) }._doc;
     }
     catch (err) {
         console.error(err);
         return res.status(400).send({ message: getErrorMessage(err) });
     }
 
-    const token = jwt.sign(user, secret);
+    const token = jwt.sign({ email: user.email, username: user.username, isAdmin: user.isAdmin }, secret);
     delete savedUser.password;
 
     return res.status(201).send({ message: 'registerSuccess', accessToken: token, data: savedUser });
@@ -63,14 +63,7 @@ router.post('/login', async (req, res) => {
         return res.status(401).send({ message: 'password.wrong' });
     }
 
-    const userData = {
-        email: user.email,
-        username: user.username,
-        password: user.password,
-        isAdmin: user.isAdmin,
-    }
-
-    const token = jwt.sign(userData, secret);
+    const token = jwt.sign({ email: user.email, username: user.username, isAdmin: user.isAdmin }, secret);
     delete user.password;
 
     return res.status(200).send({ message: 'loginSuccess', accessToken: token, data: user });
@@ -91,8 +84,18 @@ router.get("/logout", async (req, res) => {
 
 router.get('/userData', async (req, res) => {
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-    const user = (await User.findOne({ email: data.email }).select("-password"));
-    return res.status(200).send({ isValid, message, data: user });
+
+    if (!isValid) {
+        return res.status(401).send({ message });
+    }
+
+    const user = await User.findOne({ email: data.email }).select("-password");
+
+    if (!user) {
+        return res.status(404).send({ message: "User not found."});
+    }
+
+    return res.status(200).send({ isValid: true, message, data: user });
 });
 
 router.put("/changeUserData", async (req, res) => {
@@ -121,14 +124,7 @@ router.put("/changeUserData", async (req, res) => {
         user.email = newEmail;
         user.username = newUsername;
 
-        const userToken = {
-            username: newUsername.trim(),
-            email: newEmail.trim(),
-            password: password.trim(),
-            isAdmin: user.isAdmin,
-        };
-
-        const token = jwt.sign(userToken, secret);
+        const token = jwt.sign({ email: user.email, username: user.username, isAdmin: user.isAdmin }, secret);
 
         try {
             await user.save();
@@ -160,14 +156,7 @@ router.put("/changeUserPassword", async (req, res) => {
 
         user.password = new_password;
 
-        const userToken = {
-            username: user.username,
-            email: user.email,
-            password: new_password.trim(),
-            isAdmin: user.isAdmin,
-        };
-
-        const token = jwt.sign(userToken, secret);
+        const token = jwt.sign({ email: user.email, username: user.username, isAdmin: user.isAdmin }, secret);
 
         try {
             await user.save();

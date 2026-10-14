@@ -12,7 +12,7 @@ const productSchema = new Schema(
             validate: [
                 {
                     validator: function (arr) {
-                        return arr.length <= 4; // Enforce max 5 elements
+                        return arr.length <= 4; // Enforce max 4 elements
                     },
                     message: "image.exceeds",
                 },

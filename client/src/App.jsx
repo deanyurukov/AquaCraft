@@ -1,6 +1,6 @@
 // Import React Stuff
 import React, { useEffect, useState } from 'react';
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Navigate } from 'react-router-dom';
 
 // Import CSS
 import '/src/styles/app.css';
@@ -51,8 +51,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            {/* <Route path='/products' element={<ProductsPage />} />
-            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} />
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
@@ -78,6 +78,7 @@ const router = createBrowserRouter(
                 <Route path='/logout' element={<LogoutPage />} />
 
                 <Route path='/profile' element={<ProfileLayout />} >
+                    <Route index element={<Navigate to="/profile/panel" replace />} />
                     <Route path='/profile/panel' element={<PanelPage />} />
                     <Route path='/profile/orders' element={<OrdersPage />} />
                     <Route path='/profile/user-data' element={<UserDataPage />} />
@@ -86,6 +87,7 @@ const router = createBrowserRouter(
                 </Route>
 
                 <Route path='/admin' element={<AdminLayout />} >
+                    <Route index element={<Navigate to="/admin/create" replace />} />
                     <Route path='/admin/create' element={<CreateProductPage />} />
                     <Route path='/admin/stock' element={<AdminStockPage />} />
                     <Route path='/admin/edit' element={<AdminEditAll />} />
