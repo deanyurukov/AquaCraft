@@ -30,6 +30,7 @@
                 background: transparent;
                 text-align: left;
                 cursor: pointer;
+                font-family: var(--font-poppins);
 
                 &.active {
                     background: #dddddd;

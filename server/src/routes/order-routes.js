@@ -102,7 +102,7 @@ router.get("/:id", async (req, res) => {
                 return res.status(404).json({ message: "User or order not found." });
             }
 
-            if (!user._id.equals(order.userId)) {
+            if (!data.isAdmin && !user._id.equals(order.userId)) {
                 return res.status(403).json({ message: "User is trying to access other people's orders." })
             }
 
