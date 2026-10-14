@@ -24,21 +24,29 @@ const AdminEditAll = () => {
     }, []);
 
     useEffect(() => {
-        setDisplayProducts(prev => prev = [...products].filter(product => product.title.toLowerCase().includes(search.toLowerCase())));
-        navigate(`/admin/edit?search=${search}`);
-    }, [search]);
+        let tempProducts = [...products];
+
+        tempProducts = tempProducts.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
+
+        setDisplayProducts(tempProducts);
+        updateURL();
+    }, [search, products]);
 
     useEffect(() => {
         const filter = Object.fromEntries(searchParams);
-        let temp = [...products];
 
         if (filter.search) {
             setSearch(filter.search);
-            temp.filter(product => product.title.toLowerCase().includes(filter.search.toLowerCase()));
         }
-
-        setDisplayProducts(temp);
     }, [searchParams, products]);
+
+    const updateURL = () => {
+        const params = new URLSearchParams();
+
+        if (search !== "") params.set('search', search);
+
+        navigate(`/admin/edit?${params.toString()}`);
+    };
 
     const deleteProduct = async (productId) => {
         if (confirm(t("admin.editAll.deleteMsg"))) {
@@ -74,9 +82,13 @@ const AdminEditAll = () => {
                 <input className="item" onChange={onSearch} type="text" name="search" id="search" value={search} placeholder={`${t("admin.editAll.search")}...`} />
             </span>
 
-            {displayProducts.map(product => (
-                <AdminEditProduct key={product._id} product={product} deleteProduct={deleteProduct} />
-            ))}
+            {
+                displayProducts.length === 0 ?
+                    <p>{t("products.empty")}</p> :
+                    displayProducts.map(product => (
+                        <AdminEditProduct key={product._id} product={product} deleteProduct={deleteProduct} />
+                    ))
+            }
         </div>
     );
 }
