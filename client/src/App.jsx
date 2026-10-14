@@ -25,7 +25,6 @@ import DetailsPage from './pages/DetailsPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import RegisterPage from './pages/auth/RegisterPage.jsx';
 import LoginPage from './pages/auth/LoginPage.jsx';
-import useLogout from './hooks/useLogout.jsx';
 import CartPage from './pages/CartPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx';
@@ -51,9 +50,9 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path='/products' element={<ProductsPage />} />
-            {/* <Route path='/products/:id/details' element={<DetailsPage />} />
-            <Route path='/privacy-policy' element={<PrivacyPolicyPage />} /> */}
+            {/* <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
+            <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
             <Route path='/project-request' element={<ProjectRequestPage />} />
