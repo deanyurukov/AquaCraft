@@ -66,13 +66,13 @@ const router = createBrowserRouter(
             <Route path='/*' element={<NotFoundPage />} />
 
             <Route element={<GuestRoutes />} >
-                {/* <Route path='/register' element={<RegisterPage />} />
-                <Route path='/login' element={<LoginPage />} /> */}
+                <Route path='/register' element={<RegisterPage />} />
+                <Route path='/login' element={<LoginPage />} />
             </Route>
 
             <Route element={<UserRoutes />} >
-                <Route path='/cart' element={<CartPage />} />
-                <Route path='/checkout' element={<CheckoutPage />} />
+                {/* <Route path='/cart' element={<CartPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} /> */}
 
                 <Route path='/profile' element={<ProfileLayout />} >
                     <Route index element={<Navigate to="/profile/panel" replace />} />
