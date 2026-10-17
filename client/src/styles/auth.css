@@ -8,8 +8,6 @@
     align-items: center;
     padding-top: 5em;
     padding-bottom: 2em;
-    background: var(--color-white);
-    font-family: var(--font-poppins);
 
     h1 {
         font-weight: 500;

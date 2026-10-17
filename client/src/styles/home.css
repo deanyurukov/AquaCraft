@@ -4,8 +4,6 @@
     align-items: center;
     gap: 80px;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
-    background: var(--color-white);
 
     #benefits h2,
     #watering h2,

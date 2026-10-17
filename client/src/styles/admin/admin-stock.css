@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    font-family: var(--font-poppins);
     min-height: 70vh;
     gap: 2em;
 

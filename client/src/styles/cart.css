@@ -5,8 +5,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-poppins);
-    background: var(--color-white);
     min-height: 70vh;
 
     h1 {

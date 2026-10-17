@@ -1,5 +1,4 @@
 .chatbot-popup {
-    font-family: var(--font-poppins);
     opacity: 1;
     position: relative;
     z-index: 999;
