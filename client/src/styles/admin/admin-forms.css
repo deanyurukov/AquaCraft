@@ -5,7 +5,7 @@
     justify-content: start;
     align-items: start;
     min-height: 70vh;
-    gap: 2em;
+    gap: 2rem;
 
     @media (width <= 1020px) {
         width: 100%;
@@ -13,11 +13,7 @@
 
     h1 {
         font-weight: 500;
-        font-size: 34px;
-
-        @media (width <= 400px) {
-            font-size: 28px;
-        }
+        font-size: 2.1rem;
     }
 
     .content {
@@ -25,41 +21,29 @@
         justify-content: start;
         align-items: start;
         width: 100%;
-        gap: 2em;
+        gap: 2rem;
 
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1.5em;
+            gap: 1.5rem;
             width: 70%;
 
             @media (width <= 1020px) {
                 width: 100%;
             }
 
-            @media (width <= 800px) {
-                gap: 0.8em;
-            }
-
             div, section {
                 display: flex;
                 flex-direction: column;
-                gap: 0.8em;
+                gap: 0.8rem;
                 width: 100%;
-
-                @media (width <= 800px) {
-                    gap: 0.5em;
-                }
 
                 label {
                     font-weight: 500;
-                    font-size: 17px;
-
-                    @media (width <=700px) {
-                        font-size: 15px;
-                    }
+                    font-size: 1rem;
                 }
 
                 textarea {
@@ -72,8 +56,8 @@
                     justify-content: start;
                     align-items: center;
                     flex-wrap: wrap;
-                    gap: 1em;
-                    margin: 0.5em 0;
+                    gap: 1rem;
+                    margin: 0.5rem 0;
                     width: 100%;
 
                     & > span {
@@ -88,19 +72,11 @@
                         }
                         
                         img {
-                            width: 130px;
+                            width: 8.2rem;
                             aspect-ratio: 1 / 1;
                             border-radius: 10px;
                             border: 1px solid black;
                             object-fit: contain;
-
-                            @media (width <= 550px) {
-                                width: 100px;
-                            }
-
-                            @media (width <= 410px) {
-                                width: 80px;
-                            }
                         }
 
                         span {
@@ -116,9 +92,9 @@
 
                             i {
                                 position: absolute;
-                                top: 7px;
-                                right: 7px;
-                                font-size: 18px;
+                                top: 0.5rem;
+                                right: 0.5rem;
+                                font-size: 1.2rem;
                                 color: var(--color-white);
                                 transition: all 0.2s ease;
                                 cursor: pointer;
@@ -133,7 +109,7 @@
             }
 
             button {
-                font-size: 1em;
+                font-size: 1rem;
             }
         }
     }
