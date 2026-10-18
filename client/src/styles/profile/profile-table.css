@@ -27,14 +27,13 @@ span#profile-table {
             text-align: left;
 
             tr {
-
                 td,
                 th {
                     border: 0.5px solid #e4e4e4;
-                    padding: 0.8em;
+                    padding: 0.8rem;
 
                     @media (width <=500px) {
-                        padding: 0.3em 0.6em;
+                        padding-block: 0.6rem;
                     }
 
                     a {
@@ -43,7 +42,7 @@ span#profile-table {
                         justify-content: center;
 
                         i {
-                            font-size: 20px;
+                            font-size: 1.25rem;
                             color: var(--color-primary);
                             transition: all 0.2s ease;
 
@@ -63,20 +62,13 @@ span#profile-table {
                     background: var(--color-primary);
                     color: var(--color-white);
                     font-weight: 500;
-                    font-size: 18px;
+                    font-size: 1.1rem;
                     border-top: 0;
-
-                    @media (width <=500px) {
-                        font-size: 16px;
-                    }
                 }
 
                 td {
                     background: #F4F5F7;
-
-                    @media (width <=500px) {
-                        font-size: 14px;
-                    }
+                    font-size: 1rem;
                 }
             }
         }

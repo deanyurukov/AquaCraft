@@ -2,33 +2,25 @@
     display: flex;
     flex-direction: column;
     width: 75%;
-    gap: 1em;
+    gap: 1rem;
 
     @media (width <= 1020px) {
         width: 100%;
     }
 
-    @media (width <= 550px) {
-        gap: 0.7em;
-    }
-
     h1 {
         font-weight: 500;
-        font-size: 34px;
+        font-size: 2.1rem;
     }
 
     .content {
         display: flex;
         justify-content: space-between;
         align-items: start;
-        gap: 3em;
+        gap: 3rem;
 
-        @media (width <= 806px) {
+        @media (width <= 800px) {
             flex-direction: column;
-        }
-
-        @media (width <= 550px) {
-            gap: 2em;
         }
 
         .data,
@@ -36,31 +28,27 @@
             display: flex;
             flex-direction: column;
             width: 40%;
-            gap: 0.8em;
+            gap: 0.8rem;
 
-            @media (width <= 806px) {
+            @media (width <= 800px) {
                 width: 100%;
             }
 
             h2 {
                 font-weight: 400;
-                font-size: 24px;
+                font-size: 1.5rem;
                 color: var(--color-primary);
             }
 
             form {
                 display: flex;
                 flex-direction: column;
-                gap: 0.6em;
+                gap: 0.6rem;
             }
 
             button {
-                margin-top: 1em;
-                font-size: 1em;
-
-                @media (width <= 550px) {
-                    margin-top: 0.5em;
-                }
+                margin-top: 1rem;
+                font-size: 1rem;
             }
         }
 
@@ -69,7 +57,7 @@
                 div {
                     label {
                         font-weight: 500;
-                        font-size: 17px;
+                        font-size: 1.07rem;
                     }
                 }
             }

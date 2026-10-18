@@ -2,36 +2,16 @@
     width: 75%;
     display: flex;
     flex-direction: column;
-    gap: 2em;
+    gap: 2rem;
     position: relative;
 
     @media (width <= 1020px) {
         width: 100%;
     }
 
-    @media (width <= 600px) {
-        gap: 1.4em;
-    }
-
-    @media (width <= 420px) {
-        gap: 1em;
-    }
-
     #go-back {
         top: 0;
         left: 0;
-
-        @media (width <= 600px) {
-            font-size: 15px;
-        }
-
-        @media (width <= 420px) {
-            font-size: 14px;
-        }
-
-        span {
-            overflow: hidden;
-        }
     }
 
     .order-summary {
@@ -39,21 +19,13 @@
         width: 100%;
         justify-content: space-between;
         align-items: center;
-        gap: 2em;
-        margin-top: 2em;
-
-        @media (width <= 420px) {
-            gap: 1em;
-        }
+        gap: 1.5rem;
+        margin-top: 2rem;
 
         div {
             display: flex;
             flex-direction: column;
-            gap: 0.4em;
-
-            @media (width <= 600px) {
-                gap: 0.3em;
-            }
+            gap: 0.4rem;
 
             @media (width <= 420px) {
                 gap: 0;
@@ -64,58 +36,24 @@
             }
             
             h2 {
-                font-size: 30px;
-
-                @media (width <= 600px) {
-                    font-size: 26px;
-                }
-
-                @media (width <= 420px) {
-                    font-size: 22px;
-                }
-
-                @media (width <= 360px) {
-                    font-size: 18px;
-                }
+                font-size: 1.7rem;
             }
             
             h3 {
-                font-size: 26px;
+                font-size: 1.6rem;
                 color: var(--color-primary);
-
-                @media (width <= 600px) {
-                    font-size: 22px;
-                }
-
-                @media (width <= 420px) {
-                    font-size: 18px;
-                }
-
-                @media (width <= 360px) {
-                    font-size: 16px;
-                }
             }
 
             h4 {
-                font-size: 22px;
-
-                @media (width <= 600px) {
-                    font-size: 18px;
-                }
-
-                @media (width <= 420px) {
-                    font-size: 15px;
-                }
-
-                @media (width <= 360px) {
-                    font-size: 13px;
-                }
+                font-size: 1.4rem;
+                max-width: 80%;
+                word-break: break-all;
             }
         }
     }
 
     .order-products, .order-data {
-        @media (width <= 600px) {
+        @media (width <= 750px) {
             width: 100%;
             position: relative;
             overflow-x: scroll;
@@ -135,7 +73,7 @@
             border-collapse: collapse;
             border: 1px solid #E4E4E4;
 
-            @media (width <= 600px) {
+            @media (width <= 750px) {
                 width: 140%;
             }
 
@@ -145,27 +83,19 @@
                 tr {
                     td, th {
                         border: 1px solid #E4E4E4;
-                        padding: 0.8em;
+                        padding: 0.8rem;
 
-                        @media (width <= 820px) {
-                            padding: 0.6em;
-                        }
-
-                        @media (width <= 600px) {
-                            padding: 0.4em 0.6em;
+                        @media (width <= 750px) {
+                            padding-block: 0.6rem;
                         }
 
                         img {
                             border-radius: 10px;
-                            width: 200px;
+                            width: 12rem;
                             aspect-ratio: 1 / 1;
 
-                            @media (width <= 820px) {
-                                width: 150px;
-                            }
-
-                            @media (width <= 420px) {
-                                width: 100px;
+                            @media (width <= 750px) {
+                                width: 10rem;
                             }
                         }
                         
@@ -177,17 +107,9 @@
                             cursor: pointer;
 
                             i {
-                                font-size: 20px;
+                                font-size: 1.25rem;
                                 color: var(--color-primary);
                                 transition: all 0.2s ease;
-
-                                @media (width <= 820px) {
-                                    font-size: 18px;
-                                }
-
-                                @media (width <= 420px) {
-                                    font-size: 15px;
-                                }
 
                                 &:hover {
                                     color: #91ba8dc9;
@@ -200,36 +122,13 @@
                         background: var(--color-primary);
                         color: var(--color-white);
                         font-weight: 500;
-                        font-size: 18px;
+                        font-size: 1.15rem;
                         border-top: 0;
-
-                        @media (width <= 820px) {
-                            font-size: 15px;
-                        }
-
-                        @media (width <= 420px) {
-                            font-size: 14px;
-                        }
-
-                        @media (width <= 380px) {
-                            font-size: 13px;
-                        }
                     }
 
                     td {  
                         background: #F4F5F7;
-
-                        @media (width <= 820px) {
-                            font-size: 13px;
-                        }
-
-                        @media (width <= 420px) {
-                            font-size: 12px;
-                        }
-
-                        @media (width <= 380px) {
-                            font-size: 11px;
-                        }
+                        font-size: 0.9rem;
                     }
                 }
 
