@@ -23,21 +23,25 @@ const RegisterPage = () => {
         const { username, email, password, re_password } = Object.fromEntries(new FormData(e.currentTarget));
 
         try {
-            const [registerData, error] = await authService.register(username, email, password, re_password);
-
-            if (error) {
-                getErrorAndDisplay(error);
-                return;
+            if (password !== re_password) {
+                throw new Error("password.different");
             }
 
+            const [registerData, error] = await authService.register(username, email, password);
+
+            if (error) {
+                throw new Error(error);
+            }
+            
             localStorage.setItem("accessToken", JSON.stringify(registerData.accessToken));
             setUser(registerData.data);
-
+            
             navigate("/");
             getErrorAndDisplay(registerData.message)
             // await emailjs.send(emailConfig.supportService, emailConfig.registerTemplate, { username, email });
         }
         catch (error) {
+            getErrorAndDisplay(error.message);
             console.error(error);
         }
         finally {

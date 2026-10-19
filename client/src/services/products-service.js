@@ -43,29 +43,27 @@ export default {
             console.error(err);
         }
     },
-    deleteOne: async (productId, message) => {
-        if (confirm(message)) {
-            try {
-                const response = await fetch(endpoints.getOneProduct(productId), {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-Authorization": JSON.parse(localStorage.getItem("accessToken")),
-                    }
-                });
-
-                const data = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.message);
+    deleteOne: async (productId) => {
+        try {
+            const response = await fetch(endpoints.getOneProduct(productId), {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Authorization": JSON.parse(localStorage.getItem("accessToken")),
                 }
+            });
 
-                return [data, undefined];
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
             }
-            catch (err) {
-                console.error(err);
-                return [undefined, err.message];
-            }
+
+            return [data, undefined];
+        }
+        catch (err) {
+            console.error(err);
+            return [undefined, err.message];
         }
     },
     updateOne: async (productId, quantity) => {

@@ -1,12 +1,8 @@
 import { endpoints } from "../api/endpoints";
 
 export default {
-    register: async (username, email, password, re_password) => {
+    register: async (username, email, password) => {
         try {
-            if (password !== re_password) {
-                throw new Error("password.different");
-            }
-
             const response = await fetch(endpoints.register, {
                 method: "POST",
                 headers: {

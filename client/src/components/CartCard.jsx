@@ -60,30 +60,32 @@ const CartCard = ({ product, setInCart }) => {
     }
 
     async function deleteProduct(productId) {
-        const [data, error] = await productsService.deleteOne(productId, t("cart.deleteMessage"));
+        if (confirm(t("cart.deleteMessage"))) {
+            const [data, error] = await productsService.deleteOne(productId);
 
-        if (error) {
-            getErrorAndDisplay(error);
-            return;
+            if (error) {
+                getErrorAndDisplay(error);
+                return;
+            }
+
+            setInCart(prev => {
+                const index = prev.findIndex(currProduct => currProduct.product._id === productId);
+
+                if (index === -1) return prev;
+
+                prev.splice(index, 1);
+                return [...prev];
+            });
+
+            setUser(prev => {
+                const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
+
+                if (index === -1) return prev;
+
+                prev.productsInCart.splice(index, 1);
+                return { ...prev };
+            });
         }
-
-        setInCart(prev => {
-            const index = prev.findIndex(currProduct => currProduct.product._id === productId);
-
-            if (index === -1) return prev;
-
-            prev.splice(index, 1);
-            return [...prev];
-        });
-
-        setUser(prev => {
-            const index = prev.productsInCart.findIndex(currProduct => currProduct.product === productId);
-
-            if (index === -1) return prev;
-
-            prev.productsInCart.splice(index, 1);
-            return { ...prev };
-        });
     }
 
     return (

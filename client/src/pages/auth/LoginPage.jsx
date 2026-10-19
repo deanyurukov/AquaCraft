@@ -35,7 +35,7 @@ const LoginPage = () => {
             const [loginData, error] = await authService.login(email, password);
 
             if (error) {
-                getErrorAndDisplay(error);
+                throw new Error(error);
                 return;
             }
 
