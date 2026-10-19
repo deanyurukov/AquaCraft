@@ -55,7 +55,7 @@ const LoginPage = () => {
 
     return (
         <div id="login">
-            <h1>{t("login.title")}</h1>
+            <h1 className="page-title">{t("login.title")}</h1>
             <div className="form-wrapper">
                 <form onSubmit={onSubmit} id="login-form" className="form">
                     <span>

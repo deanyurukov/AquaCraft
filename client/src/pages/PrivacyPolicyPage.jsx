@@ -6,7 +6,7 @@ const PrivacyPolicyPage = () => {
 
     return (
         <div id="privacy-policy">
-            <h1>{t("privacy.title")}</h1>
+            <h1 className="page-title">{t("privacy.title")}</h1>
 
             <div className="content">
                 <p>{t("privacy.lastUpdated")} 20.02.2025</p>

@@ -82,7 +82,7 @@ const CheckoutPage = () => {
 
     return (
         <div id="checkout">
-            <h1>{t("checkout.title")}</h1>
+            <h1 className="page-title">{t("checkout.title")}</h1>
 
             <div className="content">
                 <div className="left">

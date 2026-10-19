@@ -79,7 +79,7 @@ const ContactPage = () => {
 
     return (
         <div id="contact-us">
-            <h1>{t("contact.title")}</h1>
+            <h1 className="page-title">{t("contact.title")}</h1>
 
             <div className="content">
                 <form onSubmit={onSubmit}>

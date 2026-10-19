@@ -52,9 +52,11 @@ const router = createBrowserRouter(
             <Route index element={<HomePage />} />
             {/* <Route path='/products' element={<ProductsPage />} />
             <Route path='/products/:id/details' element={<DetailsPage />} /> */}
+            <Route path='/contact-us' element={<ContactPage />} />
+
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
             <Route path='/terms-and-conditions' element={<TermsAndConditionsPage />} />
-            <Route path='/contact-us' element={<ContactPage />} />
+            
             <Route path='/project-request' element={<ProjectRequestPage />} />
             <Route path='/how-to' element={<HowToPage />} />
 

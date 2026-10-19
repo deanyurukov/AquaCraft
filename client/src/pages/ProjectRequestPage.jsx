@@ -6,7 +6,7 @@ const ProjectRequestPage = () => {
 
     return (
         <div id="project-request">
-            <h1>{t("project-request.title")}</h1>
+            <h1 className="page-title">{t("project-request.title")}</h1>
 
             <div className="content">
                 <ProjectRequestItem name={"rainbird-request-form"} pathToDoc={"../../../documents/rainbird-request-form.pdf"} />

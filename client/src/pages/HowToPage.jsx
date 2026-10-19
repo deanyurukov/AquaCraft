@@ -6,7 +6,7 @@ const HowToPage = () => {
 
     return (
         <div id="how-to">
-            <h1>{t("how-to.title")}</h1>
+            <h1 className="page-title">{t("how-to.title")}</h1>
 
             <div className="content">
                 <ProjectRequestItem name={"hunter-design-guide"} pathToDoc={"../../../documents/hunter-design-guide.pdf"} />

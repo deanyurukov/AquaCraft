@@ -10,11 +10,7 @@ const ProjectRequestItem = ({ name, pathToDoc }) => {
             <div className="item">
                 <p>{t(`project-request.${name}`)}</p>
 
-                {
-                    isClicked ?
-                        <button onClick={() => setIsClicked(false)}>{t("project-request.hide")}</button> :
-                        <button onClick={() => setIsClicked(true)}>{t("project-request.show")}</button>
-                }
+                <button className="link primary" onClick={() => setIsClicked(prev => prev = !prev)}>{isClicked ? t("project-request.hide") : t("project-request.show")}</button>
             </div>
 
             {

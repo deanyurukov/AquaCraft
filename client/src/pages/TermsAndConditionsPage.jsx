@@ -5,7 +5,7 @@ const TermsAndConditionsPage = () => {
 
     return (
         <div id="terms-and-conditions">
-            <h1>{t("terms.title")}</h1>
+            <h1 className="page-title">{t("terms.title")}</h1>
 
             <div className="content">
                 <p>{t("terms.text")}</p>

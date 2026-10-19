@@ -51,7 +51,7 @@ const RegisterPage = () => {
 
     return (
         <div id="register">
-            <h1>{t("register.title")}</h1>
+            <h1 className="page-title">{t("register.title")}</h1>
             <div className="form-wrapper">
                 <form onSubmit={onSubmit} id="register-form" className="form">
                     <span>

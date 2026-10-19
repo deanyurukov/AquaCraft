@@ -42,7 +42,7 @@ const CartPage = () => {
 
     return (
         <div id="cart">
-            <h1>{t("cart.title")}</h1>
+            <h1 className="page-title">{t("cart.title")}</h1>
             {
                 inCart.length === 0 ?
                     <p>{t("cart.empty")} :)</p> :

@@ -72,7 +72,7 @@ const HomePage = () => {
             </div>
 
             <div id="benefits">
-                <h2>{t("home.benefits.title")}</h2>
+                <h2 className="page-title">{t("home.benefits.title")}</h2>
 
                 <section>
                     {[...benefits, ...benefits].map((benefit, index) => (
@@ -85,7 +85,7 @@ const HomePage = () => {
             </div>
 
             <div id="watering">
-                <h2>{t("home.watering.title")}</h2>
+                <h2 className="page-title">{t("home.watering.title")}</h2>
 
                 <section>
                     {wateringMethods.map((method, index) => (
@@ -95,7 +95,7 @@ const HomePage = () => {
             </div>
 
             <div id="mission">
-                <h2>{t("home.mission.title")}</h2>
+                <h2 className="page-title">{t("home.mission.title")}</h2>
                 <p>{t("home.mission.description")}</p>
             </div>
         </div>

@@ -9,27 +9,8 @@
     #watering h2,
     #mission h2 {
         font-weight: 700;
-        font-size: 2.75em;
-        position: relative;
         text-align: center;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--color-primary);
-        }
-
-        @media (width <=850px) {
-            font-size: 2rem;
-        }
-
-        @media (width <=450px) {
-            font-size: 1.7rem;
-        }
+        margin-bottom: 0;
     }
 
     #benefits {

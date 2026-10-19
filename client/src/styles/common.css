@@ -6,6 +6,7 @@ button.link {
     transition: all 0.2s linear;
     font-weight: 600;
     cursor: pointer;
+    font-size: 1rem;
 
     &:disabled {
         cursor: not-allowed;
@@ -214,5 +215,23 @@ span.form-password {
         position: absolute;
         right: 1.15rem;
         color: black;
+    }
+}
+
+h1.page-title,
+h2.page-title {
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--color-primary);
     }
 }

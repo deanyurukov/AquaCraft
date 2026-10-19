@@ -289,7 +289,7 @@ const ProductsPage = () => {
                 }
             </div>
 
-            <h1>{t("products.title")}</h1>
+            <h1 className="page-title">{t("products.title")}</h1>
 
             <div className="products-wrapper">
                 <div className="sort">
