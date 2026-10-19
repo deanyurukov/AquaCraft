@@ -14,11 +14,18 @@ const UserDataPage = () => {
     const [dataLoading, setDataLoading] = useState(false);
     const [passLoading, setPassLoading] = useState(false);
 
-    async function onDataChange(formData) {
+    async function onDataChange(e) {
+        e.preventDefault();
         if (dataLoading) return;
         setDataLoading(true);
 
-        const { username, email, password } = Object.fromEntries(formData);
+        const { username, email, password } = Object.fromEntries(new FormData(e.currentTarget));
+
+        if (username === "" || email === "" || password === "") {
+            setDataLoading(false);
+            getErrorAndDisplay("allFields");
+            return;
+        }
 
         const [data, error] = await authService.changeUserData(username, email, password);
 
@@ -41,14 +48,22 @@ const UserDataPage = () => {
         navigate("/profile/panel");
     }
 
-    async function onPasswordChange(formData) {
+    async function onPasswordChange(e) {
+        e.preventDefault();
         if (passLoading) return;
         setPassLoading(true);
 
-        const { password, new_password } = Object.fromEntries(formData);
+        const { password, new_password } = Object.fromEntries(new FormData(e.currentTarget));
+
+        if (password === "" || new_password === "") {
+            setPassLoading(false);
+            getErrorAndDisplay("allFields");
+            return;
+        };
 
         if (password === new_password) {
             setPassLoading(false);
+            getErrorAndDisplay("password.wrong");
             return;
         };
 
@@ -62,6 +77,7 @@ const UserDataPage = () => {
 
         localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
         getErrorAndDisplay(data.message);
+        e.reset();
         setPassLoading(false);
     }
 
@@ -73,7 +89,7 @@ const UserDataPage = () => {
                 <div className="data">
                     <h2>{t("profile.data.info")}</h2>
 
-                    <form action={onDataChange}>
+                    <form onSubmit={onDataChange}>
                         <Input type="text" value={user.username} label={`${t("profile.data.username")}*`} name={"username"} />
                         <Input type="email" value={user.email} label={`${t("profile.data.email")}*`} name={"email"} />
                         <PasswordInput placeholder={`${t("profile.data.password")}*`} name={"password"} />
@@ -85,7 +101,7 @@ const UserDataPage = () => {
                 <div className="change-password">
                     <h2>{t("profile.data.password")}</h2>
 
-                    <form action={onPasswordChange}>
+                    <form onSubmit={onPasswordChange}>
                         <PasswordInput placeholder={`${t("profile.data.currentPass")}*`} name={"password"} />
                         <PasswordInput placeholder={`${t("profile.data.newPass")}*`} name={"new_password"} />
 

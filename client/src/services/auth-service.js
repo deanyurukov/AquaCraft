@@ -6,7 +6,7 @@ export default {
             if (password !== re_password) {
                 throw new Error("password.different");
             }
-            
+
             const response = await fetch(endpoints.register, {
                 method: "POST",
                 headers: {
@@ -101,7 +101,7 @@ export default {
     },
     changeUserData: async (username, email, password) => {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-    
+
         try {
             const response = await fetch(endpoints.changeUserData, {
                 method: "PUT",
@@ -115,13 +115,13 @@ export default {
                     password,
                 })
             });
-    
+
             const data = await response.json();
-    
-            if ( ! response.ok) {
+
+            if (!response.ok) {
                 throw new Error(data.message);
             }
-    
+
             return [data, undefined];
         }
         catch (err) {
@@ -131,12 +131,8 @@ export default {
     },
     changeUserPassword: async (password, new_password) => {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-    
+
         try {
-            if (password === "" || new_password === "") {
-                throw new Error("errorMessages.allFields");
-            }
-    
             const response = await fetch(endpoints.changeUserPassword, {
                 method: "PUT",
                 headers: {
@@ -148,13 +144,13 @@ export default {
                     new_password,
                 })
             });
-    
+
             const data = await response.json();
-    
-            if ( ! response.ok) {
+
+            if (!response.ok) {
                 throw new Error(data.message);
             }
-    
+
             return [data, undefined];
         }
         catch (err) {
