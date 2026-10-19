@@ -11,7 +11,7 @@
 
     .form-wrapper {
         border-radius: 10px;
-        padding: 24px;
+        padding: 1.5rem;
         width: clamp(300px, 70%, 400px);
         background: #F4F5F7;
         border: 1px solid #E4E4E4;
@@ -20,41 +20,33 @@
         justify-content: center;
         align-items: center;
 
-        @media (width <=450px) {
-            padding: 24px 12px;
-        }
-
         .form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8em;
+            gap: 0.8rem;
             width: 90%;
 
             div {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                gap: 1em;
+                gap: 1rem;
 
                 label {
-                    font-size: 14px;
+                    font-size: 0.9rem;
 
                     span,
                     a {
                         color: red;
-                        font-size: 12px;
+                        font-size: 0.75rem;
                         font-weight: 600;
                         text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                        margin: 2em 0 0;
+                        letter-spacing: 1px;
+                        margin: 2rem 0 0;
 
                         &:hover {
                             text-decoration: underline;
-                        }
-
-                        @media (width <=570px) {
-                            font-size: 10px;
                         }
                     }
                 }
@@ -71,8 +63,8 @@
 
             button {
                 width: 100%;
-                font-size: 18px;
-                margin-top: 1em;
+                font-size: 1.1rem;
+                margin-top: 1rem;
             }
         }
     }

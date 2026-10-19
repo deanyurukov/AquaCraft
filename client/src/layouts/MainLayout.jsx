@@ -105,12 +105,6 @@ const MainLayout = () => {
         window.scrollTo(0, 0);
     }, [location]);
 
-    //! Testing purposes
-    useEffect(() => {
-        console.log(user);
-        console.log(products);
-    }, [user, products]);
-
     if (!products) return;
 
     return (
