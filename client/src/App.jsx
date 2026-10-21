@@ -50,8 +50,8 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            {/* <Route path='/products' element={<ProductsPage />} />
-            <Route path='/products/:id/details' element={<DetailsPage />} /> */}
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id/details' element={<DetailsPage />} />
             <Route path='/contact-us' element={<ContactPage />} />
 
             <Route path='/privacy-policy' element={<PrivacyPolicyPage />} />
@@ -73,8 +73,8 @@ const router = createBrowserRouter(
             </Route>
 
             <Route element={<UserRoutes />} >
-                <Route path='/cart' element={<CartPage />} />
-                <Route path='/checkout' element={<CheckoutPage />} />
+                {/* <Route path='/cart' element={<CartPage />} />
+                <Route path='/checkout' element={<CheckoutPage />} /> */}
 
                 <Route path='/profile' element={<ProfileLayout />} >
                     <Route index element={<Navigate to="/profile/panel" replace />} />

@@ -1,6 +1,6 @@
 #checkout {
     width: 100%;
-    padding: 5em 0;
+    padding: 5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,12 +24,12 @@
             display: flex;
             flex-direction: column;
             justify-content: start;
-            gap: 0.8em;
+            gap: 0.8rem;
             width: 58%;
 
             @media (width <= 800px) {
                 width: 100%;
-                margin-top: 2em;
+                margin-top: 2rem;
             }
 
             @media (width <= 570px) {
@@ -37,47 +37,19 @@
             }
 
             h2 {
-                font-size: 1.8em;
+                font-size: 1.8rem;
                 font-weight: 500;
-
-                @media (width <= 700px) {
-                    font-size: 1.4em;
-                }
-        
-                @media (width <= 570px) {
-                    font-size: 1.1em;
-                }
-        
-                @media (width <= 410px) {
-                    font-size: 0.9em;
-                }
             }
 
             div {
                 display: flex;
                 flex-direction: column;
-                gap: 0.8em;
-
-                @media (width <= 800px) {
-                    gap: 0.5em;
-                }
+                gap: 0.8rem;
 
                 label {
                     font-weight: 500;
-                    font-size: 17px;
-                    margin-top: 1.5em;
-
-                    @media (width <= 800px) {
-                        margin-top: 0.8em;
-                    }
-
-                    @media (width <= 700px) {
-                        font-size: 15px;
-                    }
-            
-                    @media (width <= 570px) {
-                        font-size: 13px;
-                    }
+                    font-size: 1.05rem;
+                    margin-top: 1.5rem;
                 }
 
                 input, select {
@@ -95,14 +67,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8em;
-            margin-top: 2em;
+            gap: 0.8rem;
+            margin-top: 2rem;
             position: sticky;
             top: 20px;
 
             @media (width <= 800px) {
                 width: 100%;
-                margin-top: 5em;
+                margin-top: 5rem;
             }
 
             .titlebar {
@@ -112,56 +84,47 @@
 
                 h4 {
                     font-weight: 500;
-                    font-size: 26px;
-
-                    @media (width <= 500px) {
-                        font-size: 22px;
-                    }
+                    font-size: 1.6rem;
                 }
             }
 
             .products {
                 display: flex;
                 flex-direction: column;
+                gap: 1rem;
                 width: 100%;
 
                 div {
                     display: flex;
                     justify-content: space-between;
-                    gap: 4em;
+                    gap: 4rem;
 
                     & > :nth-child(1) {
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        gap: 1em;
+                        gap: 0.75rem;
 
                         & > :nth-child(1) {
                             font-weight: 400;
-                            font-size: 16px;
+                            font-size: 1rem;
                             color: #9F9F9F;
+                            max-width: 90%;
+                        }
 
-                            @media (width <= 500px) {
-                                font-size: 12px;
-                            }
+                        & > :nth-child(2) {
+                            margin-left: 0.4rem;
                         }
 
                         & > :nth-child(2), & > :nth-child(3) {
                             font-weight: 500;
-                            font-size: 12px;
-
-                            @media (width <= 500px) {
-                                font-size: 10px;
-                            }
+                            font-size: 0.75rem;
                         }
                     }
 
                     & > :nth-child(2) {
                         align-self: center;
-
-                        @media (width <= 500px) {
-                            font-size: 14px;
-                        }
+                        font-size: 1rem;
                     }
                 }
             }
@@ -173,22 +136,14 @@
                 width: 100%;
 
                 & > :nth-child(1) {
-                    font-size: 18px;
+                    font-size: 1.15rem;
                     font-weight: 400;
-
-                    @media (width <= 500px) {
-                        font-size: 16px;   
-                    }
                 }
 
                 & > :nth-child(2) {
-                    font-size: 24px;
+                    font-size: 1.5rem;
                     font-weight: 700;
                     color: var(--color-primary);
-
-                    @media (width <= 500px) {
-                        font-size: 20px;   
-                    }
                 }
             }
 
