@@ -1,6 +1,6 @@
 #cart {
     width: 100%;
-    padding: 5em 0;
+    padding: 5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,7 @@
     min-height: 70vh;
 
     &>p {
-        font-size: 28px;
+        font-size: 1.75rem;
         font-weight: 500;
         color: gray;
     }
@@ -18,12 +18,11 @@
         width: 85%;
         justify-content: space-between;
         align-items: start;
-        gap: 50px;
+        gap: 3.1rem;
 
         @media (width <=920px) {
             flex-direction: column;
             align-items: center;
-            gap: 80px;
             width: 95%;
         }
 
@@ -32,48 +31,24 @@
             width: 60%;
             flex-direction: column;
             align-items: start;
-            gap: 3em;
+            gap: 3rem;
 
             @media (width <=920px) {
                 width: 90%;
-            }
-
-            @media (width <=680px) {
-                gap: 1em;
             }
 
             &> :nth-child(1) {
                 width: 100%;
                 display: grid;
                 grid-template-columns: repeat(4, 1fr) 15px;
-                gap: 5px;
+                gap: 0.35rem;
                 background: #F4F5F7;
                 border: 1px solid #E4E4E4;
-                padding: 0.8em 2em;
-
-                @media (width <=520px) {
-                    padding: 0.8em;
-                }
+                padding: 0.8rem 2rem;
 
                 p {
-                    font-size: 18px;
+                    font-size: 1.15rem;
                     text-align: center;
-
-                    @media (width <=680px) {
-                        font-size: 16px;
-                    }
-
-                    @media (width <=520px) {
-                        font-size: 13px;
-                    }
-
-                    @media (width <=400px) {
-                        font-size: 11px;
-                    }
-
-                    @media (width <=320px) {
-                        font-size: 9px;
-                    }
                 }
             }
 
@@ -81,19 +56,15 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                gap: 2em;
+                gap: 2rem;
 
                 div {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr) 15px;
-                    gap: 5px;
+                    gap: 0.5rem;
                     align-items: center;
                     justify-items: center;
-                    padding: 0 2em;
-
-                    @media (width <=520px) {
-                        padding: 0 0.8em;
-                    }
+                    padding: 0 2rem;
 
                     img {
                         width: 100%;
@@ -103,46 +74,15 @@
 
                     p {
                         text-align: center;
-
-                        @media (width <=680px) {
-                            font-size: 14px;
-                        }
-
-                        @media (width <=520px) {
-                            font-size: 12px;
-                        }
-
-                        @media (width <=400px) {
-                            font-size: 10px;
-                        }
-
-                        @media (width <=320px) {
-                            font-size: 8px;
-                        }
+                        font-size: 0.95rem;
                     }
 
                     input[type=number] {
-                        padding: 0.3em 0.5em;
+                        padding: 0.3rem 0.5rem;
+                        font-size: 0.9rem;
                         border: 2px solid #ccc;
                         outline: none;
                         transition: all 0.2s linear;
-
-                        @media (width <=680px) {
-                            padding: 0.2em 0.4em;
-                            font-size: 14px;
-                        }
-
-                        @media (width <=520px) {
-                            font-size: 12px;
-                        }
-
-                        @media (width <=400px) {
-                            font-size: 10px;
-                        }
-
-                        @media (width <=320px) {
-                            font-size: 8px;
-                        }
 
                         &:focus {
                             border-radius: 5px;
@@ -160,25 +100,9 @@
                         }
 
                         i {
-                            font-size: 18px;
+                            font-size: 1.15rem;
                             color: var(--color-primary);
                             transition: all 0.2s ease;
-
-                            @media (width <=680px) {
-                                font-size: 16px;
-                            }
-
-                            @media (width <=520px) {
-                                font-size: 14px;
-                            }
-
-                            @media (width <=400px) {
-                                font-size: 12px;
-                            }
-
-                            @media (width <=320px) {
-                                font-size: 10px;
-                            }
                         }
                     }
                 }
@@ -191,10 +115,10 @@
             flex-direction: column;
             justify-content: start;
             align-items: center;
-            padding: 1em 0.8em;
+            padding: 1rem 0.8rem;
             background: #F4F5F7;
             border: 1px solid #E4E4E4;
-            gap: 1.7em;
+            gap: 1.7rem;
             position: sticky;
             top: 20px;
 
@@ -202,55 +126,28 @@
                 width: 90%;
             }
 
-            @media (width <=400px) {
-                gap: 0.7em;
-            }
-
             div {
                 display: flex;
                 width: 90%;
                 justify-content: space-between;
                 align-items: center;
-                gap: 10px;
+                gap: 0.6rem;
 
                 h3 {
                     font-weight: 500;
-                    font-size: 26px;
-
-                    @media (width <=520px) {
-                        font-size: 22px;
-                    }
-
-                    @media (width <=400px) {
-                        font-size: 18px;
-                    }
-
-                    @media (width <=320px) {
-                        font-size: 16px;
-                    }
+                    font-size: 1.6rem;
+                    line-height: 1.1;
                 }
 
                 p {
                     font-weight: 300;
-                    font-size: 18px;
+                    font-size: 1.15rem;
                     text-align: center;
-
-                    @media (width <=520px) {
-                        font-size: 16px;
-                    }
-
-                    @media (width <=400px) {
-                        font-size: 14px;
-                    }
-
-                    @media (width <=320px) {
-                        font-size: 12px;
-                    }
                 }
             }
             
             a {
-                padding: 0.6em 1.2em;
+                padding: 0.6rem 1.2rem;
             }
         }
     }
