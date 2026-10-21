@@ -778,7 +778,9 @@
         ],
         "message": "Message",
         "thinking": "Thinking...",
-        "title": "Chatbot"
+        "title": "Chatbot",
+        "close": "Close chatbot",
+        "send": "Send message"
     },
     "errorMessages": {
         "authNeeded": "You need an account!",

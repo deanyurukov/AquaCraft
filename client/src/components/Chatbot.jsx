@@ -42,44 +42,57 @@ const Chatbot = () => {
     };
 
     useEffect(() => {
-        chatBodyRef.current.scrollTo({ top: chatBodyRef.current.scrollHeight, behavior: "smooth" });
+        chatBodyRef.current?.scrollTo({
+            top: chatBodyRef.current.scrollHeight,
+            behavior: "smooth"
+        });
     }, [chatHistory]);
 
     return (
-        <div className={`container ${showChatbot ? "show-chatbot" : ""}`}>
-            <button onClick={() => setShowChatbot((prev) => !prev)} id="chatbot-toggler">
-                <span title={t("chatbot.title")}><ChatbotIcon /></span>
-                <span className="material-symbols-rounded"><i className="fa-solid fa-xmark"></i></span>
+        <div id="chatbot" className={showChatbot ? "is-open" : ""}>
+            <button
+                type="button"
+                onClick={() => setShowChatbot((prev) => !prev)}
+                aria-label={showChatbot ? t("chatbot.close") : t("chatbot.title")}
+                aria-expanded={showChatbot}
+            >
+                <ChatbotIcon />
+                <i className="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
-            <div className="chatbot-popup">
-                <div className="chat-header">
-                    <div className="header-info">
+            <section aria-label={t("chatbot.title")}>
+                <header>
+                    <div>
                         <ChatbotIcon />
-                        <h2 className="logo-text">{t("chatbot.title")}</h2>
+                        <h2>{t("chatbot.title")}</h2>
                     </div>
-                    <button onClick={() => setShowChatbot((prev) => !prev)} className="material-symbols-rounded">
-                        <i className="fa-solid fa-angle-down"></i>
+                    <button
+                        type="button"
+                        onClick={() => setShowChatbot(false)}
+                        aria-label={t("chatbot.close")}
+                    >
+                        <i className="fa-solid fa-angle-down" aria-hidden="true"></i>
                     </button>
-                </div>
+                </header>
                 
-                <div ref={chatBodyRef} className="chat-body">
-                    <div className="message bot-message">
-                        <ChatbotIcon />
-                        <p className="message-text">
-                            {t("chatbot.cheers.0")} 👋 <br /> {t("chatbot.cheers.1")}
-                        </p>
-                    </div>
+                <main ref={chatBodyRef}>
+                    <ChatMessage
+                        chat={{
+                            role: "model",
+                            text: `${t("chatbot.cheers.0")} 👋\n${t("chatbot.cheers.1")}`
+                        }}
+                    />
 
                     {chatHistory.map((chat, index) => (
                         <ChatMessage key={index} chat={chat} />
                     ))}
-                </div>
+                </main>
                 
-                <div className="chat-footer">
+                <footer>
                     <ChatForm chatHistory={chatHistory} setChatHistory={setChatHistory} generateBotResponse={generateBotResponse} />
-                </div>
-            </div>
+                </footer>
+            </section>
         </div>
     );
 };
+
 export default Chatbot;
