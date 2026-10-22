@@ -1,6 +1,6 @@
 #privacy-policy {
     width: 100%;
-    padding: 5em 0;
+    padding: 5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,70 +9,29 @@
 
     .content {
         background: #F4F5F7;
-        padding: 20px;
+        padding: 1.25rem;
         border: 1px solid #E4E4E4;
         border-radius: 5px;
-        margin: 20px;
+        margin: 1.25rem;
         width: 90%;
 
-        @media (width <= 700px) {
-            padding: 10px;
-        }
-
-        @media (width <= 570px) {
-            padding: 8px;
-        }
-
-        @media (width <= 410px) {
-            margin: 0;
-        }
-
-        @media (width <= 290px) {
-            padding: 6px;
-        }
-
         p {
-            font-size: 18px;
-            margin: 20px 0 10px;
+            font-size: 1.1rem;
+            margin: 1.25rem 0 0.6rem;
             color: #767f86;
             line-height: 1.5;
 
-            @media (width <= 700px) {
-                font-size: 16px;
-                margin: 16px 10px;
-            }
-
-            @media (width <= 570px) {
-                font-size: 14px;
-                margin: 12px 8px;
-            }
-
-            @media (width <= 410px) {
-                font-size: 12px;
-                margin: 10px 8px;
-            }
-
-            @media (width <= 290px) {
-                font-size: 10px;
-                line-height: 1.3;
-                margin: 6px 4px;
+            a:hover {
+                text-decoration: underline;
             }
 
             span, a {
                 color: red;
-                font-size: 12px;
+                font-size: 0.75rem;
                 font-weight: 700;
                 text-transform: uppercase;
-                letter-spacing: 0.05em;
-                margin: 2em 0 0;
-
-                @media (width <= 570px) {
-                    font-size: 10px;
-                }
-
-                @media (width <= 410px) {
-                    font-size: 8px;
-                }
+                letter-spacing: 0.05rem;
+                margin: 2rem 0 0;
             }
         }
     }

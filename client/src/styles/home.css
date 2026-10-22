@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 80px;
+    gap: 5rem;
     width: 100%;
 
     #benefits h2,
@@ -18,12 +18,8 @@
         align-items: start;
         width: 90%;
         flex-direction: column;
-        gap: 60px;
+        gap: 3.75rem;
         overflow: hidden;
-
-        @media (width <=450px) {
-            gap: 40px;
-        }
 
         h2 {
             align-self: center;
@@ -31,7 +27,7 @@
 
         section {
             display: flex;
-            gap: 54px;
+            gap: 3.35rem;
             animation: scroll 20s linear infinite;
 
             @media (width <=750px) {
@@ -48,23 +44,11 @@
                 }
             }
 
-            @media (width <=450px) {
-                gap: 30px;
-
-                div {
-                    gap: 15px !important;
-
-                    p {
-                        font-size: 1.2rem;
-                    }
-                }
-            }
-
             div {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 35px;
+                gap: 2.2rem;
 
                 p {
                     font-size: 1.5rem;
@@ -80,7 +64,7 @@
         align-items: center;
         width: 75%;
         flex-direction: column;
-        gap: 60px;
+        gap: 3.3rem;
 
         @media (width <=1070px) {
             width: 95%;
@@ -89,7 +73,7 @@
         section {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
+            gap: 3.1rem;
             width: 100%;
 
             @media (width <=850px) {
@@ -99,35 +83,6 @@
 
             @media (width <=510px) {
                 width: 95%;
-
-                div {
-                    padding: 50px 20px !important;
-
-                    &.card p {
-                        font-size: 1.2rem !important;
-
-                        span {
-                            font-size: 2.5rem !important;
-                        }
-                    }
-
-                    &.overlay p {
-                        font-size: 1.1rem !important;
-                    }
-
-                    h4 {
-                        font-size: 2rem !important;
-                    }
-
-                    h5 {
-                        font-size: 1.7rem !important;
-                    }
-
-                    a {
-                        padding: 7px 18px !important;
-                        font-size: 0.9rem !important;
-                    }
-                }
             }
 
             article {
@@ -143,15 +98,15 @@
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
-                    border-radius: 24px;
-                    padding: 70px 20px;
+                    border-radius: 1.5rem;
+                    padding: 4.4rem 1.25rem;
                     height: 100%;
                     text-align: center;
 
                     &.card {
                         background: var(--color-primary);
                         color: var(--color-white);
-                        gap: 250px;
+                        gap: 15.6rem;
 
                         p {
                             font-size: 1.5rem;
@@ -196,8 +151,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 40px;
-        margin-bottom: 80px;
+        gap: 2.5rem;
+        margin-bottom: 5rem;
         width: 85%;
 
         p {
@@ -206,18 +161,8 @@
             width: 100%;
             background: var(--color-primary);
             color: var(--color-white);
-            padding: 30px;
+            padding: 1.8rem;
             border-radius: 10px;
-
-            @media (width <=850px) {
-                font-size: 1rem;
-                padding: 20px;
-            }
-
-            @media (width <=450px) {
-                font-size: 0.9rem;
-                padding: 15px;
-            }
         }
     }
 }
