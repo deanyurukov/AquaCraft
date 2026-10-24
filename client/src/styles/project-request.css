@@ -1,7 +1,7 @@
 #project-request,
 #how-to {
     width: 100%;
-    padding: 5em 0;
+    padding: 5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,9 +12,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 20px;
+        margin: 1.25rem;
         width: 80%;
-        gap: 1.4em;
+        gap: 1.4rem;
 
         @media (width <= 800px) {
             width: 100%;
@@ -31,20 +31,16 @@
                 justify-content: space-between;
                 align-items: center;
                 width: 100%;
-                gap: 1.5em;
+                gap: 1.5rem;
 
                 p {
-                    font-size: 24px;
+                    font-size: 1.5rem;
                     max-width: 70%;
-
-                    @media (width <=500px) {
-                        font-size: 20px;
-                    }
                 }
             }
 
             .embeded {
-                margin: 1em 0;
+                margin: 1rem 0;
                 display: flex;
                 justify-content: center;
                 width: 100%;

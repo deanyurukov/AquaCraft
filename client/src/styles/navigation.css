@@ -27,12 +27,13 @@
         align-items: center;
         gap: 1em;
 
-        a, i {
+        a,
+        i {
             font-size: 26px;
             color: #000;
             transition: all 0.3s ease;
 
-            @media (width <= 300px) {
+            @media (width <=300px) {
                 font-size: 22px;
             }
 
@@ -69,21 +70,21 @@
     padding: 1em 3em;
     font-family: var(--font-poppins);
 
-    @media (width <= 480px) {
+    @media (width <=480px) {
         padding: 1em 1.5em;
     }
 
-    @media (width <= 300px) {
+    @media (width <=300px) {
         padding: 0.75em 1em;
     }
 
-    & > #responsive-nav {
+    &>#responsive-nav {
         display: none;
         justify-content: center;
         align-items: center;
         gap: 1em;
 
-        @media (width <= 750px) {
+        @media (width <=750px) {
             display: flex;
         }
 
@@ -94,14 +95,14 @@
             cursor: pointer;
             color: rgb(244, 237, 237);
             border: none;
-    
-            @media (width <= 480px) {
+
+            @media (width <=480px) {
                 font-size: 22px;
             }
         }
 
         img {
-            @media (width <= 480px) {
+            @media (width <=480px) {
                 width: 24px;
             }
         }
@@ -144,14 +145,14 @@
             top: 0;
             transition: all 0.3s linear;
 
-            @media (width <= 1000px) {
+            @media (width <=1000px) {
                 width: 80%;
                 height: 100vh;
-                max-height: none;       
+                max-height: none;
             }
 
-            @media (width <= 475px) {
-                padding: 20px 16px;              
+            @media (width <=475px) {
+                padding: 20px 16px;
             }
         }
 
@@ -181,7 +182,7 @@
                         align-items: center;
                         gap: 14.5px;
 
-                        @media (width <= 400px) {
+                        @media (width <=400px) {
                             gap: 10px;
                         }
 
@@ -190,19 +191,19 @@
                             font-size: 26px;
                             color: var(--color-gray);
 
-                            @media (width <= 1200px) {
+                            @media (width <=1200px) {
                                 font-size: 22px;
                             }
 
-                            @media (width <= 1000px) {
+                            @media (width <=1000px) {
                                 font-size: 30px;
                             }
 
-                            @media (width <= 575px) {
+                            @media (width <=575px) {
                                 font-size: 26px;
                             }
 
-                            @media (width <= 400px) {
+                            @media (width <=400px) {
                                 font-size: 22px;
                             }
                         }
@@ -214,19 +215,19 @@
                             transition: all 0.3s ease;
                             color: #9F9F9F;
 
-                            @media (width <= 1200px) {
+                            @media (width <=1200px) {
                                 font-size: 18px;
                             }
 
-                            @media (width <= 1000px) {
-                                font-size: 24px;   
+                            @media (width <=1000px) {
+                                font-size: 24px;
                             }
 
-                            @media (width <= 575px) {
-                                font-size: 20px;   
+                            @media (width <=575px) {
+                                font-size: 20px;
                             }
 
-                            @media (width <= 400px) {
+                            @media (width <=400px) {
                                 font-size: 18px;
                             }
 
@@ -254,7 +255,7 @@
                         scrollbar-color: var(--color-primary) transparent;
                         /* Custom color for the slider, no track background */
 
-                        @media (width <= 440px) {
+                        @media (width <=440px) {
                             height: 85%;
                         }
 
@@ -284,15 +285,15 @@
                         &>p {
                             font-size: 20px;
 
-                            @media (width <= 1000px) {
-                                font-size: 24px;  
+                            @media (width <=1000px) {
+                                font-size: 24px;
                             }
 
-                            @media (width <= 575px) {
+                            @media (width <=575px) {
                                 font-size: 20px;
                             }
 
-                            @media (width <= 400px) {
+                            @media (width <=400px) {
                                 font-size: 18px;
                             }
                         }
@@ -304,11 +305,11 @@
                             max-width: 95%;
                             gap: 0.2em;
 
-                            @media (width <= 1000px) {
+                            @media (width <=1000px) {
                                 gap: 0.5em;
                             }
 
-                            @media (width <= 400px) {
+                            @media (width <=400px) {
                                 gap: 0.3em;
                             }
 
@@ -318,19 +319,19 @@
                                 aspect-ratio: 1 / 1;
                                 border-radius: 10px;
 
-                                @media (width <= 1000px) {
+                                @media (width <=1000px) {
                                     min-width: 180px;
                                 }
 
-                                @media (width <= 575px) {
+                                @media (width <=575px) {
                                     min-width: 140px;
                                 }
 
-                                @media (width <= 440px) {
+                                @media (width <=440px) {
                                     min-width: 100px;
                                 }
 
-                                @media (width <= 370px) {
+                                @media (width <=370px) {
                                     min-width: 80px;
                                 }
                             }
@@ -338,15 +339,15 @@
                             p {
                                 width: 25%;
 
-                                @media (width <= 1000px) {
+                                @media (width <=1000px) {
                                     font-size: 18px;
                                 }
 
-                                @media (width <= 575px) {
+                                @media (width <=575px) {
                                     font-size: 16px;
                                 }
 
-                                @media (width <= 400px) {
+                                @media (width <=400px) {
                                     font-size: 14px;
                                 }
                             }
@@ -359,14 +360,14 @@
                                 color: #9F9F9F;
                                 cursor: pointer;
 
-                                @media (width <= 1000px) {
+                                @media (width <=1000px) {
                                     font-size: 20px;
                                 }
 
-                                @media (width <= 400px) {
+                                @media (width <=400px) {
                                     font-size: 18px;
                                 }
-                                
+
                                 &.fill {
                                     color: var(--color-primary);
                                 }
@@ -382,18 +383,18 @@
         }
     }
 
-    & > a > img {
+    &>a>img {
         width: 17vw;
 
-        @media (width <= 750px) {
+        @media (width <=750px) {
             width: 25vw;
         }
 
-        @media (width <= 600px) {
+        @media (width <=600px) {
             width: 35vw;
         }
 
-        @media (width <= 350px) {
+        @media (width <=350px) {
             width: 40vw;
         }
     }
@@ -404,19 +405,19 @@
         align-items: end;
         height: 100%;
 
-        @media (width <= 900px) {
+        @media (width <=900px) {
             gap: 1.5em;
         }
 
-        @media (width <= 750px) {
+        @media (width <=750px) {
             display: none;
         }
 
-        & > * {
+        &>* {
             height: 100%;
         }
 
-        & > a {
+        &>a {
             font-size: 20px;
             transition: all 0.3s ease;
             color: rgb(244, 237, 237);
@@ -482,8 +483,12 @@
             &:hover::after {
                 width: 100%;
             }
+
+            @-moz-document url-prefix() {
+                padding: 0;
+            }
         }
-        
+
         img {
             width: 30px;
             margin-bottom: 0.3em;
