@@ -75,6 +75,16 @@
                     p {
                         text-align: center;
                         font-size: 0.95rem;
+
+                        &.product-title {
+                            overflow: hidden;
+                            display: -webkit-box;
+                            line-clamp: 3;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            line-height: 24px;
+                            height: calc(3 * 24px);
+                        }
                     }
 
                     input[type=number] {
@@ -83,6 +93,7 @@
                         border: 2px solid #ccc;
                         outline: none;
                         transition: all 0.2s linear;
+                        width: 90%;
 
                         &:focus {
                             border-radius: 5px;
@@ -145,7 +156,7 @@
                     text-align: center;
                 }
             }
-            
+
             a {
                 padding: 0.6rem 1.2rem;
             }

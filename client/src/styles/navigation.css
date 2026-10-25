@@ -63,8 +63,9 @@
     justify-content: space-between;
     align-items: center;
     background: var(--color-primary);
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     font-family: var(--font-poppins);
+    gap: 1rem;
 
     &>#responsive-nav {
         display: none;
@@ -192,7 +193,7 @@
                         width: 100%;
                         height: 80%;
                         overflow-y: scroll;
-                        gap: 20px;
+                        gap: 1.25rem;
                         scrollbar-width: thin;
                         scrollbar-color: var(--color-primary) transparent;
 
@@ -226,70 +227,34 @@
                             align-items: center;
                             justify-content: space-between;
                             max-width: 95%;
-                            gap: 0.2em;
-
-                            @media (width <=1000px) {
-                                gap: 0.5em;
-                            }
-
-                            @media (width <=400px) {
-                                gap: 0.3em;
-                            }
+                            gap: 0.2rem;
 
                             img {
                                 width: 35%;
                                 height: auto;
                                 aspect-ratio: 1 / 1;
                                 border-radius: 10px;
-
-                                @media (width <=1000px) {
-                                    min-width: 180px;
-                                }
-
-                                @media (width <=575px) {
-                                    min-width: 140px;
-                                }
-
-                                @media (width <=440px) {
-                                    min-width: 100px;
-                                }
-
-                                @media (width <=370px) {
-                                    min-width: 80px;
-                                }
                             }
 
                             p {
                                 width: 25%;
-
-                                @media (width <=1000px) {
-                                    font-size: 18px;
-                                }
-
-                                @media (width <=575px) {
-                                    font-size: 16px;
-                                }
-
-                                @media (width <=400px) {
-                                    font-size: 14px;
-                                }
+                                font-size: 1rem;
+                                overflow: hidden;
+                                display: -webkit-box;
+                                line-clamp: 3;
+                                -webkit-line-clamp: 3;
+                                -webkit-box-orient: vertical;
+                                line-height: 24px;
+                                height: calc(3 * 24px);
                             }
 
                             i {
                                 border-radius: 100%;
-                                font-size: 18px;
-                                padding: 0.5em;
+                                font-size: 1.2rem;
+                                padding: 0.5rem;
                                 transition: all 0.3s ease;
                                 color: #9F9F9F;
                                 cursor: pointer;
-
-                                @media (width <=1000px) {
-                                    font-size: 20px;
-                                }
-
-                                @media (width <=400px) {
-                                    font-size: 18px;
-                                }
 
                                 &.fill {
                                     color: var(--color-primary);
@@ -307,19 +272,7 @@
     }
 
     &>a>img {
-        width: 17vw;
-
-        @media (width <=750px) {
-            width: 25vw;
-        }
-
-        @media (width <=600px) {
-            width: 35vw;
-        }
-
-        @media (width <=350px) {
-            width: 40vw;
-        }
+        width: 13rem
     }
 
     nav {
@@ -329,7 +282,7 @@
         height: 100%;
 
         @media (width <=900px) {
-            gap: 1.5em;
+            gap: 1.5rem;
         }
 
         @media (width <=750px) {
@@ -341,13 +294,9 @@
         }
 
         &>a {
-            font-size: 20px;
+            font-size: 1.25rem;
             transition: all 0.3s ease;
             color: rgb(244, 237, 237);
-
-            @media (width <=800px) {
-                font-size: 18px;
-            }
 
             &:hover {
                 color: #000;
@@ -375,15 +324,11 @@
         #favorites-icon {
             border-radius: 100%;
             transition: all 0.3s ease;
-            padding: 7px;
+            padding: 0.45rem;
             aspect-ratio: 1 / 1;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 1.5rem;
             color: rgb(244, 237, 237);
-
-            @media (width <=800px) {
-                font-size: 20px;
-            }
 
             &:hover {
                 color: #000;
@@ -413,13 +358,9 @@
         }
 
         img {
-            width: 30px;
-            margin-bottom: 0.3em;
+            width: 1.9rem;
+            margin-bottom: 0.3rem;
             cursor: pointer;
-
-            @media (width <=800px) {
-                width: 26px;
-            }
         }
     }
 }

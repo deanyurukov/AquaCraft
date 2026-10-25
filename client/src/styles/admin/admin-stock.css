@@ -80,9 +80,16 @@
             width: 25%;
             font-weight: 500;
             font-size: 1.3rem;
+            overflow: hidden;
+            display: -webkit-box;
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 24px;
+            height: calc(3 * 24px);
 
             @media (width <=700px) {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
 

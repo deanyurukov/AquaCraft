@@ -91,7 +91,7 @@ const CartCard = ({ product, setInCart }) => {
     return (
         <div>
             <img onError={changeImage} src={product.product.images[0]} alt={product.product.title} />
-            <p>{product.product.title}</p>
+            <p className="product-title">{product.product.title}</p>
             <span>
                 <input onBlur={(e) => handleQuantityChange(e, product.product._id)} onChange={handleChange} type="number" min="1" max="999" value={quantity} />
             </span>

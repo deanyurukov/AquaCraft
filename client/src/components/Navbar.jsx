@@ -49,11 +49,11 @@ const Navbar = ({ user, setUser, products, unlikeProduct, addToCart }) => {
             <img onClick={() => {
                 i18n.changeLanguage("bg");
                 localStorage.setItem("language", "bg");
-            }} src="../../../images/usa.svg" alt="usa" /> :
+            }} title="Български" src="../../../images/usa.svg" alt="usa" /> :
             <img onClick={() => {
                 i18n.changeLanguage("en");
                 localStorage.setItem("language", "en");
-            }} src="../../../images/bulgaria.svg" alt="bulgaria" />
+            }} title="English" src="../../../images/bulgaria.svg" alt="bulgaria" />
     );
 
     return (
