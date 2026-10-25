@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 2.5rem;
     opacity: 0;
     font-family: var(--font-poppins);
     visibility: hidden;
@@ -25,17 +25,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1em;
+        gap: 1rem;
 
         a,
         i {
-            font-size: 26px;
+            font-size: 1.7rem;
             color: #000;
             transition: all 0.3s ease;
-
-            @media (width <=300px) {
-                font-size: 22px;
-            }
 
             &:hover {
                 color: var(--color-primary);
@@ -52,7 +48,7 @@
         border: none;
 
         i {
-            font-size: 34px;
+            font-size: 2.1rem;
             transition: all 0.3s ease;
 
             &:hover {
@@ -67,44 +63,30 @@
     justify-content: space-between;
     align-items: center;
     background: var(--color-primary);
-    padding: 1em 3em;
+    padding: 1rem 3rem;
     font-family: var(--font-poppins);
-
-    @media (width <=480px) {
-        padding: 1em 1.5em;
-    }
-
-    @media (width <=300px) {
-        padding: 0.75em 1em;
-    }
 
     &>#responsive-nav {
         display: none;
         justify-content: center;
         align-items: center;
-        gap: 1em;
+        gap: 1rem;
 
         @media (width <=750px) {
             display: flex;
         }
 
         button {
-            font-size: 26px;
+            font-size: 1.6rem;
             padding: 8px;
             background: transparent;
             cursor: pointer;
             color: rgb(244, 237, 237);
             border: none;
-
-            @media (width <=480px) {
-                font-size: 22px;
-            }
         }
 
         img {
-            @media (width <=480px) {
-                width: 24px;
-            }
+            width: 2rem;
         }
     }
 
@@ -137,7 +119,7 @@
             width: 32%;
             min-height: 746px;
             max-height: 70vh;
-            padding: 24px;
+            padding: 1.5rem;
             display: flex;
             justify-content: center;
             position: absolute;
@@ -149,10 +131,6 @@
                 width: 80%;
                 height: 100vh;
                 max-height: none;
-            }
-
-            @media (width <=475px) {
-                padding: 20px 16px;
             }
         }
 
@@ -171,7 +149,7 @@
                     width: 100%;
                     height: 100%;
                     flex-direction: column;
-                    gap: 20px;
+                    gap: 1.25rem;
                     align-items: start;
                     overflow: hidden;
 
@@ -180,56 +158,21 @@
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        gap: 14.5px;
-
-                        @media (width <=400px) {
-                            gap: 10px;
-                        }
+                        gap: 0.9rem;
 
                         h2 {
                             font-weight: 600;
-                            font-size: 26px;
+                            font-size: 1.6rem;
+                            line-height: 1.05;
                             color: var(--color-gray);
-
-                            @media (width <=1200px) {
-                                font-size: 22px;
-                            }
-
-                            @media (width <=1000px) {
-                                font-size: 30px;
-                            }
-
-                            @media (width <=575px) {
-                                font-size: 26px;
-                            }
-
-                            @media (width <=400px) {
-                                font-size: 22px;
-                            }
                         }
 
                         i {
                             border-radius: 100%;
-                            padding: 7px;
-                            font-size: 20px;
+                            padding: 0.45rem;
+                            font-size: 1.25rem;
                             transition: all 0.3s ease;
                             color: #9F9F9F;
-
-                            @media (width <=1200px) {
-                                font-size: 18px;
-                            }
-
-                            @media (width <=1000px) {
-                                font-size: 24px;
-                            }
-
-                            @media (width <=575px) {
-                                font-size: 20px;
-                            }
-
-                            @media (width <=400px) {
-                                font-size: 18px;
-                            }
 
                             &:hover {
                                 background: rgb(237, 237, 237);
@@ -251,51 +194,31 @@
                         overflow-y: scroll;
                         gap: 20px;
                         scrollbar-width: thin;
-                        /* For Firefox */
                         scrollbar-color: var(--color-primary) transparent;
-                        /* Custom color for the slider, no track background */
 
                         @media (width <=440px) {
                             height: 85%;
                         }
 
-                        /* Webkit-based browsers (Chrome, Edge, Safari) */
                         &::-webkit-scrollbar {
                             width: 7px;
-                            /* Thin scrollbar */
                         }
 
                         &::-webkit-scrollbar-track {
                             background: transparent;
-                            /* No background */
                         }
 
                         &::-webkit-scrollbar-thumb {
                             background: var(--color-primary);
-                            /* Green slider */
                             border-radius: 10px;
-                            /* Smooth rounded edges */
                         }
 
                         &::-webkit-scrollbar-button {
                             display: none;
-                            /* Hides scrollbar arrows */
                         }
 
                         &>p {
-                            font-size: 20px;
-
-                            @media (width <=1000px) {
-                                font-size: 24px;
-                            }
-
-                            @media (width <=575px) {
-                                font-size: 20px;
-                            }
-
-                            @media (width <=400px) {
-                                font-size: 18px;
-                            }
+                            font-size: 1.25rem;
                         }
 
                         div {

@@ -8,6 +8,8 @@
 
 html {
     font-size: 16px;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-primary) #2c2c2c;
 
     @media (width>=2000px) {
         font-size: 20px;
@@ -49,7 +51,7 @@ html {
 body {
     background: var(--color-white);
 
-    & #root > div {
+    & #root>div {
         font-family: var(--font-poppins);
     }
 }
