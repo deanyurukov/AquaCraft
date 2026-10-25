@@ -1,43 +1,43 @@
 #chatbot {
-    > button {
+    >button {
         position: fixed;
-        right: 2.1875rem;
-        bottom: 1.875rem;
+        right: 2.2rem;
+        bottom: 1.0rem;
         z-index: 999;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 4.0625rem;
-        height: 4.0625rem;
+        width: 4rem;
+        height: 4rem;
         border: none;
         border-radius: 50%;
         color: var(--color-white);
         background: var(--color-primary);
-        box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
         cursor: pointer;
         transition: all 0.2s ease;
 
-        > svg,
-        > i {
+        &>svg,
+        &>i {
             position: absolute;
             transition: opacity 0.2s ease;
         }
 
-        > svg {
+        &>svg {
             width: 60%;
             fill: currentColor;
         }
 
-        > i {
+        &>i {
             opacity: 0;
             font-size: 2rem;
         }
     }
 
-    > section {
+    &>section {
         position: fixed;
-        right: 2.1875rem;
-        bottom: 6.875rem;
+        right: 2.2rem;
+        bottom: 6.9rem;
         z-index: 999;
         width: 26.25rem;
         overflow: hidden;
@@ -45,54 +45,53 @@
         opacity: 0;
         background: var(--color-white);
         border-radius: 0.9375rem;
-        box-shadow: 0 0 8rem rgba(0, 0, 0, 0.1),
-            0 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 8rem rgba(0, 0, 0, 0.1), 0 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
         transform: scale(0.2);
         transform-origin: bottom right;
         transition: all 0.1s ease;
 
-        > header {
+        &>header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.9375rem 1.375rem;
+            padding: 0.95rem 1.4rem;
             background: var(--color-primary);
             border-bottom: 1px solid #689264;
 
-            > div {
+            &>div {
                 display: flex;
-                gap: 0.625rem;
+                gap: 0.6rem;
                 align-items: center;
 
-                > svg {
+                &>svg {
                     flex-shrink: 0;
-                    width: 2.1875rem;
-                    height: 2.1875rem;
-                    padding: 0.375rem;
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    padding: 0.4rem;
                     fill: var(--color-primary);
                     background: var(--color-white);
                     border-radius: 50%;
                 }
 
-                > h2 {
+                &>h2 {
                     color: var(--color-white);
-                    font-size: 1.31rem;
+                    font-size: 1.3rem;
                     font-weight: 600;
                     letter-spacing: 0.02rem;
                 }
             }
 
-            > button {
+            &>button {
                 width: 2.5rem;
                 height: 2.5rem;
-                padding-top: 0.125rem;
-                margin-right: -0.625rem;
+                padding-top: 0.12rem;
+                margin-right: -0.6rem;
                 border: none;
                 border-radius: 50%;
                 color: var(--color-white);
                 background: none;
                 cursor: pointer;
-                font-size: 1.9rem;
+                font-size: 1.5rem;
                 transition: background 0.2s ease;
 
                 &:hover {
@@ -101,35 +100,35 @@
             }
         }
 
-        > main {
+        &>main {
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
             height: 28.75rem;
-            margin-bottom: 5.125rem;
-            padding: 1.5625rem 1.375rem;
+            margin-bottom: 5.12rem;
+            padding: 1.5rem 1.4rem;
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #80a77d transparent;
 
-            > article {
+            &>article {
                 display: flex;
-                gap: 0.6875rem;
+                gap: 0.69rem;
                 align-items: center;
 
-                > svg {
+                &>svg {
                     flex-shrink: 0;
                     align-self: flex-end;
-                    width: 2.1875rem;
-                    height: 2.1875rem;
-                    padding: 0.375rem;
-                    margin-bottom: 0.125rem;
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    padding: 0.4rem;
+                    margin-bottom: 0.12rem;
                     fill: var(--color-white);
                     background: var(--color-primary);
                     border-radius: 50%;
                 }
 
-                > p {
+                &>p {
                     max-width: 75%;
                     padding: 0.75rem 1rem;
                     font-size: 0.95rem;
@@ -137,36 +136,36 @@
                     white-space: pre-line;
                 }
 
-                &[data-error] > p {
+                &[data-error]>p {
                     color: #f00;
                 }
 
-                &[data-role="model"] > p {
+                &[data-role="model"]>p {
                     background: #f6f2ff;
-                    border-radius: 0.8125rem 0.8125rem 0.8125rem 0.1875rem;
+                    border-radius: 0.8rem 0.8rem 0.8rem 0.2rem;
                 }
 
                 &[data-role="user"] {
                     flex-direction: column;
                     align-items: flex-end;
 
-                    > p {
+                    &>p {
                         color: var(--color-white);
                         background: var(--color-primary);
-                        border-radius: 0.8125rem 0.8125rem 0.1875rem 0.8125rem;
+                        border-radius: 0.8rem 0.8rem 0.2rem 0.8rem;
                     }
                 }
             }
         }
 
-        > footer {
+        &>footer {
             position: absolute;
             bottom: 0;
             width: 100%;
-            padding: 0.9375rem 1.375rem 1.25rem;
+            padding: 0.9rem 1.4rem 1.25rem;
             background: var(--color-white);
 
-            > form {
+            &>form {
                 display: flex;
                 position: relative;
                 align-items: center;
@@ -181,11 +180,11 @@
                     outline: 2px solid var(--color-primary);
                 }
 
-                > textarea {
+                &>textarea {
                     width: 85%;
-                    min-height: 2.9375rem;
+                    min-height: 2.95rem;
                     max-height: 6.25rem;
-                    padding: 1rem 1.4375rem;
+                    padding: 1rem 1.43rem;
                     border: none;
                     outline: none;
                     background: none;
@@ -197,12 +196,12 @@
                     scrollbar-color: #80a77d transparent;
                 }
 
-                > button {
+                &>button {
                     display: none;
                     flex-shrink: 0;
-                    width: 2.1875rem;
-                    height: 2.1875rem;
-                    margin-right: 0.375rem;
+                    width: 2.2rem;
+                    height: 2.2rem;
+                    margin-right: 0.4rem;
                     border: none;
                     border-radius: 50%;
                     color: var(--color-white);
@@ -216,7 +215,7 @@
                     }
                 }
 
-                > textarea:valid ~ button {
+                &>textarea:valid~button {
                     display: block;
                 }
             }
@@ -224,49 +223,49 @@
     }
 
     &.is-open {
-        > button {
+        &>button {
             transform: rotate(90deg);
 
-            > svg {
+            &>svg {
                 opacity: 0;
             }
 
-            > i {
+            &>i {
                 opacity: 1;
             }
         }
 
-        > section {
+        &>section {
             pointer-events: auto;
             opacity: 1;
             transform: scale(1);
         }
     }
 
-    @media (width <= 32.5rem) {
-        > button {
+    @media (width <=520px) {
+        &>button {
             right: 1.25rem;
             bottom: 1.25rem;
         }
 
-        > section {
+        &>section {
             right: 0;
             bottom: 0;
             width: 100%;
             height: 100%;
             border-radius: 0;
 
-            > header {
-                padding: 0.75rem 0.9375rem;
+            &>header {
+                padding: 0.75rem 0.94rem;
             }
 
-            > main {
-                height: calc(90% - 3.4375rem);
-                padding: 1.5625rem 0.9375rem;
+            &>main {
+                height: calc(90% - 3.44rem);
+                padding: 1.55rem 0.94rem;
             }
 
-            > footer {
-                padding: 0.625rem 0.9375rem 0.9375rem;
+            &>footer {
+                padding: 0.6rem 0.94rem 0.94rem;
             }
         }
     }

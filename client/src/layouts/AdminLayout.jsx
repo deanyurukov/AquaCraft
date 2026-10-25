@@ -1,30 +1,17 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate, useOutletContext } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import authService from "../services/auth-service";
 
 const AdminLayout = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
-    const [currentPage, setCurrentPage] = useState(t("admin.create.title"));
     const navigate = useNavigate();
     const [isAdmin, setIsAdmin] = useState(false);
     const ctx = useOutletContext();
-
-    const paths = {
-        "Създай продукт": "create",
-        "Create product": "create",
-        "Stock": "Stock",
-        "Стоки": "Stock",
-        "Промени": "edit",
-        "Edit": "edit",
-        "Orders": "orders",
-        "Поръчки": "orders"
-    };
-
-    useEffect(() => {
-        setCurrentPage(prev => prev = t(`admin.${paths[prev]}.title`));
-    }, [i18n.language]);
+    const location = useLocation();
+    const adminPage = location.pathname === "/admin/stock" ? "products" : location.pathname === "/admin/edit" || location.pathname.endsWith("/edit") ? "editAll" : location.pathname === "/admin/orders" ? "orders" : "create";
+    const currentPage = t(`admin.${adminPage}.title`);
 
     useEffect(() => {
         const getAdminInfo = async () => {
@@ -41,12 +28,12 @@ const AdminLayout = () => {
         getAdminInfo();
     }, []);
 
-    const profileNavigation = (
+    const AdminNavigation = (
         <nav>
-            <NavLink onClick={() => setCurrentPage(t("admin.create.title"))} to="/admin/create" end>{t("admin.create.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("admin.products.title"))} to="/admin/stock" end>{t("admin.products.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("admin.editAll.title"))} to="/admin/edit" end>{t("admin.editAll.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("admin.orders.title"))} to="/admin/orders" end>{t("admin.orders.title")}</NavLink>
+            <NavLink to="/admin/create" end>{t("admin.create.title")}</NavLink>
+            <NavLink to="/admin/stock" end>{t("admin.products.title")}</NavLink>
+            <NavLink to="/admin/edit" end>{t("admin.editAll.title")}</NavLink>
+            <NavLink to="/admin/orders" end>{t("admin.orders.title")}</NavLink>
         </nav>
     );
 
@@ -56,7 +43,7 @@ const AdminLayout = () => {
                 <aside>
                     <h4>{t("admin.title")}</h4>
 
-                    {profileNavigation}
+                    {AdminNavigation}
                 </aside>
 
                 <div onClick={(e) => {
@@ -69,7 +56,7 @@ const AdminLayout = () => {
 
                     {
                         isDropdownClicked &&
-                        profileNavigation
+                        AdminNavigation
                     }
                 </div>
 

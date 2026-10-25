@@ -5,47 +5,33 @@ import authService from "../services/auth-service";
 import useLogout from "../hooks/useLogout";
 
 const ProfileLayout = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [isDropdownClicked, setIsDropdownClicked] = useState(false);
-    const [currentPage, setCurrentPage] = useState(t("profile.panel.title"));
-    const location = useLocation();
     const [isAdmin, setIsAdmin] = useState(false);
     const ctx = useOutletContext();
     const { setUser } = useOutletContext();
     const logout = useLogout(setUser);
-
-    const paths = {
-        "Панел": "panel",
-        "Panel": "panel",
-        "Моите данни": "data",
-        "My data": "data",
-        "История на поръчките": "orders",
-        "Orders history": "orders",
-        "Админ панел": "admin",
-        "Admin panel": "admin"
-    };
-
-    useEffect(() => {
-        setCurrentPage(prev => prev = t(`profile.${paths[prev]}.title`));
-    }, [i18n.language]);
+    const location = useLocation();
+    const profilePage = location.pathname.startsWith("/profile/order") ? "orders" : location.pathname === "/profile/user-data" ? "data" : "panel";
+    const currentPage = t(`profile.${profilePage}.title`); 
 
     useEffect(() => {
         const getAdminInfo = async () => {
             const isAdmin = (await authService.getUserData())[0].data.isAdmin;
             setIsAdmin(isAdmin);
         }
-
+        
         getAdminInfo();
     }, []);
 
     const profileNavigation = (
         <nav>
-            <NavLink onClick={() => setCurrentPage(t("profile.panel.title"))} to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.data.title"))} to="/profile/user-data">{t("profile.data.title")}</NavLink>
-            <NavLink onClick={() => setCurrentPage(t("profile.orders.title"))} to="/profile/orders">{t("profile.orders.title")}</NavLink>
+            <NavLink to="/profile/panel" end>{t("profile.panel.title")}</NavLink>
+            <NavLink to="/profile/user-data">{t("profile.data.title")}</NavLink>
+            <NavLink to="/profile/orders">{t("profile.orders.title")}</NavLink>
             {
                 isAdmin &&
-                <NavLink onClick={() => setCurrentPage(t("profile.admin.title"))} to="/admin/create">{t("profile.admin.title")}</NavLink>
+                <NavLink to="/admin/create">{t("profile.admin.title")}</NavLink>
             }
             <button onClick={logout}>{t("profile.logout")}</button>
         </nav>
