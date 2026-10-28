@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(409).send({ message: 'allFields' });
+        return res.status(400).send({ message: 'allFields' });
     }
 
     const user = await User.findOne({ email: email.trim() }).lean();
