@@ -15,10 +15,13 @@ export const allowedOrigins = [process.env.DEPLOYED_CLIENT_PATH, "http://localho
 
 const uri = process.env.LOCAL_DB_URI_KEY || process.env.DEPLOYED_DB_URI_KEY;
 
-try {
-    await mongoose.connect(uri);
-    console.log('Connected to DB Successfully.');
-} catch (err) {
-    console.error('Cannot connect to DB!');
-    console.log(err.message);
+export async function connectDb(uri = process.env.LOCAL_DB_URI_KEY || process.env.DEPLOYED_DB_URI_KEY) {
+    try {
+        await mongoose.connect(uri);
+        console.log("Connected to DB.");
+    }
+    catch (err) {
+        console.error("Cannot connect to DB!");
+        throw err;
+    }
 }
