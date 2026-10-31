@@ -12,10 +12,9 @@ export const secret = process.env.JWT_SECRET;
 export const port = process.env.PORT;
 export const allowedOrigins = [process.env.DEPLOYED_CLIENT_PATH, "http://localhost:3000", "http://192.168.1.6:3000"];
 
-
 const uri = process.env.LOCAL_DB_URI_KEY || process.env.DEPLOYED_DB_URI_KEY;
 
-export async function connectDb(uri = process.env.LOCAL_DB_URI_KEY || process.env.DEPLOYED_DB_URI_KEY) {
+export async function connectDb() {
     try {
         await mongoose.connect(uri);
         console.log("Connected to DB.");
