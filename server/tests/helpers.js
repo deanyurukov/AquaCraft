@@ -1,7 +1,8 @@
 import request from "supertest";
 import { expect } from "vitest";
 import app from "../src/app";
-import { user } from "./test-data";
+import { product, user } from "./test-data";
+import Product from "../src/models/Product";
 
 export async function registerSuccessfulUser() {
     return await request(app)
@@ -15,4 +16,11 @@ export async function expectUnauthorized(method, endpoint) {
 
     expect(response.status).toBe(401);
     expect(response.body.message).toBe("authNeeded");
+}
+
+export async function createProduct(overrides = {}) {
+    return await Product.create({
+        ...product,
+        ...overrides
+    });
 }

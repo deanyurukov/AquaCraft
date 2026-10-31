@@ -58,8 +58,6 @@ router.get("/cart/get", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-    const user = await User.findOne({ email: data.email });
 
     try {
         const product = await Product.findById(id);
@@ -75,13 +73,13 @@ router.put("/:id", async (req, res) => {
     const { quantity } = req.body;
     const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
 
-    if (!Number.isInteger(quantity) || quantity <= 0 || quantity > 999) {
-        return res.status(400).send({
-            message: "Invalid quantity."
-        });
-    }
-
     if (isValid) {
+        if (!Number.isInteger(quantity) || quantity <= 0 || quantity > 999) {
+            return res.status(400).send({
+                message: "Invalid quantity."
+            });
+        }
+
         const user = await User.findOne({ email: data.email });
 
         const quantityToChange = user.productsInCart.find(({ quantity, product }) => product.toString() === id);
@@ -94,7 +92,6 @@ router.put("/:id", async (req, res) => {
     else {
         res.status(401).send({ message });
     }
-
 });
 
 router.delete("/:id", async (req, res) => {

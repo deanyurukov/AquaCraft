@@ -8,6 +8,7 @@ import Order from "../src/models/Order.js";
 let mongoServer;
 
 process.env.JWT_SECRET = "test-secret";
+process.env.NODE_ENV = "test";
 
 beforeAll(async () => {
     mongoServer = await MongoMemoryReplSet.create({
