@@ -242,6 +242,20 @@ describe("PUT /products/:id", () => {
         expect(updatedProduct.quantity).toBe(5);
     });
 
+    it("returns an error if the product is not in the user's cart", async () => {
+        const registerResponse = await registerSuccessfulUser();
+        const token = registerResponse.body.accessToken;
+        const product = await createProduct();
+
+        const response = await request(app)
+            .put(`/products/${product._id}`)
+            .set("X-Authorization", token)
+            .send({ quantity: 2 });
+
+        expect(response.status).toBe(409);
+        expect(response.body.message).toBe("Product is not in cart!");
+    });
+
     it("returns an error if the quantity is zero", async () => {
         const registerResponse = await registerSuccessfulUser();
         const token = registerResponse.body.accessToken;

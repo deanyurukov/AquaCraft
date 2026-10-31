@@ -83,6 +83,11 @@ router.put("/:id", async (req, res) => {
         const user = await User.findOne({ email: data.email });
 
         const quantityToChange = user.productsInCart.find(({ quantity, product }) => product.toString() === id);
+
+        if (!quantityToChange) {
+            return res.status(409).send({ message: "Product is not in cart!" });
+        }
+
         quantityToChange.quantity = quantity;
 
         await user.save();
