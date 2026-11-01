@@ -22,8 +22,10 @@ AquaCraft is an irrigation system platform where users can explore, purchase, an
 - **bcrypt** (Password hashing)  
 - **dotenv** (.env file support)  
 - **jsonwebtoken** (User authentication)  
-- **Express rate limiter** (Rate limiting to prevent DDOS)
+- **express-rate-limiter** (Request Rate Limiting)
 - **Render.com** (Deployment)
+- **Vitest** (Automated Testing)
+- **Supertest** (HTTP Endpoint Testing)
 
 ---
 
@@ -66,6 +68,22 @@ cd client && npm install && npm start
 
 The frontend is now running on `http://localhost:3000/`.
 
+### 🧪 Testing
+
+The backend includes automated tests written with **Vitest** and **Supertest**.
+
+The test suite covers:
+- **Products:** Retrieval, cart management, favorites, and quantity updates.
+- **Orders:** Order creation, retrieval, and user access permissions.
+- **Admin:** Product management, stock updates, order management, and Excel exports.
+- **Authentication & Authorization:** Invalid tokens, admin-only access, and user permissions.
+
+Run the backend tests from the `server` directory:
+
+```bash
+npm test
+```
+
 ---
 
 ### 🔒 Page Access Control
@@ -97,6 +115,7 @@ The frontend is now running on `http://localhost:3000/`.
 - Change Stock
 - Edit Products (with options to delete/edit products)
 - All Orders (with option to mark order as completed)
+- Product Inventory Export (Excel)
 
 ---
 
@@ -108,4 +127,4 @@ The project is live at: `https://www.aquacraft.ltd/`
 
 ### 📜 License
 
-![License](https://img.shields.io/github/license/dean10042008/AquaCraft)
+![License](https://img.shields.io/github/license/deanyurukov/AquaCraft)
