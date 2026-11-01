@@ -3,6 +3,7 @@ import { expect } from "vitest";
 import app from "../src/app";
 import { product, user } from "./test-data";
 import Product from "../src/models/Product";
+import Order from "../src/models/Order";
 
 export async function registerSuccessfulUser() {
     return await request(app)
@@ -21,6 +22,19 @@ export async function expectUnauthorized(method, endpoint) {
 export async function createProduct(overrides = {}) {
     return await Product.create({
         ...product,
+        ...overrides
+    });
+}
+
+export async function createOrder(userId, productId, overrides = {}) {
+    return await Order.create({
+        name: "Test User",
+        town: "plovdiv",
+        phone: "+359888123456",
+        email: "test@example.com",
+        deliveryWay: "Speedy",
+        userId,
+        orderData: [{ product: productId, quantity: 2 }],
         ...overrides
     });
 }

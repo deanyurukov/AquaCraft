@@ -14,3 +14,11 @@ export const product = {
     type: "sprinklers",
     typeDetails: "Test sprinkler"
 };
+
+export const order = {
+    name: "Test User",
+    town: "plovdiv",
+    phone: "+359888123456",
+    email: "test@example.com",
+    deliveryWay: "Speedy"
+};
