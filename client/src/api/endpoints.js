@@ -17,7 +17,6 @@ export const endpoints = {
     
     addOrder: `${baseUrl}/orders/add`,
     getOrders: `${baseUrl}/orders/getByUser`,
-    completeOrder: (orderId) => `${baseUrl}/orders/complete/${orderId}`,
     getOneOrder: (orderId) => `${baseUrl}/orders/${orderId}`,
     
     addProduct: `${baseUrl}/admin/create`,
@@ -26,4 +25,5 @@ export const endpoints = {
     changeInStock: (productId) => `${baseUrl}/admin/changeInStock/${productId}`,
     delete: (productId) => `${baseUrl}/admin/delete/${productId}`,
     getAllOrders: `${baseUrl}/admin/orders/all`,
+    completeOrder: (orderId) => `${baseUrl}/admin/complete/${orderId}`,
 };

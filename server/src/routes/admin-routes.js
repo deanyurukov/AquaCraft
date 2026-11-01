@@ -123,6 +123,22 @@ router.put("/change/:id", async (req, res) => {
     }
 });
 
+router.get("/complete/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const order = await Order.findById(id);
+        order.isCompleted = true;
+        await order.save();
+
+        return res.status(200).send({ message: "Order Completed." });
+    }
+    catch (err) {
+        console.error(err);
+        return res.status(400).send({ message: getErrorMessage(err) });
+    }
+});
+
 router.get("/orders/all", async (req, res) => {
     try {
         const orders = await Order.find({}).sort("-createdAt").populate("orderData.product");
