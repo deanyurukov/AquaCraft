@@ -118,27 +118,4 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.get("/complete/:id", async (req, res) => {
-    const [isValid, message, data] = await isUserValid(req.headers["x-authorization"]);
-
-    if (isValid && data.isAdmin) {
-        const id = req.params.id;
-
-        try {
-            const order = await Order.findById(id);
-            order.isCompleted = true;
-            await order.save();
-
-            return res.status(200).send({ message: "Order Completed." });
-        }
-        catch (err) {
-            console.error(err);
-            return res.status(400).send({ message: getErrorMessage(err) });
-        }
-    }
-    else {
-        return res.status(401).send({ message });
-    }
-});
-
 export default router;

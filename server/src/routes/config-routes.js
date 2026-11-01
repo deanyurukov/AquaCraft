@@ -39,11 +39,11 @@ router.use((req, res, next) => {
 
 const apiLimiter = rateLimit({
     windowMs: 60 * 1000,
-    limit: 30,
+    limit: process.env.NODE_ENV === "test" ? 1000 : 30,
     standardHeaders: "draft-8",
     legacyHeaders: false,
     message: {
-        message: "Too Many Request"
+        message: "Too Many Requests"
     }
 });
 

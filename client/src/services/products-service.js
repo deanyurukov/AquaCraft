@@ -27,8 +27,7 @@ export default {
             const response = await fetch(endpoints.getOneProduct(productId), {
                 method: "GET",
                 headers: {
-                    "Content-Type": "application/json",
-                    "X-Authorization": JSON.parse(localStorage.getItem("accessToken")),
+                    "Content-Type": "application/json"
                 }
             });
 
