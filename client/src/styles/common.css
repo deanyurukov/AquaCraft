@@ -236,3 +236,20 @@ h2.page-title {
         background: var(--color-primary);
     }
 }
+
+#go-back {
+    position: absolute;
+    left: 1.9rem;
+    top: 1.7rem;
+    transition: all 0.1s linear;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+
+    &:hover {
+        color: #5e5e5e;
+    }
+}
